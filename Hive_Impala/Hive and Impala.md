@@ -133,5 +133,55 @@ SELECT * FROM VEICULOS;
 ```
 ![select_all_against_veiculos_result_on_cloudera](https://github.com/Shamslux/DataEngineering/assets/79280485/c4bf8f6a-82e9-4b58-83bd-bef0aa8ec66a)
 
+```shell
+# Creating the car rental agents (dispatchers) table;
+
+CREATE EXTERNAL TABLE DESPACHANTES (
+	iddespachante		int
+	, nome 				string
+	, status 			string
+	, filial			string)
+
+row format delimited fields terminated by ',' STORED AS TEXTFILE;
+
+# "Inserting data" into the table VEICULOS.
+
+LOAD DATA INPATH '/user/cloudera/locacao/despachantes.csv' INTO TABLE DESPACHANTES;
+
+# Querying against the table DESPACHANTES.
+
+SELECT * FROM DESPACHANTES;
+```
+![select_all_against_despachantes_result_on_cloudera](https://github.com/Shamslux/DataEngineering/assets/79280485/518c8a85-6512-4da0-a7cc-0c6c0be51536)
+
+```shell
+CREATE EXTERNAL TABLE LOCACAO (
+	idlocacao			int
+	, idcliente			int
+	, iddespachante		int
+	, idveiculo			int
+	, idveiculo			int
+	, datalocacao		date
+	, dataentrega		date
+	, total				double)
+
+row format delimited fields terminated by ',' STORED AS TEXTFILE;
+
+# "Inserting data" into the table LOCACAO.
+
+LOAD DATA INPATH '/user/cloudera/locacao/locacao.csv' INTO TABLE LOCACAO;
+
+# Querying against the table LOCACAO.
+
+SELECT * FROM LOCACAO;
+```
+![select_all_against_locacao_result_on_cloudera](https://github.com/Shamslux/DataEngineering/assets/79280485/9f767fca-1a3a-4852-90fd-72f17fd3f156)
+
+# BI Methodology Overview
+
+Just to briefly explain about the dimensional model. Analyzying this simple project made by Fernando Amaral, we can see a Star-Schema dimensional model with
+3 dimensions and 1 fact table. Below we have an image to clearly illustrate the model:
+
+![star_schema_locacao_model](https://github.com/Shamslux/DataEngineering/assets/79280485/5e945344-f598-423d-b6eb-4c2f5668f03c)
 
   
