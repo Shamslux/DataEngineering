@@ -27,7 +27,7 @@ use locacao;
 
 # Creating the first table in locacao database.
 
-CREATE EXTERNAL TABLE CLIENTESs (
+CREATE EXTERNAL TABLE CLIENTES (
 	idcliente 		    int
 	, cnh			    string
 	, cpf			    string
@@ -47,3 +47,24 @@ LOAD DATA INPATH '/user/cloudera/locacao/clientes.csv' INTO TABLE CLIENTES;
 # Querying against the table CLIENTES.
 
 SELECT * FROM CLIENTES;
+
+# Creating the cars table;
+
+CREATE EXTERNAL TABLE VEICULOS (
+	idveiculo           int
+    , dataaquisicao     date
+    , ano               int
+    , modelo            string
+    , placa             string
+    , status            string
+    , diaria            double)
+
+row format delimited fields terminated by ',' STORED AS TEXTFILE;
+
+# "Inserting data" into the table VEICULOS.
+
+LOAD DATA INPATH '/user/cloudera/locacao/veiculos.csv' INTO TABLE VEICULOS;
+
+# Querying against the table VEICULOS.
+
+SELECT * FROM VEICULOS;
