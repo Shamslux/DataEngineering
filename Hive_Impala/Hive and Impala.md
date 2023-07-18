@@ -109,5 +109,29 @@ SELECT * FROM CLIENTES;
 
 ![select_all_against_clientes_result_on_cloudera](https://github.com/Shamslux/DataEngineering/assets/79280485/a3003f5d-2211-4c6e-8dfe-bc9b223960ae)
 
+```shell
+# Creating the cars table;
+
+CREATE EXTERNAL TABLE VEICULOS (
+	idveiculo           int
+    , dataaquisicao     date
+    , ano               int
+    , modelo            string
+    , placa             string
+    , status            string
+    , diaria            double)
+
+row format delimited fields terminated by ',' STORED AS TEXTFILE;
+
+# "Inserting data" into the table VEICULOS.
+
+LOAD DATA INPATH '/user/cloudera/locacao/veiculos.csv' INTO TABLE VEICULOS;
+
+# Querying against the table VEICULOS.
+
+SELECT * FROM VEICULOS;
+```
+![select_all_against_veiculos_result_on_cloudera](https://github.com/Shamslux/DataEngineering/assets/79280485/c4bf8f6a-82e9-4b58-83bd-bef0aa8ec66a)
+
 
   
