@@ -68,3 +68,43 @@ LOAD DATA INPATH '/user/cloudera/locacao/veiculos.csv' INTO TABLE VEICULOS;
 # Querying against the table VEICULOS.
 
 SELECT * FROM VEICULOS;
+
+# Creating the car rental agents (dispatchers) table;
+
+CREATE EXTERNAL TABLE DESPACHANTES (
+	iddespachante		int
+	, nome 				string
+	, status 			string
+	, filial			string)
+
+row format delimited fields terminated by ',' STORED AS TEXTFILE;
+
+# "Inserting data" into the table DESPACHANTES.
+
+LOAD DATA INPATH '/user/cloudera/locacao/despachantes.csv' INTO TABLE DESPACHANTES;
+
+# Querying against the table DESPACHANTES.
+
+SELECT * FROM DESPACHANTES;
+
+# Creating the rental table;
+
+CREATE EXTERNAL TABLE LOCACAO (
+	idlocacao			int
+	, idcliente			int
+	, iddespachante		int
+	, idveiculo			int
+	, idveiculo			int
+	, datalocacao		date
+	, dataentrega		date
+	, total				double)
+
+row format delimited fields terminated by ',' STORED AS TEXTFILE;
+
+# "Inserting data" into the table LOCACAO.
+
+LOAD DATA INPATH '/user/cloudera/locacao/locacao.csv' INTO TABLE LOCACAO;
+
+# Querying against the table LOCACAO.
+
+SELECT * FROM LOCACAO;
