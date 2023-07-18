@@ -85,7 +85,7 @@ use locacao;
 
 # Creating the first table in locacao database.
 
-CREATE EXTERNAL TABLE CLIENTESs (
+CREATE EXTERNAL TABLE CLIENTES (
 	idcliente 		    int
 	, cnh			    string
 	, cpf			    string
