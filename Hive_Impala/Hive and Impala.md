@@ -1,3 +1,9 @@
+![RedHat](https://img.shields.io/badge/Red%20Hat-EE0000?style=for-the-badge&logo=redhat&logoColor=white)
+![Cloudera](https://img.shields.io/badge/Cloudera-0000FF?style=for-the-badge&logo=cloudera&logoColor=white)
+![Apache](https://img.shields.io/badge/Apache-D22128?style=for-the-badge&logo=Apache&logoColor=white)
+[![Hive](https://img.shields.io/badge/-Hive-orange?logo=apache%20hive&style=for-the-badge&logoColor=white)](https://hive.apache.org/)
+[![Impala](https://img.shields.io/badge/-Impala-black?logo=apache&style=for-the-badge)](https://impala.apache.org/)
+
 # Hive and Impala - Basic Course Overview
 
 This is a summary of the main points studied in the Hive and Impala course taught by instructor Fernando Amaral, 
