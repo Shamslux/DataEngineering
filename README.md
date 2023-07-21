@@ -1,6 +1,15 @@
 # Data Engineering
 Repository containing projects and summaries of my studies in the field of Data Engineering.
 
+# Table of Contents
+
+- [Big Data Courses and Projects](#big-data-courses-and-projects)
+  - [Hive and Impala Course](#hive-and-impala-course)
+- [ETL/ELT Tools](#etlelt-tools)
+  - [Apache Hop](#apache-hop)
+- [Books](#books)
+  - [Fundamentals of Data Engineering by Joe Reis and Matt Housley](#fundamentals-of-data-engineering-by-joe-reis-and-matt-housley)
+
 ## Big Data Courses and Projects
 
 ### Hive and Impala Course
