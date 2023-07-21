@@ -14,6 +14,11 @@
     - [Data Maturity Stages](#data-maturity-stages)
     - [The Background and Skills of a Data Engineer](#the-background-and-skills-of-a-data-engineer)
     - [Whom Data Engineers Work With](#whom-data-engineers-work-with)
+  - [Chapter 2 Summary](#chapter-2-summary)
+    - [Introduction](#introduction)
+    - [Generation: Source Systems](#generation-source-systems)
+    - [Evaluating Source Systems: Key Engineering Considerations](#evaluating-source-systems-key-engineering-considerations)
+    - [Data Schema and Challenges](#data-schema-and-challenges)
 
 # Fundamentals of Data Engineering - Joe Reis & Matt Housley
 
@@ -181,6 +186,57 @@ This chapter provided an overview of the data engineering landscape, defining th
 Data engineers work with a wide range of stakeholders, including technical roles like data architects, software engineers, and data scientists, as well as business leadership such as C-level executives, project managers, and product managers.
 
 Understanding the interactions between data engineers and various stakeholders is essential for building successful data engineering teams and driving data-driven initiatives within organizations.
+
+## Chapter 2 Summary
+
+### Introduction
+
+Chapter 2 of the book introduces the concept of the Data Engineering Lifecycle as the central theme of the book. The main goal is to move beyond viewing data engineering as a specific collection of data technologies and to emphasize the principles of data lifecycle management. The data engineering lifecycle comprises five stages: Generation, Storage, Ingestion, Transformation, and Serving data. These stages involve turning raw data ingredients into a useful end product, ready for consumption by analysts, data scientists, ML engineers, and others.
+
+The chapter explains that storage is a foundational element that underpins other stages, and although the stages are distinct, they may not always follow a neat, continuous flow. They can repeat, occur out of order, overlap, or intertwine in various ways. The undercurrents of the data engineering lifecycle, such as security, data management, DataOps, data architecture, orchestration, and software engineering, are essential bedrock elements that cut across multiple stages and are necessary for the proper functioning of each stage.
+
+Furthermore, the chapter clarifies the difference between the Data Lifecycle and the Data Engineering Lifecycle. The Data Engineering Lifecycle is a subset of the overall Data Lifecycle. While the full data lifecycle encompasses data across its entire lifespan, the data engineering lifecycle specifically focuses on the stages controlled by a data engineer.
+
+Overall, the Data Engineering Lifecycle is the framework that guides the transformation of raw data into valuable insights and products, ensuring that data engineers play a critical role in managing data from "cradle to grave" and enabling its utilization by various stakeholders.
+
+
+### Generation Source Systems
+
+A source system is the origin of the data used in the data engineering lifecycle. It can be an IoT device, an application message queue, or a transactional database. Data engineers consume data from source systems but don’t typically own or control them. Understanding how source systems work, generate data, and the frequency, velocity, and variety of data they produce is crucial for data engineers.
+
+**Source System Examples**
+
+1. _Traditional Source System_: Application database with several application servers supported by a database. This pattern gained popularity with the success of relational database management systems (RDBMSs) in the 1980s. It remains widely used, especially in modern software development practices where applications consist of many small service/database pairs with microservices.
+
+2. _Modern Source System_: IoT swarm where a fleet of devices sends data messages to a central collection system. This type of IoT source system is increasingly common as IoT devices, sensors, and smart devices become more prevalent.
+
+### Evaluating Source Systems Key Engineering Considerations
+
+Data engineers must consider various factors when assessing source systems:
+
+- **Data characteristics**: Is it an application or a swarm of IoT devices?
+- **Data persistence**: Is data persisted long term, or is it temporary and quickly deleted?
+- **Data generation rate**: How many events per second? How many gigabytes per hour?
+- **Data consistency**: How often do data inconsistencies occur, such as nulls where not expected or formatting issues?
+- **Error occurrence frequency and data duplicates**.
+- **Late-arriving data**: Will some data values arrive much later than others produced simultaneously?
+- **Data schema**: Will data engineers need to join across several tables or systems to get a complete picture?
+- **Handling schema changes and communication with downstream stakeholders**.
+- **Data retrieval frequency and performance impact**.
+- **Upstream data dependencies and characteristics of these systems**.
+- **Data-quality checks for late or missing data**.
+
+### Data Schema and Challenges
+
+The schema defines the hierarchical organization of data. Source systems handle data schema in different ways:
+
+- **Schemaless**: Application defines the schema as data is written (e.g., MongoDB).
+- **Fixed Schema**: Relational database storage with a fixed schema enforced in the database.
+
+Schemas may change over time, presenting challenges for data engineers. Schema evolution is encouraged in Agile software development, and data engineers must transform raw data input in the source system schema into valuable output for analytics.
+
+Sources produce data consumed by downstream systems, including human-generated spreadsheets, IoT sensors, web, and mobile applications. Data engineers need to understand the source data generation, quirks, and nuances, as well as the limits of the source systems they interact with.
+
 
 
 
