@@ -7,7 +7,9 @@
 
 <img src="https://m.media-amazon.com/images/I/41BCu6h1rWL.jpg"/> 
 
-<!-- toc -->
+## Onde está o índice?
+
+Clique nas três barrinhas no canto superior direito para acessar os títulos e subtítulos do resumo! 
 
 ## Resumo do Capítulo 1
 ### Fundamentos
