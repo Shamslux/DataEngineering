@@ -1,184 +1,151 @@
 <a href="https://www.goodreads.com/user/show/50697219-jo-o-paulo-m-ller-mamede">
     <img src="https://img.shields.io/badge/Goodreads-372213?style=for-the-badge&logo=goodreads&logoColor=white" alt="Goodreads Badge"/>
   </a>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/1/13/United-kingdom_flag_icon_round.svg" width=25 height=25/> 
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Brazilian_flag_icon_round.svg/1200px-Brazilian_flag_icon_round.svg.png" width=25 height=25/> 
   
-## Table of Contents
-- [Fundamentals of Data Engineering - Joe Reis & Matt Housley](#fundamentals-of-data-engineering---joe-reis--matt-housley)
-  - [Chapter 1 Summary](#chapter-1-summary)
-    - [Fundamentals](#fundamentals)
-    - [The Task of Data Engineering](#the-task-of-data-engineering)
-    - [The Evolution of Data Engineering](#the-evolution-of-data-engineering)
-    - [Data Engineering vs Data Science](#data-engineering-vs-data-science)
-    - [Data Engineer Skills and Activities](#data-engineer-skills-and-activities)
-    - [Data Maturity Stages](#data-maturity-stages)
-    - [The Background and Skills of a Data Engineer](#the-background-and-skills-of-a-data-engineer)
-    - [Whom Data Engineers Work With](#whom-data-engineers-work-with)
+## Índice
+- [Fundamentos da Engenharia de Dados - Joe Reis e Matt Housley]
+  - [Resumo do Capítulo 1](#resumo-do-capítulo-1)
+    - [Fundamentos da Engenharia de Dados](#fundamentos-da-engenharia-de-dados)
+    - [A Tarefa da Engenharia de Dados](#a-tarefa-da-engenharia-de-dados)
+    - [A Evolução da Engenharia de Dados](#a-evolução-da-engenharia-de-dados)
+    - [Engenharia de Dados vs Ciência de Dados](#engenharia-de-dados-vs-ciência-de-dados)
+    - [Habilidades e Atividades do Engenheiro de Dados](#habilidades-e-atividades-do-engenheiro-de-dados)
+    - [Estágios de Maturidade dos Dados](#estágios-de-maturidade-dos-dados)
+    - [O Perfil e Habilidades de um Engenheiro de Dados](#o-perfil-e-habilidades-de-um-engenheiro-de-dados)
+    - [Com quem os Engenheiros de Dados Trabalham](#com-quem-os-engenheiros-de-dados-trabalham)
+    - [Conclusão do Resumo do Capítulo 1](#conclusão-do-resumo-do-capítulo-1)
 
-# Fundamentals of Data Engineering - Joe Reis & Matt Housley
+# Fundamentos da Engenharia de Dados - Joe Reis e Matt Housley
 
-## Chapter 1 Summary
-### Fundamentals 
-Data engineering is a critical field in data and technology, responsible for building the foundation for data science and analytics in production. 
-Despite its popularity, there's often confusion about what data engineering entails. 
-It emerged alongside the rise of data science in the 2010s and involves creating interfaces and mechanisms for the flow and access of information. 
-Data engineers are dedicated specialists who set up and operate an organization's data infrastructure, ensuring data remains available and usable for further analysis by data analysts and scientists. 
-Different experts have varying definitions of data engineering, but its main focus lies in the movement, manipulation, and management of data.
+## Resumo do Capítulo 1
+### Fundamentos
+A engenharia de dados é uma área crítica no campo de dados e tecnologia, responsável por construir a base para ciência de dados e análise em produção. Apesar de sua popularidade, há frequentemente confusão sobre o que a engenharia de dados abrange. Ela surgiu junto com o crescimento da ciência de dados nos anos 2010 e envolve a criação de interfaces e mecanismos para o fluxo e acesso de informações. Os engenheiros de dados são especialistas dedicados que configuram e operam a infraestrutura de dados de uma organização, garantindo que os dados permaneçam disponíveis e utilizáveis para análises adicionais por analistas e cientistas de dados. Diferentes especialistas têm definições variadas de engenharia de dados, mas seu foco principal está na movimentação, manipulação e gerenciamento de dados.
 
-### The Task of Data Engineering 
-Data engineering involves the development, implementation, and maintenance of systems and processes that handle raw data, transforming it into high-quality, 
-consistent information to support various downstream use cases, such as analysis and machine learning. It intersects with security, data management, 
-DataOps, data architecture, orchestration, and software engineering. The data engineering lifecycle includes five stages: Generation, Storage, Ingestion, 
-Transformation, and Serving, with undercurrents of security, data management, DataOps, data architecture, orchestration, and software engineering. 
-The data engineering lifecycle helps data engineers view their role holistically, focusing on the data itself and its end goals. 
-The book delves deeper into the data engineering lifecycle and its core concepts in Chapter 2.
+### A Tarefa da Engenharia de Dados
+A engenharia de dados envolve o desenvolvimento, implementação e manutenção de sistemas e processos que lidam com dados brutos, transformando-os em informações de alta qualidade e consistentes para suportar diversos casos de uso downstream, como análise e aprendizado de máquina. Ela se relaciona com segurança, gerenciamento de dados, DataOps, arquitetura de dados, orquestração e engenharia de software. O ciclo de vida da engenharia de dados inclui cinco etapas: Geração, Armazenamento, Ingestão, Transformação e Serviço, com correntes subjacentes de segurança, gerenciamento de dados, DataOps, arquitetura de dados e engenharia de software. O ciclo de vida da engenharia de dados ajuda os engenheiros de dados a visualizarem seu papel de forma abrangente, concentrando-se nos próprios dados e em seus objetivos finais. O livro aprofunda esses conceitos principais do ciclo de vida da engenharia de dados no Capítulo 2.
 
-### The Evolution of Data Engineering
-The evolution of data engineering has been marked by significant developments and transformations over the years. The field's origins can be traced back to data warehousing in the 1970s, 
-with the term "data warehouse" coined in 1990. The rise of the internet in the mid-1990s gave birth to web-first companies, leading to the need for scalable backend systems to handle the 
-enormous amounts of data generated. The early 2000s saw the emergence of contemporary data engineering, driven by the explosion of data and the availability of cheap commodity hardware. 
-The term "big data" gained popularity during this time, and open-source big data tools in the Hadoop ecosystem rapidly matured. However, the complexity and administrative overhead of managing 
-these systems led to simplification, and the focus shifted to delivering insights and value. As a result, the term "big data engineer" evolved into "data engineer." In the 2020s, 
-data engineering has further evolved, with a greater emphasis on abstraction, simplification, and modularity. Data engineers now focus on data lifecycle management, including security, 
-data governance, data quality, compliance, and privacy. The present is seen as a golden age of data lifecycle management, with data engineers equipped with better tools and techniques than ever before.
+### A Evolução da Engenharia de Dados
+A evolução da engenharia de dados foi marcada por desenvolvimentos e transformações significativas ao longo dos anos. As origens dessa área remontam à armazenagem de dados (data warehousing) na década de 1970, com o termo "data warehouse" cunhado em 1990. O surgimento da internet, meados dos anos 1990, deu origem a empresas focadas na web, levando à necessidade de sistemas backend escaláveis para lidar com a enorme quantidade de dados gerados. No início dos anos 2000, emergiu a engenharia de dados contemporânea, impulsionada pela explosão de dados e pela disponibilidade de hardware de baixo custo. O termo "big data" ganhou popularidade nessa época, e as ferramentas de big data de código aberto no ecossistema Hadoop rapidamente amadureceram. No entanto, a complexidade e o trabalho administrativo de gerenciar esses sistemas levaram à simplificação, e o foco passou a ser na entrega de insights e valor. Como resultado, o termo "big data engineer" evoluiu para "data engineer". Nos anos 2020, a engenharia de dados evoluiu ainda mais, com um maior enfoque em abstração, simplificação e modularidade. Os engenheiros de dados agora se concentram no gerenciamento do ciclo de vida dos dados, incluindo segurança, governança de dados, qualidade de dados, conformidade e privacidade. O presente é visto como uma era de ouro para o gerenciamento do ciclo de vida dos dados, com os engenheiros de dados equipados com melhores ferramentas e técnicas do que nunca.
 
-### Data Engineering vs Data Science
-Data engineering and data science are two distinct but complementary fields in the realm of data and technology. 
-While some may debate whether data engineering is a subdiscipline of data science, they are generally regarded as separate disciplines. 
-Data engineering sits upstream from data science, meaning data engineers provide the foundational inputs used by data scientists in their work. 
-The Data Science Hierarchy of Needs illustrates that data scientists spend a significant portion of their time on data-related tasks such as gathering, 
-cleaning, and processing data, before they can focus on advanced analytics and machine learning (ML). Data engineers play a crucial role in building a 
-solid data foundation, allowing data scientists to spend more time on analysis and ML tasks. In an ideal scenario, data scientists should dedicate the 
-majority of their time to analytics, experimentation, and ML, while data engineers handle the data engineering aspects to support their work. 
-Both data engineering and data science are essential and equally significant for delivering value from data in production environments. 
-Data engineers bridge the gap between obtaining data and deriving value from it, making them integral to the success of data science in real-world applications.
+### Engenharia de Dados vs Ciência de Dados
+Engenharia de dados e ciência de dados são duas áreas distintas, mas complementares, no campo de dados e tecnologia. Embora haja debates sobre se a engenharia de dados é uma subdisciplina da ciência de dados, geralmente são consideradas disciplinas separadas. A engenharia de dados está acima da ciência de dados, o que significa que os engenheiros de dados fornecem as entradas fundamentais usadas pelos cientistas de dados em seus trabalhos. A Hierarquia das Necessidades da Ciência de Dados ilustra que os cientistas de dados gastam uma parte significativa do seu tempo em tarefas relacionadas a dados, como coleta, limpeza e processamento de dados, antes de poderem se concentrar em análises avançadas e aprendizado de máquina (ML). Os engenheiros de dados desempenham um papel crucial na construção de uma base sólida de dados, permitindo que os cientistas de dados dediquem mais tempo a análises e tarefas de ML. Em um cenário ideal, os cientistas de dados devem dedicar a maior parte do seu tempo a análises, experimentação e ML, enquanto os engenheiros de dados lidam com os aspectos da engenharia de dados para apoiar o trabalho deles. Tanto a engenharia de dados quanto a ciência de dados são essenciais e igualmente importantes para proporcionar valor a partir dos dados em ambientes de produção. Os engenheiros de dados preenchem a lacuna entre a obtenção de dados e a obtenção de valor a partir deles, tornando-se essenciais para o sucesso da ciência de dados em aplicações do mundo real.
 
-### Data Engineer Skills and Activities
+### Habilidades e Atividades do Engenheiro de Dados
+A engenharia de dados requer um conjunto diversificado de habilidades que abrange diversos aspectos, incluindo segurança, gerenciamento de dados, DataOps, arquitetura de dados e engenharia de software. Os engenheiros de dados devem ter a capacidade de avaliar ferramentas de dados e entender como elas se encaixam ao longo do ciclo de vida da engenharia de dados. Eles precisam estar cientes de como os dados são produzidos em sistemas de origem e como os analistas de dados e cientistas de dados utilizarão e obterão valor dos dados processados e curados. Além disso, os engenheiros de dados devem lidar com partes móveis complexas e continuamente otimizar suas soluções em termos de custo, agilidade, escalabilidade, simplicidade, reutilização e interoperabilidade.
 
-Data engineering requires a diverse skill set that encompasses various aspects, including security, data management, DataOps, data architecture, 
-and software engineering. Data engineers must have the ability to evaluate data tools and understand how they fit together throughout the data engineering lifecycle. 
-They need to be aware of how data is produced in source systems and how data analysts and data scientists will use and derive value from the processed and curated data. 
-Additionally, data engineers must handle complex moving parts and continually optimize their solutions in terms of cost, agility, scalability, simplicity, reuse, and interoperability.
+No passado, esperava-se que os engenheiros de dados tivessem um conhecimento profundo de tecnologias poderosas e monolíticas como Hadoop, Spark, Teradata e Hive
 
-In the past, data engineers were expected to have in-depth knowledge of powerful and monolithic technologies like Hadoop, Spark, Teradata, and Hive. 
-However, the modern data-tooling landscape has evolved to significantly abstract and simplify workflows, allowing data engineers to focus on balancing 
-cost-effective and value-driven services. While data engineers should have a functional understanding of areas such as ML models, data analysis, 
-and software applications, their primary responsibilities do not include directly building ML models, creating reports or dashboards, performing data analysis, 
-building KPIs, or developing software applications.
+. No entanto, o cenário moderno de ferramentas de dados evoluiu para abstrair e simplificar significativamente os fluxos de trabalho, permitindo que os engenheiros de dados se concentrem em serviços econômicos e orientados a valor. Embora os engenheiros de dados devam ter um entendimento funcional de áreas como modelos de ML, análise de dados e aplicações de software, suas principais responsabilidades não incluem a criação direta de modelos de ML, criação de relatórios ou painéis, análise de dados, criação de KPIs ou desenvolvimento de aplicações de software.
 
-The level of data engineering complexity in a company is influenced by its data maturity. Data maturity refers to the progression towards higher data utilization, 
-capabilities, and integration across the organization, regardless of the company's age or revenue. Data maturity models can vary, and the book presents a simplified 
-three-stage model: starting with data, scaling with data, and leading with data. Each stage represents different levels of data utilization and impacts a data engineer's job responsibilities and career progression.
+O nível de complexidade da engenharia de dados em uma empresa é influenciado pelo nível de maturidade dos dados. Maturidade dos dados refere-se ao progresso em direção a uma maior utilização de dados, capacidades e integração em toda a organização, independentemente da idade ou receita da empresa. Modelos de maturidade dos dados podem variar, e o livro apresenta um modelo simplificado em três estágios: começando com dados, escalando com dados e liderando com dados. Cada estágio representa diferentes níveis de utilização de dados e afeta as responsabilidades do trabalho de um engenheiro de dados e o avanço em sua carreira.
 
-### Data Maturity Stages
+### Estágios de Maturidade dos Dados
 
-**Stage 1: Starting with data**
+**Estágio 1: Começando com dados**
 
-In Stage 1, a company is in the early stages of data maturity. Goals may be loosely defined, and data architecture and infrastructure are still in the early planning and development phases. Adoption and utilization of data are likely low or nonexistent, and the data team is small and often multi-functional, with data engineers playing various roles like data scientists or software engineers. The data engineer's primary goal is to move quickly, gain traction, and add value.
+No Estágio 1, a empresa está nos estágios iniciais de maturidade dos dados. Os objetivos podem estar vagamente definidos, e a arquitetura e infraestrutura de dados ainda estão nas fases iniciais de planejamento e desenvolvimento. A adoção e utilização de dados provavelmente são baixas ou inexistentes, e a equipe de dados é pequena e muitas vezes multifuncional, com engenheiros de dados desempenhando várias funções, como cientistas de dados ou engenheiros de software. O objetivo principal do engenheiro de dados é agir rapidamente, ganhar tração e agregar valor.
 
-At this stage, the practicalities of extracting value from data may be poorly understood, and the focus should be on building a solid data foundation. While it might be tempting to jump into machine learning (ML) initiatives, it is crucial to avoid doing so prematurely. Without a solid data foundation, data engineers may lack the necessary data for reliable ML models and the means to deploy these models in a scalable and repeatable manner.
+Neste estágio, a utilidade prática da extração de valor dos dados pode ser pouco compreendida, e o foco deve estar na construção de uma base sólida de dados. Embora possa ser tentador iniciar iniciativas de aprendizado de máquina (ML), é crucial evitar fazê-lo de forma prematura. Sem uma base sólida de dados, os engenheiros de dados podem não ter os dados necessários para modelos de ML confiáveis e os meios para implantar esses modelos de forma escalável e repetível.
 
-To navigate Stage 1 successfully, data engineers should focus on:
+Para navegar com sucesso no Estágio 1, os engenheiros de dados devem focar em:
 
-1. Getting buy-in from key stakeholders, including executive management, and having a sponsor for critical initiatives to design and build a data architecture that supports the company's goals.
-2. Defining the right data architecture based on business goals and competitive advantage.
-3. Identifying and auditing data that will support key initiatives within the designed data architecture.
-4. Building a solid data foundation that enables future data analysts and data scientists to generate valuable reports and models. During this stage, data engineers may also be responsible for generating these reports and models.
+1. Obter apoio dos principais interessados, incluindo a alta administração, e ter um patrocinador para iniciativas críticas de design e construção de uma arquitetura de dados que suporte os objetivos da empresa.
+2. Definir a arquitetura de dados correta com base nos objetivos de negócios e vantagem competitiva.
+3. Identificar e auditar os dados que suportarão iniciativas-chave dentro da arquitetura de dados projetada.
+4. Construir uma base sólida de dados que permita que futuros analistas e cientistas de dados gerem relatórios e modelos valiosos. Neste estágio, os engenheiros de dados também podem ser responsáveis por gerar esses relatórios e modelos.
 
-To avoid pitfalls in Stage 1, data engineers should:
+Para evitar armadilhas no Estágio 1, os engenheiros de dados devem:
 
-1. Strive for quick wins to establish the importance of data within the organization, but also plan to reduce technical debt to avoid future delivery friction.
-2. Communicate and collaborate with stakeholders outside the data team to avoid working in silos and ensure that efforts align with business needs.
-3. Use off-the-shelf, turnkey solutions wherever possible to avoid undifferentiated heavy lifting and unnecessary technical complexity.
-4. Build custom solutions and code only where it creates a competitive advantage.
+1. Procurar vitórias rápidas para estabelecer a importância dos dados dentro da organização, mas também planejar reduzir a dívida técnica para evitar futuros problemas de entrega.
+2. Comunicar-se e colaborar com os interessados fora da equipe de dados para evitar trabalhar em silos e garantir que os esforços estejam alinhados com as necessidades do negócio.
+3. Utilizar soluções prontas e fáceis de usar sempre que possível para evitar esforços desnecessários e complexidade técnica não diferenciada.
+4. Construir soluções personalizadas e código apenas quando isso proporcionar uma vantagem competitiva clara.
 
-**Stage 2: Scaling with data**
+**Estágio 2: Escalando com dados**
 
-In Stage 2, the company has moved beyond ad hoc data requests and has established formal data practices. Data engineering roles shift from generalists to specialists, with individuals focusing on specific aspects of the data engineering lifecycle. The data engineer's goals in Stage 2 are to:
+No Estágio 2, a empresa superou as solicitações ad hoc de dados e estabeleceu práticas formais de dados. Os papéis de engenharia de dados passam de generalistas para especialistas, com indivíduos focados em aspectos específicos do ciclo de vida da engenharia de dados. Os objetivos do engenheiro de dados no Estágio 2 são:
 
-1. Establish formal data practices.
-2. Create scalable and robust data architectures.
-3. Adopt DevOps and DataOps practices.
-4. Build systems that support ML.
-5. Continue avoiding undifferentiated heavy lifting and customizing only when it provides a competitive advantage.
+1. Estabelecer práticas formais de dados.
+2. Criar arquiteturas de dados escaláveis e robustas.
+3. Adotar práticas de DevOps e DataOps.
+4. Construir sistemas que suportem ML.
+5. Continuar evitando esforços desnecessários e personalização apenas quando isso proporcionar uma vantagem competitiva.
 
-Challenges in Stage 2 include the temptation to adopt bleeding-edge technologies based on social proof from other companies. Data engineering decisions should be driven by the value they deliver to the customers. The main bottleneck for scaling is often the data engineering team's capacity, so focusing on solutions that are simple to deploy and manage can help expand throughput.
+Os desafios no Estágio 2 incluem a tentação de adotar tecnologias de ponta com base em aprovação social de outras empresas. As decisões de engenharia de dados devem ser orientadas pelo valor que elas proporcionam aos clientes. O principal gargalo para a escalabilidade muitas vezes é a capacidade da equipe de engenharia de dados, então focar em soluções simples para implantação e gerenciamento pode ajudar a aumentar a produção.
 
-At this stage, data engineers should focus on pragmatic leadership and communication with other teams, highlighting the practical utility of data and teaching the organization how to consume and leverage data effectively.
+Neste estágio, os engenheiros de dados devem se concentrar em liderança pragmática e comunicação com outras equipes, destacando a utilidade prática dos dados e ensinando a organização a consumir e aproveitar dados de forma eficaz.
 
-**Stage 3: Leading with data**
+**Estágio 3: Liderando com dados**
 
-In Stage 3, the company is fully data-driven, with automated pipelines and systems enabling self-service analytics and ML. The introduction of new data sources is seamless, and tangible value is derived from the data. Data engineers at this stage build on the achievements of previous stages and take on additional responsibilities, such as creating automation for introducing new data and focusing on enterprise aspects of data management and DataOps.
+No Estágio 3, a empresa é totalmente orientada a dados, com pipelines e sistemas automatizados permitindo análises e ML de autoatendimento. A introdução de novas fontes de dados é tranquila, e valor tangível é obtido a partir dos dados. Os engenheiros de dados neste estágio constroem sobre as conquistas dos estágios anteriores e assumem responsabilidades adicionais, como criar automação para a introdução de novos dados e focar em aspectos corporativos do gerenciamento de dados e DataOps.
 
-Data engineers in Stage 3 should deploy tools that expose and disseminate data throughout the organization, enabling efficient collaboration among software engineers, ML engineers, analysts, and other stakeholders. To avoid complacency, organizations in Stage 3 must constantly focus on maintenance and improvement to sustain their data maturity level and not regress to a lower stage.
+Os engenheiros de dados no Estágio 3 devem implantar ferramentas que exponham e disseminem dados em toda a organização, permitindo colaboração eficiente entre engenheiros de software, engenheiros de ML, analistas e outros interessados. Para evitar a complacência,
 
-It is important to stay vigilant against technology distractions and pursue custom-built technology only when it provides a clear competitive advantage. At this stage, data engineers should create a community and environment that fosters collaboration and open communication, regardless of role or position within the organization.
+ as organizações no Estágio 3 devem focar constantemente na manutenção e melhoria para sustentar seu nível de maturidade de dados e não regredir para um estágio inferior.
 
-### The Background and Skills of a Data Engineer
+É importante permanecer vigilante contra distrações tecnológicas e buscar tecnologias personalizadas apenas quando elas oferecerem uma vantagem competitiva clara. Neste estágio, os engenheiros de dados devem criar uma comunidade e ambiente que promovam a colaboração e a comunicação aberta, independentemente do papel ou posição dentro da organização.
 
-Becoming a data engineer can involve a significant amount of self-study, as formal training programs and standardized paths are limited due to the relative novelty of the field. Individuals from various educational and career backgrounds can enter data engineering, but transitioning from an adjacent field like software engineering, ETL development, database administration, data science, or data analysis can provide a good starting point due to their data awareness and relevant technical skills.
+### O Perfil e Habilidades de um Engenheiro de Dados
 
-To be successful as a data engineer, a requisite body of knowledge exists, requiring a good understanding of data management best practices and various technologies. A data engineer should be proficient in software engineering, DataOps, data architecture, and be able to view responsibilities through both business and technical lenses.
+Tornar-se um engenheiro de dados pode envolver uma quantidade significativa de estudos independentes, já que programas de treinamento formais e caminhos padronizados são limitados devido à relativa novidade do campo. Indivíduos de diferentes formações educacionais e carreiras podem ingressar na engenharia de dados, mas a transição de uma área adjacente, como engenharia de software, desenvolvimento de ETL, administração de bancos de dados, ciência de dados ou análise de dados, pode fornecer um bom ponto de partida devido à sua consciência de dados e habilidades técnicas relevantes.
 
-**Business Responsibilities**
+Para ter sucesso como engenheiro de dados, existe um conjunto de conhecimentos necessário, exigindo uma compreensão sólida das melhores práticas de gerenciamento de dados e várias tecnologias. Um engenheiro de dados deve ser proficiente em engenharia de software, DataOps, arquitetura de dados e ser capaz de ver suas responsabilidades através de lentes tanto de negócios quanto técnicas.
 
-In addition to technical skills, a data engineer should possess essential business skills, including:
+**Responsabilidades de Negócios**
 
-1. _Communication_: Ability to communicate effectively with both technical and non-technical individuals across the organization, building rapport and trust.
-2. _Scoping and Gathering Requirements_: Understanding what to build and ensuring stakeholders agree with the assessment, as well as knowing how data and technology decisions impact the business.
-3. _Cultural Foundations_: Understanding the cultural aspects of Agile, DevOps, and DataOps, as these practices require buy-in across the organization.
-4. _Cost Control_: Focusing on optimizing time to value, total cost of ownership, and opportunity cost to keep costs low while providing value.
-5. _Continuous Learning_: The data field is constantly evolving, and successful data engineers stay abreast of new developments while sharpening their fundamental knowledge.
+Além das habilidades técnicas, um engenheiro de dados deve possuir habilidades essenciais de negócios, incluindo:
 
-**Technical Responsibilities**
+1. _Comunicação_: Capacidade de se comunicar efetivamente tanto com indivíduos técnicos quanto não técnicos em toda a organização, construindo relacionamentos e confiança.
+2. _Escopo e Levantamento de Requisitos_: Compreender o que construir e garantir que os interessados concordem com a avaliação, bem como entender como as decisões de dados e tecnologia impactam o negócio.
+3. _Fundamentos Culturais_: Entender os aspectos culturais de Agile, DevOps e DataOps, pois essas práticas exigem o apoio de toda a organização.
+4. _Controle de Custos_: Concentrar-se em otimizar o tempo de entrega de valor, o custo total de propriedade e o custo de oportunidade para manter os custos baixos e fornecer valor.
+5. _Aprendizado Contínuo_: O campo de dados está em constante evolução, e os engenheiros de dados bem-sucedidos se mantêm atualizados sobre novos desenvolvimentos enquanto aprimoram seus conhecimentos fundamentais.
 
-Data engineers must possess technical skills in building architectures that optimize performance and cost. They should be familiar with various technologies and languages used in the data engineering lifecycle, which includes stages like generation, storage, ingestion, transformation, and serving. The undercurrents of data engineering encompass security, data management, DataOps, data architecture, and software engineering.
+**Responsabilidades Técnicas**
 
-The primary programming languages for data engineering include SQL, Python, a JVM language (Java or Scala), and bash. SQL, despite having once been sidelined by big data technologies like MapReduce, has reemerged as a powerful tool for processing large amounts of data, and competent data engineers should be highly proficient in it. Data engineers should also know when SQL is not suitable for a particular task and be skilled in using other languages.
+Os engenheiros de dados devem possuir habilidades técnicas para construir arquiteturas que otimizem o desempenho e o custo. Eles devem estar familiarizados com várias tecnologias e linguagens usadas no ciclo de vida da engenharia de dados, que inclui estágios como geração, armazenamento, ingestão, transformação e serviço. As correntes subjacentes da engenharia de dados englobam segurança, gerenciamento de dados, DataOps, arquitetura de dados e engenharia de software.
 
-To keep pace with the fast-moving field of data engineering, it is essential to focus on fundamentals to understand what is unlikely to change while staying updated on ongoing developments to know where the field is heading. Strive to understand how new technologies can enhance the data engineering lifecycle and be helpful in achieving business objectives.
+As principais linguagens de programação para a engenharia de dados incluem SQL, Python, uma linguagem JVM (Java ou Scala) e bash. O SQL, apesar de ter sido marginalizado por tecnologias de big data como o MapReduce, ressurgiu como uma ferramenta poderosa para processar grandes quantidades de dados, e os engenheiros de dados competentes devem ser altamente proficientes nisso. Os engenheiros de dados também devem saber quando o SQL não é adequado para uma tarefa específica e ter habilidades em outras linguagens.
 
-By possessing both business and technical skills, data engineers can excel in their role and contribute significantly to the success of their organizations in leveraging data as a competitive advantage.
+Para acompanhar o campo em rápida evolução da engenharia de dados, é essencial focar nos fundamentos para entender o que é improvável de mudar, ao mesmo tempo em que se mantém atualizado sobre os desenvolvimentos em curso para saber para onde o campo está caminhando. Esforce-se para entender como as novas tecnologias podem melhorar o ciclo de vida da engenharia de dados e ser úteis para alcançar os objetivos do negócio.
 
-### Whom Data Engineers Work With
+Ao possuir habilidades tanto de negócios quanto técnicas, os engenheiros de dados podem se destacar em seu papel e contribuir significativamente para o sucesso de suas organizações em aproveitar os dados como vantagem competitiva.
 
-Data engineers interact with various roles within an organization, both technical and nontechnical. Let's explore the key stakeholders with whom data engineers collaborate:
+### Com quem os Engenheiros de Dados Trabalham
 
-**Upstream Stakeholders**
+Os engenheiros de dados interagem com diversas funções dentro de uma organização, tanto técnicas quanto não técnicas. Vamos explorar os principais interessados com quem os engenheiros de dados colaboram:
 
-_Data Architects_: Data architects design the blueprint for organizational data management, mapping out processes and overall data architecture and systems. They collaborate with data engineers to ensure the smooth flow of data.
+**Interessados de Montante (Upstream)**
 
-_Software Engineers_: Software engineers build the software and systems that generate internal data, which data engineers consume and process. Collaboration with software engineers is essential for understanding data generation and data engineering requirements.
+_Arquitetos de Dados_: Os arquitetos de dados projetam o plano para o gerenciamento de dados da organização, mapeando processos e a arquitetura geral de dados e sistemas. Eles colaboram com os engenheiros de dados para garantir o fluxo suave dos dados.
 
-_DevOps Engineers and Site-Reliability Engineers (SREs)_: DevOps and SREs often produce data through operational monitoring. They may serve as upstream stakeholders to data engineers, providing data for further processing.
+_Engenheiros de Software_: Os engenheiros de software constroem o software e sistemas que geram dados internos, que os engenheiros de dados consomem e processam. A colaboração com os engenheiros de software é essencial para entender a geração de dados e os requisitos de engenharia de dados.
 
-**Downstream Stakeholders**
+_Engenheiros de DevOps e Engenheiros de Confiabilidade de Sites (SREs)_: DevOps e SREs frequentemente produzem dados por meio de monitoramento operacional. Eles podem servir como interessados de montante para os engenheiros de dados, fornecendo dados para processamento adicional.
 
-_Data Scientists_: Data scientists build models to make predictions and recommendations. Data engineers work with them to provide the necessary data automation and scale, enabling smooth data science workflows.
+**Interessados de Jusante (Downstream)**
 
-_Data Analysts_: Data analysts seek to understand business performance and trends. Data engineers collaborate with them to build pipelines for new data sources and improve data quality.
+_Cientistas de Dados_: Os cientistas de dados constroem modelos para fazer previsões e recomendações. Os engenheiros de dados trabalham com eles para fornecer a automação de dados necessária e a escala, permitindo fluxos de trabalho de ciência de dados sem problemas.
 
-_Machine Learning Engineers and AI Researchers_: ML engineers develop advanced ML techniques, and AI researchers work on new ML approaches. Data engineers may work closely with them in designing ML processes and ensuring successful model deployment.
+_Analistas de Dados_: Os analistas de dados procuram entender o desempenho e as tendências dos negócios. Os engenheiros de dados colaboram com eles para construir pipelines para novas fontes de dados e melhorar a qualidade dos dados.
 
-**Business Leadership**
+**Liderança Empresarial**
 
-_C-Level Executives_: C-level executives, including CEOs, CIOs, CTOs, CDOs, and CAOs, are increasingly involved in data and analytics, as they recognize data as a significant asset for modern businesses. Data engineers interact with them to provide insights into data capabilities and possibilities.
+_Executivos de Nível C_: Os executivos de nível C, incluindo CEOs, CIOs, CTOs, CDOs e CAOs, estão cada vez mais envolvidos com dados e análises, pois reconhecem os dados como um ativo significativo para os negócios modernos. Os engenheiros de dados interagem com eles para fornecer insights sobre as capacidades e possibilidades dos dados.
 
-_Project Managers_: Data engineers often work on significant initiatives that require project management. Project managers direct and coordinate these initiatives, and data engineers collaborate with them to plan sprints and communicate progress and blockers.
+_Gerentes de Projeto_: Os engenheiros de dados frequentemente trabalham em iniciativas significativas que requerem gerenciamento de projetos. Os gerentes de projeto direcionam e coordenam essas iniciativas, e os engenheiros de dados colaboram com eles para planejar etapas e comunicar o progresso e obstáculos.
 
-_Product Managers_: Product managers oversee product development, including data products. Data engineers interact with them to align data engineering efforts with the needs of the customer and business.
+_Gerentes de Produto_: Os gerentes de produto supervisionam o desenvolvimento de produtos, incluindo produtos de dados. Os engenheiros de dados interagem com eles para alinhar os esforços de engenharia de dados com as necessidades dos clientes e do negócio.
 
-_Other Management Roles_: Data engineers may serve as part of centralized data engineering teams or work under specific managers, projects, or products. Their interactions with management depend on the organizational structure.
+_Outros Cargos de Gestão_: Os engenheiros de dados podem fazer parte de equipes de engenharia de dados centralizadas ou trabalhar sob gerentes específicos, projetos ou produtos. Suas interações com a gestão dependem da estrutura organizacional.
 
-Data engineers play a crucial role as organizational connectors, bridging the gap between technical teams and business stakeholders. They actively participate in strategic planning, data product development, and key initiatives that extend beyond the boundaries of IT.
+Os engenheiros de dados desempenham um papel crucial como conectores organizacionais, preenchendo a lacuna entre as equipes técnicas e os stakeholders de negócios. Eles participam ativamente do planejamento estratégico, do desenvolvimento de produtos de dados e de iniciativas-chave que vão além dos limites de TI.
 
-**Chapter 1 Summary Conclusion**
+### Conclusão do Resumo do Capítulo 1
 
-This chapter provided an overview of the data engineering landscape, defining the role of data engineers and describing their responsibilities. We also discussed the types of data maturity in a company.
+Este capítulo forneceu uma visão geral do cenário de engenharia de dados, definindo o papel dos engenheiros de dados e descrevendo suas responsabilidades. Também discutimos os tipos de maturidade de dados em uma empresa.
 
-Data engineers work with a wide range of stakeholders, including technical roles like data architects, software engineers, and data scientists, as well as business leadership such as C-level executives, project managers, and product managers.
+Os engenheiros de dados trabalham com uma ampla variedade de stakeholders, incluindo funções técnicas como arquitetos de dados, engenheiros de software e cientistas de dados, bem como liderança empresarial, como executivos de nível C, gerentes de projeto e gerentes de produto.
 
-Understanding the interactions between data engineers and various stakeholders is essential for building successful data engineering teams and driving data-driven initiatives within organizations.
-
-
-
+Compreender as interações entre os engenheiros de dados e os diversos stakeholders é essencial para construir equipes de engenharia de dados bem-sucedidas e impulsionar iniciativas orientadas por dados dentro das organizações.
