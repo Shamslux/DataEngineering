@@ -6,7 +6,7 @@
 ## Índice
 - [Fundamentos da Engenharia de Dados - Joe Reis e Matt Housley]
   - [Resumo do Capítulo 1](#resumo-do-capítulo-1)
-    - [Fundamentos da Engenharia de Dados](#fundamentos-da-engenharia-de-dados)
+    - [Fundamentos da Engenharia de Dados](#fundamentos)
     - [A Tarefa da Engenharia de Dados](#a-tarefa-da-engenharia-de-dados)
     - [A Evolução da Engenharia de Dados](#a-evolução-da-engenharia-de-dados)
     - [Engenharia de Dados vs Ciência de Dados](#engenharia-de-dados-vs-ciência-de-dados)
