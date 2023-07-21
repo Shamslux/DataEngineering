@@ -11,7 +11,7 @@
     - [Data Engineering vs Data Science](#data-engineering-vs-data-science)
     - [Data Engineer Skills and Activities](#data-engineer-skills-and-activities)
     - [Data Maturity Stages](#data-maturity-stages)
-    - [Data Engineer Role, Skills, and Responsibilities](#data-engineer-role-skills-and-responsibilities)
+    - [The Background and Skills of a Data Engineer](#the-background-and-skills-of-a-data-engineer)
 
 # Fundamentals of Data Engineering - Joe Reis & Matt Housley
 
@@ -112,7 +112,7 @@ Data engineers in Stage 3 should deploy tools that expose and disseminate data t
 
 It is important to stay vigilant against technology distractions and pursue custom-built technology only when it provides a clear competitive advantage. At this stage, data engineers should create a community and environment that fosters collaboration and open communication, regardless of role or position within the organization.
 
-### Data Engineer Role, Skills and Responsabilities
+### The Background and Skills of a Data Engineer
 
 Becoming a data engineer can involve a significant amount of self-study, as formal training programs and standardized paths are limited due to the relative novelty of the field. Individuals from various educational and career backgrounds can enter data engineering, but transitioning from an adjacent field like software engineering, ETL development, database administration, data science, or data analysis can provide a good starting point due to their data awareness and relevant technical skills.
 
