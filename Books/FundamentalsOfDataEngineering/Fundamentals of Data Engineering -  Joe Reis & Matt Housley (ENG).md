@@ -17,6 +17,8 @@
 
 # Fundamentals of Data Engineering - Joe Reis & Matt Housley
 
+<img src="https://m.media-amazon.com/images/I/41BCu6h1rWL.jpg"/> 
+
 ## Chapter 1 Summary
 ### Fundamentals 
 Data engineering is a critical field in data and technology, responsible for building the foundation for data science and analytics in production. 
