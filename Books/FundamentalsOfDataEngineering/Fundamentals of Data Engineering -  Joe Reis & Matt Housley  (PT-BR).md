@@ -2,23 +2,12 @@
     <img src="https://img.shields.io/badge/Goodreads-372213?style=for-the-badge&logo=goodreads&logoColor=white" alt="Goodreads Badge"/>
   </a>
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Brazilian_flag_icon_round.svg/1200px-Brazilian_flag_icon_round.svg.png" width=25 height=25/> 
-  
-## Índice
-- [Fundamentos da Engenharia de Dados - Joe Reis e Matt Housley]
-  - [Resumo do Capítulo 1](#resumo-do-capítulo-1)
-    - [Fundamentos da Engenharia de Dados](#fundamentos)
-    - [A Tarefa da Engenharia de Dados](#a-tarefa-da-engenharia-de-dados)
-    - [A Evolução da Engenharia de Dados](#a-evolução-da-engenharia-de-dados)
-    - [Engenharia de Dados vs Ciência de Dados](#engenharia-de-dados-vs-ciência-de-dados)
-    - [Habilidades e Atividades do Engenheiro de Dados](#habilidades-e-atividades-do-engenheiro-de-dados)
-    - [Estágios de Maturidade dos Dados](#estágios-de-maturidade-dos-dados)
-    - [O Perfil e Habilidades de um Engenheiro de Dados](#o-perfil-e-habilidades-de-um-engenheiro-de-dados)
-    - [Com quem os Engenheiros de Dados Trabalham](#com-quem-os-engenheiros-de-dados-trabalham)
-    - [Conclusão do Resumo do Capítulo 1](#conclusão-do-resumo-do-capítulo-1)
 
 # Fundamentos da Engenharia de Dados - Joe Reis e Matt Housley
 
 <img src="https://m.media-amazon.com/images/I/41BCu6h1rWL.jpg"/> 
+
+<!-- toc -->
 
 ## Resumo do Capítulo 1
 ### Fundamentos
@@ -151,3 +140,121 @@ Este capítulo forneceu uma visão geral do cenário de engenharia de dados, def
 Os engenheiros de dados trabalham com uma ampla variedade de stakeholders, incluindo funções técnicas como arquitetos de dados, engenheiros de software e cientistas de dados, bem como liderança empresarial, como executivos de nível C, gerentes de projeto e gerentes de produto.
 
 Compreender as interações entre os engenheiros de dados e os diversos stakeholders é essencial para construir equipes de engenharia de dados bem-sucedidas e impulsionar iniciativas orientadas por dados dentro das organizações.
+
+## Resumo do Capítulo 2
+
+### Introdução
+
+O capítulo 2 do livro apresenta o conceito do ciclo de vida da engenharia de dados como tema central do livro. O objetivo principal é ir além da visualização da engenharia de dados como uma coleção específica de tecnologias de dados e enfatizar os princípios do gerenciamento do ciclo de vida dos dados. O ciclo de vida da engenharia de dados compreende cinco estágios: geração, armazenamento, ingestão, transformação e serviço de dados. Esses estágios envolvem transformar ingredientes de dados brutos em um produto final útil, pronto para consumo por analistas, cientistas de dados, engenheiros de ML e outros.
+
+O capítulo explica que o armazenamento é um elemento fundamental que sustenta outros estágios e, embora os estágios sejam distintos, eles nem sempre seguem um fluxo contínuo e organizado. Eles podem se repetir, ocorrer fora de ordem, se sobrepor ou se entrelaçar de várias maneiras. As subcorrentes do ciclo de vida da engenharia de dados, como segurança, gerenciamento de dados, DataOps, arquitetura de dados, orquestração e engenharia de software, são elementos fundamentais essenciais que atravessam vários estágios e são necessários para o funcionamento adequado de cada estágio.
+
+Além disso, o capítulo esclarece a diferença entre o ciclo de vida dos dados e o ciclo de vida da engenharia de dados. O ciclo de vida da engenharia de dados é um subconjunto do ciclo de vida geral dos dados. Embora o ciclo de vida completo dos dados abranja dados em toda a sua vida útil, o ciclo de vida da engenharia de dados concentra-se especificamente nos estágios controlados por um engenheiro de dados.
+
+No geral, o Data Engineering Lifecycle é a estrutura que orienta a transformação de dados brutos em informações e produtos valiosos, garantindo que os engenheiros de dados desempenhem um papel crítico no gerenciamento de dados do "berço ao túmulo" e permitindo sua utilização por várias partes interessadas.
+
+
+### Sistemas de Fonte de Geração
+
+Um sistema de origem é a origem dos dados usados no ciclo de vida da engenharia de dados. Pode ser um dispositivo IoT, uma fila de mensagens de aplicativo ou um banco de dados transacional. Os engenheiros de dados consomem dados de sistemas de origem, mas normalmente não os possuem ou os controlam. Compreender como os sistemas de origem funcionam, geram dados e a frequência, velocidade e variedade de dados que eles produzem é crucial para os engenheiros de dados.
+
+**Exemplos de sistema de origem**
+
+1. _Traditional Source System_: Banco de dados de aplicação com vários servidores de aplicação suportados por um banco de dados. Esse padrão ganhou popularidade com o sucesso dos sistemas de gerenciamento de banco de dados relacional (RDBMSs) na década de 1980. Ele continua sendo amplamente utilizado, especialmente em práticas modernas de desenvolvimento de software, onde os aplicativos consistem em vários pares pequenos de serviço/banco de dados com microsserviços.
+
+2. _Modern Source System_: IoT swarm onde uma frota de dispositivos envia mensagens de dados para um sistema de coleta central. Esse tipo de sistema de origem IoT é cada vez mais comum à medida que os dispositivos IoT, sensores e dispositivos inteligentes se tornam mais prevalentes.
+
+### Avaliação das principais considerações de engenharia dos sistemas de origem
+
+Os engenheiros de dados devem considerar vários fatores ao avaliar os sistemas de origem:
+
+- **Características dos dados**: é um aplicativo ou um enxame de dispositivos IoT?
+- **Persistência de dados**: os dados persistem a longo prazo ou são temporários e excluídos rapidamente?
+- **Taxa de geração de dados**: Quantos eventos por segundo? Quantos gigabytes por hora?
+- **Consistência de dados**: com que frequência ocorrem inconsistências de dados, como nulos onde não são esperados ou problemas de formatação?
+- **Frequência de ocorrência de erros e dados duplicados**.
+- **Dados atrasados**: alguns valores de dados chegarão muito mais tarde do que outros produzidos simultaneamente?
+- **Esquema de dados**: os engenheiros de dados precisarão unir várias tabelas ou sistemas para obter uma imagem completa?
+- **Lidando com alterações de esquema e comunicação com as partes interessadas a jusante**.
+- **Frequência de recuperação de dados e impacto no desempenho**.
+- **Dependências de dados upstream e características desses sistemas**.
+- **Verificações de qualidade de dados para dados atrasados ou ausentes**.
+
+### Esquema de dados e desafios
+
+O esquema define a organização hierárquica dos dados. Os sistemas de origem lidam com o esquema de dados de diferentes maneiras:
+
+- **Sem esquema**: o aplicativo define o esquema à medida que os dados são gravados (por exemplo, MongoDB).
+- **Esquema fixo**: Armazenamento de banco de dados relacional com um esquema fixo aplicado no banco de dados.
+
+Os esquemas podem mudar com o tempo, apresentando desafios para os engenheiros de dados. A evolução do esquema é incentivada no desenvolvimento de software Agile, e os engenheiros de dados devem transformar a entrada de dados brutos no esquema do sistema de origem em uma saída valiosa para análises.
+
+As fontes produzem dados consumidos por sistemas downstream, incluindo planilhas geradas por humanos, sensores de IoT, web e aplicativos móveis. Os engenheiros de dados precisam entender a geração, peculiaridades e nuances dos dados de origem, bem como os limites dos sistemas de origem com os quais interagem.
+
+### Armazenar
+
+No ciclo de vida da engenharia de dados, após a ingestão de dados, a próxima etapa crucial é escolher uma solução de armazenamento adequada. Essa decisão impacta significativamente o sucesso de todo o ciclo de vida dos dados, mas também é uma das etapas mais complexas por vários motivos.
+
+_Soluções diversas de armazenamento_: as arquiteturas de dados em nuvem geralmente dependem de várias soluções de armazenamento, e muitas dessas soluções vão além do armazenamento simples. Mesmo as soluções de armazenamento de objetos, como o Amazon S3 Select, suportam recursos de consulta poderosos.
+
+_Interconectado com outros estágios_: o armazenamento não é isolado, mas interligado com outros estágios, como ingestão, transformação e serviço. Por exemplo, data warehouses em nuvem podem armazenar, processar e fornecer dados para analistas.
+
+_Frequência de acesso a dados_: os padrões de acesso a dados variam, levando ao conceito de "temperatura de dados". Dados quentes, acessados com frequência, requerem recuperação rápida, enquanto dados mornos podem ser acessados com menos frequência, e dados frios raramente são consultados, geralmente armazenados para fins de conformidade ou arquivamento.
+
+_Avaliação de sistemas de armazenamento_: principais considerações de engenharia
+Ao selecionar um sistema de armazenamento, os engenheiros de dados precisam considerar várias questões de engenharia:
+
+- Compatibilidade com as velocidades de gravação e leitura necessárias da arquitetura.
+- Possibilidade de armazenamento criando gargalos para processos downstream.
+- Compreensão da tecnologia de armazenamento e utilização ideal para evitar problemas de desempenho.
+- Escala futura antecipada e limites de capacidade do sistema de armazenamento.
+- Recuperação de dados dentro do contrato de nível de serviço (SLA) necessário.
+- Captura de metadados para melhor utilidade de dados e projetos futuros.
+- Tipo de solução de armazenamento (armazenamento de objetos, armazenamento de dados em nuvem, etc.).
+- Manipulação de esquema (esquema agnóstico, esquema flexível, esquema forçado).
+- Noções básicas sobre frequência de acesso a dados
+- Nem todos os dados são acessados igualmente. A frequência de acesso aos dados determina a "temperatura" dos dados:
+
+_Hot data_: Acessados com frequência, exigindo recuperação rápida para sistemas que atendem a solicitações de usuários.
+
+_Dados mornos_: Acessados periodicamente, não com tanta frequência quanto os dados quentes.
+
+_Dados frios_: Raramente consultados, adequados para sistemas de arquivamento, geralmente retidos para fins de conformidade ou recuperação de desastres.
+
+### Seleção de um sistema de armazenamento
+
+Escolher a solução de armazenamento certa depende de vários fatores, incluindo casos de uso, volumes de dados, frequência de ingestão, formato de dados e tamanho. Não há recomendação de armazenamento de tamanho único, pois cada tecnologia tem suas compensações.
+
+Para obter mais orientações sobre as melhores práticas e abordagens de armazenamento, bem como a integração do armazenamento com outros estágios do ciclo de vida, consulte o Capítulo 6 do livro.
+
+### Lote versus Streaming
+
+Os dados podem ser processados usando ingestão em lote ou ingestão de streaming. Embora os dados sejam inerentemente transmitidos, a ingestão em lote processa os dados em grandes blocos, geralmente lidando com dados de um dia inteiro de uma só vez. Por outro lado, a ingestão de streaming fornece continuamente dados para sistemas downstream em tempo real ou quase em tempo real.
+
+### Ingestão em Lote
+
+- Ingere dados em intervalos de tempo predeterminados ou quando os dados atingem um limite de tamanho predefinido.
+- Frequentemente usado para consumo downstream em análises e aprendizado de máquina (ML).
+- Fornece dados com uma restrição de latência devido à abordagem de processamento em lote.
+- Foi historicamente o método padrão devido às limitações dos sistemas legados.
+  
+### Ingestão de streaming
+
+- Oferece dados contínuos em tempo real ou quase em tempo real para sistemas downstream.
+- Dados em tempo real estão disponíveis para sistemas downstream logo após serem produzidos (por exemplo, menos de um segundo depois).
+- Cada vez mais popular devido à separação de armazenamento e computação em sistemas modernos e à prevalência de streaming de eventos e plataformas de processamento.
+- A escolha depende do caso de uso específico e dos requisitos de pontualidade dos dados.
+
+### Principais considerações para ingestão em lote versus streaming
+
+Ao decidir entre o streaming primeiro e a ingestão em lote, considere as seguintes questões:
+
+- Os sistemas de armazenamento downstream podem lidar com a taxa de fluxo de dados para ingestão em tempo real?
+- Você precisa de ingestão de dados em milissegundos em tempo real ou uma abordagem de microlote pode ser suficiente?
+- Quais são os casos de uso específicos e os benefícios da implementação da ingestão de streaming em lote?
+- Existem custos, complexidades e compensações adicionais associados a uma abordagem de streaming primeiro?
+- Seu pipeline e sistema de streaming são confiáveis e redundantes em caso de falhas de infraestrutura?
+- Quais ferramentas são mais apropriadas para o seu caso de uso? Serviços gerenciados como Amazon Kinesis, Google Cloud Pub/Sub, etc., ou soluções autogerenciadas como Kafka, Flink, Spark, Pulsar, etc.?
+- Quais são os benefícios das previsões on-line e do treinamento contínuo ao implantar um modelo de ML?
+- Que impacto o processo de ingestão tem no sistema de origem ao obter dados de uma instância de produção ativa?
+- Embora o streaming primeiro possa parecer atraente, é essencial entender as vantagens e desvantagens e avaliar os requisitos específicos do seu caso de uso. Muitas estruturas de ingestão podem lidar com estilos de ingestão em lote e microlote. A ingestão em lote ainda é adequada para casos de uso comuns, como treinamento de modelos e relatórios semanais. Considere a adoção de streaming em tempo real verdadeiro somente quando você tiver um caso de uso de negócios que justifique as compensações contra o uso do lote.
