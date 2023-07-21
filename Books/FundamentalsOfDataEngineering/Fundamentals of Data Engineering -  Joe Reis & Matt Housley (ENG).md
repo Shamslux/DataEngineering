@@ -19,6 +19,8 @@
     - [Generation: Source Systems](#generation-source-systems)
     - [Evaluating Source Systems: Key Engineering Considerations](#evaluating-source-systems-key-engineering-considerations)
     - [Data Schema and Challenges](#data-schema-and-challenges)
+    - [Storage](#storage)
+    - [Selecting a Storage System](#selecting-a-storage-system)
 
 # Fundamentals of Data Engineering - Joe Reis & Matt Housley
 
@@ -236,6 +238,42 @@ The schema defines the hierarchical organization of data. Source systems handle 
 Schemas may change over time, presenting challenges for data engineers. Schema evolution is encouraged in Agile software development, and data engineers must transform raw data input in the source system schema into valuable output for analytics.
 
 Sources produce data consumed by downstream systems, including human-generated spreadsheets, IoT sensors, web, and mobile applications. Data engineers need to understand the source data generation, quirks, and nuances, as well as the limits of the source systems they interact with.
+
+### Storage
+
+In the data engineering lifecycle, after ingesting data, the next crucial step is choosing a suitable storage solution. This decision significantly impacts the success of the entire data lifecycle, but it is also one of the most complex stages for several reasons.
+
+_Diverse Storage Solutions_: Cloud data architectures often rely on multiple storage solutions, and many of these solutions go beyond simple storage. Even object storage solutions, such as Amazon S3 Select, support powerful query capabilities.
+
+_Interconnected with Other Stages_: Storage is not isolated but intertwined with other stages like ingestion, transformation, and serving. For instance, cloud data warehouses can store, process, and serve data to analysts.
+
+_Data Access Frequency_: Data access patterns vary, leading to the concept of "data temperature." Hot data, accessed frequently, requires fast retrieval, while lukewarm data may be accessed less frequently, and cold data is rarely queried, often stored for compliance or archival purposes.
+
+_Evaluating Storage Systems_: Key Engineering Considerations
+When selecting a storage system, data engineers need to consider several engineering questions:
+
+- Compatibility with required write and read speeds of the architecture.
+- Possibility of storage creating bottlenecks for downstream processes.
+- Understanding of the storage technology and optimal utilization to avoid performance issues.
+- Anticipated future scale and capacity limits of the storage system.
+- Data retrieval within the required service-level agreement (SLA).
+- Capturing metadata for better data utility and future projects.
+- Type of storage solution (object storage, cloud data warehouse, etc.).
+- Schema handling (schema-agnostic, flexible schema, enforced schema).
+- Understanding Data Access Frequency
+- Not all data is accessed equally. Data access frequency determines the "temperature" of data:
+
+_Hot data_: Frequently accessed, requiring fast retrieval for systems serving user requests.
+
+_Lukewarm data_: Accessed periodically, not as frequently as hot data.
+
+_Cold data_: Rarely queried, suitable for archival systems, often retained for compliance or disaster recovery purposes.
+
+### Selecting a Storage System
+
+Choosing the right storage solution depends on various factors, including use cases, data volumes, ingestion frequency, data format, and size. There is no one-size-fits-all storage recommendation, as each technology has its trade-offs.
+
+For further guidance on storage best practices and approaches, as well as the integration of storage with other lifecycle stages, refer to Chapter 6 in the book.
 
 
 
