@@ -18,6 +18,8 @@
 
 # Fundamentos da Engenharia de Dados - Joe Reis e Matt Housley
 
+<img src="https://m.media-amazon.com/images/I/41BCu6h1rWL.jpg"/> 
+
 ## Resumo do Capítulo 1
 ### Fundamentos
 A engenharia de dados é uma área crítica no campo de dados e tecnologia, responsável por construir a base para ciência de dados e análise em produção. Apesar de sua popularidade, há frequentemente confusão sobre o que a engenharia de dados abrange. Ela surgiu junto com o crescimento da ciência de dados nos anos 2010 e envolve a criação de interfaces e mecanismos para o fluxo e acesso de informações. Os engenheiros de dados são especialistas dedicados que configuram e operam a infraestrutura de dados de uma organização, garantindo que os dados permaneçam disponíveis e utilizáveis para análises adicionais por analistas e cientistas de dados. Diferentes especialistas têm definições variadas de engenharia de dados, mas seu foco principal está na movimentação, manipulação e gerenciamento de dados.
