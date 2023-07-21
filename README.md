@@ -26,6 +26,14 @@ Repository containing projects and summaries of my studies in the field of Data 
 <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" alt="sql scripts" width="25" height="25"> [Apache Hop Project SQL Scripts](ApacheHopProject/scripts_sql)<br>
 <img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/python_vertical_logo_icon_168039.png" alt="py scripts" width="25" height="25"> [Apache Hop Project Python Scripts](ApacheHopProject/scripts_py)<br>
 
+## Books
+
+### Fundamentals of Data Engineering by Joe Reis and Matt Housley
+
+<img src="https://cdn-icons-png.flaticon.com/512/197/197374.png" alt="english summary" width="25" height="25"> [English Summary](Books/FundamentalsOfDataEngineering/Fundamentals%20of%20Data%20Engineering%20-%20%20Joe%20Reis%20&%20Matt%20Housley%20(ENG).md)<br>
+<img src="https://cdn-icons-png.flaticon.com/512/3909/3909370.png" alt="portuguese summary" width="25" height="25"> [Portuguese Summary (Machine Translation)](Books/FundamentalsOfDataEngineering/Fundamentals%20of%20Data%20Engineering%20-%20%20Joe%20Reis%20&%20Matt%20Housley%20(PT-BR)(ENG).md)<br>
+
+
 
 
 
