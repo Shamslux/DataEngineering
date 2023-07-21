@@ -21,6 +21,10 @@
     - [Data Schema and Challenges](#data-schema-and-challenges)
     - [Storage](#storage)
     - [Selecting a Storage System](#selecting-a-storage-system)
+    - [Batch versus Streaming](#batch-versus-streaming)
+    - [Batch Ingestion](#batch-ingestion)
+    - [Streaming Ingestion](#streaming-ingestion)
+    - [Key Considerations for Batch versus Streaming Ingestion](#key-considerations-for-batch-versus-streaming-ingestion)
 
 # Fundamentals of Data Engineering - Joe Reis & Matt Housley
 
@@ -275,6 +279,37 @@ Choosing the right storage solution depends on various factors, including use ca
 
 For further guidance on storage best practices and approaches, as well as the integration of storage with other lifecycle stages, refer to Chapter 6 in the book.
 
+### Batch versus Streaming
+
+Data can be processed using either batch ingestion or streaming ingestion. While data is inherently streaming, batch ingestion processes data in large chunks, often handling a full day's worth of data at once. On the other hand, streaming ingestion continuously provides data to downstream systems in real-time or near real-time fashion.
+
+### Batch Ingestion
+
+- Ingests data on predetermined time intervals or when data reaches a preset size threshold.
+- Often used for downstream consumption in analytics and machine learning (ML).
+- Provides data with a latency constraint due to the batch processing approach.
+- Was historically the default method due to limitations of legacy systems.
+  
+### Streaming Ingestion
+
+- Offers continuous real-time or near real-time data to downstream systems.
+- Real-time data is available to downstream systems shortly after it is produced (e.g., less than one second later).
+- Increasingly popular due to the separation of storage and compute in modern systems and the prevalence of event-streaming and processing platforms.
+- Choice depends on the specific use case and data timeliness requirements.
+
+### Key Considerations for Batch versus Streaming Ingestion
+
+When deciding between streaming-first and batch ingestion, consider the following questions:
+
+- Can downstream storage systems handle the rate of data flow for real-time ingestion?
+- Do you require millisecond real-time data ingestion, or can a micro-batch approach be sufficient?
+- What are the specific use cases and benefits of implementing streaming ingestion over batch?
+- Are there additional costs, complexities, and trade-offs associated with a streaming-first approach?
+- Are your streaming pipeline and system reliable and redundant in case of infrastructure failures?
+- Which tools are most appropriate for your use case? Managed services like Amazon Kinesis, Google Cloud Pub/Sub, etc., or self-managed solutions like Kafka, Flink, Spark, Pulsar, etc.?
+- What are the benefits of online predictions and continuous training if deploying an ML model?
+- What impact does the ingestion process have on the source system if getting data from a live production instance?
+- While streaming-first may seem appealing, it is essential to understand the trade-offs and evaluate the specific requirements of your use case. Many ingestion frameworks can handle both batch and micro-batch ingestion styles. Batch ingestion is still suitable for common use cases like model training and weekly reporting. Consider adopting true real-time streaming only when you have a business use case that justifies the trade-offs against using batch.
 
 
 
