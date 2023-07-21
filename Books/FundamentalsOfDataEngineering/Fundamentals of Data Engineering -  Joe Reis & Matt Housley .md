@@ -2,6 +2,17 @@
     <img src="https://img.shields.io/badge/Goodreads-372213?style=for-the-badge&logo=goodreads&logoColor=white" alt="Goodreads Badge"/>
   </a>
   
+## Table of Contents
+- [Fundamentals of Data Engineering - Joe Reis & Matt Housley](#fundamentals-of-data-engineering---joe-reis--matt-housley)
+  - [Chapter 1 Summary](#chapter-1-summary)
+    - [Fundamentals](#fundamentals)
+    - [The Task of Data Engineering](#the-task-of-data-engineering)
+    - [The Evolution of Data Engineering](#the-evolution-of-data-engineering)
+    - [Data Engineering vs Data Science](#data-engineering-vs-data-science)
+    - [Data Engineer Skills and Activities](#data-engineer-skills-and-activities)
+    - [Data Maturity Stages](#data-maturity-stages)
+    - [Data Engineer Role, Skills, and Responsibilities](#data-engineer-role-skills-and-responsibilities)
+
 # Fundamentals of Data Engineering - Joe Reis & Matt Housley
 
 ## Chapter 1 Summary
@@ -100,6 +111,32 @@ In Stage 3, the company is fully data-driven, with automated pipelines and syste
 Data engineers in Stage 3 should deploy tools that expose and disseminate data throughout the organization, enabling efficient collaboration among software engineers, ML engineers, analysts, and other stakeholders. To avoid complacency, organizations in Stage 3 must constantly focus on maintenance and improvement to sustain their data maturity level and not regress to a lower stage.
 
 It is important to stay vigilant against technology distractions and pursue custom-built technology only when it provides a clear competitive advantage. At this stage, data engineers should create a community and environment that fosters collaboration and open communication, regardless of role or position within the organization.
+
+### Data Engineer Role, Skills and Responsabilities
+
+Becoming a data engineer can involve a significant amount of self-study, as formal training programs and standardized paths are limited due to the relative novelty of the field. Individuals from various educational and career backgrounds can enter data engineering, but transitioning from an adjacent field like software engineering, ETL development, database administration, data science, or data analysis can provide a good starting point due to their data awareness and relevant technical skills.
+
+To be successful as a data engineer, a requisite body of knowledge exists, requiring a good understanding of data management best practices and various technologies. A data engineer should be proficient in software engineering, DataOps, data architecture, and be able to view responsibilities through both business and technical lenses.
+
+**Business Responsibilities**
+
+In addition to technical skills, a data engineer should possess essential business skills, including:
+
+1. Communication: Ability to communicate effectively with both technical and non-technical individuals across the organization, building rapport and trust.
+2. Scoping and Gathering Requirements: Understanding what to build and ensuring stakeholders agree with the assessment, as well as knowing how data and technology decisions impact the business.
+3. Cultural Foundations: Understanding the cultural aspects of Agile, DevOps, and DataOps, as these practices require buy-in across the organization.
+4. Cost Control: Focusing on optimizing time to value, total cost of ownership, and opportunity cost to keep costs low while providing value.
+5. Continuous Learning: The data field is constantly evolving, and successful data engineers stay abreast of new developments while sharpening their fundamental knowledge.
+
+**Technical Responsibilities**
+
+Data engineers must possess technical skills in building architectures that optimize performance and cost. They should be familiar with various technologies and languages used in the data engineering lifecycle, which includes stages like generation, storage, ingestion, transformation, and serving. The undercurrents of data engineering encompass security, data management, DataOps, data architecture, and software engineering.
+
+The primary programming languages for data engineering include SQL, Python, a JVM language (Java or Scala), and bash. SQL, despite having once been sidelined by big data technologies like MapReduce, has reemerged as a powerful tool for processing large amounts of data, and competent data engineers should be highly proficient in it. Data engineers should also know when SQL is not suitable for a particular task and be skilled in using other languages.
+
+To keep pace with the fast-moving field of data engineering, it is essential to focus on fundamentals to understand what is unlikely to change while staying updated on ongoing developments to know where the field is heading. Strive to understand how new technologies can enhance the data engineering lifecycle and be helpful in achieving business objectives.
+
+By possessing both business and technical skills, data engineers can excel in their role and contribute significantly to the success of their organizations in leveraging data as a competitive advantage.
 
 
 
