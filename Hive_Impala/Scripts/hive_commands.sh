@@ -108,3 +108,20 @@ LOAD DATA INPATH '/user/cloudera/locacao/locacao.csv' INTO TABLE LOCACAO;
 # Querying against the table LOCACAO.
 
 SELECT * FROM LOCACAO;
+
+# Metadata Commands
+
+# Exhibiting the database tables 
+
+show tables;
+
+# Describing the table structure
+
+# describe + [table name]
+describe clientes;
+
+# Describing the database
+
+# describe formatted + [database name]
+
+describe formatted locacao;
