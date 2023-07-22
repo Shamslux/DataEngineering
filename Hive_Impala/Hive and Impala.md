@@ -194,7 +194,7 @@ Just to briefly explain about the dimensional model. Analyzying this simple proj
 
 ## Show Tables
 
-```
+```shell
 # Exhibiting the database tables 
 
 show tables;
@@ -203,7 +203,7 @@ show tables;
 
 ## Describing a table
 
-```
+```shell
 # Describing the table structure
 
 # describe + [table name]
@@ -211,9 +211,9 @@ describe clientes;
 ```
 ![describe_table_result](https://github.com/Shamslux/DataEngineering/assets/79280485/cc9c6f59-d176-4dbe-94b0-1ecaa1baae05)
 
-# Describing a formatted table structure
+## Describing a formatted table structure
 
-```
+```shell
 # Describing the formatted table
 
 # describe formatted + [table name]
@@ -221,5 +221,64 @@ describe clientes;
 describe formatted locacao;
 ```
 ![describe_formatted_table_result](https://github.com/Shamslux/DataEngineering/assets/79280485/f227a837-bfe9-4111-b90b-c85cffaa8b61)
+
+## Describing a database
+
+```shell
+#describe database + [database name]
+
+describe database locacao;
+```
+![describe_database_result](https://github.com/Shamslux/DataEngineering/assets/79280485/358bfbb0-48dd-4459-a159-b05f9f7bb95a)
+
+## Accessing the Hive catalog
+
+```shell
+# Accessing the Hive catalog 
+
+# On terminal (outside beeline), first type
+
+mysql -u root -pcloudera
+
+# After entering MySQL, we can enter metastore
+show databases;
+use metastore;
+```
+
+![entering_mysql](https://github.com/Shamslux/DataEngineering/assets/79280485/63b161e2-921b-4022-985e-5272f27f266e)
+
+```shell
+# Now we can exhibit the tables
+
+show tables;
+```
+
+![show_tables_metastore](https://github.com/Shamslux/DataEngineering/assets/79280485/fe697035-4910-405f-a847-259ad1ec7768)
+
+These tables store the Hive metadata!
+
+## Checking databases on MySQL
+
+```sql
+select * from DBS;
+```
+![mysql_dbs_result](https://github.com/Shamslux/DataEngineering/assets/79280485/1ca7616a-c59d-4ced-ae5b-ae008b6103bf)
+
+## Checking tables inside a MySQL database by its ID
+
+```sql
+select * from TBLS where DB_ID = 3;
+```
+![tables_inside_mysql_locacao](https://github.com/Shamslux/DataEngineering/assets/79280485/98a8949b-52bb-4981-b1b2-b47fc1276051)
+
+## Querying to check columns of tables in the previous database query
+
+```sql
+select * from COLUMNS_V2 where CD_ID = 1;
+```
+![checking_columns_in_mysql](https://github.com/Shamslux/DataEngineering/assets/79280485/478f20bc-f566-40eb-9078-7dd5fb7dd4b5)
+
+
+
 
 
