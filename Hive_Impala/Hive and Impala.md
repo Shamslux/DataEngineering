@@ -211,15 +211,15 @@ describe clientes;
 ```
 ![describe_table_result](https://github.com/Shamslux/DataEngineering/assets/79280485/cc9c6f59-d176-4dbe-94b0-1ecaa1baae05)
 
-# Describing a database structure
+# Describing a formatted table structure
 
 ```
-# Describing the database
+# Describing the formatted table
 
-# describe formatted + [database name]
+# describe formatted + [table name]
 
 describe formatted locacao;
 ```
-![describe_formatted_database](https://github.com/Shamslux/DataEngineering/assets/79280485/f227a837-bfe9-4111-b90b-c85cffaa8b61)
+![describe_formatted_table_result](https://github.com/Shamslux/DataEngineering/assets/79280485/f227a837-bfe9-4111-b90b-c85cffaa8b61)
 
 
