@@ -190,4 +190,36 @@ Just to briefly explain about the dimensional model. Analyzying this simple proj
 
 ![star_schema_locacao_model](https://github.com/Shamslux/DataEngineering/assets/79280485/5e945344-f598-423d-b6eb-4c2f5668f03c)
 
-  
+# Hive Metadata Commands
+
+## Show Tables
+
+```
+# Exhibiting the database tables 
+
+show tables;
+```
+![show_tables_result](https://github.com/Shamslux/DataEngineering/assets/79280485/0dac7012-2da9-46f0-99fc-4eab2330442d)
+
+## Describing a table
+
+```
+# Describing the table structure
+
+# describe + [table name]
+describe clientes;
+```
+![describe_table_result](https://github.com/Shamslux/DataEngineering/assets/79280485/cc9c6f59-d176-4dbe-94b0-1ecaa1baae05)
+
+# Describing a database structure
+
+```
+# Describing the database
+
+# describe formatted + [database name]
+
+describe formatted locacao;
+```
+![describe_formatted_database](https://github.com/Shamslux/DataEngineering/assets/79280485/f227a837-bfe9-4111-b90b-c85cffaa8b61)
+
+
