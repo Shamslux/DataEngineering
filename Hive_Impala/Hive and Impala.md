@@ -278,6 +278,14 @@ select * from COLUMNS_V2 where CD_ID = 1;
 ```
 ![checking_columns_in_mysql](https://github.com/Shamslux/DataEngineering/assets/79280485/478f20bc-f566-40eb-9078-7dd5fb7dd4b5)
 
+# HiveQL 
+
+## Introduction
+
+- When Facebook (Meta) was creating Hive, it was decided to choose a friendly language. As SQL is high used in data field, it was selected to be used as a base.
+- HiveQL stands for Hive Query Language and, as mentioned above, is based on SQL.
+- HiveQL follows a similar structure as MySQL.
+
 
 
 
