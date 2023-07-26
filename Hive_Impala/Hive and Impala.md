@@ -286,6 +286,60 @@ select * from COLUMNS_V2 where CD_ID = 1;
 - HiveQL stands for Hive Query Language and, as mentioned above, is based on SQL.
 - HiveQL follows a similar structure as MySQL.
 
+## HiveQL Queries
+
+### Basic Select
+
+```sql
+select	idveiculo
+	, dataaquisicao
+	, ano
+	, modelo
+	, placa
+        , status
+        , diaria
+from    veiculos;
+```
+
+![hiveql_basic_select_result](https://github.com/Shamslux/DataEngineering/assets/79280485/7376647b-3e71-42cf-b5b3-172383b41052)
+
+### Basic Select using Distinct
+
+```sql
+select distinct modelo 
+from    veiculos;
+```
+![hiveql_basic_select_distinct_result](https://github.com/Shamslux/DataEngineering/assets/79280485/55cfeab6-3a7c-473f-9485-52d80d100f81)
+
+### Filtering with Where
+
+```sql
+select  *
+from    veiculos
+where   status <> "Disponivel";
+```
+![hiveql_where_clause_result](https://github.com/Shamslux/DataEngineering/assets/79280485/da7fe025-7ddf-4ab8-9f60-5f86ce283cfd)
+
+### Filtering with Where (2 conditions)
+
+```sql
+select  *
+from    veiculos
+where   status = "Disponivel"
+and     diaria >= 1600;
+```
+![hiveql_where_two_conditions_result](https://github.com/Shamslux/DataEngineering/assets/79280485/bad9c44c-ac1e-4aa7-aef8-36811d1021a2)
+
+### Using Order By
+
+```sql
+select  *
+from    locacao
+order by datalocacao;
+```
+
+![hiveql_order_by_result](https://github.com/Shamslux/DataEngineering/assets/79280485/81d33cff-bdab-48e1-be91-31d8db0df078)
+
 
 
 
