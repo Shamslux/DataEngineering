@@ -120,8 +120,42 @@ show tables;
 # describe + [table name]
 describe clientes;
 
-# Describing the database
+# Describing the formatted table
 
-# describe formatted + [database name]
+# describe formatted + [table name]
 
 describe formatted locacao;
+
+# Describing databases
+
+#describe database + [database name]
+
+describe database locacao;
+
+# Accessing the Hive catalog 
+
+# On terminal (outside beeline), first type
+
+mysql -u root -pcloudera
+
+# After entering MySQL, we can enter metastore
+show databases;
+use metastore;
+
+# Now we can exhibit the tables
+
+show tables;
+
+# Cheking databases on MySQL
+
+select * from DBS;
+
+# Checking tables inside a MySQL database by its ID
+
+select * from TBLS where DB_ID = 3;
+
+# Querying to check columns of tables in the previous database query
+
+select * from COLUMNS_V2 where CD_ID = 1;
+
+
