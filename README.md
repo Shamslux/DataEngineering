@@ -40,7 +40,9 @@ Repository containing projects and summaries of my studies in the field of Data 
 ### Fundamentals of Data Engineering by Joe Reis and Matt Housley
 
 <img src="https://cdn-icons-png.flaticon.com/512/197/197374.png" alt="english summary" width="25" height="25"> [English Summary](Books/FundamentalsOfDataEngineering/Fundamentals%20of%20Data%20Engineering%20-%20%20Joe%20Reis%20&%20Matt%20Housley%20(ENG).md)<br>
-<img src="https://cdn-icons-png.flaticon.com/512/3909/3909370.png" alt="portuguese summary" width="25" height="25"> [Portuguese Summary (Machine Translation)](Books/FundamentalsOfDataEngineering/Fundamentals%20of%20Data%20Engineering%20-%20%20Joe%20Reis%20&%20Matt%20Housley%20(PT-BR).md)<br>
+<img src="https://cdn-icons-png.flaticon.com/512/3909/3909370.png" alt="portuguese summary" width="25" height="25"> [Portuguese Summary (Machine Translation)](Books/FundamentalsOfDataEngineering/Fundamentals%20of%20Data%20Engineering%20-%20%20Joe%20Reis%20%26%20Matt%20Housley%20%20(PT-BR).md)<br>
+
+
 
 
 
