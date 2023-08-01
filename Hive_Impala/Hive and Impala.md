@@ -340,6 +340,86 @@ order by datalocacao;
 
 ![hiveql_order_by_result](https://github.com/Shamslux/DataEngineering/assets/79280485/81d33cff-bdab-48e1-be91-31d8db0df078)
 
+### Using Limit
+
+```sql
+select  *
+from    veiculos
+limit 5;
+```
+
+![hiveql_limit_result](https://github.com/Shamslux/DataEngineering/assets/79280485/9537bc1f-54b4-4b7b-aeea-c771135ad4a9)
+
+### Using Order By + Limit
+
+```sql
+select  *
+from    veiculos
+order by dataaquisicao
+limit 5;
+```
+
+![hiveql_order_by_limit_result](https://github.com/Shamslux/DataEngineering/assets/79280485/a7b3323f-eca5-40bf-9011-8157e958bff2)
+
+
+### Using Max() Function
+
+```sql
+select  max(total)
+from    locacao;
+```
+
+![hiveql_max_total_from_locacao](https://github.com/Shamslux/DataEngineering/assets/79280485/9a9df5d2-8be0-4d28-b7b5-22e1ae601617)
+
+- This was the max value found in the total column of the table "locacao" (the highest value for one unique transaction registered).
+
+### Using Like
+
+```sql
+select	*
+from	veiculos
+where	modelo like '%T8%';
+```
+
+![hiveql_like](https://github.com/Shamslux/DataEngineering/assets/79280485/7cc8006b-d8e9-4315-9ba5-323a54828204)
+
+### Using In
+
+```sql
+select	*
+from	despachantes
+where	filial in ('Santa Maria', 'Novo Hamburgo')
+```
+
+![hiveql_in_result](https://github.com/Shamslux/DataEngineering/assets/79280485/27facc98-41e2-494b-bd6a-fac027e24d3d)
+
+### Using Between
+
+```sql
+select	*
+from	veiculos
+where	diaria between 1400 and 1800;
+```
+
+![hiveql_between_result](https://github.com/Shamslux/DataEngineering/assets/79280485/90d7cc06-9410-4855-85f5-227880c750b5)
+
+### Basic Join Sample
+
+```sql
+select	loc.idlocacao
+		, loc.idcliente
+		, loc.iddespachante
+		, vec.modelo
+		, loc.datalocacao
+		, loc.dataentrega
+		, loc.total
+from	locacao loc
+join	veiculos vec
+on loc.idveiculo = vec.idveiculo;
+```
+
+![hiveql_join_result](https://github.com/Shamslux/DataEngineering/assets/79280485/822c1502-2199-4ada-b81a-0af208ce6a85)
+
 
 
 
