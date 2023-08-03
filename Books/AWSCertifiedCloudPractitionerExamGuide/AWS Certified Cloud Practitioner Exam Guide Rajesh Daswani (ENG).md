@@ -11,6 +11,10 @@ Please check the three side bars displayed on the above right corner of the scre
 
 <img src="https://m.media-amazon.com/images/I/41I21sU8XsL.jpg"/> 
 
+# Summary
+
+So, this is another summary of another useful book. I am resuming it since I am to take soon the AWS most basic exam in September.
+
 # CHAPTER 1 - WHAT IS CLOUD COMPUTING
 
 ## INTRODUCTION
