@@ -420,6 +420,18 @@ on loc.idveiculo = vec.idveiculo;
 
 ![hiveql_join_result](https://github.com/Shamslux/DataEngineering/assets/79280485/822c1502-2199-4ada-b81a-0af208ce6a85)
 
+### Using Sum
+
+```sql
+select	vec.modelo
+	, sum(loc.total)
+from	locacao loc
+join	veiculos vec
+on loc.idveiculo = vec.idveiculo
+group by vec.modelo;
+```
+
+![hiveql_sum_result](https://github.com/Shamslux/DataEngineering/assets/79280485/9a3663e9-a8df-424b-a1f0-f22784523257)
 
 
 
