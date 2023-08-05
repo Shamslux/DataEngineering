@@ -81,3 +81,51 @@ When deploying cloud services for an organization, three primary deployment mode
 
 3. **Hybrid Cloud**: Combines on-premises IT services managed solely by the organization with services from one or more third-party cloud providers. It is used for reducing CAPEX investment, disaster recovery projects, and testing new technologies. Connectivity options like VPN tunnels or dedicated fiber-based connections facilitate integration between on-premises and cloud environments. Hybrid cloud deployments enable phased migration approaches, minimal business interruption during migration, and implementation of high availability (HA) solutions. They also allow redirecting consumers to replica services hosted by the public cloud provider during downtime.
 
+# CHAPTER 2 - INTRODUCTION TO AWS AND THE GLOBAL INFRASTRUCTURE
+
+## WHAT IS AWS?
+
+Amazon Web Services (AWS) is the world's largest public cloud-computing provider, offering over 175 distinct services accessible over the internet on a pay-as-you-go model. It serves a wide range of clients, including start-ups, enterprises, and governmental organizations like the United States Navy. AWS has consistently been recognized as a leader in the cloud computing market by Gartner Research's Magic Quadrant for Cloud Infrastructure and Platform Services.
+
+AWS's history began in 2002 with a few ad hoc services, and it has since grown exponentially. The company's global infrastructure, comprising data centers across the globe, is critical to delivering its vast array of cloud services. You can access analytical research reports, including Gartner's Magic Quadrant, on AWS's website to learn more about its offerings and leadership in the cloud industry.
+
+## EXPLORING THE AWS GLOBAL INFRASTRUCTURE
+
+The AWS Global Infrastructure consists of multiple data centers spread across different geographical regions worldwide. These data centers host servers, storage devices, and networking equipment. Currently, AWS has 77 Availability Zones (AZs) within 24 Regions, with plans for 18 more AZs and 6 additional AWS Regions in the future.
+
+Regions are physical locations where AWS hosts clusters of data centers, each containing two or more AZs. AZs are logically and physically separated groups of data centers within a Region. The purpose of having multiple AZs is to provide high availability, fault tolerance, and scalability for customers' applications.
+
+In addition to Regions and AZs, AWS also operates edge locations, which are used for content delivery and caching. Edge locations are strategically placed and connected to AWS Regions through high-speed links, allowing faster access to frequently accessed content.
+
+Some AWS services are global, meaning they are accessible from any Region without the need to specify a particular location. These services include IAM, Amazon CloudFront, Amazon Route 53, and Amazon S3.
+
+AWS also offers on-premises services like the AWS Snow Family, Amazon Storage Gateway, and Amazon Outposts. These services are designed to facilitate hybrid cloud deployments, aid in data migration, and cater to clients with strict data residency requirements.
+
+Understanding the AWS Global Infrastructure, Regions, and AZs allows customers to design highly available and fault-tolerant architectures while providing low-latency access to content and digital assets. Selecting the right AWS support plan is also essential for efficient use of AWS resources and ensuring the appropriate level of support for your specific use case.
+
+## CHOOSING THE RIGHT AWS SUPPORT PLAN FOR YOUR BUSINESS
+
+AWS provides different support plans tailored to meet the varying needs of businesses. The support plans range from Basic to Enterprise and offer different levels of technical assistance and response times.
+
+1. **Basic Support Plan**: This plan is free for all AWS accounts and covers basic customer support, account-related issues, and access to publicly available documentation and support forums. It also includes limited access to the Trusted Advisor tool for best practices and the Personal Health Dashboard for service interruptions alerts.
+
+2. **Developer Support Plan**: Recommended for non-production workloads and testing, this plan offers technical support via email during business hours. Response times for general guidance are within 24 hours and 12 hours for system-impaired issues. It includes access to the Trusted Advisor tool's basic checks.
+
+3. **Business Support Plan**: Suitable for production environments, this plan provides 24/7 support via email, chat, and phone. Response times vary based on the severity of the issue. It includes help with troubleshooting and interoperability issues. Businesses can opt for AWS Infrastructure Event Management (IEM) for additional guidance during project launches or migrations.
+
+4. **Enterprise Support Plan**: Designed for large organizations with extensive workloads, this premium plan includes a designated Technical Account Manager (TAM) who actively assists in planning, design, and implementation of cloud projects. It offers access to senior cloud engineers and Well-Architected reviews for optimizing solutions. The response time for business-critical issues is 15 minutes.
+
+Each plan has distinct features and benefits, and businesses should choose based on their specific requirements and budget. More details about the support plans can be found on the AWS website.
+
+## OVERVIEW OF THE AWS SERVICE HEALTH DASHBOARD
+
+AWS provides a Service Health Dashboard that offers real-time service status information across all data centers in various Regions. This is the first place to check if a service appears to be non-responsive. AWS also offers Service Level Agreements (SLAs) for its service offerings, ensuring specific levels of reliability and availability.
+
+The AWS Personal Health Dashboard (PHD) provides tailored information about issues that may affect your applications and resources. It offers personalized views of service health, proactive notifications, detailed troubleshooting guidance, integration with CloudWatch Events for automation, and the ability to aggregate health events across AWS Organizations for centralized management.
+
+Before using any service on the AWS Platform, it is essential to review and agree to the AWS Acceptable Use Policy (AuP), which outlines the terms and conditions for service usage.
+
+## THE AWS AUP
+
+Absolutely, it is essential to comply with the AWS Acceptable Use Policy (AuP) when signing up for an AWS account for personal or business use. The policy outlines the acceptable and prohibited uses of AWS services. Failure to adhere to the guidelines in the policy may result in account suspension or termination, potentially affecting your deployed workloads. By signing up for AWS services, you automatically agree to the latest version of this policy. To review the full policy, you can visit https://aws.amazon.com/aup/.
+
