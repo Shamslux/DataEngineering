@@ -36,6 +36,9 @@ Repository containing projects and summaries of my studies in the field of Data 
 <img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/python_vertical_logo_icon_168039.png" alt="py scripts" width="25" height="25"> [Apache Hop Project Python Scripts](ApacheHopProject/scripts_py)<br>
 
 ## Books
+<a href="https://www.goodreads.com/user/show/50697219-jo-o-paulo-m-ller-mamede">
+    <img src="https://img.shields.io/badge/Goodreads-372213?style=for-the-badge&logo=goodreads&logoColor=white" alt="Goodreads Badge"/>
+  </a>
 
 ### Fundamentals of Data Engineering by Joe Reis and Matt Housley
 
