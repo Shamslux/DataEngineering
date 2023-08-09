@@ -45,6 +45,7 @@ Repository containing projects and summaries of my studies in the field of Data 
 ### AWS Certified Cloud Practitioner Exam Guide by Rajesh Daswani
 
 <img src="https://cdn-icons-png.flaticon.com/512/197/197374.png" alt="english summary" width="25" height="25"> [English Summary](Books/AWSCertifiedCloudPractitionerExamGuide/AWS%20Certified%20Cloud%20Practitioner%20Exam%20Guide%20Rajesh%20Daswani%20(ENG).md)<br>
+<img src="https://cdn-icons-png.flaticon.com/512/3909/3909370.png" alt="portuguese summary" width="25" height="25"> [Portuguese Summary (Machine Translation)](Books/AWSCertifiedCloudPractitionerExamGuide/AWS%20Certified%20Cloud%20Practitioner%20Exam%20Guide%20Rajesh%20Daswani%20(PT-BR).md)<br>
 
 
 
