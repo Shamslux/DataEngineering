@@ -129,3 +129,135 @@ Antes de usar qualquer serviço na plataforma AWS, é essencial revisar e concor
 
 Absolutamente, é essencial cumprir a Política de Uso Aceitável (AuP) da AWS ao se inscrever em uma conta da AWS para uso pessoal ou comercial. A política descreve os usos aceitáveis e proibidos dos serviços da AWS. O não cumprimento das diretrizes da política pode resultar na suspensão ou encerramento da conta, afetando potencialmente suas cargas de trabalho implantadas. Ao se inscrever nos serviços da AWS, você concorda automaticamente com a versão mais recente desta política. Para revisar a política completa, você pode visitar https://aws.amazon.com/aup/.
 
+# CAPÍTULO 3 - EXPLORANDO AS CONTAS DA AWS, A ESTRATÉGIA DE MÚLTIPLAS CONTAS E AS ORGANIZAÇÕES DA AWS
+
+## POR QUE TER UM AMBIENTE AWS DE MÚLTIPLAS CONTAS?
+
+Certamente, uma arquitetura multiconta é essencial para gerenciar com eficiência cargas de trabalho complexas na AWS. Hospedar todos os recursos em uma única conta da AWS pode se tornar uma sobrecarga e dificultar o gerenciamento adequado. Ao separar as cargas de trabalho em diferentes contas, você obtém vários benefícios:
+
+1. **Isolamento Administrativo**: Diferentes unidades de negócios podem ter níveis variados de controle administrativo. Por exemplo, os desenvolvedores podem não precisar de acesso total à conta de produção.
+
+2. **Visibilidade limitada**: as contas da AWS criam um limite natural, garantindo que os recursos em uma conta não sejam acessíveis a identidades de outras contas sem permissão explícita.
+
+3. **Gerenciamento de identidade e segurança**: centralize as contas de identidade do usuário em uma conta de gerenciamento de identidade da AWS, reduzindo contas duplicadas e simplificando o gerenciamento. O acesso entre contas garante que os usuários possam trabalhar em outras contas com as permissões necessárias.
+
+4. **Recuperação e isolamento de auditoria**: cargas de trabalho de continuidade de negócios e recuperação de desastres podem ser colocadas em contas separadas para recuperação eficiente e continuidade operacional.
+
+Na próxima seção, nos aprofundamos nos serviços da AWS que ajudam a projetar e implementar uma estratégia de várias contas. O AWS Landing Zone, que auxilia na criação de uma arquitetura de linha de base personalizada para implantações de várias contas, e o AWS Control Tower, uma solução automatizada alinhada às melhores práticas do setor, são discutidos em detalhes. Esses serviços fornecem a estrutura para gerenciar e proteger com eficiência seus recursos da AWS em várias contas.
+
+## ZONA DE ATERRISSAGEM AWS X TORRE DE CONTROLE AWS
+
+**Resumo:**
+Projetar um ambiente de várias contas na AWS pode ser complexo e demorado. A AWS fornece metodologias de práticas recomendadas para essa finalidade. O obsoleto AWS Landing Zone foi substituído pelo AWS Control Tower. Enquanto a Landing Zone permanece em suporte, a Torre de Controle é recomendada. O Control Tower automatiza a configuração da zona de aterrissagem com o AWS Organizations, IAM, log e políticas de segurança.
+
+**Elementos chave:**
+- **Zona de aterrissagem da AWS:**
+   - Blueprint de linha de base para arquitetura de várias contas.
+   - Gerenciamento de identidade, governança, segurança e registro.
+   - Obsoleto em favor do AWS Control Tower.
+   - Pode aparecer em exames apesar da falta de novos recursos.
+
+- **Torre de controle da AWS:**
+   - Automatiza a configuração da zona de aterrissagem usando os modelos mais recentes.
+   - Inclui AWS Organizations e configuração de várias contas.
+   - Utiliza AWS Single Sign-On (SSO) para gerenciamento de identidade.
+   - Suporta federação de contas com SSO.
+   - Logging centralizado com AWS CloudTrail e AWS Config.
+   - Vem com as políticas de segurança recomendadas (guarda-corpos).
+   - Permite personalização para alinhar com as políticas organizacionais.
+
+- **Benefícios:**
+   - Simplifica a arquitetura multiconta complexa.
+   - Economiza tempo em comparação com a configuração manual.
+   - Oferece segurança e conformidade prontas para uso.
+
+- **Próximos passos:**
+   - Compreensão do AWS Organizations para gerenciamento central de contas.
+   - Importância das ferramentas na construção de arquitetura de nuvem segura.
+
+## ORGANIZAÇÕES DA AWS
+
+**Resumo:**
+O gerenciamento eficiente de várias contas da AWS é crucial para a separação e conformidade da carga de trabalho. O AWS Organizations oferece gerenciamento centralizado, permitindo a criação de uma conta de gerenciamento e várias contas de membros. Unidades de organização (OUs) agrupam contas logicamente e políticas de controle de serviço (SCPs) impõem restrições de serviço. O faturamento consolidado ajuda no gerenciamento de custos e diferentes estruturas de unidades organizacionais atendem a diversas necessidades de negócios.
+
+**Elementos chave:**
+- **Organizações da AWS:**
+   - Gerencia centralmente várias contas da AWS.
+   - Oferece um serviço gratuito com recursos cobráveis.
+   - Cria uma conta de gerenciamento e contas de membro.
+   - OUs organizam contas hierarquicamente.
+   - Os SCPs aplicam proteções aos serviços por UO.
+   - Fornece faturamento consolidado para gerenciamento de custos.
+   - Permite várias estruturas OU com base nas necessidades.
+   - Facilita limites de segurança e conformidade.
+
+- **UOs principais:**
+   - UO de infraestrutura: serviços compartilhados (por exemplo, diretório, rede).
+   - OU de segurança: IAM, políticas entre contas, registro.
+   - Separa as contas de produção e não produção.
+
+- **OUs adicionais:**
+   - OUs Sandbox: Ambiente isolado para experimentos.
+   - OUs de cargas de trabalho: hospeda aplicativos voltados para o cliente (Dev, Test, Prod).
+   - OUs Suspensas: Contas para auditoria, com acesso restrito.
+
+- **Benefícios:**
+   - Gerencie com eficiência várias contas da AWS.
+   - Garanta a segurança e a separação da carga de trabalho.
+   - Reforçar a conformidade com os SCPs.
+   - Otimização de custos através do faturamento consolidado.
+
+- **Considerações:**
+   - Determine as contas necessárias da AWS com base nas necessidades de negócios.
+   - Equilibrar requisitos funcionais e técnicos.
+   - Siga as estruturas de OU recomendadas para orientação.
+
+- **Próximos passos:**
+   - Explorar as estruturas de OU recomendadas:
+     [Guia de estrutura de OU recomendada](https://docs.aws.amazon.com/whitepapers/latest/organizating-your-aws-environment/recommended-ous.html).
+   - Saiba mais sobre contas e criação de nível gratuito da AWS na próxima seção.
+
+## CONTAS DE NÍVEL GRATUITO da AWS
+
+**Resumo:**
+A conta de nível gratuito da AWS oferece uma conta padrão para várias cargas de trabalho, gratuita nos primeiros 12 meses. Ele fornece acesso a mais de 85 serviços da AWS, com limites de uso específicos. As principais ofertas incluem armazenamento Amazon S3, instâncias EC2 e instâncias RDS. Ferramentas adicionais como AWS CloudFormation e Elastic Beanstalk são gratuitas, mas os recursos implantados são cobrados. Certos serviços como CloudWatch, Lambda e AWS Organizations são sempre gratuitos até os limites especificados. Também existem serviços de teste gratuitos, como Amazon Workspaces, Detective e Redshift. O nível gratuito é valioso para aprendizado e experimentação.
+
+**Elementos chave:**
+- **Conta de nível gratuito da AWS:**
+   - Conta padrão para diversas cargas de trabalho.
+   - Gratuito por 12 meses com limites de uso.
+   - Acesso a mais de 85 tecnologias e serviços da AWS.
+   - Exemplos de uso no nível gratuito:
+     - Armazenamento Amazon S3 até 5 GB.
+     - Instância t2.micro EC2 para 750 horas/mês.
+     - Instância do Amazon RDS por 750 horas/mês.
+
+- **Ferramentas gratuitas:**
+   - AWS CloudFormation: Modelos para implantação de infraestrutura.
+   - Amazon Elastic Beanstalk: Serviço de orquestração de aplicações.
+   - As ferramentas são gratuitas, mas os recursos têm cobranças.
+
+- **Serviços Sempre Gratuitos:**
+   - Amazon CloudWatch: 10 métricas personalizadas, 10 alarmes, 1 milhão de solicitações de API.
+   - Amazon Lambda: 1 milhão de solicitações gratuitas, 3,2 milhões de segundos de computação.
+   - AWS Organizations: gerencie contas centralmente com faturamento consolidado.
+
+- **Avaliações Gratuitas:**
+   - Amazon Workspaces: teste de desktops virtuais com limites de uso.
+   - Amazon Detective: teste de análise de dados de segurança (30 dias).
+   - Redshift: teste de armazenamento de dados (2 meses, 750 horas/mês).
+
+- **Benefícios:**
+   - Experimente os serviços da AWS.
+   - Criar ambientes sandbox.
+   - Aprenda e se prepare para os exames.
+   - Arquitetar soluções com experiência prática.
+
+- **Considerações:**
+   - Aplicam-se limites e limitações de uso.
+   - Útil para explorar configurações complexas.
+  
+- **Próximos passos:**
+   - Aproveite o nível gratuito da AWS para aprendizado, experimentação e preparação.
+   - Entenda os limites de uso e explore configurações mais avançadas da AWS.
+
