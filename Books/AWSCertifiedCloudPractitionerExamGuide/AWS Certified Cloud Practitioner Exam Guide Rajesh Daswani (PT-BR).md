@@ -261,3 +261,119 @@ A conta de nível gratuito da AWS oferece uma conta padrão para várias cargas 
    - Aproveite o nível gratuito da AWS para aprendizado, experimentação e preparação.
    - Entenda os limites de uso e explore configurações mais avançadas da AWS.
 
+# CAPÍTULO 4: GERENCIAMENTO DE IDENTIDADE E ACESSO
+
+## INTRODUÇÃO AO SERVIÇO AWS IAM
+
+Nesta seção do livro, nos aprofundamos nos fundamentos do serviço AWS Identity and Access Management (IAM). Ele começa enfatizando a importância do usuário root, que é essencialmente o criador da conta da AWS e possui privilégios significativos. A proteção das credenciais do usuário raiz é enfatizada e é recomendável não usar essa conta para tarefas do dia a dia.
+
+A introdução destaca o conceito de usuários IAM, que são contas de usuário adicionais que podem ser criadas para realizar operações de rotina. O console do IAM é apresentado como a interface principal para acessar os serviços da AWS, e os leitores são informados de que ele pode ser acessado por meio do console de gerenciamento baseado na web, da interface de linha de comando (CLI) ou SDKs da AWS para fins de codificação.
+
+A estrutura do Console de gerenciamento da AWS é discutida, revelando que os serviços são categorizados em títulos como Computação, Rede e Armazenamento. O AWS IAM está situado na categoria Segurança, Identidade e Conformidade. A capacidade de procurar serviços usando a barra de pesquisa também é mencionada.
+
+Ao entrar no console do IAM, alertas de segurança e melhores práticas são apresentados. Um URL de login exclusivo é revelado para os usuários do IAM na conta, permitindo a personalização para facilitar o uso. Essa URL, que contém o ID da conta da AWS, pode ser adaptada para um nome mais reconhecível. O processo de personalização da URL de login é detalhado.
+
+O URL de login personalizado do IAM pode então ser compartilhado com outros usuários do IAM, permitindo que eles acessem a conta caso possuam uma conta de usuário do IAM. O significado dos usuários do IAM e sua criação é detalhado. O texto conclui sugerindo o próximo tópico a ser discutido: a conta do usuário root e a implementação da autenticação multifator (MFA) para maior segurança.
+
+## A CONTA DO USUÁRIO ROOT E A IMPLEMENTAÇÃO DA AUTENTICAÇÃO MULTIFATORIAL (MFA)
+
+Nesta parte do livro, o foco está na importância da conta do usuário raiz na AWS e na implementação da autenticação multifator (MFA) para aumentar a segurança. Inicialmente, são destacadas as limitações de depender apenas de um nome de usuário e senha para autenticação, considerando as ameaças predominantes de ataques de malware, hacking e ataques de força bruta. Para neutralizar esses riscos, o MFA é introduzido como um mecanismo para garantir a verificação de identidade usando dois conjuntos de credenciais: algo que você conhece (nome de usuário e senha) e algo que você possui (um pin de senha única gerado em um dispositivo pessoal).
+
+A recomendação para configurar o MFA para a conta do usuário raiz é enfatizada. O processo de configuração do MFA é explicado em detalhes e os leitores são guiados pelas etapas. Sugere-se usar autenticadores baseados em smartphone suportados pela AWS, como Google Authenticator ou Microsoft Authenticator.
+
+As etapas para configurar o MFA envolvem acessar o console de gerenciamento do IAM e ativar o MFA, seguido pela ativação de um dispositivo MFA virtual. O processo inclui a digitalização de um código QR usando o aplicativo autenticador escolhido e a inserção dos códigos MFA gerados para concluir a configuração. Isso garante que a conta do usuário root esteja agora protegida por MFA.
+
+Os benefícios do MFA são reiterados, enfatizando que, ao fazer login como usuário root, além do endereço de e-mail e senha, será necessário o código MFA do aplicativo autenticador. A natureza temporária do código MFA é observada, exigindo entrada imediata. Depois que o código MFA é fornecido, o login bem-sucedido leva ao acesso ao Console de gerenciamento da AWS.
+
+A seção também recapitula os tópicos abordados, incluindo uma introdução ao AWS Management Console básico e AWS IAM, bem como a implementação prática do MFA para a conta do usuário root. O próximo foco é sugerido: políticas de senha para impor senhas robustas e complexas para usuários IAM criados na conta AWS.
+
+## A IMPORTÂNCIA DE DEFINIR AS POLÍTICAS DE SENHAS DO IAM
+
+O foco muda para a importância de estabelecer políticas robustas de senha IAM (gerenciamento de identidade e acesso) em um ambiente AWS (Amazon Web Services). Depois de proteger a conta de usuário raiz usando autenticação multifator (MFA), a próxima etapa envolve a criação de contas de usuário IAM para membros de uma organização que necessitam de acesso aos serviços da AWS. Os privilégios elevados do usuário raiz exigem que se evite seu uso nas operações do dia-a-dia.
+
+O texto antecipa a necessidade de configuração de senhas para contas de usuário do IAM. A importância de impor políticas de senha é destacada, principalmente ao lidar com várias contas de usuário do IAM. A AWS oferece recursos de política de senha que permitem aos administradores definir regras que aumentam a complexidade da senha. Ao fazer isso, os usuários são obrigados a selecionar senhas que cumpram as regras de complexidade estipuladas, promovendo assim o uso de senhas fortes em todas as contas de usuários do IAM.
+
+O processo de configuração dessas políticas de senha é descrito para ser acessível na seção Account Settings do painel do IAM. Isso permite que os administradores mantenham o controle sobre a segurança das contas de usuário do IAM.
+
+A seção a seguir é sugerida, com foco na criação de usuários IAM adicionais e no estabelecimento de grupos IAM. Os usuários do IAM são identidades distintas que podem ser geradas além da conta do usuário raiz. Esses usuários representam indivíduos reais dentro da organização que precisam de acesso aos serviços da AWS para suas respectivas funções, como desenvolvedores ou administradores de servidor.
+
+Em resumo, esta parte do texto enfatiza a importância de impor políticas de senha do IAM para garantir medidas de segurança sólidas nas contas de usuário do IAM da organização, além de apresentar o conceito de usuários do IAM e sua relevância no ambiente da AWS.
+
+## PRINCIPAIS DIFERENÇAS ENTRE USUÁRIOS DO IAM E GRUPOS DO IAM
+
+Nesta seção do livro, o foco está nas principais distinções entre usuários IAM (Identity and Access Management) e grupos IAM dentro do ecossistema AWS (Amazon Web Services).
+
+**Usuários IAM**:
+Conforme explicado anteriormente, os usuários do IAM são contas adicionais que podem ser criadas juntamente com o usuário raiz. Esses usuários podem representar indivíduos reais em uma organização, como membros de uma equipe de desenvolvimento ou administradores de servidor. Os usuários do IAM recebem suas próprias credenciais e podem usá-las para fazer login na conta da AWS, realizando tarefas com base nas permissões atribuídas a eles.
+
+As contas de usuário do IAM também podem ser empregadas por aplicativos e serviços que precisam se autenticar com os serviços da AWS. Por exemplo, um aplicativo que precisa modificar um banco de dados do Amazon RDS pode receber uma conta de usuário do IAM com as permissões apropriadas. No entanto, essa abordagem não é ideal para a maioria das situações devido a questões de segurança associadas ao armazenamento de credenciais em texto simples e à necessidade de rotação regular de credenciais. A AWS apresenta as funções do IAM como uma alternativa melhor para esses casos, que são abordados posteriormente no capítulo.
+
+O acesso aos serviços da AWS pode ser obtido por meio do console de gerenciamento baseado na web, CLI (Command Line Interface) ou SDKs da AWS. Os usuários do IAM podem usar combinações de nome de usuário e senha para acesso ao console, enquanto o acesso programático por meio da CLI requer chaves de acesso, incluindo um ID de chave de acesso e uma chave de acesso secreta.
+
+**Grupos IAM**:
+O conceito de grupos IAM é apresentado como um meio de gerenciar com eficiência as permissões para usuários que compartilham funções comuns na organização. Ao configurar permissões para um usuário do IAM, as políticas podem ser anexadas diretamente. No entanto, uma abordagem mais simplificada envolve o agrupamento de usuários com base em suas funções e, em seguida, a aplicação de políticas ao próprio grupo, permitindo que essas políticas sejam distribuídas em cascata aos usuários individuais dentro do grupo.
+
+Por exemplo, se uma equipe de desenvolvedores exigir a capacidade de gerenciar depósitos de armazenamento do Amazon S3, em vez de atribuir manualmente a mesma permissão a cada desenvolvedor, uma única permissão poderá ser concedida a um grupo IAM chamado "Desenvolvedores". Todos os membros deste grupo herdarão a permissão especificada, simplificando o gerenciamento de permissões.
+
+Em resumo, esta seção enfatiza o valor da configuração de usuários e grupos do IAM, o que permite um controle eficaz sobre o acesso e as permissões na conta da AWS. Os grupos IAM são destacados como uma maneira de gerenciar com eficiência as permissões para usuários que compartilham funções de trabalho semelhantes.
+
+A próxima seção é visualizada para aprofundar as políticas do IAM em detalhes, elucidando como essas políticas capacitam os administradores a definir permissões para várias identidades, controlando assim suas ações na conta da AWS.
+
+## DEFININDO PERMISSÕES COM POLÍTICAS IAM
+
+Nesta seção, o livro discute o conceito de políticas IAM (Identity and Access Management) dentro do ecossistema AWS (Amazon Web Services) e como elas são usadas para definir permissões para várias identidades IAM, como usuários, grupos e funções IAM. As políticas do IAM desempenham um papel crucial na aplicação do princípio do menor privilégio, garantindo que as identidades recebam apenas o acesso necessário para suas funções.
+
+**Visão geral das políticas do IAM**:
+As políticas do IAM são documentos JSON anexados às identidades do IAM, especificando as ações que uma identidade pode executar na conta da AWS. O livro apresenta uma ilustração de Bob, um membro do grupo de desenvolvedores, e como seu acesso ao bucket S3 "Marketing Documents" é controlado por uma política IAM anexada.
+
+**Tipos de políticas IAM**:
+O livro apresenta seis tipos de políticas IAM:
+
+1. **Políticas baseadas em identidade**: anexadas a identidades do IAM, como usuários, grupos e funções, para definir suas permissões na conta da AWS.
+2. **Políticas baseadas em recursos**: anexadas a recursos, concedendo permissões a principais (identidades) dentro ou fora da conta da AWS.
+3. **Limites de permissão**: uma política que define o máximo de permissões para uma entidade IAM, controlando o que uma política baseada em identidade pode conceder.
+4. **Organization Service Control Policies (SCPs)**: Defina as permissões máximas para os membros da organização, restringindo o que as políticas do IAM podem permitir.
+5. **Listas de controle de acesso (ACLs)**: gerencie o acesso a recursos específicos, como baldes e objetos do Amazon S3, concedendo permissões a contas da AWS.
+6. **Políticas de sessão**: aprovadas durante o acesso programático, limitando as permissões para uma sessão específica.
+
+**Tipos de políticas baseadas em identidade**:
+As políticas baseadas em identidade podem ser categorizadas em três tipos:
+
+1. **Políticas gerenciadas da AWS**: políticas pré-configuradas com permissões específicas fornecidas pela AWS. Eles podem ser anexados a múltiplas identidades.
+2. **Políticas gerenciadas pelo cliente**: políticas criadas por clientes, oferecendo mais granularidade nos conjuntos de permissões.
+3. **Políticas em linha**: políticas criadas e anexadas diretamente a uma identidade IAM, mantendo uma relação um-para-um.
+
+
+**Exemplo de política IAM**:
+Um exemplo de política IAM é fornecido, demonstrando uma política gerenciada da AWS chamada "AmazonS3ReadOnlyAccess". A estrutura JSON da política inclui componentes como versão, declarações, efeitos, ações, recursos e condições. A política de exemplo concede acesso de leitura a todos os buckets do S3.
+
+**Simulador de política IAM**:
+O livro apresenta o simulador de políticas IAM, uma ferramenta para testar e solucionar problemas de políticas sem fazer chamadas de API reais. Essa ferramenta ajuda a identificar as permissões concedidas ou negadas com base nas políticas anexadas às identidades do IAM.
+
+**Funções do IAM e credenciais temporárias**:
+As funções do IAM são discutidas como identidades independentes que podem ser assumidas por outras entidades, oferecendo acesso seguro aos serviços e recursos da AWS. As funções do IAM são usadas para cenários como acesso entre contas, usuários federados e acesso a serviços da AWS. As funções usam credenciais temporárias atribuídas pelo Security Token Service (STS), fornecendo acesso de curto prazo a recursos sem armazenar credenciais de longo prazo. Uma política de confiança define entidades que podem assumir a função, e o livro enfatiza o uso de funções em vez de contas de usuário do IAM para maior segurança.
+
+Concluindo, esta seção explora a importância das políticas do IAM no controle de acesso e permissões na AWS. Ele apresenta os vários tipos de políticas e se aprofunda nas políticas baseadas em identidade em detalhes. O simulador de política IAM e o uso de funções IAM com credenciais temporárias também são discutidos. A próxima seção é uma visualização dos relatórios de credenciais e sua função na auditoria de identidades do IAM.
+
+## REVISÃO DE RELATÓRIOS DE CREDENCIAIS
+
+Nesta seção, o livro discute a importância dos relatórios de credenciais no serviço IAM (Identity and Access Management) da AWS. Os relatórios de credenciais fornecem informações valiosas sobre o estado de segurança dos usuários do IAM, permitindo que os administradores revisem e auditem as principais informações sobre suas identidades e status de acesso.
+
+**Visão geral dos relatórios de credenciais**:
+A AWS oferece a capacidade de baixar relatórios de credenciais no formato CSV. Esses relatórios são atualizados a cada 4 horas e fornecem aos administradores uma visão abrangente dos usuários do IAM em suas contas da AWS. Os relatórios contêm detalhes essenciais, como nomes de usuário, status de credenciais (senhas e chaves de acesso) e se os usuários têm autenticação multifator (MFA) configurada.
+
+**Casos de uso para relatórios de credenciais**:
+Monitorar e analisar relatórios de credenciais pode oferecer vários benefícios:
+
+1. **Auditoria de usuários do IAM**: os relatórios permitem revisar e auditar o status de segurança de seus usuários do IAM. Você pode avaliar se suas credenciais estão configuradas corretamente, incluindo senhas e chaves de acesso.
+
+2. **Verificação MFA**: Os relatórios destacam se os usuários configuraram a autenticação multifator (MFA), adicionando uma camada extra de segurança às suas contas.
+
+3. **Atividade do usuário**: ao rastrear a atividade do usuário, você pode identificar usuários do IAM que não acessaram recursos em sua conta da AWS recentemente. Isso ajuda a avaliar se esses usuários ainda precisam de acesso e se as contas não utilizadas podem ser removidas, melhorando a segurança geral.
+
+4. **Revisão do controle de acesso**: os relatórios de credenciais ajudam a manter uma visão geral clara dos padrões de acesso dos usuários do IAM e suas credenciais correspondentes, auxiliando no melhor gerenciamento do controle de acesso.
+
+5. **Conformidade de segurança**: a revisão regular dos relatórios de credenciais oferece suporte aos esforços de conformidade de segurança da sua organização, garantindo que os usuários sigam as melhores práticas e políticas de segurança.
+
+**Conclusão da Seção de Relatórios de Credenciais**:
+Nesta seção, o livro apresenta o conceito de relatórios de credenciais como uma ferramenta valiosa para administradores de IAM. Ele enfatiza a importância de monitorar regularmente esses relatórios para manter a segurança dos usuários do IAM, rastrear seu status de acesso e identificar quaisquer contas não utilizadas ou desnecessárias. As próximas seções fornecerão exercícios práticos para ajudar os leitores a obter experiência prática no uso do AWS IAM para aumentar a segurança em suas contas da AWS.
