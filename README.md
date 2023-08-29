@@ -9,6 +9,7 @@ Repository containing projects and summaries of my studies in the field of Data 
   - [Apache Hop](#apache-hop)
 - [Books](#books)
   - [Fundamentals of Data Engineering by Joe Reis and Matt Housley](#fundamentals-of-data-engineering-by-joe-reis-and-matt-housley)
+  - [AWS Certified Cloud Practitioner Exam Guide by Rajesh Daswani](#aws-certified-cloud-practitioner-exam-guide-by-rajesh-daswani)
 
 ## Big Data Courses and Projects
 
