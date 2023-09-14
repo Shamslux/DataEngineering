@@ -9,7 +9,6 @@ Repository containing projects and summaries of my studies in the field of Data 
   - [Apache Hop](#apache-hop)
 - [Books](#books)
   - [Fundamentals of Data Engineering by Joe Reis and Matt Housley](#fundamentals-of-data-engineering-by-joe-reis-and-matt-housley)
-  - [AWS Certified Cloud Practitioner Exam Guide by Rajesh Daswani](#aws-certified-cloud-practitioner-exam-guide-by-rajesh-daswani)
 
 ## Big Data Courses and Projects
 
@@ -46,10 +45,7 @@ Repository containing projects and summaries of my studies in the field of Data 
 <img src="https://cdn-icons-png.flaticon.com/512/197/197374.png" alt="english summary" width="25" height="25"> [English Summary](Books/FundamentalsOfDataEngineering/Fundamentals%20of%20Data%20Engineering%20-%20%20Joe%20Reis%20&%20Matt%20Housley%20(ENG).md)<br>
 <img src="https://cdn-icons-png.flaticon.com/512/3909/3909370.png" alt="portuguese summary" width="25" height="25"> [Portuguese Summary (Machine Translation)](Books/FundamentalsOfDataEngineering/Fundamentals%20of%20Data%20Engineering%20-%20%20Joe%20Reis%20%26%20Matt%20Housley%20%20(PT-BR).md)<br>
 
-### AWS Certified Cloud Practitioner Exam Guide by Rajesh Daswani
 
-<img src="https://cdn-icons-png.flaticon.com/512/197/197374.png" alt="english summary" width="25" height="25"> [English Summary](Books/AWSCertifiedCloudPractitionerExamGuide/AWS%20Certified%20Cloud%20Practitioner%20Exam%20Guide%20Rajesh%20Daswani%20(ENG).md)<br>
-<img src="https://cdn-icons-png.flaticon.com/512/3909/3909370.png" alt="portuguese summary" width="25" height="25"> [Portuguese Summary (Machine Translation)](Books/AWSCertifiedCloudPractitionerExamGuide/AWS%20Certified%20Cloud%20Practitioner%20Exam%20Guide%20Rajesh%20Daswani%20(PT-BR).md)<br>
 
 
 
