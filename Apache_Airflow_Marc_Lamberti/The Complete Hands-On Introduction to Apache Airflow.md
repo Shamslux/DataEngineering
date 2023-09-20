@@ -82,3 +82,46 @@ Certainly, let's explore the core concepts of Apache Airflow: DAGs, Operators (A
    - A task represents a unit of work to be done in a DAG.
    - Each task is an instance of an operator and is associated with a specific execution date.
    - Task Instances are created when a DAG run is triggered and represent the individual execution of a task at a particular point in time.
+
+# Single-Node and Multi-Node Architectures
+
+**Single-Node Architecture**:
+
+1. **Components on a Single Machine**:
+   - In a single-node architecture, all Airflow components (Scheduler, Workers, Database, and Web Interface) are hosted on a single machine.
+
+2. **Simplicity and Ease of Setup**:
+   - Single-node setups are straightforward to install and suitable for smaller workflows, development, and testing purposes.
+   - They require minimal configuration and are easier to manage.
+
+3. **Limited Scalability**:
+   - Single-node setups have limited scalability because they are constrained by the resources (CPU, memory, and storage) of a single machine.
+   - They may not be suitable for running large or resource-intensive workflows.
+
+4. **Low Fault Tolerance**:
+   - Single-node architectures lack built-in high availability and fault tolerance.
+   - If the single machine fails, the entire Airflow instance becomes unavailable.
+
+**Multi-Node Architecture**:
+
+1. **Distributed Setup**:
+   - In a multi-node architecture, Airflow components are distributed across multiple machines or nodes.
+   - Common components are the Scheduler, Workers, Database (often hosted on a separate server), and Web Interface (which may still be on a separate machine).
+
+2. **Scalability and Resource Isolation**:
+   - Multi-node architectures provide better scalability by allowing you to add more worker nodes to handle increased task loads.
+   - Resources can be allocated more flexibly, enabling resource isolation for different workflows.
+
+3. **High Availability**:
+   - Multi-node setups can be configured for high availability, ensuring that the Airflow system remains accessible even if one node fails.
+   - Redundant components and load balancing can be used to achieve this.
+
+4. **Complexity and Maintenance**:
+   - Multi-node setups are more complex to configure and maintain compared to single-node setups.
+   - They often involve setting up a distributed message queue (e.g., Celery) and configuring external databases for better performance and reliability.
+
+5. **Suitable for Production**:
+   - Multi-node architectures are well-suited for production environments where reliability, scalability, and fault tolerance are crucial.
+   - They can handle large, mission-critical workflows effectively.
+
+
