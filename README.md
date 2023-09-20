@@ -4,7 +4,8 @@ Repository containing projects and summaries of my studies in the field of Data 
 # Table of Contents
 
 - [Big Data Courses and Projects](#big-data-courses-and-projects)
-  - [Hive and Impala Course](#hive-and-impala-course)
+  - [Hive and Impala Course](#hive-and-impala-course-with-fernando-amaral)
+  - [Apache Airflow Course](#apache-airflow-course-with-marc-lamberti)
 - [ETL/ELT Tools](#etlelt-tools)
   - [Apache Hop](#apache-hop)
 - [Books](#books)
@@ -12,7 +13,7 @@ Repository containing projects and summaries of my studies in the field of Data 
 
 ## Big Data Courses and Projects
 
-### Hive and Impala Course
+### Hive and Impala Course with Fernando Amaral
 ![RedHat](https://img.shields.io/badge/Red%20Hat-EE0000?style=for-the-badge&logo=redhat&logoColor=white)
 ![Cloudera](https://img.shields.io/badge/Cloudera-0000FF?style=for-the-badge&logo=cloudera&logoColor=white)
 ![Apache](https://img.shields.io/badge/Apache-D22128?style=for-the-badge&logo=Apache&logoColor=white)
@@ -21,6 +22,12 @@ Repository containing projects and summaries of my studies in the field of Data 
 
 <img src="https://cdn-icons-png.flaticon.com/512/4136/4136043.png" alt="document" width="25" height="25"> [Hive and Impala Course Description Link](Hive_Impala/Hive%20and%20Impala.md)<br>
 <img src="https://cdn-icons-png.flaticon.com/512/3277/3277524.png" alt="scripts" width="25" height="25"> [Hive and Impala Scripts Link](Hive_Impala/Scripts)
+
+### Apache Airflow Course with Marc Lamberti
+![Airflow](https://img.shields.io/badge/Airflow-017CEE?style=for-the-badge&logo=Apache%20Airflow&logoColor=white)
+
+<img src="https://cdn-icons-png.flaticon.com/512/4136/4136043.png" alt="document" width="25" height="25"> [Apache Airflow Course Description Link](Apache_Airflow_Marc_Lamberti/The%20Complete%20Hands-On%20Introduction%20to%20Apache%20Airflow.md)<br>
+
 
 ## ETL/ELT Tools
 
