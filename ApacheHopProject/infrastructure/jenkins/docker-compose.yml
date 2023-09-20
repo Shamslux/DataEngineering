@@ -1,0 +1,9 @@
+version: '3'
+services:
+  jenkins:
+    build:
+      context: .
+      dockerfile: jenkins_hop_project.dockerfile  # Nome do Dockerfile no mesmo diretório
+    ports:
+      - "8080:8080"
+      - "50000:50000"
