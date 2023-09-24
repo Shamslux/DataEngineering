@@ -11,6 +11,18 @@ a Brazilian university professor in the field of Data with extensive experience 
 
 # A little about Hive
 
+## What is Hive (first, as for a 5 years old child understand it!)
+
+Okay, imagine Hive is like a big, busy beehive where lots of little bees live and work together. But instead of bees, it's actually a special place in a computer where information is kept and organized.
+
+In this computer hive, there are different rooms for storing things, just like how we have different drawers and shelves at home. These rooms are called "tables," and each table holds specific types of information, like numbers or words.
+
+Now, to get things done in the hive, we have a friendly bee called the "Queen Bee." The Queen Bee tells all the other bees what to do and how to organize the information in the hive. She's really good at keeping everything in order.
+
+But the cool thing about this hive is that you can ask the Queen Bee questions, and she'll tell you the answers by looking through all the information in the tables. You just have to ask nicely in a special language called "SQL," and she'll give you the information you need.
+
+So, Hive is like a computer beehive where information is stored, organized into tables, and the Queen Bee helps you find what you're looking for when you ask her nicely. It's like a smart and helpful computer bee kingdom!
+
 ## What is Hive?
 
 Hive is an open-source data warehousing and SQL-like query engine built on top of Apache Hadoop. 
