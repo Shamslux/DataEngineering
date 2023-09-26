@@ -11,6 +11,18 @@ a Brazilian university professor in the field of Data with extensive experience 
 
 # A little about Hive
 
+## What is Hive (first, as for a 5 years old child understand it!)
+
+Okay, imagine Hive is like a big, busy beehive where lots of little bees live and work together. But instead of bees, it's actually a special place in a computer where information is kept and organized.
+
+In this computer hive, there are different rooms for storing things, just like how we have different drawers and shelves at home. These rooms are called "tables," and each table holds specific types of information, like numbers or words.
+
+Now, to get things done in the hive, we have a friendly bee called the "Queen Bee." The Queen Bee tells all the other bees what to do and how to organize the information in the hive. She's really good at keeping everything in order.
+
+But the cool thing about this hive is that you can ask the Queen Bee questions, and she'll tell you the answers by looking through all the information in the tables. You just have to ask nicely in a special language called "SQL," and she'll give you the information you need.
+
+So, Hive is like a computer beehive where information is stored, organized into tables, and the Queen Bee helps you find what you're looking for when you ask her nicely. It's like a smart and helpful computer bee kingdom!
+
 ## What is Hive?
 
 Hive is an open-source data warehousing and SQL-like query engine built on top of Apache Hadoop. 
@@ -433,6 +445,54 @@ group by vec.modelo;
 
 ![hiveql_sum_result](https://github.com/Shamslux/DataEngineering/assets/79280485/9a3663e9-a8df-424b-a1f0-f22784523257)
 
+## Using sum() again with dispatchers' table
 
+```sql
+select	vec.modelo
+	, desp.nome
+	, sum(loc.total)
+from	locacao loc
+join	veiculos vec
+on loc.idveiculo = vec.idveiculo
+join despachantes desp
+on loc.iddespachante = desp.iddespachante
+group by vec.modelo, desp.nome;
+```
+![hiveql_sum_result_2](https://github.com/Shamslux/DataEngineering/assets/79280485/ac191583-1764-4778-ab97-410a31d4c4a0)
+
+## Using having with sum()
+
+
+```sql
+select	vec.modelo
+	, desp.nome
+	, sum(loc.total)
+from	locacao loc
+join	veiculos vec
+on loc.idveiculo = vec.idveiculo
+join despachantes desp
+on loc.iddespachante = desp.iddespachante
+group by vec.modelo, desp.nome
+having sum(loc.total) > 10000;
+```
+![hiveql_sum_w_having_result](https://github.com/Shamslux/DataEngineering/assets/79280485/b5df9f48-0b98-4b08-8311-c414d437c9d9)
+
+## Using functions
+
+```sql
+select	vec.modelo
+	, desp.nome
+	, sum(loc.total)
+from	locacao loc
+join	veiculos vec
+on loc.idveiculo = vec.idveiculo
+join despachantes desp
+on loc.iddespachante = desp.iddespachante
+where month(loc.datalocacao) = 2
+and year(loc.datalocacao) = 2019
+group by vec.modelo, desp.nome
+```
+
+![hiveql_functions](https://github.com/Shamslux/DataEngineering/assets/79280485/66bfc4fd-be66-4f44-96c8-5a657aec554d)
 
 
