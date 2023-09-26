@@ -106,3 +106,51 @@ select	loc.idlocacao
 from	locacao loc
 join	veiculos vec
 on loc.idveiculo = vec.idveiculo;
+
+-- Using sum()
+
+select	vec.modelo
+		, sum(loc.total)
+from	locacao loc
+join	veiculos vec
+on loc.idveiculo = vec.idveiculo
+group by vec.modelo;
+
+-- Using sum() again with dispatchers' table
+
+select	vec.modelo
+		, desp.nome
+		, sum(loc.total)
+from	locacao loc
+join	veiculos vec
+on loc.idveiculo = vec.idveiculo
+join despachantes desp
+on loc.iddespachante = desp.iddespachante
+group by vec.modelo, desp.nome;
+
+-- Using having with sum()
+
+select	vec.modelo
+		, desp.nome
+		, sum(loc.total)
+from	locacao loc
+join	veiculos vec
+on loc.idveiculo = vec.idveiculo
+join despachantes desp
+on loc.iddespachante = desp.iddespachante
+group by vec.modelo, desp.nome
+having sum(loc.total) > 10000;
+
+-- Using functions
+
+select	vec.modelo
+		, desp.nome
+		, sum(loc.total)
+from	locacao loc
+join	veiculos vec
+on loc.idveiculo = vec.idveiculo
+join despachantes desp
+on loc.iddespachante = desp.iddespachante
+where month(loc.datalocacao) = 2
+and year(loc.datalocacao) = 2019
+group by vec.modelo, desp.nome
