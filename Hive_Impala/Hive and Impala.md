@@ -3,7 +3,7 @@
 ![Apache](https://img.shields.io/badge/Apache-D22128?style=for-the-badge&logo=Apache&logoColor=white)
 [![Hive](https://img.shields.io/badge/-Hive-orange?logo=apache%20hive&style=for-the-badge&logoColor=white)](https://hive.apache.org/)
 [![Impala](https://img.shields.io/badge/-Impala-black?logo=apache&style=for-the-badge)](https://impala.apache.org/)
-
+![SQOOP](https://img.shields.io/badge/Apache_SQOOP-00C300?logo=apache&logoColor=white&style=for-the-badge)
 # Hive and Impala - Basic Course Overview
 
 This is a summary of the main points studied in the Hive and Impala course taught by instructor Fernando Amaral, 
@@ -495,4 +495,29 @@ group by vec.modelo, desp.nome
 
 ![hiveql_functions](https://github.com/Shamslux/DataEngineering/assets/79280485/66bfc4fd-be66-4f44-96c8-5a657aec554d)
 
+## Queries for Data Ingestion
+
+**Creating a new table from another table in HiveQL**
+
+```sql
+create table locacao2 as select * from locacao where iddespachante = 2;
+```
+![locacao2_result](https://github.com/Shamslux/DataEngineering/assets/79280485/86277447-a153-43ae-b837-16b7d951cb0f)
+
+**Ingesting data from one database into another**
+
+```sql
+create database teste;
+
+create table teste.locacao2 as select * from locacao where iddespachante = 2;
+
+select * from teste.locacao2;
+```
+The above processes starts and we have this result on terminal:
+
+![teste.locacao2_processing](https://github.com/Shamslux/DataEngineering/assets/79280485/12ec3f32-3517-4d64-a3a6-c4f6fe5eb6d8)
+
+Then, we get the table, in another database, with the data from the current database (locacao):
+
+![teste.locacao2_final_result](https://github.com/Shamslux/DataEngineering/assets/79280485/17dbddab-d47c-4ed4-a51a-9868cd7ebeea)
 
