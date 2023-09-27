@@ -521,3 +521,4 @@ Then, we get the table, in another database, with the data from the current data
 
 ![teste.locacao2_final_result](https://github.com/Shamslux/DataEngineering/assets/79280485/17dbddab-d47c-4ed4-a51a-9868cd7ebeea)
 
+# Data Ingestion with SQOOP
