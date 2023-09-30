@@ -610,6 +610,63 @@ select * from retail_db.categories;
 
 The image above shows that the procedure that imported the new data (item 59, which appears as a test) was successful.
 
+# Saving in disk using HDFS
+
+It is possible to save Hive queries in the HDFS system. Let's see here some commands (the default and a conversion into a desired format).
+
+```shell
+# Saving using HDFS
+
+insert overwrite directory '/user/cloudera/locacao2' select * from locacao.locacao;
+```
+![hdfs_insert_locacao2_default](https://github.com/Shamslux/DataEngineering/assets/79280485/15fdf492-a62f-46b5-a6a1-8c1a070d263f)
+
+## Default method
+
+![default_list](https://github.com/Shamslux/DataEngineering/assets/79280485/b10efa10-33ac-4b63-9ec6-bd233f33ed40)
+
+By default, HDFS saves the Hive query in the desired directory. It can create multiple serialized JSON files as needed, depending on the data size. Since everything is very small and simple in our example for educational purposes, only one file has been created. The serialized JSON is not readable (i.e., if we use a -cat, it won't be correctly readable). To address this, let's try some conversions of the file into other formats.
+
+## Saving as CSV format
+
+```shell
+# Saving as CSV
+
+insert overwrite directory '/user/cloudera/locacao2' 
+row format delimited fields terminated by ','
+select * from locacao.locacao;
+```
+
+![csv_list](https://github.com/Shamslux/DataEngineering/assets/79280485/3ba2a2a6-15e4-4909-baba-013dcc29a7fe)
+
+Now we can access the file using -cat. Note: If you want to save it locally, outside of HDFS, it's also possible; just pass the 'local' parameter and change the directory to a local directory.
+
+![csv_hdfs_cat](https://github.com/Shamslux/DataEngineering/assets/79280485/10133724-f17d-4984-acf4-d2acc3d75403)
+
+## Saving as Parquet format
+
+```shell
+# Saving as Parquet
+
+insert overwrite directory '/user/cloudera/locacao2' 
+row format delimited fields terminated by ','
+stored as parquet
+select * from teste.locacao3;
+```
+Note: To save as Parquet, I needed to create a third table called "locacao" in the test database. This table was created with "cast()" on date columns. An error was occurring, stating that Parquet was not accepting the date format, so I had to convert it. I recommend doing the same if you're trying to reproduce what I'm doing in the repository, although I don't know which version of the Cloudera machine you will be using.
+
+![parquet_hdfs_result](https://github.com/Shamslux/DataEngineering/assets/79280485/16c2edb8-5f30-47e1-9f22-ac905ccebc88)
+
+Although it's not readable using -cat, I still included a screenshot of the terminal just to show that the file was indeed saved correctly as Parquet, as can be seen highlighted by the red rectangle.
+
+
+
+
+
+
+
+
+
 
 
 
