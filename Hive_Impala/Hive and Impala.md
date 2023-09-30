@@ -522,3 +522,95 @@ Then, we get the table, in another database, with the data from the current data
 ![teste.locacao2_final_result](https://github.com/Shamslux/DataEngineering/assets/79280485/17dbddab-d47c-4ed4-a51a-9868cd7ebeea)
 
 # Data Ingestion with SQOOP
+
+Here will appear a mini project in SQOOP. The scope of the project will be to use the data from the example database that comes by default in MySQL ("retail_db"). The data from this database will be used to simulate what would happen in real life, that is, to use SQOOP to migrate structured data from a relational database to the distributed environment of HDFS.
+
+## Connecting to the MySQL database
+
+Using the terminal in the Cloudera machine, we are going to access the database system using the below command:
+
+```shell
+mysql -u root -pcloudera
+```
+After connecting to the MySQL database management system (DBMS), we can use an SQL command to connect to the desired database.
+
+```sql
+use retail_db;
+```
+
+Now, we will use an SQL query to count the number of records in a table. In this case, we will do this for the table called "order_items." This step is important because we need to keep the tables synchronized; that is, we need to later verify if we were able to correctly transfer the right amount of data to HDFS via SQOOP.
+
+```sql
+select count(*) from order_items;
+```
+
+![order_items_counting_mysql](https://github.com/Shamslux/DataEngineering/assets/79280485/24e372ea-55e4-45ad-9bdf-215323eb1fb1)
+
+## Using SQOOP to import all tables from MySQL's retail_db
+
+```shell
+# Accessing MySQL with SQOOP and listing the databases
+
+sqoop list-databases --connect jdbc:mysql://localhost/ --username root --password cloudera
+```
+![sqoop_showing_all_databases](https://github.com/Shamslux/DataEngineering/assets/79280485/8f772eab-e36d-4122-8ecd-de464f21bf0f)
+
+```shell
+# Now showing the existing tables in retail_db
+
+sqoop list-tables --connect jdbc:mysql://localhost/retail_db --username root --password cloudera
+```
+![sqoop_list_all_tables_retail_db](https://github.com/Shamslux/DataEngineering/assets/79280485/d20f7b74-8eff-44d1-816e-bbbe6b893cba)
+
+```shell
+# Creating the retail_db database in Hive
+
+create database retail_db;
+```
+![creating_retail_db_hive](https://github.com/Shamslux/DataEngineering/assets/79280485/a52c657e-d88c-4748-b5a7-26b1a03f1fb9)
+
+```shell
+# Using now SQOOP to import all tables from retail_db (MySQL)
+# to retail_db (Hive)
+
+sqoop import-all-tables --connect jdbc:mysql://localhost/retail_db --username root --password cloudera --hive-import --hive-overwrite --hive-database retail_db --create-hive-table --m 1;
+```
+
+```sql
+-- Comparing the count from order_items in Hive with the one in MySQL
+select count(*) from retail_db.order_items;
+```
+![order_items_count_hive](https://github.com/Shamslux/DataEngineering/assets/79280485/3fdb218b-0881-4547-af33-959e6b126aa3)
+
+We could see that the values for this table are balanced. Of course, it would be correct to check each table (there is also a way to import only the desired table, without all of them). The next step now will be to perform a simulation of an incremental load.
+
+## Incremental Load using SQOOP
+
+Firstly, let's update the "categories" table in the "retail_db" of MySQL. After this update, we will import the updated data with a new SQOOP command. The new command will be able to detect the changes and only bring that alteration into Hive.
+
+```sql
+--Inserting a new data into categories table
+insert into categories values (59, 8, "Test");
+```
+![categories_mysql_new_line](https://github.com/Shamslux/DataEngineering/assets/79280485/47490ab0-48b8-4f60-a425-3a5b304c5be0)
+
+Let's run the SQOOP command for this incremental load:
+
+```shell
+sqoop import --connect jdbc:mysql://localhost/retail_db --username root --password cloudera --hive-import --hive-database retail_db --check-column category_id --incremental append --last-value 58 --table categories
+```
+
+Let's check if the new entry has been reflected in Hive after the SQOOP command:
+
+```sql
+select * from retail_db.categories;
+```
+
+![categories_hive_new_line_result](https://github.com/Shamslux/DataEngineering/assets/79280485/bf0f722b-6f7f-49a7-a385-fc67249f2ae2)
+
+The image above shows that the procedure that imported the new data (item 59, which appears as a test) was successful.
+
+
+
+
+
