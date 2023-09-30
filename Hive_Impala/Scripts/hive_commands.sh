@@ -219,3 +219,58 @@ sqoop import --connect jdbc:mysql://localhost/retail_db --username root --passwo
 
 select * from retail_db.categories;
 
+# Saving using HDFS
+
+insert overwrite directory '/user/cloudera/locacao2' select * from locacao.locacao;
+
+# Checking the created file in HDFS
+
+hdfs dfs -ls /user/cloudera/locacao2
+
+# Saving as CSV
+
+insert overwrite directory '/user/cloudera/locacao2' 
+row format delimited fields terminated by ','
+select * from locacao.locacao;
+
+# Saving as Parquet
+
+insert overwrite directory '/user/cloudera/locacao2' 
+row format delimited fields terminated by ','
+stored as parquet
+select * from teste.locacao3;
+
+# Changing the default to work with partitioning and bucketing
+
+set hive.exec.dynamic.partition.mode;
+set hive.exec.dynamic.partition.mode=nonstrict;
+
+# Creating table for partitioning
+
+create table locacao.locacaoanalitico (
+	cliente string, 
+	despachante string, 
+	datalocacao date,
+	total double
+	) 
+partitioned by (veiculo string);
+
+# Inserting data into the new column with partitioning
+
+insert overwrite table locacao.locacaoanalitico partition (veiculo)
+select cli.nome
+	   , des.nome
+	   , loc.datalocacao
+	   , loc.total
+	   , veic.modelo
+from locacao loc
+join despachantes des 
+on (loc.iddespachante = des.iddespachante)
+join clientes cli 
+on (loc.idcliente = cli.idcliente)
+join veiculos veic
+on (loc.idveiculo = veic.idveiculo);
+
+# Checking files partitionated using HDFS
+
+hdfs dfs -ls /user/hive/warehouse/locacao.db/locacaoanalitico
