@@ -659,6 +659,85 @@ Note: To save as Parquet, I needed to create a third table called "locacao" in t
 
 Although it's not readable using -cat, I still included a screenshot of the terminal just to show that the file was indeed saved correctly as Parquet, as can be seen highlighted by the red rectangle.
 
+# Partitioning and Bucketing
+
+## Partitions
+
+- Divide tables horizontally based on logical and physical partitions.
+
+- A logical partition is a folder in HDFS.
+
+   - For example, it's common to divide files by date, categories, or a region to keep everything logically organized. Note: in the course, the instructor will provide an example of partitioning using vehicle categories.
+
+- The goal of partitioning is query optimization, as the partition is physically separate.
+    - For example, when partitioning by vehicles, querying a specific model is more optimized.
+
+- There are no benefits for simple queries.
+
+## Bucketing
+
+- Partitions vary with the data!
+   - This leads to a potential problem: thousands or millions of partitions!
+
+- Bucketing doesn't change with the data.
+    - It divides physically in a balanced way into buckets.
+    - If there are 300 partitions and 50 different data, for example, 250 will remain empty.
+    - Great for tables that operate in joins.
+
+## Resuming Partitions and Buckets
+
+In summary, partitioning is a technique that organizes data based on specific column values to facilitate the filtering of relevant data in queries, while bucketing is a technique that divides data into uniform buckets to enhance parallelism and data distribution in files. Both techniques can be used to optimize query performance in Hive, depending on the specific requirements of your use case.
+
+## Creating a partitioned table
+
+```sql
+-- Creating table for partitioning
+
+create table locacao.locacaoanalitico (
+	cliente string, 
+	despachante string, 
+	datalocacao date,
+	total double
+	) 
+partitioned by (veiculo string);
+```
+![creating_locacaoanalitico](https://github.com/Shamslux/DataEngineering/assets/79280485/ed0dd547-cc1b-48ec-8cfc-2c68e32b77df)
+
+## Preparing environment for partitioning and bucketing
+
+```shell
+set hive.exec.dynamic.partition.mode;
+set hive.exec.dynamic.partition.mode=nonstrict;
+```
+
+## Inserting data into the new column with partitioning
+
+```sql
+insert overwrite table locacao.locacaoanalitico partition (veiculo)
+select cli.nome
+	   , des.nome
+	   , loc.datalocacao
+	   , loc.total
+	   , veic.modelo
+from locacao loc
+join despachantes des 
+on (loc.iddespachante = des.iddespachante)
+join clientes cli 
+on (loc.idcliente = cli.idcliente)
+join veiculos veic
+on (loc.idveiculo = veic.idveiculo);
+```
+
+## Checking files partitionated using HDFS
+
+```shell
+hdfs dfs -ls /user/hive/warehouse/locacao.db/locacaoanalitico
+```
+
+![partitions_hdfs_result](https://github.com/Shamslux/DataEngineering/assets/79280485/55288251-a7da-4db9-ae69-47872fab4943)
+
+
+
 
 
 
