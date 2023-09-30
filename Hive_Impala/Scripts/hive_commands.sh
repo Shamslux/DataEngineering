@@ -158,4 +158,64 @@ select * from TBLS where DB_ID = 3;
 
 select * from COLUMNS_V2 where CD_ID = 1;
 
+# Creating a new table from another table in HiveQL
+
+create table locacao2 as select * from locacao where iddespachante = 2;
+
+# Ingesting data from one database into another
+
+create database teste;
+
+create table teste.locacao2 as select * from locacao where iddespachante = 2;
+
+select * from teste.locacao2;
+#############################################################################
+############################# SQOOP MINI PROJECT ############################
+#############################################################################
+
+# Firstly, loging into MySQL
+
+mysql -u root -pcloudera
+
+# Connecting to the sample database that will be used
+# for this mini project
+
+use retail_db;
+
+# Couting the Orders' table (as an example)
+
+select count(*) from order_items;
+
+# Accessing MySQL with SQOOP and listing the databases
+
+sqoop list-databases --connect jdbc:mysql://localhost/ --username root --password cloudera
+
+# Now showing the existing tables in retail_db
+
+sqoop list-tables --connect jdbc:mysql://localhost/retail_db --username root --password cloudera
+
+# Creating the retail_db database in Hive
+
+create database retail_db;
+
+# Using now SQOOP to import all tables from retail_db (MySQL)
+# to retail_db (Hive)
+
+sqoop import-all-tables --connect jdbc:mysql://localhost/retail_db --username root --password cloudera --hive-import --hive-overwrite --hive-database retail_db --create-hive-table --m 1
+
+# Comparing the count from order_items in Hive with the one in MySQL
+
+select count(*) from retail_db.order_items;
+
+# Inserting a new data into categories table
+
+insert into categories values (59, 8, "Test");
+
+# Using the SQOOP command to incremental load
+
+sqoop import --connect jdbc:mysql://localhost/retail_db --username root --password cloudera --hive-import --hive-database retail_db --check-column category_id --incremental append --last-value 58 --table categories 
+
+# Checking if new line appeared in Hive
+
+select * from retail_db.categories;
 
