@@ -274,3 +274,100 @@ on (loc.idveiculo = veic.idveiculo);
 # Checking files partitionated using HDFS
 
 hdfs dfs -ls /user/hive/warehouse/locacao.db/locacaoanalitico
+
+
+# Creating a table for bucketing
+
+create table locacaoanalitico2 (
+	cliente string,
+	despachante string,
+	datalocacao date,
+	total double,
+	veiculo string
+)
+clustered by (veiculo) into 4 buckets;
+
+# Inserting into locacaoanalitico2 (bucketing)
+
+insert overwrite table locacao.locacaoanalitico2
+select cli.nome
+	   , des.nome
+	   , loc.datalocacao
+	   , loc.total
+	   , veic.modelo
+from locacao loc
+join despachantes des 
+on (loc.iddespachante = des.iddespachante)
+join clientes cli 
+on (loc.idcliente = cli.idcliente)
+join veiculos veic
+on (loc.idveiculo = veic.idveiculo);
+
+# Creating a temporary table
+
+create temporary table temp_des as select * from despachantes;
+
+# Checking data from the temp table
+
+select * from temp_des;
+
+# Disconnecting from hive
+
+!q
+
+# Re-entering into Hive through Beeline
+
+beeline
+
+!connect jdbc:hive2://
+
+# Trying to check again the temp table
+
+use locacao;
+
+select * from temp_des;
+
+# Creating a view
+
+create view if not exists locacaoview as
+select cli.nome as cliente
+	   , des.nome as despachante
+	   , loc.datalocacao as data
+	   , loc.total as total
+	   , veic.modelo as veiculo
+from locacao loc
+join despachantes des 
+on (loc.iddespachante = des.iddespachante)
+join clientes cli 
+on (loc.idcliente = cli.idcliente)
+join veiculos veic
+on (loc.idveiculo = veic.idveiculo);
+
+# Querying against the view created
+
+select * from locacaoview;
+
+# Creating table configured for ORC format file
+
+create external table clientes_orc (
+	idcliente int,
+	cnh string,
+	cpf string,
+	validadecnh date,
+	nome string,
+	datacadastro date,
+	datanascimento date,
+	telefone string,
+	status string
+)
+stored as orc;
+
+# Ingesting data into clientes_orc
+
+insert overwrite table clientes_orc select * from clientes;
+
+# Consulting the new ORC table
+
+select * from clientes_orc;
+
+

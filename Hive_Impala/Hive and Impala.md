@@ -610,6 +610,282 @@ select * from retail_db.categories;
 
 The image above shows that the procedure that imported the new data (item 59, which appears as a test) was successful.
 
+# Saving in disk using HDFS
+
+It is possible to save Hive queries in the HDFS system. Let's see here some commands (the default and a conversion into a desired format).
+
+```shell
+# Saving using HDFS
+
+insert overwrite directory '/user/cloudera/locacao2' select * from locacao.locacao;
+```
+![hdfs_insert_locacao2_default](https://github.com/Shamslux/DataEngineering/assets/79280485/15fdf492-a62f-46b5-a6a1-8c1a070d263f)
+
+## Default method
+
+![default_list](https://github.com/Shamslux/DataEngineering/assets/79280485/b10efa10-33ac-4b63-9ec6-bd233f33ed40)
+
+By default, HDFS saves the Hive query in the desired directory. It can create multiple serialized JSON files as needed, depending on the data size. Since everything is very small and simple in our example for educational purposes, only one file has been created. The serialized JSON is not readable (i.e., if we use a -cat, it won't be correctly readable). To address this, let's try some conversions of the file into other formats.
+
+## Saving as CSV format
+
+```shell
+# Saving as CSV
+
+insert overwrite directory '/user/cloudera/locacao2' 
+row format delimited fields terminated by ','
+select * from locacao.locacao;
+```
+
+![csv_list](https://github.com/Shamslux/DataEngineering/assets/79280485/3ba2a2a6-15e4-4909-baba-013dcc29a7fe)
+
+Now we can access the file using -cat. Note: If you want to save it locally, outside of HDFS, it's also possible; just pass the 'local' parameter and change the directory to a local directory.
+
+![csv_hdfs_cat](https://github.com/Shamslux/DataEngineering/assets/79280485/10133724-f17d-4984-acf4-d2acc3d75403)
+
+## Saving as Parquet format
+
+```shell
+# Saving as Parquet
+
+insert overwrite directory '/user/cloudera/locacao2' 
+row format delimited fields terminated by ','
+stored as parquet
+select * from teste.locacao3;
+```
+Note: To save as Parquet, I needed to create a third table called "locacao" in the test database. This table was created with "cast()" on date columns. An error was occurring, stating that Parquet was not accepting the date format, so I had to convert it. I recommend doing the same if you're trying to reproduce what I'm doing in the repository, although I don't know which version of the Cloudera machine you will be using.
+
+![parquet_hdfs_result](https://github.com/Shamslux/DataEngineering/assets/79280485/16c2edb8-5f30-47e1-9f22-ac905ccebc88)
+
+Although it's not readable using -cat, I still included a screenshot of the terminal just to show that the file was indeed saved correctly as Parquet, as can be seen highlighted by the red rectangle.
+
+# Partitioning and Bucketing
+
+## Partitions
+
+- Divide tables horizontally based on logical and physical partitions.
+
+- A logical partition is a folder in HDFS.
+
+   - For example, it's common to divide files by date, categories, or a region to keep everything logically organized. Note: in the course, the instructor will provide an example of partitioning using vehicle categories.
+
+- The goal of partitioning is query optimization, as the partition is physically separate.
+    - For example, when partitioning by vehicles, querying a specific model is more optimized.
+
+- There are no benefits for simple queries.
+
+## Bucketing
+
+- Partitions vary with the data!
+   - This leads to a potential problem: thousands or millions of partitions!
+
+- Bucketing doesn't change with the data.
+    - It divides physically in a balanced way into buckets.
+    - If there are 300 partitions and 50 different data, for example, 250 will remain empty.
+    - Great for tables that operate in joins.
+
+## Resuming Partitions and Buckets
+
+In summary, partitioning is a technique that organizes data based on specific column values to facilitate the filtering of relevant data in queries, while bucketing is a technique that divides data into uniform buckets to enhance parallelism and data distribution in files. Both techniques can be used to optimize query performance in Hive, depending on the specific requirements of your use case.
+
+## Creating a partitioned table
+
+```sql
+-- Creating table for partitioning
+
+create table locacao.locacaoanalitico (
+	cliente string, 
+	despachante string, 
+	datalocacao date,
+	total double
+	) 
+partitioned by (veiculo string);
+```
+![creating_locacaoanalitico](https://github.com/Shamslux/DataEngineering/assets/79280485/ed0dd547-cc1b-48ec-8cfc-2c68e32b77df)
+
+## Preparing environment for partitioning and bucketing
+
+```shell
+set hive.exec.dynamic.partition.mode;
+set hive.exec.dynamic.partition.mode=nonstrict;
+```
+
+## Inserting data into the new column with partitioning
+
+```sql
+insert overwrite table locacao.locacaoanalitico partition (veiculo)
+select cli.nome
+	   , des.nome
+	   , loc.datalocacao
+	   , loc.total
+	   , veic.modelo
+from locacao loc
+join despachantes des 
+on (loc.iddespachante = des.iddespachante)
+join clientes cli 
+on (loc.idcliente = cli.idcliente)
+join veiculos veic
+on (loc.idveiculo = veic.idveiculo);
+```
+
+## Checking files partitionated using HDFS
+
+```shell
+hdfs dfs -ls /user/hive/warehouse/locacao.db/locacaoanalitico
+```
+
+![partitions_hdfs_result](https://github.com/Shamslux/DataEngineering/assets/79280485/55288251-a7da-4db9-ae69-47872fab4943)
+
+## Creating a table for bucketing
+
+```sql
+create table locacaoanalitico2 (
+	cliente string,
+	despachante string,
+	datalocacao date,
+	total double,
+	veiculo string
+)
+clustered by (veiculo) into 4 buckets;
+```
+
+## Inserting into locacaoanalitico2 (bucketing)
+
+```sql
+insert overwrite table locacao.locacaoanalitico2
+select cli.nome
+	   , des.nome
+	   , loc.datalocacao
+	   , loc.total
+	   , veic.modelo
+from locacao loc
+join despachantes des 
+on (loc.iddespachante = des.iddespachante)
+join clientes cli 
+on (loc.idcliente = cli.idcliente)
+join veiculos veic
+on (loc.idveiculo = veic.idveiculo);
+```
+# Temporary tables
+- A temporary table only exists while the system session is in progress, so when the session ends, it is deleted.
+  
+-  A temporary table can be a good resource to be used for data transformation from one structure to another.
+
+# Views
+
+- Allows more complex queries to be made easier for non-technical users (e.g., instead of a query with multiple joins, a non-technical user can access a view that already has the code ready and, from there, simply use a simple query against that view).
+
+**Note: Of course, views in relational databases go beyond that, but this was the simple explanation given by the instructor for the course in question.**
+
+## Creating a temporary table
+
+```sql
+create temporary table temp_des as select * from despachantes;
+```
+
+## Checking data from the temp table
+
+```sql
+select * from temp_des;
+```
+![temp_des_result](https://github.com/Shamslux/DataEngineering/assets/79280485/1580530d-3d3f-42d3-933b-dffa4611934d)
+
+## Disconnecting from hive
+
+```shell
+!q
+```
+
+## Re-entering into Hive through Beeline
+
+```shell
+beeline
+
+!connect jdbc:hive2://
+```
+
+When a user exits the Hive session, the temporary tables created in that session are deleted. This means that if a user tries to query a temporary table in a new session, an error will be returned.
+
+![temp_des_error](https://github.com/Shamslux/DataEngineering/assets/79280485/1a153d92-e93c-42e4-80d0-07c92ff202cd)
+
+## Creating a view
+
+```sql
+create view if not exists locacaoview as
+select cli.nome as cliente
+	   , des.nome as despachante
+	   , loc.datalocacao as data
+	   , loc.total as total
+	   , veic.modelo as veiculo
+from locacao loc
+join despachantes des 
+on (loc.iddespachante = des.iddespachante)
+join clientes cli 
+on (loc.idcliente = cli.idcliente)
+join veiculos veic
+on (loc.idveiculo = veic.idveiculo);
+```
+
+## Querying against the view created
+
+```sql
+select * from locacaoview;
+```
+
+![view_result](https://github.com/Shamslux/DataEngineering/assets/79280485/e30269a2-a491-49fc-852e-826d006779fd)
+
+# ORC
+
+ORC stands for Optimized Row Columnar, a file format that is becoming the standard for structured data in this ecosystem.
+
+Some features of ORC are:
+
+- It is a compressed binary format;
+- It is columnar-oriented;
+- It can be a file with up to 75% smaller size reduction;
+- It is optimized for analysis;
+- It is becoming the standard in Hadoop Data Lakes.
+
+![ocr_amaral_explanation_line_column](https://github.com/Shamslux/DataEngineering/assets/79280485/5a1d13a3-47f0-4ef3-8112-0223b6feb203)
+
+In the image above, we can see how there is a greater tendency for data repetition in the columns, so data compression will work better because it is column-oriented and not row-oriented.
+
+In row-oriented relational databases, even if your query selects a few columns, it will first load all the data, since they are physically in the same file.
+
+In the case of columnar orientation, each column is stored independently on disk, which gives an advantage when querying, so if two columns are selected, only those two will be loaded.
+
+To enable Hive to handle ORC format, you need to use appropriate settings. These settings are done at the server level or at the table level.
+
+By default, Hive saves files in text file format.
+
+The default compression is ZLIB, but it can be changed to NONE, ZLIB, and SNAPPY.
+
+Indexes are created by default in ORC files, but this setting can also be changed to deny index creation.
+
+## Creating table configured for ORC format file
+
+```sql
+create external table clientes_orc (
+	idcliente int,
+	cnh string,
+	cpf string,
+	validadecnh date,
+	nome string,
+	datacadastro date,
+	datanascimento date,
+	telefone string,
+	status string
+)
+stored as orc;
+```
+
+The query above will create an external table that will be configured to be stored as ORC.
+
+
+
+
+
+
 
 
 
