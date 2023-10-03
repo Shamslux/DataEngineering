@@ -736,6 +736,103 @@ hdfs dfs -ls /user/hive/warehouse/locacao.db/locacaoanalitico
 
 ![partitions_hdfs_result](https://github.com/Shamslux/DataEngineering/assets/79280485/55288251-a7da-4db9-ae69-47872fab4943)
 
+## Creating a table for bucketing
+
+```sql
+create table locacaoanalitico2 (
+	cliente string,
+	despachante string,
+	datalocacao date,
+	total double,
+	veiculo string
+)
+clustered by (veiculo) into 4 buckets;
+```
+
+## Inserting into locacaoanalitico2 (bucketing)
+
+```sql
+insert overwrite table locacao.locacaoanalitico2
+select cli.nome
+	   , des.nome
+	   , loc.datalocacao
+	   , loc.total
+	   , veic.modelo
+from locacao loc
+join despachantes des 
+on (loc.iddespachante = des.iddespachante)
+join clientes cli 
+on (loc.idcliente = cli.idcliente)
+join veiculos veic
+on (loc.idveiculo = veic.idveiculo);
+```
+# Temporary tables
+- A temporary table only exists while the system session is in progress, so when the session ends, it is deleted.
+  
+-  A temporary table can be a good resource to be used for data transformation from one structure to another.
+
+# Views
+
+- Allows more complex queries to be made easier for non-technical users (e.g., instead of a query with multiple joins, a non-technical user can access a view that already has the code ready and, from there, simply use a simple query against that view).
+
+**Note: Of course, views in relational databases go beyond that, but this was the simple explanation given by the instructor for the course in question.**
+
+## Creating a temporary table
+
+```sql
+create temporary table temp_des as select * from despachantes;
+```
+
+## Checking data from the temp table
+
+```sql
+select * from temp_des;
+```
+![temp_des_result](https://github.com/Shamslux/DataEngineering/assets/79280485/1580530d-3d3f-42d3-933b-dffa4611934d)
+
+## Disconnecting from hive
+
+```shell
+!q
+```
+
+## Re-entering into Hive through Beeline
+
+```shell
+beeline
+
+!connect jdbc:hive2://
+```
+
+When a user exits the Hive session, the temporary tables created in that session are deleted. This means that if a user tries to query a temporary table in a new session, an error will be returned.
+
+![temp_des_error](https://github.com/Shamslux/DataEngineering/assets/79280485/1a153d92-e93c-42e4-80d0-07c92ff202cd)
+
+## Creating a view
+
+```sql
+create view if not exists locacaoview as
+select cli.nome as cliente
+	   , des.nome as despachante
+	   , loc.datalocacao as data
+	   , loc.total as total
+	   , veic.modelo as veiculo
+from locacao loc
+join despachantes des 
+on (loc.iddespachante = des.iddespachante)
+join clientes cli 
+on (loc.idcliente = cli.idcliente)
+join veiculos veic
+on (loc.idveiculo = veic.idveiculo);
+```
+
+## Querying against the view created
+
+```sql
+select * from locacaoview;
+```
+
+![view_result](https://github.com/Shamslux/DataEngineering/assets/79280485/e30269a2-a491-49fc-852e-826d006779fd)
 
 
 
