@@ -834,9 +834,52 @@ select * from locacaoview;
 
 ![view_result](https://github.com/Shamslux/DataEngineering/assets/79280485/e30269a2-a491-49fc-852e-826d006779fd)
 
+# ORC
 
+ORC stands for Optimized Row Columnar, a file format that is becoming the standard for structured data in this ecosystem.
 
+Some features of ORC are:
 
+- It is a compressed binary format;
+- It is columnar-oriented;
+- It can be a file with up to 75% smaller size reduction;
+- It is optimized for analysis;
+- It is becoming the standard in Hadoop Data Lakes.
+
+![ocr_amaral_explanation_line_column](https://github.com/Shamslux/DataEngineering/assets/79280485/5a1d13a3-47f0-4ef3-8112-0223b6feb203)
+
+In the image above, we can see how there is a greater tendency for data repetition in the columns, so data compression will work better because it is column-oriented and not row-oriented.
+
+In row-oriented relational databases, even if your query selects a few columns, it will first load all the data, since they are physically in the same file.
+
+In the case of columnar orientation, each column is stored independently on disk, which gives an advantage when querying, so if two columns are selected, only those two will be loaded.
+
+To enable Hive to handle ORC format, you need to use appropriate settings. These settings are done at the server level or at the table level.
+
+By default, Hive saves files in text file format.
+
+The default compression is ZLIB, but it can be changed to NONE, ZLIB, and SNAPPY.
+
+Indexes are created by default in ORC files, but this setting can also be changed to deny index creation.
+
+## Creating table configured for ORC format file
+
+```sql
+create external table clientes_orc (
+	idcliente int,
+	cnh string,
+	cpf string,
+	validadecnh date,
+	nome string,
+	datacadastro date,
+	datanascimento date,
+	telefone string,
+	status string
+)
+stored as orc;
+```
+
+The query above will create an external table that will be configured to be stored as ORC.
 
 
 
