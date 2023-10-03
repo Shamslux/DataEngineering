@@ -275,6 +275,7 @@ on (loc.idveiculo = veic.idveiculo);
 
 hdfs dfs -ls /user/hive/warehouse/locacao.db/locacaoanalitico
 
+
 # Creating a table for bucketing
 
 create table locacaoanalitico2 (
@@ -368,3 +369,5 @@ insert overwrite table clientes_orc select * from clientes;
 # Consulting the new ORC table
 
 select * from clientes_orc;
+
+
