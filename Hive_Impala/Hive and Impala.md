@@ -881,10 +881,73 @@ stored as orc;
 
 The query above will create an external table that will be configured to be stored as ORC.
 
+# Support for transactions in Hive.
 
+- Hive operates on HDFS, which means that updating data requires involvement of multiple nodes.
 
+- By default, Hive does not support UPDATE and DELETE operations, partly due to the nature of Data Warehousing where these actions are not commonly performed routinely.
 
+- It is possible to change the transaction settings in Hive.
 
+- In order for a table to accept UPDATE and DELETE transactions, the following requirements must be met:
+
+    - Manageable (cannot be external)
+    - Part of the cluster
+    - Stored in ORC format
+    - Possesses transactional property
+
+## Checking how is Hive support for transactions
+
+```shell
+set hive.support.concurrency;
+```
+![hive_support_concurrency_result](https://github.com/Shamslux/DataEngineering/assets/79280485/13ae00e1-5c75-408c-85a6-dca9289c21c2)
+
+## Editing Hive settings for give support to transactions
+
+```shell
+sudo gedit /etc/hive/conf.dist/hive-site.xml
+```
+## Inserting this below information in the tag <configuration>
+
+```xml
+<property>
+		<name>hive.support.concurrency</name>
+		<value>true</value></property>
+<property>
+		<name>hive.txn.manager</name>
+		<value>org.apache.hadoop.hive.ql.lockmgr.DbTxnManager</value>
+</property><property>
+		<name>hive.compactor.initiator.on</name>
+		<value>true</value>
+</property>
+<property>
+		<name>hive.compactor.worker.threads</name>
+		<value>1</value>
+</property>
+```
+![property_result](https://github.com/Shamslux/DataEngineering/assets/79280485/a0ae1e67-ec14-4d2f-8091-81f8742d6a43)
+
+## Stopping Hive service (for re-initialization)
+```shell
+sudo service hive-server2 stop
+```
+## Starting Hive service (for re-initialization)
+```
+sudo service hive-server2 start
+```
+## Quitting Beeline
+```shell
+!q
+```
+## Checking how is Hive support for transactions (again)
+```shell
+set hive.support.concurrency;
+```
+
+![hive_support_concurrency_new_result](https://github.com/Shamslux/DataEngineering/assets/79280485/c78c1d2f-45bb-4962-b6c5-ca0f00867648)
+
+Now we are able to perform transactions involving UPDATE and DELETE, which were not natively supported by Hive before.
 
 
 
