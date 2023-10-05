@@ -370,4 +370,44 @@ insert overwrite table clientes_orc select * from clientes;
 
 select * from clientes_orc;
 
+# Checking how is Hive support for transactions
+
+set hive.support.concurrency;
+
+# Editing Hive settings for give support to transactions
+
+sudo gedit /etc/hive/conf.dist/hive-site.xml
+
+# Inserting this below information in the tag <configuration>
+
+<property>
+		<name>hive.support.concurrency</name>
+		<value>true</value></property>
+<property>
+		<name>hive.txn.manager</name>
+		<value>org.apache.hadoop.hive.ql.lockmgr.DbTxnManager</value>
+</property><property>
+		<name>hive.compactor.initiator.on</name>
+		<value>true</value>
+</property>
+<property>
+		<name>hive.compactor.worker.threads</name>
+		<value>1</value>
+</property>
+
+# Stopping Hive service (for re-initialization)
+
+sudo service hive-server2 stop
+
+# Starting Hive service (for re-initialization)
+
+sudo service hive-server2 start
+
+# Quitting Beeline
+
+!q
+
+# Checking how is Hive support for transactions (again)
+
+set hive.support.concurrency;
 
