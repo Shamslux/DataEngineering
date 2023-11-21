@@ -949,7 +949,76 @@ set hive.support.concurrency;
 
 Now we are able to perform transactions involving UPDATE and DELETE, which were not natively supported by Hive before.
 
+# Other optimization techniques
 
+We will look at 3 more optimization techniques, namely:
 
+- Vectorization
+- Cost-Based Optimization
+- Engine (Spark)
+
+## Vectorization
+
+Vectorization reduces the use of CPU in queries, making query execution faster. By default, MapReduce processes one line
+at a time, but with vectorization, it processes 1024 lines in blocks.
+
+For vectorization to work, the format must be ORC, and the configuration parameter must be used (see further in the
+document).
+
+Here, a test involving a join of two tables in ORC format will be performed. Since the data is very small, just for
+testing purposes, little difference will be observed. However, it should be kept in mind that this optimization becomes
+significant when dealing with a massive volume of data in real-world scenarios.
+
+### Creating new table locacao_orc
+```sql
+create external table locacao_orc (
+	idlocacao int, 
+	idcliente int,
+	iddespachante int,
+	idveiculo int,
+	datalocacao date,
+	dataentrega date,
+	total double
+) stored as orc;
+```
+
+### Inserting data into the new locacao_orc table
+```sql
+insert overwrite table locacao_orc  select * from locacao;
+```
+### Preparing query with join to test query speed
+```sql
+select loc.datalocacao,
+	   loc.total,
+	   cli.nome
+from locacao_orc loc
+join clientes_orc cli
+ on (loc.idcliente = cli.idcliente);
+```
+![result_before_vectorization](https://github.com/Shamslux/DataEngineering/assets/79280485/ceab6ba9-13bd-49d1-917b-a3216a39761c)
+
+The image above shows the result of the query without vectorization enabled. Below, we will start the process of
+changing the parameter to activate vectorization and then execute the same query again to check the decrease in time.
+
+### Checking if vectorization is enabled or not
+
+```shell
+set hive.vectorized.execution.enabled;
+```
+
+![checking_vectorization_enabled_or_not](https://github.com/Shamslux/DataEngineering/assets/79280485/e036ee39-3768-479d-a013-96ae83130086)
+
+### Changing vectorization to "enabled" for testing
+```shell
+set hive.vectorized.execution.enabled = true;
+```
+
+![vectorization_now_enabled](https://github.com/Shamslux/DataEngineering/assets/79280485/33352869-aaaa-4817-9e05-1789a60c4ed3)
+
+![query_after_vectorization](https://github.com/Shamslux/DataEngineering/assets/79280485/e85228da-1aee-4c2e-9251-3735e7642f1a)
+
+As mentioned initially, the change would not be very significant because we are using a small database for testing
+purposes. However, when we consider real-world scenarios dealing with Big Data, this difference can be crucial for
+handling data efficiently.
 
 
