@@ -411,3 +411,71 @@ sudo service hive-server2 start
 
 set hive.support.concurrency;
 
+# Creating new table locacao_orc
+
+create external table locacao_orc (
+	idlocacao int, 
+	idcliente int,
+	iddespachante int,
+	idveiculo int,
+	datalocacao date,
+	dataentrega date,
+	total double
+) stored as orc;
+
+# Inserting data into the new locacao_orc table
+
+insert overwrite table locacao_orc  select * from locacao;
+
+# Preparing query with join to test query speed
+
+select loc.datalocacao,
+	   loc.total,
+	   cli.nome
+from locacao_orc loc
+join clientes_orc cli
+ on (loc.idcliente = cli.idcliente);
+
+ # Checking if vectorization is enabled or not
+
+ set hive.vectorized.execution.enabled;
+
+# Changing vectorization to "enabled" for testing
+
+set hive.vectorized.execution.enabled = true;
+
+# Query for getting a sum, this query will be used for the CBO performance test
+
+select sum(total) from locacao_orc;
+
+# Adjusting the parameters
+
+set hive.cbo.enable=true;
+set hive.compute.query.using.stats=true;
+set hive.stats.fetch.column.stats=true;
+set hive.stats.fetch.partition=true;
+
+# Configuring the desired table for computing statistics
+
+analyze table locacao_orc compute statistics;
+
+# Checking current engine
+
+set hive.execution.engine;
+
+# Using again this query for testing
+
+select loc.datalocacao,
+	   loc.total,
+	   cli.nome
+from locacao_orc loc
+join clientes_orc cli
+ on (loc.idcliente = cli.idcliente);
+
+
+# Changing the engine for this query
+
+ set hive.execution.engine=spark;
+
+
+
