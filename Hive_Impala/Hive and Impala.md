@@ -1054,6 +1054,45 @@ Now we can see that, after changing the parameters, we have a faster query resul
 difference because it is a small amount of test and study data, but in real-world scenarios this would make a bigger
 difference.
 
+## Engine (Spark)
+
+The default engine for Hive is MapReduce. The advantage of this engine is its ability to handle large volumes of data,
+however, there is a high latency, because its process is in batch, divided into mapping, shuffle and execution.
+
+Tez (needs to be installed in this Cloudera version, it will not be used) and Spark are other possible engines.
+
+Spark was not made for Hive, but can be used in Hive. It is an important tool in the Hadoop ecosystem. It is capable of
+processing data in real time, is compatible with MapReduce, processes data in memory, on disk, or in a hybrid way
+(memory and disk), can run in a cluster, and is fully Open Source.
+
+Spark can be used by updating parameters to run it in a query or adjusting on the server (which makes Spark always
+used).
+
+### Reusing the previous query for testing
+
+Using again this query for testing
+```sql
+select loc.datalocacao,
+	   loc.total,
+	   cli.nome
+from locacao_orc loc
+join clientes_orc cli
+ on (loc.idcliente = cli.idcliente);
+```
+
+![result_mr](https://github.com/Shamslux/DataEngineering/assets/79280485/bf797ae2-0c11-45ba-81c1-2dbb4b6c0dac)
+
+
+### Changing the engine for this query
+
+ set hive.execution.engine=spark;
+
+ ![result_spark](https://github.com/Shamslux/DataEngineering/assets/79280485/b406176f-0665-47c8-aadd-01ccabc3b5a1)
+
+It is possible to see that there was a good optimization of the query time using the Spark engine.
+
+ 
+
 
 
 
