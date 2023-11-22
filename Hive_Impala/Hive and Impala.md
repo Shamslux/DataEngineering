@@ -949,6 +949,195 @@ set hive.support.concurrency;
 
 Now we are able to perform transactions involving UPDATE and DELETE, which were not natively supported by Hive before.
 
+# Other optimization techniques
+
+We will look at 3 more optimization techniques, namely:
+
+- Vectorization
+- Cost-Based Optimization
+- Engine (Spark)
+
+## Vectorization
+
+Vectorization reduces the use of CPU in queries, making query execution faster. By default, MapReduce processes one line
+at a time, but with vectorization, it processes 1024 lines in blocks.
+
+For vectorization to work, the format must be ORC, and the configuration parameter must be used (see further in the
+document).
+
+Here, a test involving a join of two tables in ORC format will be performed. Since the data is very small, just for
+testing purposes, little difference will be observed. However, it should be kept in mind that this optimization becomes
+significant when dealing with a massive volume of data in real-world scenarios.
+
+### Creating new table locacao_orc
+```sql
+create external table locacao_orc (
+	idlocacao int, 
+	idcliente int,
+	iddespachante int,
+	idveiculo int,
+	datalocacao date,
+	dataentrega date,
+	total double
+) stored as orc;
+```
+
+### Inserting data into the new locacao_orc table
+```sql
+insert overwrite table locacao_orc  select * from locacao;
+```
+### Preparing query with join to test query speed
+```sql
+select loc.datalocacao,
+	   loc.total,
+	   cli.nome
+from locacao_orc loc
+join clientes_orc cli
+ on (loc.idcliente = cli.idcliente);
+```
+![result_before_vectorization](https://github.com/Shamslux/DataEngineering/assets/79280485/ceab6ba9-13bd-49d1-917b-a3216a39761c)
+
+The image above shows the result of the query without vectorization enabled. Below, we will start the process of
+changing the parameter to activate vectorization and then execute the same query again to check the decrease in time.
+
+### Checking if vectorization is enabled or not
+
+```shell
+set hive.vectorized.execution.enabled;
+```
+
+![checking_vectorization_enabled_or_not](https://github.com/Shamslux/DataEngineering/assets/79280485/e036ee39-3768-479d-a013-96ae83130086)
+
+### Changing vectorization to "enabled" for testing
+```shell
+set hive.vectorized.execution.enabled = true;
+```
+
+![vectorization_now_enabled](https://github.com/Shamslux/DataEngineering/assets/79280485/33352869-aaaa-4817-9e05-1789a60c4ed3)
+
+![query_after_vectorization](https://github.com/Shamslux/DataEngineering/assets/79280485/e85228da-1aee-4c2e-9251-3735e7642f1a)
+
+As mentioned initially, the change would not be very significant because we are using a small database for testing
+purposes. However, when we consider real-world scenarios dealing with Big Data, this difference can be crucial for
+handling data efficiently.
+
+## Cost Base Otimization
+
+CBO is a way to collect statistics to improve the performance of queries.
+
+To use it, you need to adjust parameters and, if tables have already been created, you need to force the collection of
+these statistics by passing specific commands.
+
+However, it is important to be aware of the trade-off when using this feature, as it can generate a significant overhead
+from data collection after activation. This should be taken into account in the advantages and disadvantages for the use
+case.
+
+### Query for getting a sum, this query will be used for the CBO performance test
+```sql
+select sum(total) from locacao_orc;
+```
+![before_cbo](https://github.com/Shamslux/DataEngineering/assets/79280485/a185a37a-761f-4b99-95d1-4ecee082e3a5)
+
+The image above is the query executed before the CBO parameters were activated.
+
+### Adjusting the parameters
+```shell
+set hive.cbo.enable=true;
+set hive.compute.query.using.stats=true;
+set hive.stats.fetch.column.stats=true;
+set hive.stats.fetch.partition=true;
+```
+
+![after_cbo](https://github.com/Shamslux/DataEngineering/assets/79280485/39e92f0f-ef62-4d3f-804a-d013d9cc6630)
+
+Now we can see that, after changing the parameters, we have a faster query result. Again, note that we had a not so high
+difference because it is a small amount of test and study data, but in real-world scenarios this would make a bigger
+difference.
+
+## Engine (Spark)
+
+The default engine for Hive is MapReduce. The advantage of this engine is its ability to handle large volumes of data,
+however, there is a high latency, because its process is in batch, divided into mapping, shuffle and execution.
+
+Tez (needs to be installed in this Cloudera version, it will not be used) and Spark are other possible engines.
+
+Spark was not made for Hive, but can be used in Hive. It is an important tool in the Hadoop ecosystem. It is capable of
+processing data in real time, is compatible with MapReduce, processes data in memory, on disk, or in a hybrid way
+(memory and disk), can run in a cluster, and is fully Open Source.
+
+Spark can be used by updating parameters to run it in a query or adjusting on the server (which makes Spark always
+used).
+
+### Reusing the previous query for testing
+
+Using again this query for testing
+```sql
+select loc.datalocacao,
+	   loc.total,
+	   cli.nome
+from locacao_orc loc
+join clientes_orc cli
+ on (loc.idcliente = cli.idcliente);
+```
+
+![result_mr](https://github.com/Shamslux/DataEngineering/assets/79280485/bf797ae2-0c11-45ba-81c1-2dbb4b6c0dac)
+
+
+### Changing the engine for this query
+
+ set hive.execution.engine=spark;
+
+ ![result_spark](https://github.com/Shamslux/DataEngineering/assets/79280485/b406176f-0665-47c8-aadd-01ccabc3b5a1)
+
+It is possible to see that there was a good optimization of the query time using the Spark engine.
+
+# Impala
+
+Hive has high latency and operates with batch processing. One alternative for SQL over Hadoop, with support for HDFS, is Cloudera's Impala. It does not use MapReduce but has its own engine (MPP - Massive Parallel Processing) that employs parallel processing. Its latency is lower, resulting in a shorter response time.
+
+Unlike most Hadoop products, Impala was developed in C++ and is compatible with most Hadoop data formats.
+
+Its disadvantages include:
+
+- Does not support UPDATE
+- Lacks fault tolerance
+- Does not support complex types, except for arrays starting from CDH 5.5
+
+Impala also has some compatibility with Hive, except for certain data formats and functions.
+
+Below, we will see the connection to the Impala shell and the visualization of Hive databases that can be accessed by Impala.
+
+**Note: The course covers a series of queries that are quite similar to what was taught in the HiveQL queries. Therefore, I will skip the description of this part in this summary.**
+
+```shell
+impala-shell
+```
+
+![impala](https://github.com/Shamslux/DataEngineering/assets/79280485/5477cb51-d173-4cbc-8f3a-0a5f97041835)
+
+# Hue
+
+Hue is a tool that comes with the Cloudera virtual machine. It allows you to query an HDFS file, can assist in running
+jobs, executing scripts, and more. It provides a more user-friendly visual approach and is used in a web browser.
+
+Within the course objectives, I learned to navigate and generally use queries in Hive and Impala, as they were the main
+tools covered in the course.
+
+![hue_loggin_page](https://github.com/Shamslux/DataEngineering/assets/79280485/7be91131-8827-4ee5-95cb-08d682a5450c)
+
+![hue_basic_impala_interface](https://github.com/Shamslux/DataEngineering/assets/79280485/f5675494-9d04-4112-a72c-e2e5dbc31c90)
+
+![hue_selecting_editor](https://github.com/Shamslux/DataEngineering/assets/79280485/5b7297ce-8f7c-4ddb-8a25-0c6246c2a74d)
+
+Here it is possible to select the desired editor.
+
+![hue_hive_basic_query](https://github.com/Shamslux/DataEngineering/assets/79280485/3a6cb420-f3ae-4c52-904d-d1c4aa7d957e)
+
+Above a simple query using Hive editor.
+
+**Note: I will not keep showing too much about Hue since I already worked with this tool while working in a project at Accenture.**
+
+
 
 
 
