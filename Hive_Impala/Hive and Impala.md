@@ -1115,6 +1115,28 @@ impala-shell
 
 ![impala](https://github.com/Shamslux/DataEngineering/assets/79280485/5477cb51-d173-4cbc-8f3a-0a5f97041835)
 
+# Hue
+
+Hue is a tool that comes with the Cloudera virtual machine. It allows you to query an HDFS file, can assist in running
+jobs, executing scripts, and more. It provides a more user-friendly visual approach and is used in a web browser.
+
+Within the course objectives, I learned to navigate and generally use queries in Hive and Impala, as they were the main
+tools covered in the course.
+
+![hue_loggin_page](https://github.com/Shamslux/DataEngineering/assets/79280485/7be91131-8827-4ee5-95cb-08d682a5450c)
+
+![hue_basic_impala_interface](https://github.com/Shamslux/DataEngineering/assets/79280485/f5675494-9d04-4112-a72c-e2e5dbc31c90)
+
+![hue_selecting_editor](https://github.com/Shamslux/DataEngineering/assets/79280485/5b7297ce-8f7c-4ddb-8a25-0c6246c2a74d)
+
+Here it is possible to select the desired editor.
+
+![hue_hive_basic_query](https://github.com/Shamslux/DataEngineering/assets/79280485/3a6cb420-f3ae-4c52-904d-d1c4aa7d957e)
+
+Above a simple query using Hive editor.
+
+**Note: I will not keep showing too much about Hue since I already worked with this tool while working in a project at Accenture.**
+
 
 
 
