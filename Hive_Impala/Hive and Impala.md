@@ -1021,4 +1021,39 @@ As mentioned initially, the change would not be very significant because we are 
 purposes. However, when we consider real-world scenarios dealing with Big Data, this difference can be crucial for
 handling data efficiently.
 
+## Cost Base Otimization
+
+CBO is a way to collect statistics to improve the performance of queries.
+
+To use it, you need to adjust parameters and, if tables have already been created, you need to force the collection of
+these statistics by passing specific commands.
+
+However, it is important to be aware of the trade-off when using this feature, as it can generate a significant overhead
+from data collection after activation. This should be taken into account in the advantages and disadvantages for the use
+case.
+
+### Query for getting a sum, this query will be used for the CBO performance test
+```sql
+select sum(total) from locacao_orc;
+```
+![before_cbo](https://github.com/Shamslux/DataEngineering/assets/79280485/a185a37a-761f-4b99-95d1-4ecee082e3a5)
+
+The image above is the query executed before the CBO parameters were activated.
+
+### Adjusting the parameters
+```shell
+set hive.cbo.enable=true;
+set hive.compute.query.using.stats=true;
+set hive.stats.fetch.column.stats=true;
+set hive.stats.fetch.partition=true;
+```
+
+![after_cbo](https://github.com/Shamslux/DataEngineering/assets/79280485/39e92f0f-ef62-4d3f-804a-d013d9cc6630)
+
+Now we can see that, after changing the parameters, we have a faster query result. Again, note that we had a not so high
+difference because it is a small amount of test and study data, but in real-world scenarios this would make a bigger
+difference.
+
+
+
 
