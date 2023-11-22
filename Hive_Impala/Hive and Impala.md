@@ -1091,7 +1091,31 @@ join clientes_orc cli
 
 It is possible to see that there was a good optimization of the query time using the Spark engine.
 
- 
+# Impala
+
+Hive has high latency and operates with batch processing. One alternative for SQL over Hadoop, with support for HDFS, is Cloudera's Impala. It does not use MapReduce but has its own engine (MPP - Massive Parallel Processing) that employs parallel processing. Its latency is lower, resulting in a shorter response time.
+
+Unlike most Hadoop products, Impala was developed in C++ and is compatible with most Hadoop data formats.
+
+Its disadvantages include:
+
+- Does not support UPDATE
+- Lacks fault tolerance
+- Does not support complex types, except for arrays starting from CDH 5.5
+
+Impala also has some compatibility with Hive, except for certain data formats and functions.
+
+Below, we will see the connection to the Impala shell and the visualization of Hive databases that can be accessed by Impala.
+
+**Note: The course covers a series of queries that are quite similar to what was taught in the HiveQL queries. Therefore, I will skip the description of this part in this summary.**
+
+```shell
+impala-shell
+```
+
+![impala](https://github.com/Shamslux/DataEngineering/assets/79280485/5477cb51-d173-4cbc-8f3a-0a5f97041835)
+
+
 
 
 
