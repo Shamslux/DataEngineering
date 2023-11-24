@@ -124,4 +124,20 @@ Certainly, let's explore the core concepts of Apache Airflow: DAGs, Operators (A
    - Multi-node architectures are well-suited for production environments where reliability, scalability, and fault tolerance are crucial.
    - They can handle large, mission-critical workflows effectively.
 
+# How does it work?
+
+For the purpose of the course, a single-node architecture will be used, containing the Web Server, the DAGs folder, the
+Scheduler, the Metastore, and the Executor.
+
+This is how Apache Airflow works: When a DAG is placed in the DAGs folder, the Scheduler scans for new DAGs every 5
+minutes. When it finds a new Python file, it checks for any changes or errors. The Scheduler performs these checks on
+existing DAGs every 30 seconds.
+
+The Scheduler runs the DAG, creating the DagRun Object. With the DagRun Object in a "running" status, it takes the first
+task to be executed, turning it into a TaskInstance Object. This object has two statuses: "none" or "scheduled."
+
+The Scheduler then sends the TaskInstance Object to the Executor, where it enters the Executor Queue and gets a "Queued"
+status. The Executor creates a subprocess to run the task, which can result in success or failure.
+
+Finally, the Web Server updates its UI with the Metastore data about the execution statuses.
 
