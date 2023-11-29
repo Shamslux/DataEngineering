@@ -260,3 +260,29 @@ Ao decidir entre o streaming primeiro e a ingestão em lote, considere as seguin
 - Quais são os benefícios das previsões on-line e do treinamento contínuo ao implantar um modelo de ML?
 - Que impacto o processo de ingestão tem no sistema de origem ao obter dados de uma instância de produção ativa?
 - Embora o streaming primeiro possa parecer atraente, é essencial entender as vantagens e desvantagens e avaliar os requisitos específicos do seu caso de uso. Muitas estruturas de ingestão podem lidar com estilos de ingestão em lote e microlote. A ingestão em lote ainda é adequada para casos de uso comuns, como treinamento de modelos e relatórios semanais. Considere a adoção de streaming em tempo real verdadeiro somente quando você tiver um caso de uso de negócios que justifique as compensações contra o uso do lote.
+
+### Push vs Pull
+
+O trecho discute dois modelos principais de ingestão de dados: o modelo de push e o modelo de pull. No modelo de push,
+os dados são enviados de um sistema de origem para um sistema de destino, como um banco de dados, repositório de objetos
+ou sistema de arquivos. Em contraste, o modelo de pull envolve a recuperação de dados do sistema de origem. No entanto,
+a distinção entre esses dois modelos às vezes pode ser difusa, pois os dados podem ser tanto enviados quanto recuperados
+em diferentes estágios de um pipeline de dados.
+
+O processo de extração, transformação e carga (ETL) é mencionado como um exemplo de modelo de ingestão por pull. No ETL
+tradicional, os dados são extraídos de uma tabela de origem em um cronograma fixo, tornando-o um método baseado em pull.
+
+A Captura Contínua de Dados de Mudança (CDC) é outro exemplo discutido, onde as alterações em um banco de dados de
+origem são rastreadas. Um método envolve o envio de mensagens para uma fila sempre que uma linha do banco de dados é
+alterada, e o sistema de ingestão recupera essas mensagens. Outro método envolve o uso de registros binários para
+registrar as operações de commit no banco de dados, sendo que o sistema de ingestão lê esses registros sem interação
+direta com o banco de dados. Algumas versões do CDC em lote usam o padrão de pull, onde o sistema de ingestão consulta o
+banco de dados de origem para extrair linhas alteradas com base em carimbos de data/hora.
+
+O trecho também menciona a ingestão de streaming, onde os dados são enviados diretamente para um ponto de extremidade,
+contornando um banco de dados central. Essa abordagem é particularmente útil para lidar com dados de sensores da IoT e
+processamento em tempo real em aplicativos de software. Ela simplifica o processamento de dados e a personalização para
+análises posteriores, tornando-a vantajosa para engenheiros de dados.
+
+O trecho conclui mencionando que as melhores práticas e técnicas de ingestão serão discutidas com mais detalhes no
+Capítulo 7, com foco no estágio de transformação do ciclo de vida de engenharia de dados a seguir.
