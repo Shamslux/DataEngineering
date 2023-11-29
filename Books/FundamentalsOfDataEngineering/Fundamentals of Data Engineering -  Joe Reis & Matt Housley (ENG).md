@@ -25,6 +25,7 @@
     - [Batch Ingestion](#batch-ingestion)
     - [Streaming Ingestion](#streaming-ingestion)
     - [Key Considerations for Batch versus Streaming Ingestion](#key-considerations-for-batch-versus-streaming-ingestion)
+    - [Push vs Pull](#push-vs-pull)
 
 # Fundamentals of Data Engineering - Joe Reis & Matt Housley
 
@@ -311,5 +312,28 @@ When deciding between streaming-first and batch ingestion, consider the followin
 - What impact does the ingestion process have on the source system if getting data from a live production instance?
 - While streaming-first may seem appealing, it is essential to understand the trade-offs and evaluate the specific requirements of your use case. Many ingestion frameworks can handle both batch and micro-batch ingestion styles. Batch ingestion is still suitable for common use cases like model training and weekly reporting. Consider adopting true real-time streaming only when you have a business use case that justifies the trade-offs against using batch.
 
+### Push vs Pull
+
+The passage discusses two primary models of data ingestion: the push model and the pull model. In the push model, data
+is sent from a source system to a target system, such as a database, object store, or filesystem. In contrast, the pull
+model involves retrieving data from the source system. However, the distinction between these two models can sometimes
+be blurry, as data may be both pushed and pulled at different stages of a data pipeline.
+
+The extract, transform, load (ETL) process is mentioned as an example of a pull ingestion model. In traditional ETL,
+data is extracted from a source table on a fixed schedule, making it a pull-based approach.
+
+Continuous Change Data Capture (CDC) is another example discussed, where changes in a source database are tracked. One
+method involves pushing messages to a queue every time a database row is changed, and the ingestion system retrieves
+these messages. Another method involves using binary logs to record commits to the database, with the ingestion system
+reading these logs without direct interaction with the database. Some versions of batch CDC use the pull pattern, where
+the ingestion system queries the source database to pull changed rows based on timestamps.
+
+The passage also mentions streaming ingestion, where data is pushed directly to an endpoint, bypassing a backend
+database. This approach is particularly useful for handling data from IoT sensors and real-time processing in software
+applications. It simplifies data processing and customization for downstream analytics, making it advantageous for data
+engineers.
+
+The passage concludes by mentioning that ingestion best practices and techniques will be discussed in more detail in
+Chapter 7, with a focus on the transformation stage of the data engineering lifecycle to follow.
 
 
