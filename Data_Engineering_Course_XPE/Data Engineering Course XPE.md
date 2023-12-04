@@ -452,3 +452,63 @@ This overview of analysis is important because, as engineers, we will work on pr
 therefore, it is interesting to understand some of this perspective from the other side to better serve in our daily
 work.
 
+## Data Warehousing
+
+A Data Warehouse (DW) is a subject-oriented, integrated database (you can standardize data regardless of its source),
+containing historical data (a snapshot of data over a period of time) and is non-volatile (usually not updated, but
+rather new entries are inserted to show the data's history).
+
+It is a database that facilitates the execution of decision support queries (W. H. Inmon), providing a holistic view of
+the business from its operations, displaying information at appropriate levels and various levels of detail.
+
+The main goal of the DW is to optimize the processing of complex analytical queries.
+
+### Data Mart
+
+It is a sectoral view to address a specific subject (area) or different levels of summarization, meeting the information
+needs of a particular user community (INMON, 1992).
+
+![dw_data_marts](https://github.com/Shamslux/DataEngineering/assets/79280485/f2a284be-dbbf-4293-9b86-081ab347890d)
+
+Data Marts are departmental subsets focused on selected subjects.
+
+### Data Warehousing Process
+
+It is the process of extracting data from transactional systems and transforming it into organized information in a
+user-friendly format. In summary, data is extracted from OLTP environments, undergoes transformation (e.g., ETL), and is
+sent, organized, to the DW. This way, we have transformed, cleaned, organized, and standardized data in the DW, within
+an OLAP environment, i.e., an environment conducive to analytical analysis.
+
+### ETL
+
+ETL (Extraction, Transformation, and Loading) is a technique in which data is obtained from sources (e.g., databases in
+OLTP environments), transformed, and loaded into the DW.
+
+- **Extraction**: the process of collecting or acquiring data from available data sources. Note: It is not limited to
+relational databases; it can be files (e.g., CSV) or APIs, etc.
+
+- **Transformation**: the process of standardization, cleaning, enrichment, and combination of data.
+
+- **Loading**: the process of loading or inserting data into the respective data repositories.
+
+In general, the ETL process involves taking data from various sources, taking these data to an intermediate area (e.g.,
+Staging Area, ODS) for transformation, and finally loading the properly transformed data into the DW.
+
+### OLTP vs. OLAP
+
+**OLTP**
+
+- Its purpose is to control and perform fundamental business tasks.
+
+- Operational, current data, reflects the present.
+
+- They are the original source of data.
+
+**OLAP**
+
+- Its purpose is to assist in planning, problem-solving, and decision support.
+
+- Consolidation data, historical data.
+
+- It has data originating from various OLTP databases.
+
