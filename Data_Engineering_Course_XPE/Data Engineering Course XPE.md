@@ -65,7 +65,7 @@ Chapter 5. Data Warehouse and Dimensional Modeling
 - Dimensional Data Modeling
 - Practice: Dimensional Data Modeling
 
-- ## 1st Module Remarks
+## 1st Module Remarks
 
 - This 1st module of the course was taught by Dr. Fernanda Farinelli, associate professor at the University of Brasília
 (UnB).
@@ -73,6 +73,15 @@ Chapter 5. Data Warehouse and Dimensional Modeling
 - I did not summarize the topics on ontology, open data, and linked data because they are very theoretical topics, and I
 preferred to leave them out of the summary to provide a more professional approach rather than a theoretical-educational
 one.
+
+- I also did not summarize the topics of data modeling and SQL because I already have educational and professional
+experience with this part. In summary, the professor worked again on the conceptual model in the relational database,
+normalization rules, the Entity-Relationship Model (ERM), and the main SQL commands.
+
+- The course concludes its first module with a practical assignment involving questions similar to a university exam. I
+will not share the questions because I cannot provide an accurate translation of the entire content (some images would
+remain in Portuguese), and also because I do not know if the questions are reused in their course, which could generate
+issues as they are in a public repository.
 
 ## What is Data?
 
