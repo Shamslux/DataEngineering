@@ -409,3 +409,37 @@ storage solution).
 
 - Utilizing cloud resources (e.g., S3, Blob) and other cloud resources for greater scalability and distribution ease.
 
+## Data Analysis
+
+Allows the extraction of valuable information from data.
+
+- Studies the principles, methods, and computational systems for extracting knowledge from data.
+
+- Identifies the possibilities of converting raw data into knowledge.
+
+- Aims to efficiently find patterns (knowledge) in (large) datasets (streams).
+
+- Seeks to understand people's behavior.
+
+- Seeks to identify new business opportunities.
+
+Thus, analyzing data is about finding a pattern/knowledge within that data. Hence, there is this metaphor of data
+mining, as an allusion to the real task of mining, seeking to find precious goods after excavations and analysis.
+
+### Types of Data Analysis
+
+- **Descriptive Analysis**: describes facts and events, seeking to understand what happened.
+
+- **Diagnostic Analysis**: seeks to understand why that event occurred, how it happened, who was involved, etc.
+
+- **Predictive Analysis**: seeks to understand what may happen based on what has already happened in the past.
+
+- **Prescriptive Analysis**: tries to simulate situations, i.e., if a certain event occurs, what will be the impact on
+the business?
+
+### Conclusion
+
+This overview of analysis is important because, as engineers, we will work on preparing data for the analysis team;
+therefore, it is interesting to understand some of this perspective from the other side to better serve in our daily
+work.
+
