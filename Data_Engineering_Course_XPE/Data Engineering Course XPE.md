@@ -65,6 +65,15 @@ Chapter 5. Data Warehouse and Dimensional Modeling
 - Dimensional Data Modeling
 - Practice: Dimensional Data Modeling
 
+- ## 1st Module Remarks
+
+- This 1st module of the course was taught by Dr. Fernanda Farinelli, associate professor at the University of Brasília
+(UnB).
+
+- I did not summarize the topics on ontology, open data, and linked data because they are very theoretical topics, and I
+preferred to leave them out of the summary to provide a more professional approach rather than a theoretical-educational
+one.
+
 ## What is Data?
 
 ### Data
@@ -202,3 +211,201 @@ visualization.
 
 - **A methodology**: but it requires practices compatible with the questions and answers desired and is present in the
 development processes of systems and solutions.
+
+## Knowledge Discovery in Databases (KDD)
+
+![kdd](https://github.com/Shamslux/DataEngineering/assets/79280485/eecd1e3f-d32c-4f7b-beeb-670ba1d9780b)
+
+
+### Overview
+
+Knowledge Discovery in Databases (KDD) is a complex, multidisciplinary field that aims to extract valuable insights from
+large and diverse datasets. KDD encompasses a range of techniques from data processing, data mining, and analysis,
+integrating methods from statistics, machine learning, database technology, and pattern recognition.
+
+### Process
+
+The KDD process involves several key steps:
+
+**Data Preparation and Selection**: This involves gathering the data, selecting the relevant subsets for analysis, and
+transforming it into a suitable format.
+
+**Data Cleaning and Preprocessing**: This step is crucial for improving the quality of the data by removing noise,
+handling missing values, and ensuring consistency.
+
+**Incorporation of Prior Knowledge**: Leveraging domain knowledge to guide the discovery process.
+
+**Data Mining**: Applying algorithms to identify patterns, relationships, or anomalies. Common techniques include
+clustering, classification, regression, and association rule mining.
+
+**Interpretation and Evaluation**: Analyzing the mined patterns to extract actionable knowledge and validating them
+against specific criteria to determine their usefulness.
+
+### Applications
+
+KDD is applied in various domains such as:
+- Market analysis and management
+- Fraud detection and risk management
+- Bioinformatics and healthcare
+- Customer relationship management
+- Social network analysis
+
+### Tools and Technologies
+
+Several tools and technologies facilitate the KDD process, including:
+- Data processing tools like Apache Hadoop and Spark
+- Data mining tools such as Weka, Orange, and RapidMiner
+- Programming languages like Python and R with libraries for data analysis and machine learning
+
+### Conclusion
+
+KDD is a vital field that helps in making informed decisions by discovering hidden patterns and insights in large
+datasets. It requires a combination of expertise in data handling, statistical analysis, and domain knowledge.
+
+## SEMMA Methodology
+
+![semma](https://github.com/Shamslux/DataEngineering/assets/79280485/5b802b48-1f4c-4f61-b946-7bb79e9353ab)
+*Image obtained from the Internet*
+
+### Overview
+
+SEMMA, which stands for Sample, Explore, Modify, Model, and Assess, is a structured approach to data analysis,
+particularly useful in the context of big data. Originating from SAS Institute Inc., it provides a comprehensive guide
+for transforming large datasets into actionable insights.
+
+### SEMMA Process
+
+The SEMMA methodology involves five key steps:
+
+**Sample**: In the context of big data, this step involves selecting a representative subset of data. This is crucial to
+efficiently manage and analyze extensive datasets, ensuring the performance and scalability of the analysis.
+
+**Explore**: This phase is about examining the data to uncover initial patterns, anomalies, or relationships.
+Visualization tools and descriptive statistics play a vital role in this stage, providing insights into the nature and
+quality of the data.
+
+**Modify**: Here, data is prepared and cleaned. This step includes handling missing data, outlier treatment, variable
+transformation, and feature engineering. The goal is to refine the dataset into a format suitable for modeling.
+
+**Model**: In this stage, various statistical and machine learning models are applied to the prepared data. The choice
+of models depends on the nature of the problem – whether it’s prediction, classification, clustering, etc.
+
+**Assess**: The final step involves evaluating the model's performance using appropriate metrics. This could include
+accuracy, precision, recall, or specific business KPIs. The assessment guides the refinement of the model and validates
+its effectiveness in answering the research question or solving the problem at hand.
+
+### Applications in Big Data
+
+- Predictive analytics in customer behavior analysis
+- Risk assessment in financial services
+- Health data analysis for disease prediction
+- Market segmentation in retail
+
+### Tools and Technologies
+
+SEMMA can be implemented using various tools:
+- Data processing: SQL, Apache Spark
+- Exploration and visualization: Python (Matplotlib, Seaborn), R
+- Modeling: SAS, Python (scikit-learn), R
+- Assessment: Model evaluation libraries in Python and R
+
+### Conclusion
+
+The SEMMA methodology is a systematic approach that guides data analysts and scientists through the process of
+extracting meaningful insights from big data. Its structured nature ensures thoroughness and efficiency, making it an
+essential practice in the field of data analytics.
+
+## CRISP-DM Methodology
+
+### Overview
+
+CRISP-DM, which stands for Cross-Industry Standard Process for Data Mining, is a robust and well-established methodology
+for guiding data mining projects. It is especially pertinent in the context of big data, offering a structured approach
+to uncovering insights and building predictive models from large and complex datasets.
+
+### CRISP-DM Process
+
+![crispdm](https://github.com/Shamslux/DataEngineering/assets/79280485/879ca40f-1b74-4eda-8aa5-a80fd8ee5e20)
+*Image obtained from the Internet*
+
+The CRISP-DM methodology comprises six major phases:
+
+**Business Understanding**: This initial phase focuses on understanding the project objectives and requirements from a
+business perspective. It involves defining the problem, determining project objectives, and establishing a preliminary
+plan to achieve these objectives.
+
+**Data Understanding**: This step involves collecting initial data, understanding its properties, and assessing its
+quality. Data understanding is crucial for big data projects to identify data sources and gauge the challenges in data
+processing and analysis.
+
+**Data Preparation**: In this phase, data is cleaned and transformed into a suitable format for analysis. For big data,
+this step is particularly significant due to the volume and variety of data, which may require sophisticated processing
+tools and techniques.
+
+**Modeling**: This stage involves selecting and applying various modeling techniques to the prepared data. The choice of
+models is guided by the project objectives and the nature of the data. It may include machine learning algorithms
+suitable for handling big data.
+
+**Evaluation**: Here, the model or models are thoroughly evaluated, and their performance is assessed against the
+business objectives. The evaluation phase ensures that the model meets the desired criteria and provides valuable
+insights.
+
+**Deployment**: The final phase involves deploying the model into a real-world environment. For big data projects,
+deployment can be complex and requires careful planning to integrate the model into existing systems and processes.
+
+### Applications in Big Data
+
+- Predictive maintenance in manufacturing
+- Fraud detection in financial services
+- Personalized marketing and customer segmentation
+- Healthcare analytics for patient care optimization
+
+### Tools and Technologies
+
+CRISP-DM can be implemented using a range of tools:
+- Data processing and preparation: Apache Hadoop, Spark, Python, R
+- Modeling: Python (TensorFlow, scikit-learn), R, SAS
+- Evaluation and deployment: Model monitoring and evaluation tools, integration with business intelligence platforms
+
+### Conclusion
+
+CRISP-DM provides a comprehensive framework for tackling big data analytics projects. Its structured approach, from
+understanding the business problem to deploying a solution, makes it an invaluable methodology for data scientists and
+analysts working in diverse sectors.
+
+## Data Engineering Pipeline
+
+### Data Engineering Team
+
+The role of the data engineering team is to build the entire data pipeline, which involves data collection/extraction,
+processing/preparation, and data storage. Thus, the data engineering team is responsible for this data integration that
+takes raw data and prepares it for future data analysis.
+
+### Data Extraction
+
+Data can be extracted through various processes and routines. There are multiple possible data sources and types of data
+that may require techniques such as SQL, API consumption, Crawling/Scraping, custom scripts (R, Python, Scala, Java).
+
+<img src="https://github.com/Shamslux/DataEngineering/assets/79280485/8e27cbe8-0f5d-4630-b81c-549bef947828" alt="data_extraction" width="400">
+
+*Image obtained from the course*
+
+## Data Modeling
+
+It is to create a model that explains the operational and behavioral characteristics of data in a specific system or
+application. This model aims to facilitate understanding of the data and data design by representing its main
+characteristics.
+
+## Data Storage
+
+There are several ways to think about data storage:
+
+- Distributed file systems (e.g., HDFS)
+
+- DBMS (SQL relational databases, NoSQL, or NewSQL)
+
+- Polyglot persistence (having a Data Warehouse, a Data Lake, and so on, for each type of data a more appropriate
+storage solution).
+
+- Utilizing cloud resources (e.g., S3, Blob) and other cloud resources for greater scalability and distribution ease.
+
