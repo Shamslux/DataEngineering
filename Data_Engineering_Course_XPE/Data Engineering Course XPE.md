@@ -512,3 +512,34 @@ Staging Area, ODS) for transformation, and finally loading the properly transfor
 
 - It has data originating from various OLTP databases.
 
+## OLAP Cube
+
+The reason for using a cube is to convey the idea of multiple dimensions.
+
+![cube](https://github.com/Shamslux/DataEngineering/assets/79280485/42811c2c-09c9-4e8e-bfce-d67819014c95)
+
+*Image obtained from the Internet*
+
+As seen in the image, we can understand that it's possible to cross-reference product information with time periods and
+geographic locations where they were sold, for example.
+
+In this way, we have a fact (the quantity of product sales, even though the quantified numbers are not visible in this
+example image), being viewed from various perspectives (types of products, time periods, and sales locations).
+
+## OLAP Architectures
+
+- **ROLAP** (Relational On Line Analytical Processing): uses a relational database to store its data and process
+queries.
+
+- **MOLAP** (Multidimensional On Line Analytical Processing): uses dimensional database technology to store its data and
+process queries.
+
+- **HOLAP** (Hybrid On Line Analytical Processing): hybrid tools (ROLAP and MOLAP), combining the scalability of ROLAP
+with the high performance of MOLAP.
+
+- **DOLAP** (Desktop On Line Analytical Processing): queries originate on the desktop to the server, which returns a
+macro-cube to be analyzed.
+
+- **WOLAP** (Web On Line Analytical Processing): queries originate via a web browser to the server, which returns the
+processed cube to be analyzed.
+
