@@ -693,7 +693,414 @@ business. In general, whenever possible, it's a good practice to adopt the star 
 
 - **Step 5**: Identify the variables or dimensions of analysis.
 
+### Dimensional Modeling Practice
 
+Here, the professor chose to use MySQL Workbench to create a project for measuring the total book publication sales more
+quickly. I made some adjustments to the project, such as:
+
+- I adjusted the fact to book sales, and the publishers became a sub-dimension of books. Personally, I found it strange
+that the professor left a book dimension and another for publishers, considering there is a relationship between them.
+Therefore, just as the professor chose to adopt a snowflake model in the case of locations (instead of using a region
+dimension, she preferred to separate into cities and states), I chose to create the relationship between books and
+publishers in the snowflake model.
+
+- Without access to the database, I randomly created some data to be inserted to enrich the project.
+
+- I recall that we had to answer a questionnaire later, involving some queries to obtain the answers. I won't share the
+questions, which again follow a more academic format, but I will use the tasks that requested the queries and present
+the SQL solutions and the answers to what was requested.
+
+- I chose to use PostgreSQL because I already have a personal container of it in use for other projects.
+
+I will provide the SQL code I used to create tables, constraints, generate data, or manually insert data for this
+adapted course project.
+
+```sql
+--***************************************************************************************--
+--*********************************	TABLES   *********************************--
+--***************************************************************************************--
+
+CREATE TABLE "dimPublishers" (
+    "skPublisher" INT NOT NULL,
+    "nkPublisher" INT NOT NULL,
+    "nmPublisher" VARCHAR(150) NOT NULL
+);
+
+CREATE TABLE "dimCities" (
+    "skCity" INT NOT NULL,
+    "nkCity" INT NOT NULL,
+    "fk_skState" INT NOT NULL,
+    "nmCity" VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE "dimStates" (
+    "skState" INT NOT NULL,
+    "nkState" INT NOT NULL,
+    "nmState" VARCHAR(50) NOT NULL,
+    "nmUF" CHAR(2) NOT NULL
+);
+
+CREATE TABLE "dimTime" (
+    "skTime" INT NOT NULL,
+    "date" DATE,
+    "numDay" VARCHAR(2),
+    "nmDay" VARCHAR(20),
+    "numMonth" VARCHAR(2),
+    "nmMonth" VARCHAR(20),
+    "numQuarter" INTEGER,
+    "nmQuarter" VARCHAR(20),
+    "numYear" INTEGER,
+    "flgWeekend" VARCHAR(3),
+    "nameSeason" VARCHAR(20)
+);
+
+CREATE TABLE "dimBooks" (
+    "skBook" INT NOT NULL,
+    "nkBook" INT NOT NULL,
+    "fk_skPublisher" INT NOT NULL,
+    "nmBook" VARCHAR(255) NOT NULL,
+    "nmOriginalLanguage" VARCHAR(50) NOT NULL,
+    "nmGenre" VARCHAR(25) NOT NULL,
+    "nmAuthor" VARCHAR(255) NOT NULL,
+    "nmCountryofOrigin" VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE "fatBookSales" (
+    "fk_skBook" INT NOT NULL,
+    "fk_skCity" INT NOT NULL,
+    "fk_skTime" INT NOT NULL,
+    "qtBooksSold" INT NOT NULL,
+    "vlBookSales" NUMERIC(10, 2) NOT NULL
+);
+--***************************************************************************************--
+--*********************************	CONSTRAINTS - PKs   *********************************--
+--***************************************************************************************--
+
+ALTER TABLE "dimPublishers" ADD CONSTRAINT skPublisher 
+PRIMARY KEY ("skPublisher");
+
+ALTER TABLE "dimCities" ADD CONSTRAINT pk_dimCities 
+PRIMARY KEY ("skCity");
+
+ALTER TABLE "dimStates" ADD CONSTRAINT pk_dimStates 
+PRIMARY KEY ("skState");
+
+ALTER TABLE "dimTime" ADD CONSTRAINT pk_dimTime 
+PRIMARY KEY ("skTime");
+
+ALTER TABLE "dimBooks" ADD CONSTRAINT pk_dimBooks 
+PRIMARY KEY ("skBook");
+
+ALTER TABLE "fatBookSales" ADD CONSTRAINT pk_fatBookSales
+PRIMARY KEY ("fk_skBook", "fk_skCity", "fk_skTime");
+
+--***************************************************************************************--
+--*********************************	CONSTRAINTS - FKs   *********************************--
+--***************************************************************************************--
+
+ALTER TABLE "dimCities" ADD CONSTRAINT dimCitiesfk_skState
+FOREIGN KEY ("fk_skState") REFERENCES dw_bookstore.book_sales."dimStates" ("skState");
+
+ALTER TABLE "dimBooks" ADD CONSTRAINT dimBooksfk_skPublisher
+FOREIGN KEY ("fk_skPublisher") REFERENCES dw_bookstore.book_sales."dimPublishers" ("skPublisher");
+
+ALTER TABLE "fatBookSales" ADD CONSTRAINT fatBookSalesfk_skBook
+FOREIGN KEY ("fk_skBook") REFERENCES dw_bookstore.book_sales."dimBooks" ("skBook");
+
+ALTER TABLE "fatBookSales" ADD CONSTRAINT fatBookSalesfk_skCity
+FOREIGN KEY ("fk_skCity") REFERENCES dw_bookstore.book_sales."dimCities" ("skCity");
+
+ALTER TABLE "fatBookSales" ADD CONSTRAINT fatBookSalesfk_skTime
+FOREIGN KEY ("fk_skTime") REFERENCES dw_bookstore.book_sales."dimTime" ("skTime");
+
+
+--***************************************************************************************--
+--*********************************	TIME DIMENSION SCRIPT   *****************************--
+--***************************************************************************************--
+
+-- Inserting data from January to December 2023
+CREATE SEQUENCE dimtime_sktime_seq START 1;
+ 
+INSERT INTO "dimTime" (
+    "skTime",
+    "date",
+    "numDay",
+    "nmDay",
+    "numMonth",
+    "nmMonth",
+    "numQuarter",
+    "nmQuarter",
+    "numYear",
+    "flgWeekend",
+    "nameSeason"
+)
+SELECT
+    NEXTVAL('dimtime_skTime_seq'), -- Generate a sequential value for skTime
+    date,
+    LPAD(EXTRACT(DAY FROM date)::TEXT, 2, '0'), -- Day
+    TO_CHAR(date, 'Day'), -- Day name
+    LPAD(EXTRACT(MONTH FROM date)::TEXT, 2, '0'), -- Month
+    TO_CHAR(date, 'Month'), -- Month name
+    EXTRACT(QUARTER FROM date), -- Quarter
+    CASE
+        WHEN EXTRACT(QUARTER FROM date) = 1 THEN 'First'
+        WHEN EXTRACT(QUARTER FROM date) = 2 THEN 'Second'
+        WHEN EXTRACT(QUARTER FROM date) = 3 THEN 'Third'
+        WHEN EXTRACT(QUARTER FROM date) = 4 THEN 'Fourth'
+    END, -- Quarter name
+    EXTRACT(YEAR FROM date), -- Year
+    CASE
+        WHEN EXTRACT(ISODOW FROM date) IN (6, 7) THEN 'Yes' -- Weekend
+        ELSE 'No'
+    END, -- Weekend or not
+    CASE
+        WHEN date BETWEEN '2023-03-21' AND '2023-06-20' THEN 'Autumn'
+        WHEN date BETWEEN '2023-06-21' AND '2023-09-22' THEN 'Winter'
+        WHEN date BETWEEN '2023-09-23' AND '2023-12-20' THEN 'Spring'
+        ELSE 'Summer'
+    END -- Season (configured for the Southern Hemisphere)
+FROM generate_series('2023-01-01'::date, '2023-12-31'::date, '1 day'::interval) AS date;
+
+--***************************************************************************************--
+--*********************************	MANUAL INSERT FOR TRAINING   ************************--
+--***************************************************************************************--
+
+--  dimPublishers
+INSERT INTO "dimPublishers" ("skPublisher", "nkPublisher", "nmPublisher")
+VALUES
+    (1, 1, 'Sapphire Books'),
+    (2, 2, 'Lionheart Publishers'),
+    (3, 3, 'BlueSky Publishing'),
+    (4, 4, 'Golden Pen Press'),
+    (5, 5, 'SilverLeaf Books'),
+    (6, 6, 'RedRose Publishing'),
+    (7, 7, 'Emerald Publications'),
+    (8, 8, 'Sunset Publishing'),
+    (9, 9, 'Crimson Ink'),
+    (10, 10, 'OceanView Press');
+
+-- dimBooks
+INSERT INTO "dimBooks" ("skBook", "nkBook", "fk_skPublisher", "nmBook", "nmOriginalLanguage", "nmGenre", "nmAuthor", "nmCountryofOrigin")
+VALUES
+    (1, 1, 7, 'To Kill a Mockingbird', 'English', 'Fiction', 'Harper Lee', 'USA'),
+    (2, 2, 4, '1984', 'English', 'Dystopian', 'George Orwell', 'UK'),
+    (3, 3, 3, 'Pride and Prejudice', 'English', 'Classic', 'Jane Austen', 'UK'),
+    (4, 4, 5, 'The Great Gatsby', 'English', 'Fiction', 'F. Scott Fitzgerald', 'USA'),
+    (5, 5, 8, 'Moby-Dick', 'English', 'Adventure', 'Herman Melville', 'USA'),
+    (6, 6, 2, 'The Catcher in the Rye', 'English', 'Fiction', 'J.D. Salinger', 'USA'),
+    (7, 7, 9, 'War and Peace', 'Russian', 'Historical Fiction', 'Leo Tolstoy', 'Russia'),
+    (8, 8, 6, 'The Hobbit', 'English', 'Fantasy', 'J.R.R. Tolkien', 'UK'),
+    (9, 9, 10, 'Brave New World', 'English', 'Dystopian', 'Aldous Huxley', 'UK'),
+    (10, 10, 1, 'The Lord of the Rings', 'English', 'Fantasy', 'J.R.R. Tolkien', 'UK'),
+    (11, 11, 2, 'The Alchemist', 'Portuguese', 'Fiction', 'Paulo Coelho', 'Brazil'),
+    (12, 12, 3, 'Crime and Punishment', 'Russian', 'Psychological Fiction', 'Fyodor Dostoevsky', 'Russia'),
+    (13, 13, 4, 'The Odyssey', 'Greek', 'Epic Poetry', 'Homer', 'Greece'),
+    (14, 14, 5, 'Frankenstein', 'English', 'Gothic Fiction', 'Mary Shelley', 'UK'),
+    (15, 15, 6, 'The Adventures of Sherlock Holmes', 'English', 'Mystery', 'Arthur Conan Doyle', 'UK'),
+    (16, 16, 7, 'The Road', 'English', 'Post-Apocalyptic', 'Cormac McCarthy', 'USA'),
+    (17, 17, 8, 'To the Lighthouse', 'English', 'Modernist', 'Virginia Woolf', 'UK'),
+    (18, 18, 9, 'The Grapes of Wrath', 'English', 'Fiction', 'John Steinbeck', 'USA'),
+    (19, 19, 10, 'One Hundred Years of Solitude', 'Spanish', 'Magical Realism', 'Gabriel García Márquez', 'Colombia'),
+    (20, 20, 1, 'The Hunger Games', 'English', 'Dystopian', 'Suzanne Collins', 'USA'),
+    (21, 21, 2, 'The Road Not Taken', 'English', 'Poetry', 'Robert Frost', 'USA'),
+    (22, 22, 3, 'The Shining', 'English', 'Horror', 'Stephen King', 'USA'),
+    (23, 23, 4, 'The Picture of Dorian Gray', 'English', 'Gothic Fiction', 'Oscar Wilde', 'UK'),
+    (24, 24, 5, 'The Martian', 'English', 'Science Fiction', 'Andy Weir', 'USA'),
+    (25, 25, 6, 'The Little Prince', 'French', 'Childrens Literature', 'Antoine de Saint-Exupéry', 'France'),
+    (26, 26, 7, 'The Girl with the Dragon Tattoo', 'Swedish', 'Mystery', 'Stieg Larsson', 'Sweden'),
+    (27, 27, 8, 'The Book Thief', 'English', 'Historical Fiction', 'Markus Zusak', 'Australia'),
+    (28, 28, 9, 'Dune', 'English', 'Science Fiction', 'Frank Herbert', 'USA'),
+    (29, 29, 10, 'Alices Adventures in Wonderland', 'English', 'Fantasy', 'Lewis Carroll', 'UK'),
+    (30, 30, 1, 'The Wind in the Willows', 'English', 'Childrens Literature', 'Kenneth Grahame', 'UK'),
+    (31, 31, 2, 'The Count of Monte Cristo', 'French', 'Adventure', 'Alexandre Dumas', 'France'),
+    (32, 32, 3, 'The Silent Patient', 'English', 'Psychological Thriller', 'Alex Michaelides', 'UK'),
+    (33, 33, 4, 'The Secret Garden', 'English', 'Childrens Literature', 'Frances Hodgson Burnett', 'UK'),
+    (34, 34, 5, 'The Kite Runner', 'English', 'Drama', 'Khaled Hosseini', 'Afghanistan'),
+    (35, 35, 6, 'The Road Less Traveled', 'English', 'Self-Help', 'M. Scott Peck', 'USA'),
+    (36, 36, 7, 'The Bell Jar', 'English', 'Autobiographical Fiction', 'Sylvia Plath', 'USA'),
+    (37, 37, 8, 'The Scarlet Letter', 'English', 'Historical Fiction', 'Nathaniel Hawthorne', 'USA'),
+    (38, 38, 9, 'A Tale of Two Cities', 'English', 'Historical Fiction', 'Charles Dickens', 'UK'),
+    (39, 39, 10, 'The Brothers Karamazov', 'Russian', 'Philosophical Fiction', 'Fyodor Dostoevsky', 'Russia'),
+    (40, 40, 1, 'The Hitchhikers Guide to the Galaxy', 'English', 'Science Fiction', 'Douglas Adams', 'UK'),
+    (41, 41, 2, 'The Sun Also Rises', 'English', 'Modernist', 'Ernest Hemingway', 'USA'),
+    (42, 42, 3, 'The Da Vinci Code', 'English', 'Mystery', 'Dan Brown', 'USA'),
+    (43, 43, 4, 'The Color Purple', 'English', 'Epistolary Fiction', 'Alice Walker', 'USA'),
+    (44, 44, 5, 'The Hobbit', 'English', 'Fantasy', 'J.R.R. Tolkien', 'UK'),
+    (45, 45, 6, 'The Old Man and the Sea', 'English', 'Fiction', 'Ernest Hemingway', 'USA'),
+    (46, 46, 7, 'The Name of the Wind', 'English', 'Fantasy', 'Patrick Rothfuss', 'USA'),
+    (47, 47, 8, 'The Hound of the Baskervilles', 'English', 'Mystery', 'Arthur Conan Doyle', 'UK'),
+    (48, 48, 9, 'The Road to Serfdom', 'English', 'Political Philosophy', 'Friedrich Hayek', 'Austria'),
+    (49, 49, 10, 'The Night Circus', 'English', 'Fantasy', 'Erin Morgenstern', 'USA'),
+    (50, 50, 1, 'The Handmaids Tale', 'English', 'Dystopian', 'Margaret Atwood', 'Canada');
+
+
+--dimStates 
+INSERT INTO "dimStates" ("skState", "nkState", "nmState", "nmUF")
+VALUES
+    (1, 1, 'São Paulo', 'SP'),
+    (2, 2, 'Rio de Janeiro', 'RJ'),
+    (3, 3, 'Minas Gerais', 'MG'),
+    (4, 4, 'Espírito Santo', 'ES'),
+    (5, 5, 'Paraná', 'PR'),
+    (6, 6, 'Santa Catarina', 'SC'),
+    (7, 7, 'Rio Grande do Sul', 'RS');
+
+--dimCities
+INSERT INTO "dimCities" ("skCity", "nkCity", "fk_skState", "nmCity")
+VALUES
+    (1, 1, 1, 'São Paulo'),
+    (2, 2, 2, 'Rio de Janeiro'),
+    (3, 3, 3, 'Belo Horizonte'),
+    (4, 4, 4, 'Vitória'),
+    (5, 5, 5, 'Curitiba'),
+    (6, 6, 6, 'Florianópolis'),
+    (7, 7, 7, 'Porto Alegre'),
+    (8, 8, 1, 'Campinas'),
+    (9, 9, 2, 'Niterói'),
+    (10, 10, 3, 'Juiz de Fora');
+   
+-- 5k random data into fatBookSales without duplicate foreign keys
+DO $$
+DECLARE
+    i INT := 1;
+    unique_records INT := 0;
+BEGIN
+    WHILE unique_records < 5000 LOOP
+        BEGIN
+            INSERT INTO "fatBookSales" ("fk_skBook", "fk_skCity", "fk_skTime", "qtBooksSold", "vlBookSales")
+            VALUES (
+                floor(random() * 50) + 1,     -- fk_skBook (foreign key to dimBooks)
+                floor(random() * 10) + 1,     -- fk_skCity (foreign key to dimCities)
+                floor(random() * 365) + 1,    -- fk_skTime (foreign key to dimTime)
+                floor(random() * 100),         -- qtBooksSold (quantity sold)
+                (random() * 1000)::numeric(10, 2)  -- vlBookSales (sales value)
+            );
+            unique_records := unique_records + 1;
+        EXCEPTION
+            WHEN unique_violation THEN
+                -- Handle duplicates (ignore or retry)
+                CONTINUE;
+        END;
+        i := i + 1;
+    END LOOP;
+END $$;
+```
+
+### Answered Questions
+
+Note: When I retrieved the challenge document from the first module, I noticed that it asked to create the entire project, but I couldn't find the questions to be answered, except for the test I had already completed, which had few SQL query questions, with many others being theoretical aspects of what we had seen.
+
+Because of this, I created 8 questions adapted to what I had also adapted from the final project of the first module. Many things are quite simple, I know, but the project itself is very basic, educational stuff.
+
+Anyway, if I have time, I will try to create a data visualization in Power BI (outside the scope of the original course, just for practice).
+
+Well, below are the codes and comments with the questions.
+
+```sql
+-- Question 1 - Which authors appear more than once in the book dimension?
+SELECT "nmAuthor", COUNT(*) AS "TotalBooks"
+FROM "dimBooks"
+GROUP BY "nmAuthor"
+HAVING COUNT(*) > 1;
+```
+![q1-m1](https://github.com/Shamslux/DataEngineering/assets/79280485/7a219802-6877-4674-8bd1-73c32be0d4c1)
+
+```sql
+-- Question 2 - What are the genres with the highest number of books? Create a rank for these genres.
+SELECT
+    "nmGenre",
+    COUNT(*) AS "TotalBooks",
+    DENSE_RANK() OVER (ORDER BY COUNT(*) DESC) AS "GenreRank"
+FROM
+    "dimBooks" db
+GROUP BY
+    "nmGenre"
+ORDER BY
+    "GenreRank";
+```
+![q2-m1](https://github.com/Shamslux/DataEngineering/assets/79280485/93c27325-7ae8-4f11-8e13-2c564a7d1f9e)
+
+```sql
+-- Question 3 - Which original languages have the most literary works in the catalog?
+SELECT "nmOriginalLanguage", count(*) AS "TotalBooks"
+FROM "dimBooks"
+GROUP BY "nmOriginalLanguage"
+ORDER BY count(*) DESC;
+```
+![q3-m1](https://github.com/Shamslux/DataEngineering/assets/79280485/0a7a8a7f-3f9e-4013-8845-63a8ba02c499)
+
+```sql
+-- Question 4 - What is the total sales value of the bookstore?
+SELECT SUM("vlBookSales") AS "SalesTotal"
+FROM "fatBookSales";
+```
+
+![q4-m1](https://github.com/Shamslux/DataEngineering/assets/79280485/02aa9894-b469-43e8-b271-8d280a1ba634)
+
+```sql
+-- Question 5 - Which books generated the most sales for the bookstore?
+SELECT db."nmBook", SUM(fbs."qtBooksSold") AS "TotalValue"
+FROM "fatBookSales" fbs
+JOIN "dimBooks" db
+ ON fbs."fk_skBook" = db."skBook"
+GROUP BY db."nmBook"
+ORDER BY SUM(fbs."qtBooksSold") DESC;
+```
+
+![q5-m1](https://github.com/Shamslux/DataEngineering/assets/79280485/017334ef-1212-4605-9d7b-4779fb225d20)
+
+```sql
+-- Question 6 - Which quarters had the highest sales for the bookstore?
+SELECT
+    dt."nmQuarter",
+    SUM(fbs."vlBookSales") AS "TotalSales"
+FROM
+    "fatBookSales" fbs
+JOIN
+    "dimTime" dt ON fbs."fk_skTime" = dt."skTime"
+GROUP BY
+    dt."nmQuarter"
+ORDER BY
+    "TotalSales" DESC;
+```
+
+![q6-m1](https://github.com/Shamslux/DataEngineering/assets/79280485/e82994f3-9772-47d3-bf63-3524a0ee096b)
+
+```sql
+-- Question 7 - Which countries have the most books in the bookstore's catalog?
+SELECT "nmCountryofOrigin" AS "Country",
+       COUNT(*) AS "TotalBooks"
+FROM "dimBooks"
+GROUP BY "nmCountryofOrigin"
+ORDER BY "TotalBooks" DESC;
+```
+
+![q7-m1](https://github.com/Shamslux/DataEngineering/assets/79280485/b51581ee-84b1-4fd1-b944-f6048ffca1b8)
+
+```sql
+-- Question 8 - Which Brazilian macroregion had the highest quantity of books purchased (quantity, not sales)?
+SELECT
+    CASE
+        WHEN ds."nmUF" IN ('RS', 'SC', 'PR') THEN 'South'
+        WHEN ds."nmUF" IN ('SP', 'RJ', 'MG', 'ES') THEN 'Southeast'
+        WHEN ds."nmUF" IN ('BA', 'SE', 'AL', 'PE', 'PB', 'RN', 'CE', 'PI', 'MA') THEN 'Northeast'
+        WHEN ds."nmUF" IN ('AM', 'RR', 'AP', 'PA', 'TO', 'RO', 'AC') THEN 'North'
+        WHEN ds."nmUF" IN ('GO', 'DF', 'MT', 'MS') THEN 'Central-West'
+        ELSE 'Other'
+    END AS "MacroRegion",
+    SUM(fbs."qtBooksSold") AS "TotalQuantityBooks"
+FROM
+    "fatBookSales" fbs
+JOIN
+    "dimCities" dc ON fbs."fk_skCity" = dc."skCity"
+JOIN
+    "dimStates" ds ON dc."fk_skState" = ds."skState"
+GROUP BY
+    "MacroRegion"
+ORDER BY
+    "TotalQuantityBooks" DESC;
+```
+![q8-m1](https://github.com/Shamslux/DataEngineering/assets/79280485/29687a9c-2c62-4031-a0b4-d5449617a4b7)
 
 
 
