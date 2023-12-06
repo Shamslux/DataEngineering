@@ -543,3 +543,85 @@ macro-cube to be analyzed.
 - **WOLAP** (Web On Line Analytical Processing): queries originate via a web browser to the server, which returns the
 processed cube to be analyzed.
 
+## Dimensional Modeling
+
+Dimensional modeling is one of the most commonly used and crucial techniques and knowledge for designing a Data
+Warehouse. Its objective is to present data in a standardized and intuitive model that allows users to understand it
+while ensuring high-performance access (Ralph Kimball).
+
+In general, the physical model is implemented in relational database management systems (RDBMS), and the modeling
+approach is such that information is related in a way that is metaphorically represented as a cube.
+
+![cube_dim](https://github.com/Shamslux/DataEngineering/assets/79280485/c7718ea1-6b8b-4898-90ad-f7a053297aa2)
+
+*Image from the Internet (Microsoft Learn)*
+
+### Dimensional View
+
+The dimensional view allows us to visualize the measure (the fact) through a categorized perspective. For example, in
+the image above that we used as a model, we can see the values (measures, such as information on sent packages) and the
+dimensions that enable different perspectives on these values (we see 3 dimensions: route, source, and time).
+
+### Elements of Dimensional Modeling
+
+- **Facts**: Subjects or facts
+- **Dimensions**: Variables or analytical dimensions
+- **Measures**: Analytical values related to the subject according to the dimensions
+
+### Fact
+
+The fact is any business subject that you want to analyze. It reflects the evolution of the business in an
+organization's day-to-day operations. It is an event worthy of analysis and control within the organization.
+
+Examples:
+
+- For a retail company, sales are an interesting subject (a fact) for analysis.
+
+- For a police department, crimes are a subject (a fact) of interest for analysis.
+
+### Dimensions
+
+These are the variables that influence a fact, representing different "points of view" for analyzing an event.
+
+Examples:
+
+- It could be WHO performed the event, WHERE the event occurred, WHEN the event occurred, and so on.
+
+- In the example of a retail company, it can analyze WHO was the top-selling salesperson, WHERE most sales occurred
+(which branch, for example), and WHEN it had the highest number of sales (e.g., in which quarter).
+
+- In the example of a police department, WHO could be a previously registered criminal who is committing thefts again,
+WHERE could be a region with a higher number of crimes, and WHEN could be which months showed higher crime rates.
+
+### Time
+
+Since a Data Warehouse deals with historical data, time is ALWAYS an extremely important dimension! There is no analysis
+without a time dimension!
+
+### Measures
+
+Measures are associated with a specific fact or subject.
+
+Examples:
+
+- For analyzing a retail company's sales, measures can include: total sales value, profit, total quantity of products
+sold, or total quantity by product type, etc.
+
+- For a police department, measures can include: total number of registered crimes, total number of crimes by serviced
+regions, etc.
+
+### Granularity in a Data Warehouse
+
+We refer to granularity as the level of detail or summary contained in the data units within the fact under analysis.
+
+For example, going back to the retail company example, if we have a model for greater detail (lower granularity), we
+could have something like daily/hourly sales and monthly revenue; if we have a model for less detail (higher
+granularity), we could have something like monthly sales and annual revenue.
+
+In summary, the greater the granularity, the lower the level of detail, whereas the lower the granularity, the higher
+the level of detail.
+
+The choice of modeling (whether it will have higher or lower granularity) will depend on the business rules and the
+desire to analyze the business.
+
+
