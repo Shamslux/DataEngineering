@@ -988,7 +988,7 @@ END $$;
 
 ### Answered Questions
 
-Note: When I retrieved the challenge document from the first module, I noticed that it asked to create the entire project, but I couldn't find the questions to be answered, except for the test I had already completed, which had few SQL query questions, with many others being theoretical aspects of what we had seen.
+**Note**: When I retrieved the challenge document from the first module, I noticed that it asked to create the entire project, but I couldn't find the questions to be answered, except for the test I had already completed, which had few SQL query questions, with many others being theoretical aspects of what we had seen.
 
 Because of this, I created 8 questions adapted to what I had also adapted from the final project of the first module. Many things are quite simple, I know, but the project itself is very basic, educational stuff.
 
@@ -999,7 +999,7 @@ Well, below are the codes and comments with the questions.
 ```sql
 -- Question 1 - Which authors appear more than once in the book dimension?
 SELECT "nmAuthor", COUNT(*) AS "TotalBooks"
-FROM "dimBooks"
+FROM "dimBooks"?
 GROUP BY "nmAuthor"
 HAVING COUNT(*) > 1;
 ```
