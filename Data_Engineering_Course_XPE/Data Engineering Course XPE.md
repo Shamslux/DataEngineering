@@ -1,4 +1,6 @@
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Airflow](https://img.shields.io/badge/Airflow-017CEE?style=for-the-badge&logo=Apache%20Airflow&logoColor=white)
 <div align="right">
   <img src="https://github.com/Shamslux/DataEngineering/assets/79280485/db0c60d3-d801-4719-9103-9bee9cee6406" alt="Badge" width="150">
 </div>
@@ -588,7 +590,7 @@ Examples:
 - It could be WHO performed the event, WHERE the event occurred, WHEN the event occurred, and so on.
 
 - In the example of a retail company, it can analyze WHO was the top-selling salesperson, WHERE most sales occurred
-(which branch, for example), and WHEN it had the highest number of sales (e.g., in which quarter).
+(in which store, for example), and WHEN it had the highest number of sales (e.g., in which quarter).
 
 - In the example of a police department, WHO could be a previously registered criminal who is committing thefts again,
 WHERE could be a region with a higher number of crimes, and WHEN could be which months showed higher crime rates.
@@ -623,5 +625,76 @@ the level of detail.
 
 The choice of modeling (whether it will have higher or lower granularity) will depend on the business rules and the
 desire to analyze the business.
+
+### Components of the Dimensional Model
+
+The components of the dimensional model are: the fact, the dimensions, and the measures (typically, the dimensions and
+the fact).
+
+Using the image below, let's take the example of a retail company:
+
+![wh-questions-dim-fact](https://github.com/Shamslux/DataEngineering/assets/79280485/ea8e90c6-fb9b-4a85-980b-595d1414b6bc)
+
+Above, we can see how each question asked about the subject (the fact) translates into dimensions that provide these
+answers.
+
+### Star Schema
+
+It is a representation model named for the fact that the connections between the fact and dimensions resemble the shape
+of a star. Despite representing a five-pointed star, the number of dimensions is not restricted to this number; the
+model is used for didactic purposes. We can have fewer or more dimensions depending on the case.
+
+![star-schema](https://github.com/Shamslux/DataEngineering/assets/79280485/2dab2ba8-87b7-407c-9caa-411c32aca9b6)
+
+In the image, we can see a 1-to-N relationship, meaning that for each item in the dimension, we have N values in the
+fact (e.g., a product X may have multiple sales occurrences).
+
+![mer-star-schema](https://github.com/Shamslux/DataEngineering/assets/79280485/fdc153b3-0d16-4555-9715-b47b2af7db18)
+
+In the conceptual model, we can observe the star schema applied above.
+
+**Personal Note¹**: It's interesting to note that the fact contains all the SKs (Surrogate Keys) of the dimensions, and a
+composite key is created to ensure integrity.
+
+**Personal Note²**: Up to this point, the instructor hadn't mentioned the use of SKs (I will adjust this if I see them
+discussing it in the application). As this might be a general training course in a boot camp (at this point, if it turns
+out they won't explain it, I recommend following the instructions of instructor Felipe Mafra, from whom I initially
+learned Business Intelligence), they might create IDs directly, but in real life, IDs will come from OLTP (Online
+Transaction Processing) and will be transformed into our NKs (Natural Keys), and the SK (Surrogate Key) will be required
+to maintain the integrity of the NKs. For example, an NK may undergo an update in some other column, and a new SK must
+be generated to keep the history of the same NK at another historical moment.
+
+Therefore, in real life, we always use SKs and always check if the composite key in the fact is intact, without any
+duplication errors occurring (the database itself will alert us if there is any error).
+
+### Snowflake Schema
+
+The snowflake schema is represented by a snowflake shape because it starts to have multiple sub-dimensions linked to
+each other. In the image below, we can see the "region" dimension with two sub-dimensions: "states" and "cities."
+
+![snowflake-schema](https://github.com/Shamslux/DataEngineering/assets/79280485/0b7c2e6d-7ea4-416c-be4a-6dc5b506327a)
+
+This model is a way to increase granularity (in the case of the star schema, we would have "states" and "cities" as
+columns in the "region" dimension).
+
+**Personal Note³**: It's worth noting that the star schema is faster due to having fewer joins, while the snowflake schema
+is slower due to having more joins. However, the choice of each model should be made through a proper analysis of the
+business. In general, whenever possible, it's a good practice to adopt the star schema for performance reasons.
+
+### Steps of Dimensional Modeling
+
+- **Step 1**: Understand the analysis requirements.
+
+- **Step 2**: Identify the facts/subjects that need to be analyzed.
+
+- **Step 3**: Identify which metrics support the analysis of the fact.
+
+- **Step 4**: Define the level of detail for the analysis (granularity).
+
+- **Step 5**: Identify the variables or dimensions of analysis.
+
+
+
+
 
 
