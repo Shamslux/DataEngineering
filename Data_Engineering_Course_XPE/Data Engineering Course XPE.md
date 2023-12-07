@@ -1102,6 +1102,33 @@ ORDER BY
 ```
 ![q8-m1](https://github.com/Shamslux/DataEngineering/assets/79280485/29687a9c-2c62-4031-a0b4-d5449617a4b7)
 
+## OLAP Operations
 
+### Drill Down vs. Drill (Roll) Up
+
+These operations allow you to increase or decrease the level of detail when analyzing a cube.
+
+In this context, performing a "drill down" would, for example, involve switching from viewing sales by country (e.g.,
+Brazil) to viewing sales by states, which means increasing the level of detail (decreasing granularity).
+
+"Drill Up" or "Roll Up" is the opposite; you were analyzing, for example, cities, and you increased granularity
+(decreased the level of detail) by grouping cities by their respective states.
+
+The image below also helps illustrate this concept using a geographical example on both a macro and micro scale.
+
+![drill-down-roll-up](https://github.com/Shamslux/DataEngineering/assets/79280485/6c2635d2-4b0e-48d3-ad76-f75b89a88ae2)
+
+### Slice
+
+It is the analysis of just one slice of the cube, restricting the values of one dimension, but without reducing the
+cardinality of the cube.
+
+![slice](https://github.com/Shamslux/DataEngineering/assets/79280485/deb12001-16a2-4dd5-b508-56f581b42b40)
+
+### Dice
+
+It reduces the dimensions of a cube by eliminating one or more parts of the dimensions by selecting ranges of values.
+
+![dice](https://github.com/Shamslux/DataEngineering/assets/79280485/b246c3d7-01fe-4d44-8cc0-86552314a8a9)
 
 
