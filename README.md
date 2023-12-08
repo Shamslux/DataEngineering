@@ -6,6 +6,7 @@ Repository containing projects and summaries of my studies in the field of Data 
 - [Big Data Courses and Projects](#big-data-courses-and-projects)
   - [Hive and Impala Course](#hive-and-impala-course-with-fernando-amaral)
   - [Apache Airflow Course](#apache-airflow-course-with-marc-lamberti)
+  - [Data Engineering Course by XPE](#data-engineering-course-by-xpe)
 - [ETL/ELT Tools](#etlelt-tools)
   - [Apache Hop](#apache-hop)
 - [Books](#books)
@@ -29,6 +30,8 @@ Repository containing projects and summaries of my studies in the field of Data 
 
 <img src="https://cdn-icons-png.flaticon.com/512/4136/4136043.png" alt="document" width="25" height="25"> [Apache Airflow Course Description Link](Apache_Airflow_Marc_Lamberti/The%20Complete%20Hands-On%20Introduction%20to%20Apache%20Airflow.md)<br>
 
+### Data Engineering Course by XPE
+[Data Engineering Course by XPE](Data_Engineering_Course_XPE/Data%20Engineering%20Course%20XPE.md)
 
 ## ETL/ELT Tools
 
