@@ -31,6 +31,10 @@ Repository containing projects and summaries of my studies in the field of Data 
 <img src="https://cdn-icons-png.flaticon.com/512/4136/4136043.png" alt="document" width="25" height="25"> [Apache Airflow Course Description Link](Apache_Airflow_Marc_Lamberti/The%20Complete%20Hands-On%20Introduction%20to%20Apache%20Airflow.md)<br>
 
 ### Data Engineering Course by XPE
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Airflow](https://img.shields.io/badge/Airflow-017CEE?style=for-the-badge&logo=Apache%20Airflow&logoColor=white)
+
 [Data Engineering Course by XPE](Data_Engineering_Course_XPE/Data%20Engineering%20Course%20XPE.md)
 
 ## ETL/ELT Tools
