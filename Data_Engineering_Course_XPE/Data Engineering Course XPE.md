@@ -1131,4 +1131,44 @@ It reduces the dimensions of a cube by eliminating one or more parts of the dime
 
 ![dice](https://github.com/Shamslux/DataEngineering/assets/79280485/b246c3d7-01fe-4d44-8cc0-86552314a8a9)
 
+## Data Lake and other Data Repositories
+
+### Data Hub
+
+It is an organized, governed data repository designed to enable the distribution and sharing of data, with the goal of
+integrating different data silos into a single architectural platform.
+
+### Data Lake
+
+This term was coined by Pentaho's CTO, James Dixon, and is used to describe a repository of various company data,
+including structured, semi-structured, and/or unstructured data. These data are stored in their raw state, i.e., without
+any prior transformation, and receive metadata (tags) for identification, location, and use (analysis).
+
+With this, we can summarize it with the following statement from Gartner, which states that Data Lakes are "data
+management platforms across the organization for analyzing different data sources in their native format."
+
+### Data Swamp
+
+These are ungoverned/unmanaged Data Lakes containing low-quality or contextless data with the absence or minimal
+presence of metadata.
+
+### Data Pond
+
+It is a series of isolated repositories of raw data in its native format. These isolated repositories are used as
+temporary intermediate locations within the Data Lake.
+
+### Data River
+
+It conveys the idea of data flowing in real-time, where sorting and monitoring need to occur in the flow. There are data
+that "moves," such as streaming data, or even transactional data, where decisions are made during the event.
+
+### Data Warehouse vs Data Lake
+
+| Aspect | Data Warehouse | Data Lake |
+|--------------------|-----------------|------------------|
+| Data Types | Structured | Structured and Unstructured |
+| Structure | Pre-defined | Open |
+| Data Schema | Defined on Write | Defined on Read |
+| Data State | Processed/Transformed (ETL) | Raw, Transformed Only When Used (ELT) |
+| Purpose | Pre-defined | Open |
 
