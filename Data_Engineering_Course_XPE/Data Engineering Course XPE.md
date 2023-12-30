@@ -1172,3 +1172,48 @@ that "moves," such as streaming data, or even transactional data, where decision
 | Data State | Processed/Transformed (ETL) | Raw, Transformed Only When Used (ELT) |
 | Purpose | Pre-defined | Open |
 
+# 2st Module
+
+Claro, aqui está a versão editada com os capítulos em negrito e os números de seção substituídos por marcadores de lista ("-"):
+
+**Chapter 1. Introduction to Data Analysis**
+
+- Course Presentation
+- Introduction to Data Analysis
+
+**Chapter 2. Numpy for Data Analysis**
+
+- Introduction to Arrays
+- Array Creation - Practice
+- Array Indexing
+- Array Indexing - Practice
+- Arithmetic Operations
+- Arithmetic Operations: Addition, Subtraction, and Division - Practice
+- Arithmetic Operations: Element-wise and Matrix Multiplication - Practice
+- Comparisons and Boolean Indexing
+- Comparisons and Boolean Indexing - Practice
+- Other Useful Operations in Numpy - Practice
+- Linear Regression in Numpy: Basic Concepts
+- Linear Regression in Numpy - Practice
+
+**Chapter 3. Pandas for Data Analysis**
+
+- Introduction to Pandas
+- Introduction to Pandas - Practice
+- Indexing
+- Indexing - Practice
+- Sorting in Pandas
+- Sorting in Pandas - Practice
+- Data Visualization in Pandas - Practice
+- General Tips on Pandas - Practice
+
+**Chapter 4. Introduction to Machine Learning**
+
+- Introduction to Machine Learning
+- Introduction to Scikit-Learn
+- Classification: Basic Concepts
+- Classification in Scikit-Learn - Practice
+- Linear Regression in Scikit-Learn I - Practice
+- Linear Regression in Scikit-Learn II - Practice
+
+
