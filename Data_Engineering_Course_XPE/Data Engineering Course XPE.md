@@ -1227,4 +1227,45 @@ Claro, aqui está a versão editada com os capítulos em negrito e os números d
 - **Various Open Source Libraries**: Python has excellent libraries dedicated to data analysis and data science (pandas,
 NumPy, matplotlib, scikit-learn, etc.)
 
+## Data Analysis vs. Data Science
+
+### How Does Data Analysis Work?
+
+First, we define a problem (what is the pain point? What is the scope?) that we will address through the analysis of our
+data.
+
+Then, we collect the data, which is a crucial step because more data is usually better. It's necessary to handle
+multiple data sources since the required data may exist in relational databases, files (CSV, JSON), etc.
+
+With the collected data, we must transform it to clean it and create our dataset for further analysis. The dataset is a
+set of data that is minimally usable after transformations.
+
+The next step is the actual data analysis, where the analyst uses their knowledge to extract the most value from the
+obtained and transformed data.
+
+Finally, the last step is data visualization. Typically, data analysts create presentable dashboards. Dashboards can be
+presented using a data visualization tool (e.g., Power BI, Tableau) and follow specific technical standards, such as the
+use of storytelling methodology, etc.
+
+### Data Analyst
+
+Data analysts usually work in the following roles:
+
+- Data Analyst
+- Business Analyst
+- Business Intelligence Analyst (BI Analyst)
+
+They typically use the following technologies and tools:
+
+- SQL
+- Excel
+- Tableau/Power BI
+- Python (more recently)
+
+### Differences from Data Scientists
+
+In a straightforward way, a Data Analyst is capable of visually representing information obtained from historical data,
+while a Data Scientist extrapolates the dataset for future predictions based on mathematical models and machine
+learning.
+
 
