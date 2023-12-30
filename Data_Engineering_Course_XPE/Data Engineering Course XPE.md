@@ -1216,4 +1216,15 @@ Claro, aqui está a versão editada com os capítulos em negrito e os números d
 - Linear Regression in Scikit-Learn I - Practice
 - Linear Regression in Scikit-Learn II - Practice
 
+## 2nd Module Presentation
+
+### Why is Python So Successful?
+
+- **Because it's Open Source**: It's not paid, it's open, and it's open to contributions.
+
+- **Because it has an active community**: A community that supports developers.
+
+- **Various Open Source Libraries**: Python has excellent libraries dedicated to data analysis and data science (pandas,
+NumPy, matplotlib, scikit-learn, etc.)
+
 
