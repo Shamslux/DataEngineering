@@ -1269,4 +1269,71 @@ In a straightforward way, a Data Analyst is capable of visually representing inf
 while a Data Scientist extrapolates the dataset for future predictions based on mathematical models and machine
 learning.
 
+## Introduction and Array Creation
+
+### Introduction to NumPy
+
+NumPy is one of the leading libraries for scientific computing in Python, as it provides a high-performance
+multidimensional array object and various tools for working with these objects.
+
+### Installing the library
+
+```
+pip install numpy
+
+conda install numpy
+```
+
+### Importing into the development environment
+
+```python
+import numpy as np
+```
+
+### What are NumPy Arrays?
+
+They are data structures for manipulation and matrix algebra.
+
+![array](https://github.com/Shamslux/DataEngineering/assets/79280485/247791dc-29a6-43b7-bf76-533d61d0c4d9)
+
+
+Imagine them as little boxes with some value, where each box has an index indicating a position. More technically, we
+have a vector.
+
+The importance of NumPy Arrays also lies in the fact that they allow you to work with n-dimensional data structures,
+meaning you can work with a 1D Array, a 2D Array, or a 3D Array (see image below).
+
+![kinds-of-arrays](https://github.com/Shamslux/DataEngineering/assets/79280485/5dd005f5-a91e-4f4b-b04b-da1ae9daf19f)
+
+
+### Numpy Axis
+
+One of the structures of the Array is the Axis.
+
+- 1D Array: axis 0, one dimension, one Cartesian axis. E.g., Direction along a line.
+
+- 2D Array: axis 0 and axis 1, two dimensions, two Cartesian axes. E.g., Direction along rows and columns, i.e., a
+matrix, a table.
+
+- 3D Array: axis 0, axis 1, and axis 2, three dimensions, three Cartesian axes (x, y, and z). E.g., An image, which is
+three-dimensional, with 3 axes (height, length, and width).
+
+![array-axis-explanation](https://github.com/Shamslux/DataEngineering/assets/79280485/41127d5d-b207-452e-80c5-b0ec31b78c9a)
+
+
+### Numpy Shape
+
+The shape structure of a NumPy array indicates the number of elements in each axis.
+
+![array-shape](https://github.com/Shamslux/DataEngineering/assets/79280485/00125fbf-ac2a-4338-8068-94b6f8438f8c)
+
+
+### NumPy Performance
+
+The image below will show a comparison of the execution time of a Machine Learning algorithm implemented with pure
+Python and implemented with NumPy. Notice the significant difference in speed between the two approaches.
+
+![numpy-vs-pure-python](https://github.com/Shamslux/DataEngineering/assets/79280485/631037e7-e83d-47b4-abf1-5528b1acf9f3)
+
+
 
