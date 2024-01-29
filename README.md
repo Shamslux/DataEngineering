@@ -9,6 +9,8 @@ Repository containing projects and summaries of my studies in the field of Data 
   - [Data Engineering Course by XPE](#data-engineering-course-by-xpe)
 - [ETL/ELT Tools](#etlelt-tools)
   - [Apache Hop](#apache-hop)
+- [SQL](#sql)
+  - [SQL Review Course with ChatGPT](#sql-review-course-with-chatgpt)
 - [Books](#books)
   - [Fundamentals of Data Engineering by Joe Reis and Matt Housley](#fundamentals-of-data-engineering-by-joe-reis-and-matt-housley)
 
@@ -49,6 +51,15 @@ Repository containing projects and summaries of my studies in the field of Data 
 <img src="https://cdn-icons-png.flaticon.com/512/4136/4136043.png" alt="document" width="25" height="25"> [Apache Hop Project Description](ApacheHopProject/Apache%20Hop%20Project%20Description.md)<br>
 <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" alt="sql scripts" width="25" height="25"> [Apache Hop Project SQL Scripts](ApacheHopProject/scripts_sql)<br>
 <img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/python_vertical_logo_icon_168039.png" alt="py scripts" width="25" height="25"> [Apache Hop Project Python Scripts](ApacheHopProject/scripts_py)<br>
+
+## SQL
+
+### SQL Review Course with ChatGPT
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![ChatGPT](https://img.shields.io/badge/chatgpt-343434?style=for-the-badge&logo=openai&logoColor=white) 
+
+<img src="https://cdn-icons-png.flaticon.com/512/4136/4136043.png" alt="document" width="25" height="25"> [Description](SQLReviewCoursewithChatGPT/SQL%Review%Course%with%ChatGPT.md)<br>
+<img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" alt="sql scripts" width="25" height="25"> [SQL Scripts](SQLReviewCoursewithChatGPT/SQL%Scripts/)<br>
 
 ## Books
 <a href="https://www.goodreads.com/user/show/50697219-jo-o-paulo-m-ller-mamede">
