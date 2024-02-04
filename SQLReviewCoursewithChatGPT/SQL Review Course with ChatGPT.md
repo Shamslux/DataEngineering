@@ -61,3 +61,23 @@ FROM	tb_games;
 ```
 
 ![s2_jr](https://github.com/Shamslux/DataEngineering/assets/79280485/0dfa032f-655f-4a2c-9660-b2e9d1846c11)
+
+## 3. Find all games released in 2010.
+
+```sql
+SELECT	nm_title 
+FROM	tb_games
+WHERE	nm_release_year = '2010';
+```
+
+![s3_jr](https://github.com/Shamslux/DataEngineering/assets/79280485/ffe62c0e-f9ab-406f-b979-d0744b1c4e64)
+
+## 4. Select all customers from the tb_client table.
+
+```sql
+SELECT	nm_client
+FROM	tb_client;
+```
+![s4_jr](https://github.com/Shamslux/DataEngineering/assets/79280485/79f73c66-c262-444c-829f-5513b7fcae20)
+
+
