@@ -58,7 +58,7 @@ Repository containing projects and summaries of my studies in the field of Data 
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![ChatGPT](https://img.shields.io/badge/chatgpt-343434?style=for-the-badge&logo=openai&logoColor=white) 
 
-<img src="https://cdn-icons-png.flaticon.com/512/4136/4136043.png" alt="document" width="25" height="25"> [Description](SQLReviewCoursewithChatGPT/SQL%Review%Course%with%ChatGPT.md)<br>
+<img src="https://cdn-icons-png.flaticon.com/512/4136/4136043.png" alt="document" width="25" height="25"> [Description](SQLReviewCoursewithChatGPT/SQL%20Review%20Course%20with%20ChatGPT.md)<br>
 <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" alt="sql scripts" width="25" height="25"> [SQL Scripts](SQLReviewCoursewithChatGPT/SQL%Scripts/)<br>
 
 ## Books
