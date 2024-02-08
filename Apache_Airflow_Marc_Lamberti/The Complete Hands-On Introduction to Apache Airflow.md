@@ -186,3 +186,29 @@ interleaving of the rectangles, parallel executions.
 
 Allows viewing the code of the DAG and making necessary modifications if desired.
 
+# The Project
+
+## Project Structure
+
+The project will be based on the creation of 1 DAG with 5 tasks.
+
+1. **create_table**: This task will create a table in a PostgreSQL relational database (included in the Airflow container that I'll be using).
+
+2. **is_api_available**: This task will check if a given API is available for obtaining future data.
+
+3. **extract_user**: This task will obtain user information from the previously checked API.
+
+4. **process_user**: This task will perform transformations on the users as necessary before they are stored (previously was the E, now it's the T of ETL).
+
+5. **store_user**: Finally, this task will store the data in the database (the L of ETL, concluding the process).
+
+![project](https://github.com/Shamslux/DataEngineering/assets/79280485/0869d9d7-b20a-4271-a20a-87dcbf186fbc)
+
+
+## What is a DAG?
+
+It is a directed acyclic graph, as can be seen in the model below, where the nodes are tasks and the directed edges correspond to their dependencies.
+
+![dag](https://github.com/Shamslux/DataEngineering/assets/79280485/c338bdc6-cce1-4dcd-92e5-ef990e356c5c)
+
+
