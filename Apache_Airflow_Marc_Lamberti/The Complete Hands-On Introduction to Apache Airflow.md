@@ -211,4 +211,32 @@ It is a directed acyclic graph, as can be seen in the model below, where the nod
 
 ![dag](https://github.com/Shamslux/DataEngineering/assets/79280485/c338bdc6-cce1-4dcd-92e5-ef990e356c5c)
 
+## Initial Skeleton of a DAG
+
+```python
+from airflow import DAG
+
+from datetime import datetime
+
+with DAG('user_processing', start_date=datetime(2022, 1, 1),
+         schedule_interval='@daily', catchup=False) as dag:
+    None
+```
+
+The code above is an example of the basic skeleton of a DAG. Let's review each item and its functions:
+
+1. **from airflow import DAG**: Necessary for it to be recognized as an Airflow DAG.
+
+2. **from datetime import datetime**: Important for us to use in the start_date variable.
+
+3. **with DAG('user_processing'....**: Defines the unique ID to identify the DAG.
+
+4. **start_date=datetime(2022, 1, 1)...**: Sets an initial date, i.e., when the DAG starts to be scheduled.
+
+5. **schedule_interval='@daily'...**: We can use Cron or, as in the example, expressions like @daily. These expressions contain a built-in Cron definition (e.g., @daily = every day at midnight). For further explanations of these definitions, refer to the documentation.
+
+6. **catchup=False...**: If this option is left as true, all subsequent executions that should have run will be executed by Airflow. Leaving it as False provides greater control, which can be a good option for better managing DAG executions.
+
+7. **None**: Since we haven't created anything yet, we'll just leave it empty so that the DAG is recognized by Airflow, even if it doesn't contain anything else written yet.
+
 
