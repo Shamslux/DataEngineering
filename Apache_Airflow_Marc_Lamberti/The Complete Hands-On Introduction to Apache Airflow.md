@@ -237,6 +237,31 @@ The code above is an example of the basic skeleton of a DAG. Let's review each i
 
 6. **catchup=False...**: If this option is left as true, all subsequent executions that should have run will be executed by Airflow. Leaving it as False provides greater control, which can be a good option for better managing DAG executions.
 
-7. **None**: Since we haven't created anything yet, we'll just leave it empty so that the DAG is recognized by Airflow, even if it doesn't contain anything else written yet.
+7. **None**: Since we haven't created anything yet, we'll just leave it empty.
 
+## What is an Operator?
 
+Simply put, Operators are the tasks within the DAG. An important tip is: never pass two different tasks within the same
+Operator. For example, if you have a PythonOperator to clean the data and another one to process the data, never pass
+both tasks as a single Operator. Why? Because if there's an error, both processes will need to start over!
+
+For better practices and organization of projects, create one PythonOperator to clean the data and another one to
+process the data.
+
+![operator_dont_do](https://github.com/Shamslux/DataEngineering/assets/79280485/b07a2aff-3c85-46da-8b3c-8cb2c4fc6bae)
+
+### Types of Operators
+
+1. **Action Operators**: ***Execute*** an action.
+
+2. **Transfer Operators**: ***Transfer*** data.
+
+3. **Sensors**: ***Wait for*** a condition to occur.
+
+## Providers
+
+The installation of Airflow is modular. When you install it, you have the core module. But what if you wanted to
+interact with AWS? Or with Dbt? For that, you would need to install the providers, which allow Airflow to interact with
+these other tools and environments. This is one of the features that makes Airflow so powerful and scalable.
+
+![providers](https://github.com/Shamslux/DataEngineering/assets/79280485/2da45067-280f-4648-94bc-1dbd60bcc24d)
