@@ -265,3 +265,73 @@ interact with AWS? Or with Dbt? For that, you would need to install the provider
 these other tools and environments. This is one of the features that makes Airflow so powerful and scalable.
 
 ![providers](https://github.com/Shamslux/DataEngineering/assets/79280485/2da45067-280f-4648-94bc-1dbd60bcc24d)
+
+## What is a Sensor?
+
+Sensors wait for an event (or condition) before taking action. For example, imagine a person waiting at a bus stop for
+some time. They will remain there until they spot the bus (the event) and then they will stand up to wait for the
+vehicle to stop so they can finally board it.
+
+### Two important concepts in Sensors
+
+There are two concepts involving connection validation time. The first one is the ***poke_interval*** and the second one
+is ***timeout***.
+
+- **poke_interval**: This parameter sets the interval between sensor condition checks. It specifies how often the sensor
+will check if the desired condition has been met. For example, if you set a ***poke_interval*** of 5 minutes, the sensor
+will check the condition every 5 minutes to see if it has been met.
+
+- **timeout**: The timeout parameter sets how long the sensor will wait until the condition is met before considering it
+a failure. If the condition is not met within this period of time, the sensor will fail, and the workflow can handle the
+failure according to the specified settings.
+
+```python
+from airflow import DAG
+from airflow.providers.postgres.operators.postgres import PostgresOperator
+from airflow.providers.http.sensors.http import HttpSensor
+
+from datetime import datetime
+
+with DAG('user_processing', start_date=datetime(2022, 1, 1),
+         schedule_interval='@daily', catchup=False) as dag:
+    
+    create_table = PostgresOperator(
+        task_id='create_table',
+        postgres_conn_id='postgres',
+        sql='''
+              CREATE TABLE IF NOT EXISTS users(
+                    firstname TEXT NOT NULL,
+                    lastname  TEXT NOT NULL,
+                    country   TEXT NOT NULL,
+                    username  TEXT NOT NULL,
+                    password  TEXT NOT NULL,
+                    email     TEXT NOT NULL
+              );
+          '''
+    )
+
+    is_api_available = HttpSensor(
+        task_id='is_api_available',
+        http_conn_id='user_api',
+        endpoint='api/'
+    )
+```
+1. **from airflow.providers.postgres.operators.postgres import PostgresOperator**: Imports the correct provider for
+PostgreSQL. Note: I have already configured the connection in the Airflow webserver (there is a PostgreSQL installed
+along with the Docker Compose image used).
+
+2. **create_table = PostgresOperator**: The new task will make use of the appropriate operator to interact with
+PostgreSQL.
+
+3. **postgres_conn_id='postgres'**: Connection identifier (already configured, as mentioned before).
+
+4. **sql=...**: The content of the SQL query.
+
+5. **from airflow.providers.http.sensors.http import HttpSensor**: Provider for the HTTP sensor.
+
+6. **http_conn_id='user_api'**: Specifies the HTTP connection to be used by the sensor to communicate with the API. This
+connection must be previously configured in Airflow using the Connections menu of the Airflow web interface.
+
+7. **endpoint='api/'**: Indicates the API endpoint that the sensor will access to check if it is available. In this
+example, the sensor will access the api/ endpoint of the API.
+
