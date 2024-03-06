@@ -1335,5 +1335,62 @@ Python and implemented with NumPy. Notice the significant difference in speed be
 
 ![numpy-vs-pure-python](https://github.com/Shamslux/DataEngineering/assets/79280485/631037e7-e83d-47b4-abf1-5528b1acf9f3)
 
+### Creating NumPy Arrays (Hands-On!)
 
+**Note:** The notebook with the Python script will be located at the folder "python" in this repository.
+
+```python
+# Importing module
+import numpy as np
+
+"""# Creating Arrays"""
+
+help(np.array)
+
+# Creating a 1D array: [1, 2, 3]
+l = [1, 2, 3]
+x = np.array(l)
+print("x:", x)
+print("shape:", x.shape)
+
+type(x)
+
+# Creating a 2D array: nested lists
+l = [[1, 2], [3, 4]]
+x = np.array(l)
+print("x:\n", x)
+print("shape:", x.shape)
+
+# Array with 0's
+dim = (2,2) # (lines, columns)
+x = np.zeros(dim)
+print("x:\n", x)
+print("shape:", x.shape)
+
+# Array with 1's
+dim = (2,2) # (lines, columns)
+x = np.ones(dim)
+print("x:\n", x)
+print("shape:", x.shape)
+
+# creating values inside an interval
+# uniform values between 5 and 15
+
+x_min, x_max = 5, 15
+x = np.linspace(start=x_min, stop=x_max, num=6)
+print("x:", x)
+print("shape:", x.shape)
+
+# creating identity matrix
+n = 4
+x = np.eye(n)
+print("x:\n", x)
+print("shape:", x.shape)
+
+# random values
+# np.random.seed(10)
+x = np.random.random(size=(2, 3))
+print("x:\n", x)
+print("shape:", x.shape)
+```
 
