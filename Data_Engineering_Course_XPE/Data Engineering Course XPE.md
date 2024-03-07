@@ -1175,8 +1175,6 @@ that "moves," such as streaming data, or even transactional data, where decision
 
 # 2st Module
 
-Claro, aqui está a versão editada com os capítulos em negrito e os números de seção substituídos por marcadores de lista ("-"):
-
 **Chapter 1. Introduction to Data Analysis**
 
 - Course Presentation
