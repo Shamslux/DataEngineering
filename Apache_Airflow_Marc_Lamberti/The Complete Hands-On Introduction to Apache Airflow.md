@@ -335,3 +335,43 @@ connection must be previously configured in Airflow using the Connections menu o
 7. **endpoint='api/'**: Indicates the API endpoint that the sensor will access to check if it is available. In this
 example, the sensor will access the api/ endpoint of the API.
 
+## What is a Hook?
+
+In a very simple way, the example given by the instructor involves a PostgreSQL database. The PostgresOperator would be
+responsible for connecting to the database; however, between the Operator and the database, the PostgresHook comes into
+play. It is necessary to abstract all the complexity involved in interacting with the PostgreSQL database.
+
+In essence, it is necessary to use Hooks as intermediaries between the Operators and the entity being connected.
+
+```python
+from airflow import DAG
+from airflow.providers.postgres.operators.postgres import PostgresOperator
+from airflow.providers.http.sensors.http import HttpSensor
+from airflow.providers.http.operators.http import SimpleHttpOperator
+from airflow.operators.python_operator import PythonOperator
+from airflow.providers.postgres.hooks.postgres import PostgresHook
+
+def _store_user():
+    hook = PostgresHook(postgres_conn_id='postgres')
+    hook.copy_expert(
+        sql="COPY users FROM stdin WITH DELIMITER as ','",
+        filename='/tmp/processed_user.csv'
+    )
+
+with DAG('user_processing', start_date=datetime(2022, 1, 1),
+         schedule_interval='@daily', catchup=False) as dag:
+...
+
+    store_user = PythonOperator(
+        task_id='store_user',
+        python_callable=_store_user
+    )
+
+create_table >> is_api_available >> extract_user >> process_user >> store_user
+```
+
+## The Final Result of the DAG
+
+![the_graph_of_dag](https://github.com/Shamslux/DataEngineering/assets/79280485/41dc7fd4-efce-4339-99e0-bf41724d52a1)
+
+Above, we can see the graph showing the relationship between the elements of the DAG. In essence, it is a model that demonstrates the ability to create a table in a PostgreSQL database, check if an API is available, retrieve data from that API, and, using Pandas resources to handle JSON, structure it in a more aesthetic way and save it to the database, utilizing the features we covered with the Hook (read the previous topic above).
