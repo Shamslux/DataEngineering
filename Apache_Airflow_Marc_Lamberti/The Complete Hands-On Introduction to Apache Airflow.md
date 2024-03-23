@@ -375,3 +375,19 @@ create_table >> is_api_available >> extract_user >> process_user >> store_user
 ![the_graph_of_dag](https://github.com/Shamslux/DataEngineering/assets/79280485/41dc7fd4-efce-4339-99e0-bf41724d52a1)
 
 Above, we can see the graph showing the relationship between the elements of the DAG. In essence, it is a model that demonstrates the ability to create a table in a PostgreSQL database, check if an API is available, retrieve data from that API, and, using Pandas resources to handle JSON, structure it in a more aesthetic way and save it to the database, utilizing the features we covered with the Hook (read the previous topic above).
+
+## Executing the DAG with Success!
+
+We can see in the image below that the DAG was executed successfully.
+
+![dag_status](https://github.com/Shamslux/DataEngineering/assets/79280485/f7c589f4-2666-408e-924e-85ea7457ec4f)
+
+In the image below, we can see that the data transfer from the user extraction API was successful and that the CSV document was saved properly in the container.
+
+![csv_airflow_downloaded](https://github.com/Shamslux/DataEngineering/assets/79280485/e4758a97-4acd-4b80-9661-c630665ade99)
+
+
+Finally, in the image below, we can see the container's terminal containing PostgreSQL and with the table we had created in the DAG, now populated with the user obtained from the public API that generates random users.
+
+![psql_user_in_table](https://github.com/Shamslux/DataEngineering/assets/79280485/c4dc5a5e-3c5f-4990-93a2-dd6d0e761ac3)
+
