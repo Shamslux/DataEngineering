@@ -391,3 +391,63 @@ Finally, in the image below, we can see the container's terminal containing Post
 
 ![psql_user_in_table](https://github.com/Shamslux/DataEngineering/assets/79280485/c4dc5a5e-3c5f-4990-93a2-dd6d0e761ac3)
 
+## Scheduling DAG Execution
+
+- **start_date**: the timestamp from which the scheduler will attempt to backfill
+
+- **schedule_interval**: how often a DAG runs
+
+- **end_date**: the timestamp from which a DAG ends
+
+```python
+
+with DAG('my_example_dag', start_date=datetime(2022, 1, 1),
+         schedule_interval='@daily') as dag:
+```
+
+The *schedule_interval* accepts CRON-like expressions, but there are some predefined forms (like the case of @daily). However, for finer adjustments, it is recommended to understand how to work with CRON.
+
+Note: The DAG is triggered AFTER the start_date/last_run + the schedule_interval.
+
+### A Practical Example of DAG Execution
+
+Let's assume we have a DAG with a *start_date* at 10:00 AM and a *schedule_interval* every 10 minutes.
+
+At 10:00 AM, nothing happens, although it's the *start_date* marker. After waiting for 10 minutes, Airflow will actually execute the DAG at 10:10 AM.
+
+After 10 minutes, the DAG will be executed again, now at 10:20 AM.
+
+### The Catchup Mechanism
+
+In summary, if you create a DAG and set the *start_date* to, for example, '2022-01-03', but you created it on '2022-01-07' and you're going to run it for the present day, if the *catchup* is not configured as *false*, then the DAG will perform a backfill execution for each previous day from the *start_date* and not from the present day ('2022-01-07'). To prevent this from happening, it will be necessary to configure the *catchup* as *false*.
+
+## What is a Dataset?
+
+A Dataset is a logical grouping of data, such as a file, a table, etc. In short, anything that holds data, because, basically, Airflow doesn't care much whether it's a file or a table.
+
+The Dataset has two properties. The URI parameter and the EXTRA parameter.
+
+- **URI**: is a unique identifier for your dataset, as well as the actual path of the data. It must be composed only of ASCII characters, it is case sensitive, and the URI schema cannot be airflow.
+
+```python
+from airflow import Dataset
+
+# valid datasets:
+schemeless = Dataset("/path/file.txt")
+csv_file = Dataset("file.csv")
+
+# invalid datasets:
+reserved = Dataset("airflow://file.txt")
+not_ascii = Dataset("file_datašet")
+```
+
+- **EXTRA**: is a JSON dictionary where you can define additional information about your dataset.
+
+```python
+from airflow import Dataset
+
+my_file = Dataset(
+    "s3://dataset/file.csv",
+    extra={'owner': 'james'},
+)
+```
