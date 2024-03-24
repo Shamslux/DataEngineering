@@ -451,3 +451,87 @@ my_file = Dataset(
     extra={'owner': 'james'},
 )
 ```
+## Bye bye Schedule Interval
+
+Starting from version 2.4 of Airflow, there was a change in how DAGs were scheduled. See an example below:
+
+```python
+# before
+with DAG(schedule_interval='@daily')
+
+with DAG(timetable=MyTimeTable)
+
+# since 2.4
+
+with DAG(schedule=...)
+```
+
+## Scheduling DAGs based on datasets
+
+Let's create two DAGs. One will produce a TXT file that will be our dataset. The other will be triggered from the moment this file undergoes an update.
+
+### Structure of the "producer" DAG
+
+```python
+from airflow import DAG, Dataset
+from airflow.decorators import task
+
+from datetime import datetime
+
+my_file = Dataset("/tmp/my_file.txt")
+
+with DAG(
+    dag_id="producer",
+    schedule="@daily",
+    start_date=datetime(2022, 1, 1),
+    catchup=False
+):
+    @task(outlets=[my_file])
+    def update_dataset():
+        with open(my_file.uri, "a+") as f:
+            f.write("producer update")
+    
+    update_dataset()
+```
+
+1 - Notice how the *schedule* is already following the model after the 2.4 update.
+
+### Structure of the "consumer" DAG
+
+```python
+from airflow import DAG, Dataset
+from airflow.decorators import task
+
+from datetime import datetime
+
+my_file = Dataset("/tmp/my_file.txt")
+
+with DAG(
+    dag_id="consumer",
+    schedule=[my_file],
+    start_date=datetime(2022, 1, 1),
+    catchup=False
+):
+    @task
+    def read_dataset():
+        with open(my_file.uri, "r") as f:
+            print(f.read())
+    
+    read_dataset()
+```
+
+### Executing the DAG
+
+![dataset_view](https://github.com/Shamslux/DataEngineering/assets/79280485/b8fbc06c-025c-4476-a35d-c8f71abccb91)
+
+Above, see the structure available in the "Datasets" tab of the Airflow webserver. We can see how the "consumer" DAG is triggered after the action of the "producer" DAG (responsible for updating the "my_file" dataset). Additionally, both will only function when they are both activated.
+
+Below are the images showing the success of the DAGs.
+
+![producer_success](https://github.com/Shamslux/DataEngineering/assets/79280485/0f7407eb-d59a-43f7-87b1-a38d3a30be9a)
+
+![consumer_success](https://github.com/Shamslux/DataEngineering/assets/79280485/7b140384-e838-4db1-b2a9-24bf4fddf870)
+
+![consumer_log](https://github.com/Shamslux/DataEngineering/assets/79280485/aeda88c8-0439-4d40-8a58-4928f37ec790)
+
+
