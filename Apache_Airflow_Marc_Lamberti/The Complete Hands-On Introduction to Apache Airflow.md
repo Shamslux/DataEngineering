@@ -534,4 +534,81 @@ Below are the images showing the success of the DAGs.
 
 ![consumer_log](https://github.com/Shamslux/DataEngineering/assets/79280485/aeda88c8-0439-4d40-8a58-4928f37ec790)
 
+## Waiting for Multiple Datasets
+
+What if we wanted to wait for more than one file besides the single TXT file in our example? To achieve this, we would simply adjust the producer DAG to update two files, as shown below:
+
+```python
+from airflow import DAG, Dataset
+from airflow.decorators import task
+
+from datetime import datetime
+
+my_file = Dataset("/tmp/my_file.txt")
+my_file_2 = Dataset("/tmp/my_file_2.txt")
+
+with DAG(
+    dag_id="producer",
+    schedule="@daily",
+    start_date=datetime(2022, 1, 1),
+    catchup=False
+):
+    @task(outlets=[my_file])
+    def update_dataset():
+        with open(my_file.uri, "a+") as f:
+            f.write("producer update")
+
+    @task(outlets=[my_file_2])
+    def update_dataset_2():
+        with open(my_file_2.uri, "a+") as f:
+            f.write("producer update")
+    
+    update_dataset() >> update_dataset_2()
+```
+
+After this adjustment in the structure of the producer DAG, let's see the necessary adjustment in the consumer DAG:
+
+```python
+from airflow import DAG, Dataset
+from airflow.decorators import task
+
+from datetime import datetime
+
+my_file = Dataset("/tmp/my_file.txt")
+my_file_2 = Dataset("/tmp/my_file_2.txt")
+
+with DAG(
+    dag_id="consumer",
+    schedule=[my_file, my_file_2],
+    start_date=datetime(2022, 1, 1),
+    catchup=False
+):
+    @task
+    def read_dataset():
+        with open(my_file.uri, "r") as f:
+            print(f.read())
+    
+    read_dataset()
+```
+
+In the case of the structure above, we basically added *my_file_2* inside the list passed in *schedule*.
+
+With that, below is how the image in the "Datasets" tab looks:
+
+![two_datasets_datasets_view](https://github.com/Shamslux/DataEngineering/assets/79280485/2b1a754b-c13b-4084-a1de-b91ff728cd2f)
+
+
+Thus, we learned how we can handle more than one file waiting for an update so that the DAG can be triggered after this update occurs.
+
+## Dataset limitations
+
+- DAGs can only use Datasets in the same Airflow instance. A DAG cannot wait for a Dataset defined in another Airflow instance.
+
+- Consumer DAGs are triggered every time a task that updates datasets completes successfully. **Airflow doesn't check whether the data has been effectively updated.**
+
+- You can't combine different schedules like datasets with cron expressions.
+
+- If two tasks update the same dataset, as soon as one is done, that triggers the Consumer DAG immediately without waiting for the second task to complete.
+
+- Airflow monitors datasets only within the context of DAGs and Tasks. If an external tool updates the actual data represented by a Dataset, Airflow has no way of knowing that.
 
