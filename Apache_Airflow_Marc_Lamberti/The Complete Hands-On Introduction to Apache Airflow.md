@@ -612,3 +612,17 @@ Thus, we learned how we can handle more than one file waiting for an update so t
 
 - Airflow monitors datasets only within the context of DAGs and Tasks. If an external tool updates the actual data represented by a Dataset, Airflow has no way of knowing that.
 
+# Databases and Executors
+
+## What's an Executor?
+
+The executor doesn't execute your tasks, but it defines how to execute your tasks. There are several executors for this: sequential, local, and celery. To change the executor, just access the *airflow.cfg* file. Inside it, you will see the *executor* parameter. By default, it will be like this: *executor = SequentialExecutor*.
+
+Note: Throughout the course, our docker-compose.yaml configured the environment variable **AIRFLOW_CORE_EXECUTOR** as *CeleryExecutor* (which overrides the *executor* parameter in the *airflow.cfg* file).
+
+## SequentialExecutor
+
+SequentialExecutor is the default executor installed with Airflow. It uses the basic structure: Web Server, Scheduler, and SQLite (database). When running the DAGs, it will execute them one by one (see the image below). In the example image, T2 would be executed first, and after its completion, T3 would be executed. T2 and T3 would not be executed simultaneously. This executor is used more for testing, debugging, and simpler tasks.
+
+![sequential_executor_example](https://github.com/Shamslux/DataEngineering/assets/79280485/f21167f0-9097-4ef7-9eeb-1299f1faa6d4)
+
