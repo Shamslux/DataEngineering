@@ -335,3 +335,294 @@ connection must be previously configured in Airflow using the Connections menu o
 7. **endpoint='api/'**: Indicates the API endpoint that the sensor will access to check if it is available. In this
 example, the sensor will access the api/ endpoint of the API.
 
+## What is a Hook?
+
+In a very simple way, the example given by the instructor involves a PostgreSQL database. The PostgresOperator would be
+responsible for connecting to the database; however, between the Operator and the database, the PostgresHook comes into
+play. It is necessary to abstract all the complexity involved in interacting with the PostgreSQL database.
+
+In essence, it is necessary to use Hooks as intermediaries between the Operators and the entity being connected.
+
+```python
+from airflow import DAG
+from airflow.providers.postgres.operators.postgres import PostgresOperator
+from airflow.providers.http.sensors.http import HttpSensor
+from airflow.providers.http.operators.http import SimpleHttpOperator
+from airflow.operators.python_operator import PythonOperator
+from airflow.providers.postgres.hooks.postgres import PostgresHook
+
+def _store_user():
+    hook = PostgresHook(postgres_conn_id='postgres')
+    hook.copy_expert(
+        sql="COPY users FROM stdin WITH DELIMITER as ','",
+        filename='/tmp/processed_user.csv'
+    )
+
+with DAG('user_processing', start_date=datetime(2022, 1, 1),
+         schedule_interval='@daily', catchup=False) as dag:
+...
+
+    store_user = PythonOperator(
+        task_id='store_user',
+        python_callable=_store_user
+    )
+
+create_table >> is_api_available >> extract_user >> process_user >> store_user
+```
+
+## The Final Result of the DAG
+
+![the_graph_of_dag](https://github.com/Shamslux/DataEngineering/assets/79280485/41dc7fd4-efce-4339-99e0-bf41724d52a1)
+
+Above, we can see the graph showing the relationship between the elements of the DAG. In essence, it is a model that demonstrates the ability to create a table in a PostgreSQL database, check if an API is available, retrieve data from that API, and, using Pandas resources to handle JSON, structure it in a more aesthetic way and save it to the database, utilizing the features we covered with the Hook (read the previous topic above).
+
+## Executing the DAG with Success!
+
+We can see in the image below that the DAG was executed successfully.
+
+![dag_status](https://github.com/Shamslux/DataEngineering/assets/79280485/f7c589f4-2666-408e-924e-85ea7457ec4f)
+
+In the image below, we can see that the data transfer from the user extraction API was successful and that the CSV document was saved properly in the container.
+
+![csv_airflow_downloaded](https://github.com/Shamslux/DataEngineering/assets/79280485/e4758a97-4acd-4b80-9661-c630665ade99)
+
+
+Finally, in the image below, we can see the container's terminal containing PostgreSQL and with the table we had created in the DAG, now populated with the user obtained from the public API that generates random users.
+
+![psql_user_in_table](https://github.com/Shamslux/DataEngineering/assets/79280485/c4dc5a5e-3c5f-4990-93a2-dd6d0e761ac3)
+
+## Scheduling DAG Execution
+
+- **start_date**: the timestamp from which the scheduler will attempt to backfill
+
+- **schedule_interval**: how often a DAG runs
+
+- **end_date**: the timestamp from which a DAG ends
+
+```python
+
+with DAG('my_example_dag', start_date=datetime(2022, 1, 1),
+         schedule_interval='@daily') as dag:
+```
+
+The *schedule_interval* accepts CRON-like expressions, but there are some predefined forms (like the case of @daily). However, for finer adjustments, it is recommended to understand how to work with CRON.
+
+Note: The DAG is triggered AFTER the start_date/last_run + the schedule_interval.
+
+### A Practical Example of DAG Execution
+
+Let's assume we have a DAG with a *start_date* at 10:00 AM and a *schedule_interval* every 10 minutes.
+
+At 10:00 AM, nothing happens, although it's the *start_date* marker. After waiting for 10 minutes, Airflow will actually execute the DAG at 10:10 AM.
+
+After 10 minutes, the DAG will be executed again, now at 10:20 AM.
+
+### The Catchup Mechanism
+
+In summary, if you create a DAG and set the *start_date* to, for example, '2022-01-03', but you created it on '2022-01-07' and you're going to run it for the present day, if the *catchup* is not configured as *false*, then the DAG will perform a backfill execution for each previous day from the *start_date* and not from the present day ('2022-01-07'). To prevent this from happening, it will be necessary to configure the *catchup* as *false*.
+
+## What is a Dataset?
+
+A Dataset is a logical grouping of data, such as a file, a table, etc. In short, anything that holds data, because, basically, Airflow doesn't care much whether it's a file or a table.
+
+The Dataset has two properties. The URI parameter and the EXTRA parameter.
+
+- **URI**: is a unique identifier for your dataset, as well as the actual path of the data. It must be composed only of ASCII characters, it is case sensitive, and the URI schema cannot be airflow.
+
+```python
+from airflow import Dataset
+
+# valid datasets:
+schemeless = Dataset("/path/file.txt")
+csv_file = Dataset("file.csv")
+
+# invalid datasets:
+reserved = Dataset("airflow://file.txt")
+not_ascii = Dataset("file_datašet")
+```
+
+- **EXTRA**: is a JSON dictionary where you can define additional information about your dataset.
+
+```python
+from airflow import Dataset
+
+my_file = Dataset(
+    "s3://dataset/file.csv",
+    extra={'owner': 'james'},
+)
+```
+## Bye bye Schedule Interval
+
+Starting from version 2.4 of Airflow, there was a change in how DAGs were scheduled. See an example below:
+
+```python
+# before
+with DAG(schedule_interval='@daily')
+
+with DAG(timetable=MyTimeTable)
+
+# since 2.4
+
+with DAG(schedule=...)
+```
+
+## Scheduling DAGs based on datasets
+
+Let's create two DAGs. One will produce a TXT file that will be our dataset. The other will be triggered from the moment this file undergoes an update.
+
+### Structure of the "producer" DAG
+
+```python
+from airflow import DAG, Dataset
+from airflow.decorators import task
+
+from datetime import datetime
+
+my_file = Dataset("/tmp/my_file.txt")
+
+with DAG(
+    dag_id="producer",
+    schedule="@daily",
+    start_date=datetime(2022, 1, 1),
+    catchup=False
+):
+    @task(outlets=[my_file])
+    def update_dataset():
+        with open(my_file.uri, "a+") as f:
+            f.write("producer update")
+    
+    update_dataset()
+```
+
+1 - Notice how the *schedule* is already following the model after the 2.4 update.
+
+### Structure of the "consumer" DAG
+
+```python
+from airflow import DAG, Dataset
+from airflow.decorators import task
+
+from datetime import datetime
+
+my_file = Dataset("/tmp/my_file.txt")
+
+with DAG(
+    dag_id="consumer",
+    schedule=[my_file],
+    start_date=datetime(2022, 1, 1),
+    catchup=False
+):
+    @task
+    def read_dataset():
+        with open(my_file.uri, "r") as f:
+            print(f.read())
+    
+    read_dataset()
+```
+
+### Executing the DAG
+
+![dataset_view](https://github.com/Shamslux/DataEngineering/assets/79280485/b8fbc06c-025c-4476-a35d-c8f71abccb91)
+
+Above, see the structure available in the "Datasets" tab of the Airflow webserver. We can see how the "consumer" DAG is triggered after the action of the "producer" DAG (responsible for updating the "my_file" dataset). Additionally, both will only function when they are both activated.
+
+Below are the images showing the success of the DAGs.
+
+![producer_success](https://github.com/Shamslux/DataEngineering/assets/79280485/0f7407eb-d59a-43f7-87b1-a38d3a30be9a)
+
+![consumer_success](https://github.com/Shamslux/DataEngineering/assets/79280485/7b140384-e838-4db1-b2a9-24bf4fddf870)
+
+![consumer_log](https://github.com/Shamslux/DataEngineering/assets/79280485/aeda88c8-0439-4d40-8a58-4928f37ec790)
+
+## Waiting for Multiple Datasets
+
+What if we wanted to wait for more than one file besides the single TXT file in our example? To achieve this, we would simply adjust the producer DAG to update two files, as shown below:
+
+```python
+from airflow import DAG, Dataset
+from airflow.decorators import task
+
+from datetime import datetime
+
+my_file = Dataset("/tmp/my_file.txt")
+my_file_2 = Dataset("/tmp/my_file_2.txt")
+
+with DAG(
+    dag_id="producer",
+    schedule="@daily",
+    start_date=datetime(2022, 1, 1),
+    catchup=False
+):
+    @task(outlets=[my_file])
+    def update_dataset():
+        with open(my_file.uri, "a+") as f:
+            f.write("producer update")
+
+    @task(outlets=[my_file_2])
+    def update_dataset_2():
+        with open(my_file_2.uri, "a+") as f:
+            f.write("producer update")
+    
+    update_dataset() >> update_dataset_2()
+```
+
+After this adjustment in the structure of the producer DAG, let's see the necessary adjustment in the consumer DAG:
+
+```python
+from airflow import DAG, Dataset
+from airflow.decorators import task
+
+from datetime import datetime
+
+my_file = Dataset("/tmp/my_file.txt")
+my_file_2 = Dataset("/tmp/my_file_2.txt")
+
+with DAG(
+    dag_id="consumer",
+    schedule=[my_file, my_file_2],
+    start_date=datetime(2022, 1, 1),
+    catchup=False
+):
+    @task
+    def read_dataset():
+        with open(my_file.uri, "r") as f:
+            print(f.read())
+    
+    read_dataset()
+```
+
+In the case of the structure above, we basically added *my_file_2* inside the list passed in *schedule*.
+
+With that, below is how the image in the "Datasets" tab looks:
+
+![two_datasets_datasets_view](https://github.com/Shamslux/DataEngineering/assets/79280485/2b1a754b-c13b-4084-a1de-b91ff728cd2f)
+
+
+Thus, we learned how we can handle more than one file waiting for an update so that the DAG can be triggered after this update occurs.
+
+## Dataset limitations
+
+- DAGs can only use Datasets in the same Airflow instance. A DAG cannot wait for a Dataset defined in another Airflow instance.
+
+- Consumer DAGs are triggered every time a task that updates datasets completes successfully. **Airflow doesn't check whether the data has been effectively updated.**
+
+- You can't combine different schedules like datasets with cron expressions.
+
+- If two tasks update the same dataset, as soon as one is done, that triggers the Consumer DAG immediately without waiting for the second task to complete.
+
+- Airflow monitors datasets only within the context of DAGs and Tasks. If an external tool updates the actual data represented by a Dataset, Airflow has no way of knowing that.
+
+# Databases and Executors
+
+## What's an Executor?
+
+The executor doesn't execute your tasks, but it defines how to execute your tasks. There are several executors for this: sequential, local, and celery. To change the executor, just access the *airflow.cfg* file. Inside it, you will see the *executor* parameter. By default, it will be like this: *executor = SequentialExecutor*.
+
+Note: Throughout the course, our docker-compose.yaml configured the environment variable **AIRFLOW_CORE_EXECUTOR** as *CeleryExecutor* (which overrides the *executor* parameter in the *airflow.cfg* file).
+
+## SequentialExecutor
+
+SequentialExecutor is the default executor installed with Airflow. It uses the basic structure: Web Server, Scheduler, and SQLite (database). When running the DAGs, it will execute them one by one (see the image below). In the example image, T2 would be executed first, and after its completion, T3 would be executed. T2 and T3 would not be executed simultaneously. This executor is used more for testing, debugging, and simpler tasks.
+
+![sequential_executor_example](https://github.com/Shamslux/DataEngineering/assets/79280485/f21167f0-9097-4ef7-9eeb-1299f1faa6d4)
+
