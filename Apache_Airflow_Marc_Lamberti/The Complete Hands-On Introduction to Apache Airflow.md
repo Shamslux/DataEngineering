@@ -626,3 +626,43 @@ SequentialExecutor is the default executor installed with Airflow. It uses the b
 
 ![sequential_executor_example](https://github.com/Shamslux/DataEngineering/assets/79280485/f21167f0-9097-4ef7-9eeb-1299f1faa6d4)
 
+## LocalExecutor
+
+It is a step ahead of the SequentialExecutor, allowing multiple tasks to be executed, however, only on a single machine. It uses the same instance, but now uses a different database. In this case, PostgreSQL, MySQL, Oracle, or any other desired database, except SQLite, can be used. By doing so, it becomes possible to execute multiple tasks simultaneously.
+
+![localexecutor_structure](https://github.com/Shamslux/DataEngineering/assets/79280485/6ad53bc5-54c4-4ffd-83d8-8494e8074113)
+
+Be aware that this executor does not scale well, as it is limited to the resources of the single machine that runs it.
+
+### Configuring this executor
+
+```shell
+executor=LocalExecutor
+
+sql_alchemy_conn=postgresql+psycopg2://<user>:<password>@<host>/<db>
+```
+## CeleryExecutor
+
+It is excellent for sketching out the number of tasks you can execute simultaneously. The CeleryExecutor features the Celery Queue with the Result Backend (where the Airflow Workers store the statuses of the tasks that have been executed) and the Broker (which is nothing more than a queue where the orchestrator sends a task to be executed and the Airflow Workers pick up the tasks from this queue to execute them).
+
+![celery_1](https://github.com/Shamslux/DataEngineering/assets/79280485/cb5bcdca-e3a1-4ab2-a431-454106bd18ca)
+
+![celery_2](https://github.com/Shamslux/DataEngineering/assets/79280485/05e054ee-1c2e-4a16-a8cd-baf6218d9a00)
+
+![celery_3](https://github.com/Shamslux/DataEngineering/assets/79280485/308ffc93-3e98-43a8-9586-257b8b66c8af)
+
+### Configuring this executor
+
+Note: Keep in mind that it's necessary to install the Celery Queue (using, for example, Redis)
+
+```shell
+
+executor=CeleryExecutor
+
+sql_alchemy_conn=postgresql+psycopg2://<user>:<password>@<host>/<db>
+
+celery_result_backend=postgresql+psycopg2://<user>:<password>@<host>/<db>
+
+celery_broker_url=redis://:@redis:6379/0
+```
+
