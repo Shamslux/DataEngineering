@@ -708,5 +708,26 @@ Simply go to the section of the *docker-compose* file and duplicate the code tha
 
 We can check the new workers on Flower:
 
-![new_workers_flower](https://github.com/Shamslux/DataEngineering/assets/79280485/527e8e32-a2a1-44ab-aae9-44ad8464924d)
+![flower_both_workers](https://github.com/Shamslux/DataEngineering/assets/79280485/0dabc65d-1e11-41a5-8ac3-a69333fc5452)
+
+## Defining Queues for the Workers
+
+Again in our *docker-compose* file, let's go to the configuration part of the Workers. In the desired worker, in the **command** section, add the following parameter after *celery worker*:
+
+```shell
+-q <queue name>
+```
+
+I made a change in the *docker-compose*, now the second worker will have a defined queue (named **high_cpu**). Notice how we can see, in Flower, that one worker is using the default queue while the other is using the queue defined as configured.
+
+![queue_change_docker_compose](https://github.com/Shamslux/DataEngineering/assets/79280485/b94d7224-0f47-42ce-bfa1-5fc16a47819d)
+
+Now let's check on Flower:
+
+![flower_both_workers](https://github.com/Shamslux/DataEngineering/assets/79280485/0dabc65d-1e11-41a5-8ac3-a69333fc5452)
+
+![flower_default_worker](https://github.com/Shamslux/DataEngineering/assets/79280485/f86fad12-8b03-4784-8d5b-a690a6efa150)
+
+![flower_high_cpu_worker](https://github.com/Shamslux/DataEngineering/assets/79280485/0c61c4e4-c5f8-4893-bfb9-5333cd121d7b)
+
 
