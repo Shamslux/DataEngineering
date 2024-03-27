@@ -669,7 +669,7 @@ celery_broker_url=redis://:@redis:6379/0
 
 For a cleaner visualization of the webserver interface, we can adjust the *docker-compose* command to remove the example DAGs that come with the project.
 
-![removing_dag_examples](https://github.com/Shamslux/DataEngineering/assets/79280485/87a4102b-a0a1-4d5d-8bff-c4683e6a15ef)
+![dag_examples_removal](https://github.com/Shamslux/DataEngineering/assets/79280485/215edbc3-752d-4a4d-9eed-3aa745b254ca)
 
 ## Using Flower for monitoring
 
@@ -699,4 +699,14 @@ Queues are waiting lines for Airflow tasks. Tasks are pushed into the queue to b
 With this, we can see, in the image below, that Celery allows its queues to define the Workers that best meet the tasks' needs. Thus, a **high_cpu** queue can be set for a machine with many processors, an **ml_model** queue can be set for a machine with a high GPU power, and a **default** queue, with more common tasks, can be assigned to a machine with fewer resources.
 
 ![queues_defined](https://github.com/Shamslux/DataEngineering/assets/79280485/6be140d0-dc9a-4a58-975c-086b0a8b79e8)
+
+## Creating Another Worker
+
+Simply go to the section of the *docker-compose* file and duplicate the code that creates the Airflow Worker container. After duplicating and changing the name, we should verify if the new container appears in Flower.
+
+![duplicating_worker](https://github.com/Shamslux/DataEngineering/assets/79280485/d3cb4f41-db27-4fa9-ae00-a834d8df5109)
+
+We can check the new workers on Flower:
+
+![new_workers_flower](https://github.com/Shamslux/DataEngineering/assets/79280485/527e8e32-a2a1-44ab-aae9-44ad8464924d)
 
