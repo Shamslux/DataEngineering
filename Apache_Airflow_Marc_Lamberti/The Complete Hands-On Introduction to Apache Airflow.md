@@ -665,4 +665,38 @@ celery_result_backend=postgresql+psycopg2://<user>:<password>@<host>/<db>
 
 celery_broker_url=redis://:@redis:6379/0
 ```
+## Removing example DAGs
+
+For a cleaner visualization of the webserver interface, we can adjust the *docker-compose* command to remove the example DAGs that come with the project.
+
+![removing_dag_examples](https://github.com/Shamslux/DataEngineering/assets/79280485/87a4102b-a0a1-4d5d-8bff-c4683e6a15ef)
+
+## Using Flower for monitoring
+
+To activate the Flower feature (a dashboard that allows us to monitor tasks and workers when using the CeleryExecutor), we need to use the commands below in our Airflow's *docker-compose*:
+
+```shell
+docker-compose down
+docker-compose --profile flower up -d
+```
+
+After that, we will have the container accessible through the configured port. We will see the following image of the web platform:
+
+![flower_1](https://github.com/Shamslux/DataEngineering/assets/79280485/c4bafe2d-95ec-4de6-b98c-6247b786e295)
+
+![flower_2](https://github.com/Shamslux/DataEngineering/assets/79280485/7a17e58d-170c-49ea-948d-294e8135581a)
+
+**Note**: The "Max concurrency", for example, shows us that this worker can handle up to 16 tasks running at the same time. 
+
+**Note²**: The instructor basically just showed this "pool" part and "queue", but did not enter into many details about the other aspects for time saving.
+
+## What are Queues?
+
+Queues are waiting lines for Airflow tasks. Tasks are pushed into the queue to be executed. Each task will be distributed to a Worker, but the key point of the queue is the ability to organize according to the desired Worker (defining a queue for the desired Worker, which is a machine).
+
+![queue_example](https://github.com/Shamslux/DataEngineering/assets/79280485/d31233f8-a745-4782-be2e-121018d012a6)
+
+With this, we can see, in the image below, that Celery allows its queues to define the Workers that best meet the tasks' needs. Thus, a **high_cpu** queue can be set for a machine with many processors, an **ml_model** queue can be set for a machine with a high GPU power, and a **default** queue, with more common tasks, can be assigned to a machine with fewer resources.
+
+![queues_defined](https://github.com/Shamslux/DataEngineering/assets/79280485/6be140d0-dc9a-4a58-975c-086b0a8b79e8)
 
