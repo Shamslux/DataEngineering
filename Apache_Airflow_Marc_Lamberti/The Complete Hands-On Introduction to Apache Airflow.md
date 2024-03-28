@@ -730,4 +730,19 @@ Now let's check on Flower:
 
 ![flower_high_cpu_worker](https://github.com/Shamslux/DataEngineering/assets/79280485/0c61c4e4-c5f8-4893-bfb9-5333cd121d7b)
 
+## Defining the desired queue in the DAG
+
+To define the desired queue in the DAG, we need to go to the code and add the following definition:
+
+```python
+queue='<queue_name>'
+```
+
+See in the image below an example of modification in the *user_processing*, one of our first example DAGs in the project.
+
+![queue_added_in_dag](https://github.com/Shamslux/DataEngineering/assets/79280485/39c49c14-d109-47e9-9879-7c69370c6c99)
+
+![flower_worker_new_queue](https://github.com/Shamslux/DataEngineering/assets/79280485/7aa17b32-5e06-490e-943b-449dadee2be5)
+
+Above, we can see that a worker (the one defined with the queue *high_cpu*) executed a task, as it was precisely the one that was modified and defined to use the *high_cpu* queue. Therefore, we can define queues in the tasks of the desired DAGs to better utilize the resources of the machines (workers).
 
