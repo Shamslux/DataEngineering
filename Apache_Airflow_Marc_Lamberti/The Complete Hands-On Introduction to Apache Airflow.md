@@ -770,3 +770,152 @@ number of schedulers.
 - **Definition:** Maximum number of active DAG runs allowed per DAG.
 - **Default:** Up to 16 active DAG runs concurrently for a single DAG.
 - **Considerations:** Determine based on the workload and concurrency requirements of DAGs.
+
+## Goodbye Repetitive Patterns
+
+![repetitive_patterns](https://github.com/Shamslux/DataEngineering/assets/79280485/aba96cc6-45f7-45ad-96c1-4a78d95d7f35)
+
+Note that in the image above we have 3 tasks that download files A, B, and C, one task that checks these files, and 3 tasks that process each obtained file.
+
+Now let's learn that there is a way to simplify the management of DAGs, as instead of 3 tasks (totaling 6 tasks involving downloading and processing), we will have one task unifying all downloads and one task unifying all processing.
+
+![repetitive_patterns_solution](https://github.com/Shamslux/DataEngineering/assets/79280485/9a10b112-a33d-4251-9bbe-ecab61480630)
+
+How to implement this solution? Let's use SubDAGs.
+
+## Applying the SubDAGs Technique
+
+First, let's see the instructor's code called *group_dag*:
+
+```python
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+
+from datetime import datetime
+
+with DAG('group_dag', start_date=datetime(2022, 1, 1), 
+    schedule_interval='@daily', catchup=False) as dag:
+
+    download_a = BashOperator(
+        task_id='download_a',
+        bash_command='sleep 10'
+    )
+
+    download_b = BashOperator(
+        task_id='download_b',
+        bash_command='sleep 10'
+    )
+
+    download_c = BashOperator(
+        task_id='download_c',
+        bash_command='sleep 10'
+    )
+
+    check_files = BashOperator(
+        task_id='check_files',
+        bash_command='sleep 10'
+    )
+
+    transform_a = BashOperator(
+        task_id='transform_a',
+        bash_command='sleep 10'
+    )
+
+    transform_b = BashOperator(
+        task_id='transform_b',
+        bash_command='sleep 10'
+    )
+
+    transform_c = BashOperator(
+        task_id='transform_c',
+        bash_command='sleep 10'
+    )
+
+    [download_a, download_b, download_c] >> check_files >> [transform_a, transform_b, transform_c]
+```
+
+Now, let's apply the concept of SubDAGs. We can start by creating a *subdags* folder inside the Airflow *dags* folder. After that, we will create, within the *subdags* folder, the Python file **subdag_downloads.py**. Here's how the file will be:
+
+```python
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+
+def subdag_downloads(parent_dag_id, child_dag_id, args):
+
+    with DAG(f"{parent_dag_id}.{child_dag_id}",
+             start_date=args['start_date'],
+             schedule_interval=args['schedule_interval'],
+             catchup=args['catchup']) as dag:
+
+        download_a = BashOperator(
+            task_id='download_a',
+            bash_command='sleep 10'
+        )
+
+        download_b = BashOperator(
+            task_id='download_b',
+            bash_command='sleep 10'
+        )
+
+        download_c = BashOperator(
+            task_id='download_c',
+            bash_command='sleep 10'
+        )
+
+        return dag
+```
+
+Now that we've created the file and the folder, let's go back to the first file (*group_dags*). Below are the modifications we need to make to adjust it to import the *subdag_downloads* module with the configurations to create the SubDAG.
+
+```python
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from airflow.operators.subdag import SubDagOperator
+from subdags.subdag_downloads import subdag_downloads
+
+from datetime import datetime
+
+with DAG('group_dag', start_date=datetime(2022, 1, 1), 
+    schedule_interval='@daily', catchup=False) as dag:
+
+    args = {'start_date': dag.start_date, 'schedule_interval': dag.schedule_interval, 'catchup': dag.catchup}
+
+    downloads = SubDagOperator(
+        task_id='downloads',
+        subdag=subdag_downloads(dag.dag_id, 'downloads', args)
+    )
+
+    check_files = BashOperator(
+        task_id='check_files',
+        bash_command='sleep 10'
+    )
+
+    transform_a = BashOperator(
+        task_id='transform_a',
+        bash_command='sleep 10'
+    )
+
+    transform_b = BashOperator(
+        task_id='transform_b',
+        bash_command='sleep 10'
+    )
+
+    transform_c = BashOperator(
+        task_id='transform_c',
+        bash_command='sleep 10'
+    )
+
+    downloads >> check_files >> [transform_a, transform_b, transform_c]
+```
+
+See the comparison of the images below where the first will show what the *group_dag* looked like and how its visualization changed in the Graph View after we created the method with SubDAG.
+
+![group_before](https://github.com/Shamslux/DataEngineering/assets/79280485/b59dd1ba-e5b9-4a36-bb02-10ed2e4ba2bb)
+
+![group_after](https://github.com/Shamslux/DataEngineering/assets/79280485/4c0295ca-47fe-4ffe-9f14-aff5c15595e7)
+
+Below the SubDAG view:
+
+![subdag_view](https://github.com/Shamslux/DataEngineering/assets/79280485/292c5582-5d6f-4023-b5e5-199daef6a8b8)
+
+
