@@ -746,3 +746,27 @@ See in the image below an example of modification in the *user_processing*, one 
 
 Above, we can see that a worker (the one defined with the queue *high_cpu*) executed a task, as it was precisely the one that was modified and defined to use the *high_cpu* queue. Therefore, we can define queues in the tasks of the desired DAGs to better utilize the resources of the machines (workers).
 
+## Concurrency Parameters in Airflow
+
+Airflow offers several parameters for tuning task and DAG concurrency. Concurrency refers to the number of tasks and DAG
+runs that can be executed simultaneously.
+
+### parallelism / AIRFLOW__CORE__PARALLELISM
+
+- **Definition:** Maximum number of task instances that can run in Airflow per scheduler.
+- **Default:** Up to 32 tasks concurrently.
+- **Calculation:** If multiple schedulers are running, the total concurrency is the product of parallelism and the
+number of schedulers.
+- **Considerations:** Define based on available resources and the number of schedulers in operation.
+
+### max_active_tasks_per_dag / AIRFLOW__CORE__MAX_ACTIVE_TASKS_PER_DAG
+
+- **Definition:** Maximum number of task instances allowed to run concurrently within each DAG.
+- **Default:** Up to 16 tasks concurrently for a single DAG across all DAG runs.
+- **Considerations:** Adjust based on the complexity and resource requirements of individual DAGs.
+
+### max_active_runs_per_dag / AIRFLOW__CORE__MAX_ACTIVE_RUNS_PER_DAG
+
+- **Definition:** Maximum number of active DAG runs allowed per DAG.
+- **Default:** Up to 16 active DAG runs concurrently for a single DAG.
+- **Considerations:** Determine based on the workload and concurrency requirements of DAGs.
