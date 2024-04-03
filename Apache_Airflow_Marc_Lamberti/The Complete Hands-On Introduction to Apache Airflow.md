@@ -918,4 +918,102 @@ Below the SubDAG view:
 
 ![subdag_view](https://github.com/Shamslux/DataEngineering/assets/79280485/292c5582-5d6f-4023-b5e5-199daef6a8b8)
 
+## Applying the Group Tasks Technique
+
+Just like we created the **subdags** folder, let's now create a **groups** folder. We'll also create two Python files, one called *group_downloads.py* and another called *group_transforms.py* (I didn't include here the adjustment I made by creating the *subdag_transforms*, which was actually a homework assignment from the instructor to us students, but it also existed, just to keep it commented).
+
+Below are the codes for the *group_....py* files:
+
+```python
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from airflow.utils.task_group import TaskGroup
+
+def download_tasks():
+
+    with TaskGroup("downloads", tooltip="Download tasks") as group:
+        
+        download_a = BashOperator(
+            task_id='download_a',
+            bash_command='sleep 10'
+        )
+ 
+        download_b = BashOperator(
+            task_id='download_b',
+            bash_command='sleep 10'
+        )
+ 
+        download_c = BashOperator(
+            task_id='download_c',
+            bash_command='sleep 10'
+        )
+
+        return group
+```
+
+This was the *group_downloads.py*, now the *group_transforms.py*:
+
+```python
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from airflow.utils.task_group import TaskGroup
+
+def transform_tasks():
+
+    with TaskGroup("transforms", tooltip="Transforms tasks") as group:
+        
+        transform_a = BashOperator(
+            task_id='transform_a',
+            bash_command='sleep 10'
+    )
+ 
+        transform_b = BashOperator(
+            task_id='transform_b',
+            bash_command='sleep 10'
+    )
+ 
+        transform_c = BashOperator(
+            task_id='transform_c',
+            bash_command='sleep 10'
+    )
+        
+    return group
+```
+
+With that, let's use the main file *group_dag.py*, but it needs to be modified. Below is the altered code to satisfy what is required when using the Group Tasks technique:
+
+```python
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from groups.group_downloads import download_tasks
+from groups.group_transforms import transform_tasks
+
+ 
+from datetime import datetime
+ 
+with DAG('group_dag', start_date=datetime(2022, 1, 1), 
+    schedule_interval='@daily', catchup=False) as dag:
+
+    args = {'start_date': dag.start_date, 'schedule_interval': dag.schedule_interval, 'catchup': dag.catchup}
+
+    downloads = download_tasks()
+
+    check_files = BashOperator(
+        task_id='check_files',
+        bash_command='sleep 10'
+    )
+ 
+    transforms = transform_tasks()
+ 
+    downloads >> check_files >> transforms
+```
+
+Now, see how it looks in the Graph View:
+
+![blue_box_groups_closed](https://github.com/Shamslux/DataEngineering/assets/79280485/e494c549-1c24-46bf-84e1-296ff315bf4e)
+
+Notice how now the box is blue instead of gray (in the case of SubDAGs).
+
+![blue_box_groups_open](https://github.com/Shamslux/DataEngineering/assets/79280485/398940c8-b877-4995-999e-7cd278136094)
+
 
