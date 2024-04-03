@@ -49,6 +49,7 @@ with DAG('user_processing', start_date=datetime(2022, 1, 1),
 
     is_api_available = HttpSensor(
         task_id='is_api_available',
+        queue='high_cpu',
         http_conn_id='user_api',
         endpoint='api/'
     )
