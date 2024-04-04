@@ -362,4 +362,36 @@ It is basically a copy of a repository (a software project) from someone else to
 
 Issues are used to track tasks, bugs, improvements, or any discussion related to the source code of the project. They provide us with a means of communication and collaboration among team members and the community. Issues can be opened by anyone, including project developers and external users. They serve for discussions, planning, task assignment, and progress tracking.
 
+# Creating a New Branch
+
+We can create branches in two ways. Either we use the platform (see the image below):
+
+![new_branch_with_platform](https://github.com/Shamslux/DataEngineering/assets/79280485/cbb63659-be06-4f54-82ca-fae72a050c13)
+
+Or we can use the following command:
+
+```shell
+git branch <branch-name>
+```
+
+Then, we need to switch to the newly created branch:
+
+```shell
+git checkout <branch-name>
+```
+# Performing a Merge (without pull request)
+
+In the terminal, simply type the following command:
+
+```shell
+git merge <branch-name>
+```
+
+Assuming we were on the `main` branch, using the code above, let's say we wanted to merge based on a task called `task_changing_form`, we would have the following code:
+
+```shell
+git merge task_changing_form
+```
+
+Everything that was changed and tested in the `task_changing_form` branch will now be merged into the `main` branch.
 
