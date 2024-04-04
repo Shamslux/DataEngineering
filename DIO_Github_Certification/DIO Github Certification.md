@@ -875,5 +875,84 @@ Command | Description
 /tasklist | Inserts a task list. This slash command only works in an issue description.
 /template | Shows all templates in the repository. You choose the template to insert. This slash command works for issue templates and a pull request template.
 
+# GitHub Accounts and Plans
 
+In this section, we'll delve into GitHub account types and plans, highlighting the distinctions between them.
+
+## GitHub Account Types
+
+GitHub offers three primary types of accounts:
+
+1. **Personal**: Every individual who uses GitHub.com has a personal account, also known as a user account. This account serves as their identity on the platform and includes a username and profile.
+
+2. **Organization**: Organization accounts are shared accounts where multiple individuals can collaborate across various projects simultaneously. Unlike personal accounts, permissions within organization accounts follow a tiered approach.
+
+3. **Enterprise**: Enterprise accounts on GitHub.com enable administrators to centrally manage policies and billing for multiple organizations. These accounts facilitate inner sourcing between organizations within an enterprise.
+
+Now, let's explore each account type in detail.
+
+## Personal Accounts
+
+Personal accounts are individual accounts used by users on GitHub.com. These accounts own resources such as repositories, packages, and projects. Personal accounts can be either GitHub Free or GitHub Pro.
+
+- **GitHub Free**: Offers unlimited public and private repositories and unlimited collaborators, albeit with some limitations on feature sets for private repositories.
+  
+- **GitHub Pro**: Similar to GitHub Free but with enhanced features such as GitHub Support via email and increased GitHub Actions minutes.
+
+## Organization Accounts
+
+Organization accounts are shared accounts used by teams to collaborate across projects. Permissions within organization accounts are managed through team access controls, and each person signs in with their personal account. Organization accounts can own repositories, packages, and projects.
+
+## Enterprise Accounts
+
+Enterprise accounts allow administrators to manage policies and billing for multiple organizations centrally. These accounts promote collaboration between organizations within an enterprise and offer additional security and compliance controls.
+
+## GitHub Plans
+
+GitHub offers several plans to improve software management processes and team collaboration:
+
+1. **GitHub Free**: Provides basic features for individuals and organizations, including unlimited public and private repositories.
+
+2. **GitHub Pro**: Offers advanced tools and insights for individual developers, including GitHub Support via email and additional GitHub Actions minutes.
+
+3. **GitHub Team**: Similar to GitHub Pro but tailored for organizations, providing increased GitHub Actions minutes and extra GitHub Packages storage.
+
+4. **GitHub Enterprise**: Offers a greater level of support and additional security, compliance, and deployment controls for organizations.
+
+Within GitHub Enterprise, there are two options:
+
+- **GitHub Enterprise Server**: A self-hosted solution that allows organizations full control over their infrastructure.
+  
+- **GitHub Enterprise Cloud**: A cloud-based solution with increased GitHub Actions minutes and GitHub Packages storage, along with a service level agreement for monthly uptime.
+
+Each plan offers a unique set of features and benefits tailored to different user needs and organizational requirements.
+
+# GitHub Mobile and GitHub Desktop
+
+In addition to the website github.com, there are other ways to access your GitHub account. With GitHub Mobile and GitHub Desktop, you can have an easy-to-use experience from anywhere.
+
+Let's take a quick look at GitHub Desktop and GitHub Mobile, and what they offer.
+
+## GitHub Mobile
+
+GitHub Mobile allows you to perform important tasks on GitHub quickly and from anywhere. It's a secure way to access your GitHub data through an official and trusted app.
+
+With GitHub Mobile, you can:
+
+- Manage notifications from github.com.
+- Read, review, and collaborate on issues and pull requests.
+- Edit files in pull requests.
+- Search, browse, and interact with users, repositories, and organizations.
+- Receive notifications when your username is mentioned.
+- Schedule notifications for specific times.
+- Secure your account with two-factor authentication.
+- Check login attempts from unrecognized devices.
+
+## GitHub Desktop
+
+GitHub Desktop is a tool that makes managing your projects on GitHub directly from your computer easier. With GitHub Desktop, you can:
+
+- Perform basic operations such as cloning, committing, and pushing changes.
+- View and switch between branches easily.
+- Collaborate with others on shared projects.
 
