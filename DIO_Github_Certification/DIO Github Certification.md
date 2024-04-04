@@ -498,4 +498,27 @@ Example: `update my-python.py fixed #567`
 
 This will automatically close the corresponding issue when the commit is merged into the main branch.
 
+# GitHub Wiki
+
+GitHub Wiki is a collaborative space where users can create and share documentation, guides, and other content related to a project. Here are the key points about GitHub Wiki:
+
+- **Definition:** A Wiki is a section within a GitHub repository dedicated to storing and organizing documentation, tutorials, FAQs, and any other information related to the project.
+
+- **Purpose:** It serves as a centralized knowledge base for project contributors and users to access relevant information, instructions, and resources.
+
+- **Features:** Users can create and edit Wiki pages using Markdown syntax, making it easy to format text, add images, and create links. The Wiki's revision history allows for tracking changes and reverting to previous versions if needed.
+
+- **Collaboration:** Multiple contributors can collaborate on Wiki pages, making it a valuable resource for documenting project details, best practices, and troubleshooting guides.
+
+- **Accessibility:** Wiki pages can be accessed directly from the repository's main page, providing easy navigation for users seeking information about the project.
+
+- **Integration:** GitHub Wikis can be integrated with other project management tools and workflows, enhancing collaboration and knowledge sharing among team members.
+
+- **Versioning:** Like other content in a GitHub repository, Wiki pages are version-controlled, allowing users to view and revert changes as necessary.
+
+- **Customization:** Repository owners can customize the Wiki's settings, including permissions for editing and viewing, to suit the project's needs and ensure content integrity.
+
+GitHub Wiki is a powerful tool for creating and maintaining project documentation, enabling effective communication and collaboration among project stakeholders.
+
+![wiki](https://github.com/Shamslux/DataEngineering/assets/79280485/5a09248d-057a-4d72-9639-cab055297af6)
 
