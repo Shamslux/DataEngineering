@@ -546,4 +546,334 @@ Here's a clear and concise explanation of GitHub's search tool:
 
 ![git_search](https://github.com/Shamslux/DataEngineering/assets/79280485/d784a6fe-fbe2-4055-be35-d363823a2816)
 
+# Markdown Formatting
+
+In this lesson, we'll discover the structure and syntax of Markdown. We'll also explore GitHub-Flavored Markdown (GFM) features, which are syntax extensions that allow integrating GitHub's features.
+
+## What is Markdown?
+
+Markdown is a markup language that offers a simplified approach to editing content, shielding content creators from the complexities of HTML. While HTML is excellent for rendering content exactly as intended, it can be space-consuming and challenging to work with, even in small doses. The invention of Markdown offered a great balance between HTML's power for content description and the simplicity of plain text for editing.
+
+## Structure and Syntax of Markdown
+
+In this unit, we'll discuss the structure and syntax of Markdown. We'll also cover GitHub-Flavored Markdown (GFM) features, which are syntax extensions that allow integrating GitHub features into content.
+
+## Syntax
+
+**Emphasizing Text**
+
+The most important part of any communication on GitHub is often the text itself, but how do we show that some parts of the text are more important than others?
+
+Using italics in the text is as easy as surrounding the target text with a single asterisk (*) or a single underscore (_). Just make sure to close an emphasis with the same character you opened it with. Be mindful of combining asterisks and underscores. Here are some examples:
+
+Markdown:
+
+```markdown
+This is *italic* text.
+This is also _italic_ text.
+```
+
+Output:
+
+This is *italic* text.
+This is also _italic_ text.
+
+Create bold text using two asterisks (**) or two underscores (__).
+
+Markdown:
+
+```markdown
+This is **bold** text.
+This is also __bold__ text.
+```
+
+Output:
+
+This is **bold** text.
+This is also __bold__ text.
+
+You can also mix different emphases.
+
+Markdown:
+
+```markdown
+_This is **italic and bold**_ using a single underscore for italic and two asterisks for bold.
+__This is bold and *italic*__ using two underscores for bold and a single asterisk for italic.
+```
+
+Output:
+
+_This is **italic and bold**_ using a single underscore for italic and two asterisks for bold.
+__This is bold and *italic*__ using two underscores for bold and a single asterisk for italic.
+
+To use a literal asterisk, precede it with an escape character; in GFM, this is a backslash (\). This example results in underscores and asterisks being displayed in the output.
+
+Markdown:
+
+```markdown
+\_This is all \*\*simple text\*\*.
+```
+
+Output:
+
+\_This is all \*\*simple text\*\*.
+
+**Declaring Headers**
+
+HTML provides content headers, such as the `<h1>` tag. In Markdown, this is supported via the symbol `#`. Simply use a `#` for each header level from 1 to 6.
+
+Markdown:
+
+```markdown
+###### This is H6 text
+```
+
+Output:
+
+###### This is H6 text
+
+**Linking to Images and Websites**
+
+Image and website links use similar syntax.
+
+Markdown:
+
+```markdown
+![Link to an image.](/learn/azure-devops/shared/media/mara.png)
+```
+
+Output:
+
+![Link to an image.](/learn/azure-devops/shared/media/mara.png)
+
+Markdown:
+
+```markdown
+[Link to Microsoft Training](/training)
+```
+
+Output:
+
+[Link to Microsoft Training](/training)
+
+**Creating Lists**
+
+You can define ordered or unordered lists. It's also possible to define nested items through indentation.
+
+Ordered lists start with numbers. Unordered lists can use asterisks or dashes (-).
+
+Here's the Markdown for an ordered list:
+
+Markdown:
+
+```markdown
+1. First
+1. Second
+1. Third
+```
+
+Output:
+
+1. First
+2. Second
+3. Third
+
+Markdown:
+
+```markdown
+- First
+  - Nested
+- Second
+- Third
+```
+
+Output:
+
+- First
+  - Nested
+- Second
+- Third
+
+Here's the Markdown for an unordered list:
+
+Markdown:
+
+```markdown
+- First
+  - Nested
+- Second
+- Third
+```
+
+Output:
+
+- First
+  - Nested
+- Second
+- Third
+
+**Building Tables**
+
+You can build tables using a combination of vertical bars (|) for column breaks and dashes (-) to designate the row above as the header.
+
+Markdown:
+
+```markdown
+First | Second
+-|-
+1 | 2
+3 | 4
+```
+
+Output:
+
+First | Second
+-|-
+1 | 2
+3 | 4
+
+**Quoting Text**
+
+You can create block quotes using the greater than symbol (>).
+
+Markdown:
+
+```markdown
+> This is quoted text.
+```
+
+Output:
+
+> This is quoted text.
+
+**Fill in the blanks with Inline HTML**
+
+If you encounter an HTML scenario not supported by Markdown, you can use inline HTML.
+
+Markdown:
+
+```markdown
+Here's a<br />line break
+```
+
+Output:
+
+Here's a<br />line break
+
+**Working with Code**
+
+Markdown provides default behavior for working with inline code blocks delimited by the backtick character (`). By decorating the text with this character, it's rendered as code.
+
+Markdown:
+
+```markdown
+This is `code`.
+```
+
+Output:
+
+This is `code`.
+
+If you have a code segment spanning multiple lines, you can use three backticks (```) before and after to create a surrounded code block.
+
+```markdown
+var first = 1;
+var second = 2;
+var sum = first + second;
+```
+
+```csharp
+var first = 1;
+var second = 2;
+var sum = first + second;
+```
+
+GFM extends this support with syntax highlighting for popular languages. Just specify the language as part of the first sequence of backticks.
+
+```javascript
+var first = 1;
+var second = 2;
+var sum = first + second;
+```
+
+```csharp
+JavaScript 
+
+var first = 1;
+var second = 2;
+var sum = first + second;
+```
+
+**Linking Issues and Pull Requests**
+
+GFM supports various shortcode formats to easily link to issues and pull requests. The easiest way to do this is to use the #ID format, such as #3602. GitHub automatically adjusts longer links to this format if you paste them. There are also additional conventions you can follow if you're working with other tools or want to specify other projects/branches.
+
+Reference type | Raw reference | Short link
+--- | --- | ---
+Issue or pull request URL | https://github.com/desktop/desktop/pull/3602 | #3602
+Issue or pull request number | #3602 | #3602
+GH- and issue or pull request number | GH-3602 | GH-3602
+Username/Repository# and issue or pull request number | desktop/desktop#3602 | desktop/desktop#3602
+
+**Linking Specific Commits**
+
+You can link to a commit by pasting its ID or simply using its secure
+
+ hash algorithm (SHA).
+
+Reference type | Raw reference | Short link
+--- | --- | ---
+Commit URL | https://github.com/desktop/desktop/commit/8304e9c271a5e5ab4fda797304cd7bcca7158c87 | 8304e9c
+SHA | 8304e9c271a5e5ab4fda797304cd7bcca7158c87 | 8304e9c
+User@SHA | desktop@8304e9c271a5e5ab4fda797304cd7bcca7158c87 | desktop@8304e9c
+Username/Repository@SHA | desktop/desktop@8304e9c271a5e5ab4fda797304cd7bcca7158c87 | desktop/desktop@8304e9c
+
+**Mentioning Users and Teams**
+
+Typing an @ symbol followed by a GitHub username sends a notification to that person about the comment. This is called "@mentioning" because you're mentioning the individual. You can also @mention teams within an organization.
+
+Markdown:
+
+```markdown
+@githubteacher
+```
+
+Output:
+
+@githubteacher
+
+**Tracking Task Lists**
+
+You can create task lists within issues or pull requests using the following syntax. This can be useful for tracking progress when used in the body of an issue or pull request.
+
+Markdown:
+
+```markdown
+- [x] First task
+- [x] Second task
+- [ ] Third task
+```
+
+Output:
+
+- [x] First task
+- [x] Second task
+- [ ] Third task
+
+**Slash Commands**
+
+Slash commands can save time by reducing the typing required to create complex Markdown.
+
+You can use slash commands in any description or comment field in issues, pull requests, or discussions where that slash command is supported.
+
+Command | Description
+--- | ---
+/code | Inserts a Markdown code block. You choose the language.
+/details | Inserts an expandable details area. You choose the title and content.
+/saved-replies | Inserts a saved reply. You choose from saved replies for your user account. If you add %cursor% to your saved reply, the slash command places the cursor at that location.
+/table | Inserts a Markdown table. You choose the number of columns and rows.
+/tasklist | Inserts a task list. This slash command only works in an issue description.
+/template | Shows all templates in the repository. You choose the template to insert. This slash command works for issue templates and a pull request template.
+
+
 
