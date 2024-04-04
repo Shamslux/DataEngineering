@@ -435,3 +435,67 @@ While tags are historical points that can help mark code versions, releases are 
 To create a release, we should select the base tag and the previous tag, then it's a matter of writing the details before being able to publish it.
 
 ![release_window](https://github.com/Shamslux/DataEngineering/assets/79280485/bb6743e7-55eb-4e59-8ded-664e60cc1efb)
+
+# What are Gists?
+
+Gists are a feature of GitHub that allow you to share snippets of code, text, or markdown files with others. They are like small repositories but are often used for sharing single files or pieces of code rather than entire projects.
+
+## Key Features:
+
+- **Code Sharing**: Gists are commonly used to share small snippets of code with others, either for collaboration or demonstration purposes.
+
+- **Version Control**: Like regular repositories, Gists support version control using Git. This means you can fork, clone, and pull Gists just like you would with a regular repository.
+
+- **Markdown Support**: Gists can contain Markdown files, making them suitable for sharing formatted text, documentation, or even blog posts.
+
+- **Privacy Options**: You can choose whether a Gist should be public or private. Public Gists are visible to anyone, while private Gists are only accessible to you or selected collaborators.
+
+## Common Use Cases:
+
+- **Sharing Code Snippets**: Quickly share small pieces of code with others, whether it's for troubleshooting, asking for help, or showcasing a particular technique.
+
+- **Embedding in Documentation**: Use Gists to embed code examples or formatted text in your documentation or README files.
+
+- **Collaborative Editing**: Collaborate on small coding tasks or fixes by sharing Gists with team members or collaborators.
+
+## How to Create a Gist:
+
+1. **Visit GitHub**: Go to the Gists section of your GitHub profile or directly to gist.github.com.
+
+2. **Create a New Gist**: Click on the "New gist" button.
+
+3. **Add Files**: Enter the content of your Gist, including code, text, or Markdown files.
+
+4. **Configure Settings**: Choose whether the Gist should be public or private, add a description, and select the syntax highlighting for code files.
+
+5. **Create Gist**: Click the "Create public gist" or "Create secret gist" button to finalize and create your Gist.
+
+![pre-creating_gist](https://github.com/Shamslux/DataEngineering/assets/79280485/4eab483b-5560-497e-b525-8858b9b1113e)
+
+![gist_created](https://github.com/Shamslux/DataEngineering/assets/79280485/b740a548-1601-40b7-884e-7d63ed99ae94)
+
+# GitHub Issues
+
+GitHub Issues are a fundamental tool for tracking tasks, bugs, enhancements, and discussions related to a software project hosted on GitHub. They enable effective and collaborative communication among team members and the developer community. Below are the key points about issues:
+
+- **Definition:** Issues are like virtual tickets that can be opened by anyone, including project developers and external users.
+
+- **Purpose:** They are used to discuss ideas, report bugs, request new features, propose enhancements, assign tasks, and track the progress of software development.
+
+- **Characteristics:** Each issue has a descriptive title summarizing the problem or task, along with a more detailed description. They can also be assigned to team members, labeled with tags for categorization and organization, and marked with milestones to indicate their status in relation to specific software versions.
+
+- **Comments:** Team members and collaborators can add comments to issues to provide feedback, clarify questions, and discuss solutions.
+
+- **Workflow:** The typical workflow involves opening an issue, discussing the problem or task, assigning responsibilities, implementing the solution, and closing the issue when completed.
+
+- **References in Commits:** Issues can be linked to specific commits, allowing developers to track the progress of an issue directly in the commit history.
+
+## Resolving an Issue
+
+When committing changes that address an issue, simply use the keyword `fixed` followed by `#<issue-number>` in the commit message.
+
+Example: `update my-python.py fixed #567`
+
+This will automatically close the corresponding issue when the commit is merged into the main branch.
+
+
