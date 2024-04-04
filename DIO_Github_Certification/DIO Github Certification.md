@@ -395,3 +395,36 @@ git merge task_changing_form
 
 Everything that was changed and tested in the `task_changing_form` branch will now be merged into the `main` branch.
 
+# Performing a Pull Request and a Fork
+
+## Fork
+
+To create a fork, simply visit a page on GitHub of someone you follow and admire, then select the desired repository and click on "fork". A new screen with "create a new fork" will appear and you just need to fill in some data (it looks a bit like creating a repository).
+
+![fork_click](https://github.com/Shamslux/DataEngineering/assets/79280485/43046414-783c-4e16-a864-8091b2bfe69d)
+
+![fork_click_open](https://github.com/Shamslux/DataEngineering/assets/79280485/86a46eff-f231-4342-9618-a7cdb83ebd33)
+
+# Performing a Pull Request and a Fork
+
+## Pull Request
+
+If we use the fork on someone else's repository and make changes, we can then create a Pull Request to the original owner of the repository, suggesting our changes. This user will need to review and approve (or reject) it. If they accept the Pull Request, what we suggested will be merged with the branch of the original repository, and we will thus be contributors to their project as well.
+
+We can also use the Pull Request for modifications in our own repositories. For example, let's remember the use of new branches. If we had a project with the `main` branch and wanted to change something, let's assume we created the `dev-298` branch, after the changes were made, we could create a Pull Request for the `dev-298` to be reviewed by ourselves or another member of our repository, before being merged.
+
+![pull_request](https://github.com/Shamslux/DataEngineering/assets/79280485/c8e1f414-57d8-4247-a818-53d7725b9e0e)
+
+# Tags
+
+We create `tags` using the command:
+
+`git tag -a <tag> -m "<message">`
+
+Then we push the created `tag`:
+
+`git push origin <tag>`
+
+![tag_icon](https://github.com/Shamslux/DataEngineering/assets/79280485/cb36b081-1334-4c82-818b-06047a562114)
+***Note**: I don't have tags in my project.*
+
