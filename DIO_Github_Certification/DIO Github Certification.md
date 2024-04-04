@@ -428,3 +428,10 @@ Then we push the created `tag`:
 ![tag_icon](https://github.com/Shamslux/DataEngineering/assets/79280485/cb36b081-1334-4c82-818b-06047a562114)
 ***Note**: I don't have tags in my project.*
 
+# Releases
+
+While tags are historical points that can help mark code versions, releases are more refined options for showcasing that version of the code. It also includes a tag and provides more details, in addition to making the files available for download.
+
+To create a release, we should select the base tag and the previous tag, then it's a matter of writing the details before being able to publish it.
+
+![release_window](https://github.com/Shamslux/DataEngineering/assets/79280485/bb6743e7-55eb-4e59-8ded-664e60cc1efb)
