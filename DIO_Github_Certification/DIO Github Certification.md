@@ -290,3 +290,53 @@ For example:
 ```shell
 git clone https://your-token-here@github.com/your-username/my-project.git
 ```
+
+# Generating SSH Keys
+
+To generate an SSH key, we should open the terminal and use the command:
+
+```shell
+ssh-keygen
+```
+
+The keys will be saved in the designated location (usually in the user's operating system). A *.ssh* folder will be created with two pairs of keys: one public and one private. We will use the public one *example_file.pub*, the private key should be well protected and kept safe, it's personal and non-transferable.
+
+Note: We can check if we already have SSH keys with the command below in the terminal:
+
+```shell
+ls -al ~/.ssh
+```
+
+Note²: If we want to be more detailed in the key creation, we can pass the following parameters:
+
+```shell
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+- **-t rsa**: specifies an RSA key type
+
+- **-b 4096**: sets the number of bits in the key, with 4096 bits being a good practice for increased security.
+
+- **-C "your_email@example.com"**: adds a comment pointing to your GitHub email to aid in identification
+
+
+## Configuring the SSH Key on GitHub
+
+To configure, we should access the "settings" part of GitHub and use the appropriate tab to configure SSH keys. When we click the button to create an SSH key, we will be redirected to the appropriate window to name and insert the data of the public key we generated earlier. See the images below to understand the process.
+
+![ssh_settings](https://github.com/Shamslux/DataEngineering/assets/79280485/99a226e0-7503-4907-b076-5e16db18300b)
+
+![ssh_settings_inside](https://github.com/Shamslux/DataEngineering/assets/79280485/3267da3d-65d5-4fa1-abd0-c73878a822ff)
+
+## Changing the Project URL to SSH instead of HTTPS
+
+If you try to *git push* with authentication via SSH key, however, your remote repository has been cloned via HTTPS, there will be an error. To fix this, we should use the following command:
+
+```shell
+git remote set-url origin <SSH URL>
+```
+
+After this change, the *pushes* will be accepted with the configured SSH key.
+
+
+
