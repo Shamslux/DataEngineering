@@ -338,5 +338,28 @@ git remote set-url origin <SSH URL>
 
 After this change, the *pushes* will be accepted with the configured SSH key.
 
+# Collaboration with GitHub
+
+## First of all, what is a repository?
+
+A repository is the place where all the files of our project are contained. It's like a folder that holds all these project files, such as our software projects. It is with them that we can collaborate, manage our work, track changes, store the history of changes, etc...
+
+## What are Branches?
+
+It is a separate development line in version control. It allows us to work on modifications to the code without directly affecting the main code (usually called the main branch, such as "main" or "master"). This facilitates simultaneous development of features or bug fixes without interfering with the stable code of the main version. After completing the changes in a branch, you can merge these changes back into the main branch.
+
+## And Pull Request and Merge?
+
+A Pull Request (PR) is a common feature in collaborative source code hosting platforms like GitHub. The main purpose of a Pull Request is to propose changes to a repository and request that these changes be reviewed and merged into the main code.
+
+The "merge" is an operation in version control that combines the changes from two different branches. When we finish development on a branch and want to incorporate those changes back into the main branch (or another desired branch), we perform a merge.
+
+## What about Fork?
+
+It is basically a copy of a repository (a software project) from someone else to your own space on GitHub. This allows you to make changes to the code without affecting the original project. If you want to contribute back, you can send a "pull request" for the owner of the original project to consider your changes and incorporate them.
+
+## And Issues?
+
+Issues are used to track tasks, bugs, improvements, or any discussion related to the source code of the project. They provide us with a means of communication and collaboration among team members and the community. Issues can be opened by anyone, including project developers and external users. They serve for discussions, planning, task assignment, and progress tracking.
 
 
