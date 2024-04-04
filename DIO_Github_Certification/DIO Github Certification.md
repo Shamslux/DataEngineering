@@ -230,3 +230,63 @@ This approach simplifies management, as organization owners control who can acce
 LDAP is a protocol used to access and organize information in directories, especially in large companies. In the context of GitHub Enterprise Server, it allows for the integration and centralized management of access to repositories using existing accounts.
 
 GitHub Enterprise Server is compatible with various well-known LDAP services, such as Active Directory, Oracle Directory Server Enterprise Edition, OpenLDAP, and others. In summary, LDAP is a tool that helps in the organization and access control in corporate environments on GitHub.
+
+# Creating a Repository on GitHub
+
+Simply click the button (see the image below) to open the repository creation window (using the features of the GitHub platform).
+
+![repository_click_create](https://github.com/Shamslux/DataEngineering/assets/79280485/a92f5c8f-18a4-49ed-ae08-bb2b5848a4dc)
+
+## Main Steps of Creation
+
+![repository_creating](https://github.com/Shamslux/DataEngineering/assets/79280485/d3edb585-0ec3-4d88-b09a-87b1bcf2f5fe)
+
+1. **Define a name for your repository**
+
+2. **Choose whether you want a README.md (markdown) file to be created**
+
+3. **Choose a license type if desired**
+
+4. **Click the button to finalize and create your repository!**
+
+## Cloning the Repository
+
+![cloning](https://github.com/Shamslux/DataEngineering/assets/79280485/33113993-1966-4a6a-94a2-8514513cee9b)
+
+To clone the repository, after creating it, note that there is a button with the name "<> Code". When you click on it, a box will appear on the screen with some options. One of the most common ways that many developers use is to copy the HTTPS path and then use the command *git clone <URL>* to bring the repository created on the server to the local machine.
+
+# Personal Access Tokens
+
+The GitHub personal access token is a form of authentication used to access resources and perform actions on the GitHub platform on behalf of a user.
+
+## Step-by-Step Guide - Practical:
+
+- Step 1: Create a Personal Access Token
+
+- Access GitHub and go to your profile's "Settings".
+
+- In the side menu, select "Developer settings".
+
+- Click on "Personal access tokens" and then on "Generate token".
+
+- Follow the instructions to configure the necessary permissions and click "Generate token" at the end.
+
+- Copy the generated token.
+
+- Step 2: Clone a Repository Using the Token
+
+- Open Git Bash on your computer.
+
+- In the terminal, use the following command to clone a repository using the token:
+
+```shell
+git clone https://YOUR_TOKEN_HERE@github.com/your-username/your-repository.git
+```
+
+- Replace YOUR_TOKEN_HERE with the token you copied and your-username/your-repository.git with the path of the repository you want to clone.
+
+For example:
+
+```shell
+git clone https://your-token-here@github.com/your-username/my-project.git
+```
