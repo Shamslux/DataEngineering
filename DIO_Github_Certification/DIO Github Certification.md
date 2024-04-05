@@ -1167,3 +1167,73 @@ If you try to delete a Codespace with unsent git commits, the editor will notify
 You can send any desired changes and delete your Codespace. You can also proceed to delete your Codespace and any uncommitted changes or export the code to a new branch without creating a new Codespace.
 
 Inactive Codespaces that remain idle for a specified period of time are automatically deleted. Idle Codespaces are deleted after 30 days, but you can customize Codespace retention intervals.
+
+# Customizing your Codespace
+
+GitHub Codespaces is a dedicated environment for you. You can configure your repositories with a development container to define your GitHub Codespaces environment.
+
+## Tips for customizing your Codespace
+
+There are many ways to customize your Codespace. Let's understand each of them:
+
+- **Settings Sync:** You can synchronize Visual Studio Code (VS Code) settings between the desktop application and the VS Code web client.
+
+- **Dotfiles:** You can use a dotfiles repository to specify scripts, shell preferences, and other configurations.
+
+- **Rename a Codespace:** When you create a Codespace, it gets an automatically generated display name. If you have multiple Codespaces, the display name will help differentiate between Codespaces.
+
+- **Change your shell:** You can change your shell in a Codespace to maintain the configuration you're accustomed to. While working in a Codespace, you can open a new terminal window with a shell of your choice, change your default shell for new terminal windows, or install a new shell. You can also use dotfiles to configure your shell.
+
+- **Change machine type:** You can change the machine type running your Codespace to use appropriate resources for the work you're doing.
+
+- **Set default editor:** You can set your default editor for Codespaces on your personal settings page. Set your editor preference so that when you create a Codespace or open an existing Codespace, it opens in your default editor.
+
+   - Visual Studio Code (desktop application)
+   - Visual Studio Code (web client app)
+   - JetBrains Gateway - to open Codespaces in a JetBrains IDE
+   - JupyterLab - the web interface of the Jupyter Project
+
+- **Set default region:** You can set your default region on the GitHub Codespaces profile settings page to customize where your data is kept.
+
+- **Set timeout:** A Codespace will stop functioning after a period of inactivity. By default, this period is 30 minutes, but you can specify a longer or shorter default timeout period in your personal GitHub settings. The updated setting applies to any new Codespaces you create or existing Codespaces the next time you start them.
+
+- **Set up auto-delete:** Inactive Codespaces are automatically deleted. You can choose how long your stopped Codespaces will be retained, up to a maximum of 30 days.
+
+## Add to your Codespace with extensions or plugins
+
+You can add plugins and extensions in a Codespace to customize your experience in JetBrains and VS Code.
+
+**VS Code extensions**
+
+If you work in your Codespaces in the VS Code desktop application or web client, you can add any necessary extensions from the Visual Studio Code Marketplace. Refer to Remote Development Support and GitHub Codespaces in the VS Code documentation for information on how extensions run in GitHub Codespaces.
+
+If you already use VS Code, you can use Settings Sync to automatically synchronize extensions, settings, themes, and keyboard shortcuts between your local instance and any Codespaces you create.
+
+**JetBrains plugins**
+
+If you work in your Codespaces in a JetBrains IDE, you can add plugins from the JetBrains Marketplace.
+
+# Codespaces X GitHub.dev
+
+You're probably wondering: when should I use GitHub Codespaces and when should I use GitHub.dev?
+
+You can use GitHub.dev to browse through files and source code repositories on GitHub and make and commit code changes. You can open any repository, branch, or pull request in the GitHub.dev editor.
+
+If you want to do heavier work, such as testing your code, use GitHub Codespaces. It has associated computing so you can build your code, run it, and have access to the terminal. GitHub.dev does not contain computing. With GitHub Codespaces, you get the power of a personal virtual machine (VM) with access to the terminal, just like you would use your local environment, but in the cloud. Codespaces vs GitHub.dev Comparison
+
+The following table lists the main differences between Codespaces and GitHub.dev:
+
+|                     | GitHub.dev                                   | GitHub Codespaces                          |
+|---------------------|----------------------------------------------|--------------------------------------------|
+| **Costs**           | Free                                         | Free tier usage quota for personal accounts |
+| **Availability**    | Available for everyone on GitHub.com        | Available for everyone on GitHub.com       |
+| **Start**           | GitHub.dev opens instantly with a key press | When you create or resume a Codespace, a VM is assigned to the Codespace and the container is configured based on the content of a devcontainer.json file. This setup takes a few minutes to create the development environment. |
+| **Computing**       | No computing associated, so you cannot build and run your code or use the integrated terminal | With GitHub Codespaces, you get the power of a dedicated VM to run and debug your application. |
+| **Terminal Access** | None                                         | GitHub Codespaces provides a common set of tools by default, meaning you can use the Terminal exactly as you would in your local environment. |
+| **Extensions**      | Only a subset of extensions that can run on the web appear in the extensions view and can be installed | With GitHub Codespaces, you can use most extensions from the Visual Studio Code Marketplace. |
+
+## Continue working with Codespaces
+
+You can start your workflow in GitHub.dev and continue working in a Codespace. If you try to access the Run, Debug, or Terminal view, you will be notified that they are not available in GitHub.dev.
+
+To continue your work in a Codespace, select Continue working on.... Select Create new codespace to create a codespace in your current branch. Before choosing this option, you should confirm any changes.
