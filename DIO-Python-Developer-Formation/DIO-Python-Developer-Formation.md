@@ -5,7 +5,7 @@
 </div>
 
 <div align="right">
-  <img src="image-2.png" alt="Badge" width="150">
+  <img src="" alt="Badge" width="150">
 </div>
 
 # What is DIO?
