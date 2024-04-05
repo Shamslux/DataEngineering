@@ -1072,3 +1072,98 @@ Additionally, you can choose to enable or disable inline suggestions and specify
 ## Troubleshoot GitHub Copilot in Visual Studio Code
 
 In Visual Studio Code, log files are useful for diagnosing connection issues. The GitHub Copilot extension stores log files in the default location for
+
+# Introduction to Codespaces
+
+Let's understand a bit about the lifecycle of Codespaces
+
+GitHub Codespaces is a fully configured development environment hosted in the cloud. When using GitHub Codespaces, your workspace, along with all your configured development environments, are available on any computer with internet access.
+
+## The Codespace Lifecycle
+
+![codespace](https://github.com/Shamslux/DataEngineering/assets/79280485/fcf4f622-aee1-4a76-b994-0437cbb6b490)
+
+GitHub Codespaces is configurable, allowing you to create a custom development environment for your project. By setting up a custom development environment for your project, you can have a repeatable Codespace configuration for all users of your project.
+
+The lifecycle of a Codespace begins when you create a Codespace and ends when you delete it. You can disconnect and reconnect to an active Codespace without affecting your running processes. You can stop and restart a Codespace without losing changes made to your project.
+
+## Create a Codespace
+
+You can create a Codespace on GitHub.com, in Visual Studio Code, or using the GitHub CLI. There are four ways to create a Codespace:
+
+1. From a GitHub template or any repository in GitHub.com to start a new project.
+
+2. From a branch in your repository for new feature work.
+
+3. From an open pull request to explore work in progress.
+
+4. From a commit in a repository's history to investigate a bug at a specific point in time.
+
+You can temporarily use a Codespace to test code, or you can return to the same Codespace to work on long-running features.
+
+You can create more than one Codespace per repository or even per branch. However, there are limits to the number of Codespaces you can create and run simultaneously. If you reach the maximum number of Codespaces and try to create another one, you'll see a message informing you that an existing Codespace needs to be removed/deleted before a new one can be created.
+
+You can create a new Codespace whenever you develop on GitHub Codespaces or keep a long-running Codespace for a feature. If starting a new project, create a Codespace from a template and later publish it to a repository on GitHub.
+
+When creating a new Codespace each time you work on a project, you should regularly push your changes to ensure any new commits are on GitHub. When using a long-running Codespace for a new project, pull from the default branch of the repository whenever you start working in the Codespace. This allows the environment to get the latest commits. The workflow is similar to working with a project on a local machine.
+
+Repository administrators can enable GitHub Codespaces prebuilds for a repository to speed up Codespace creation.
+
+## Codespace Creation Process:
+
+![codespace-2](https://github.com/Shamslux/DataEngineering/assets/79280485/2191c154-8a33-4d62-909f-a5fea66664d8)
+
+When creating a GitHub Codespace, four processes occur:
+
+1. VM and storage are assigned to your Codespace.
+2. A container is created.
+3. A connection to the Codespace is made.
+4. A post-creation setup is made.
+
+## Save Changes in a Codespace
+
+When you connect to a Codespace via the web, AutoSave is automatically activated to save changes after a specific period of time. When connecting to a Codespace through Visual Studio Code running on your desktop, you must enable AutoSave.
+
+Your work is saved on a virtual machine in the cloud. You can close and stop a Codespace and return to the saved work later. If you have unsaved changes, you'll receive a prompt to save them before exiting. However, if your Codespace is deleted, your work will be lost. To save your work, you must commit your changes and push them to your remote repository or publish your work to a new one if you created your Codespace from a template.
+
+## Open an Existing Codespace
+
+You can reopen any of your active or stopped Codespaces on GitHub.com, in a JetBrains IDE, in Visual Studio Code, or using GitHub CLI.
+
+To resume an existing Codespace, you can go to the repository where the Codespace exists and press the "," key on the keyboard and select "Resume this codespace" or open https://github.com/codespaces in the browser, select the repository, and then select the existing Codespace.
+
+## Timeouts for a Codespace
+
+If a Codespace is inactive, or if you exit the Codespace without explicitly stopping it, the app will expire after a period of inactivity and stop running. The default timeout period is after 30 minutes of inactivity. You cannot customize the duration of the timeout period for new Codespaces. When a Codespace expires, your data is retained since the last time your changes were saved.
+
+## Internet Connection when using GitHub Codespaces
+
+A Codespace requires an internet connection. If the internet connection is lost while you're working in a Codespace, you won't be able to access your Codespace. However, any uncommitted changes will be saved. Upon restoring the internet connection, you can access the Codespace in the same state as it was when the connection was lost.
+
+If you have an unstable internet connection, you should commit and push your changes frequently.
+
+## Closing or Stopping a Codespace
+
+If you exit the Codespace without running the stop command (e.g., by closing the browser tab) or leave the Codespace running without interaction, the Codespace and its running processes will continue during the idle timeout period. The default idle timeout period is 30 minutes. You can set your personal timeout configuration for created Codespaces, but this can be overridden by an organization's timeout policy.
+
+Only running Codespaces incur CPU charges. A stopped Codespace incurs only storage costs.
+
+You can stop and restart a Codespace to apply changes. For example, if you change the machine type used for your Codespace, you'll need to stop it and restart it for the change to take effect. When you close or stop your Codespace, all uncommitted changes are preserved until you connect to the Codespace again.
+
+You can also stop the Codespace and choose to restart or delete it if you encounter an error or something unexpected.
+
+## Rebuilding a Codespace
+
+You can rebuild your Codespace to implement changes in the development container configuration. For most uses, creating a new Codespace is possible as an alternative to rebuilding a Codespace. When rebuilding your Codespace, cached images speed up the rebuilding process. You can also perform a full rebuild to clear the cache and rebuild the container with new images.
+
+When rebuilding the container in a Codespace, changes made outside the /workspaces directory are cleared. Changes made within the /workspaces directory, including the clone of the repository or template from which you created the Codespace, are preserved during a rebuild.
+
+## Delete a Codespace
+
+You can create a Codespace for a specific task. After pushing your changes to a remote branch, you can safely delete that Codespace.
+
+If you try to delete a Codespace with unsent git commits, the editor will notify that there are changes that have not been sent to a remote branch.
+
+You can send any desired changes and delete your Codespace. You can also proceed to delete your Codespace and any uncommitted changes or export the code to a new branch without creating a new Codespace.
+
+Inactive Codespaces that remain idle for a specified period of time are automatically deleted. Idle Codespaces are deleted after 30 days, but you can customize Codespace retention intervals.
