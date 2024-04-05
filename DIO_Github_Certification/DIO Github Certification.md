@@ -956,3 +956,12 @@ GitHub Desktop is a tool that makes managing your projects on GitHub directly fr
 - View and switch between branches easily.
 - Collaborate with others on shared projects.
 
+# GitHub Billing
+
+Each account, whether personal or organizational, receives a separate invoice. This invoice combines subscription costs and usage-based products.
+
+- Subscriptions cover the plan (such as GitHub Pro or GitHub Team) and fixed-cost monthly paid products, such as GitHub Copilot and GitHub Marketplace apps.
+
+- Usage-based billing applies when the cost of a product depends on how much you use it. For example, GitHub Actions costs based on the minutes used and storage consumed.
+
+**Note:** Your plan may include a certain amount of free usage-based products. With GitHub Pro, your personal account has 3,000 free minutes of GitHub Actions per month. You control additional expenses by setting limits.
