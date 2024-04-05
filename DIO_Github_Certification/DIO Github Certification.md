@@ -965,3 +965,110 @@ Each account, whether personal or organizational, receives a separate invoice. T
 - Usage-based billing applies when the cost of a product depends on how much you use it. For example, GitHub Actions costs based on the minutes used and storage consumed.
 
 **Note:** Your plan may include a certain amount of free usage-based products. With GitHub Pro, your personal account has 3,000 free minutes of GitHub Actions per month. You control additional expenses by setting limits.
+
+# Introduction to GitHub Copilot 🤖
+
+![copilot](https://github.com/Shamslux/DataEngineering/assets/79280485/5eadf0e7-b92c-45c0-9730-26113cfab3ba)
+
+GitHub Copilot is an AI coding partner that provides autocomplete suggestions while you code. Get suggestions by typing code or describing it in natural language.
+
+## But what exactly is GitHub Copilot?
+
+GitHub Copilot is a service that provides an AI programmer as a partner, compatible with all popular programming languages, and dramatically accelerates overall developer productivity. In recent research, GitHub and Microsoft found that developers experience a significant increase in productivity when working on real-world projects and tasks using GitHub Copilot. In fact, in less than two years since its launch, developers experienced the following when using GitHub Copilot:
+
+- 46% of new code is now written by AI.
+- 55% increase in overall developer productivity.
+- 74% of developers feel more focused on satisfying work.
+
+Developed in collaboration with OpenAI, GitHub Copilot is powered by OpenAI Codex, an AI system created by OpenAI. OpenAI Codex has broad knowledge of how people use code and is more capable than GPT-3 in generating code, in part because it was trained on a dataset that includes a higher concentration of public source code.
+
+GitHub Copilot is available as an extension for Visual Studio Code, Visual Studio, Vim/Neovim, and JetBrains' suite of integrated development environments (IDEs).
+
+## GitHub Copilot Features
+
+GitHub Copilot has initiated a new era in software development as an AI programmer that keeps developers in flow, autocompleting comments and code, but AI-powered autocompletion was just the starting point. Here are some features of GitHub Copilot that truly make it a developer tool of the future, surpassing just being an editor and becoming a readily accessible AI assistant throughout the development cycle.
+
+- **ChatGPT-like Experience in Your Editor with GitHub Copilot Chat:**
+GitHub Copilot brings a chat interface to the editor focused on developer scenarios and natively integrates with VS Code and Visual Studio. It recognizes the code a developer has typed, which error messages are displayed, and is deeply integrated with the IDE. A developer can get detailed insights and explanations about what code blocks intend to do, generate unit tests, and even get proposed bug fixes.
+
+- **Copilot for Pull Requests:**
+This new feature is powered by the new GPT-4 model from OpenAI and adds support for AI-powered tags in pull request descriptions via a GitHub app that organization admins and individual repository owners can install. These tags are automatically filled in by GitHub Copilot based on the changed code. Developers can review or modify the suggested description.
+
+- **AI-Generated Documentation Responses:**
+GitHub is rolling out GitHub Copilot for Docs, an experimental tool that uses a chat interface to provide users with AI-generated responses to documentation questions, including questions that developers have about the languages, frameworks, and technologies they are using.
+
+- **Copilot for Command Line Interface (CLI):**
+In addition to the editor and pull request, the terminal is where developers spend most of their time. However, even the most proficient developers need to scroll through many pages to recall the precise syntax of many commands. GitHub Copilot CLI can compose commands and loops, and utilize obscure search flags to fulfill your query.
+
+## GitHub Copilot Business
+
+GitHub Copilot is available through personal GitHub accounts with GitHub Copilot Individual, or through organization or enterprise accounts with GitHub Copilot Business and GitHub Copilot Enterprise.
+
+Copilot Business allows you to control who can use GitHub Copilot in your company. After granting access to an organization, its administrators can then grant access to individuals and teams.
+
+With Copilot Business, GitHub Copilot is open to all developers, teams, and organizations, and businesses.
+
+With features such as code completion, IDE and mobile chat, security vulnerability filtering, code reference, public code filtering, IP and security indemnification, enterprise-level privacy, GitHub Copilot Business aims to make organizations more productive, secure, and satisfied. These features enable developers to code more quickly and focus on more satisfying work.
+
+## GitHub Copilot Enterprise
+
+GitHub Copilot Enterprise is available to organizations through GitHub Enterprise Cloud.
+
+Copilot Enterprise allows your development teams to quickly familiarize themselves with your codebase, search and build documentation, receive suggestions based on internal and private code, and quickly review pull requests.
+
+GitHub Copilot Enterprise includes everything in GitHub Copilot Business, plus an additional layer of customization for organizations and integration with GitHub as a chat interface to allow developers to discuss their codebase and action buttons across the platform. GitHub Copilot Enterprise can index an organization's codebase for deeper understanding of customer knowledge for more personalized suggestions and provide customers access to GitHub Copilot Customization to adjust custom and private models for code completion.
+
+>> **Set up, configure, and troubleshoot GitHub Copilot**
+Please note that when signing up for the GitHub Copilot free trial, you will be asked to provide a payment method, although you will not be charged until the end of the free trial. Be sure to cancel before 30 days to avoid payment.
+
+## Sign Up for GitHub Copilot
+
+Before you begin using GitHub Copilot, you need to set up a free trial or subscription for your personal account.
+
+Select your profile picture, then select Settings. Copilot is in the menu on the left, under Code, Planning, and Automation.
+
+After signing up, you will need to install an extension for your preferred environment. GitHub Copilot is compatible with GitHub.com, Visual Studio Code, Visual Studio, JetBrains IDEs, and Neovim as a discreet extension.
+
+## Configure GitHub Copilot in Visual Studio Code
+
+*Add Visual Studio Code Extension*
+
+Follow these steps to add the Visual Studio Code extension for GitHub Copilot.
+
+In the Visual Studio Code Marketplace, go to the GitHub Copilot extension page and select Install.
+
+A popup will appear asking to open Visual Studio Code. Select Open.
+
+In the Extension: GitHub Copilot tab in Visual Studio Code, select Install.
+
+If you have not previously authorized Visual Studio Code in your GitHub account, you will be asked to log in to GitHub in Visual Studio Code. Select Log in to GitHub.
+
+GitHub Copilot can autocomplete code as you type when using Visual Studio Code. After installation, you can activate or deactivate GitHub Copilot and configure advanced settings within Visual Studio Code.
+
+## Enable or Disable GitHub Copilot in Visual Studio Code
+
+To enable or disable GitHub Copilot, select the status icon in the bottom panel of the Visual Studio Code window.
+
+Screenshot of the status icon for GitHub Copilot in the bottom panel of the Visual Studio Code window. The background color corresponds to the color of the status bar when activated.
+
+When turning off GitHub Copilot, you will be asked whether you want to turn off suggestions globally or for the file language you are currently editing.
+
+To disable GitHub Copilot suggestions globally, select Disable globally.
+
+To disable GitHub Copilot suggestions for a specific language, select Disable for LANGUAGE.
+
+## Enable or Disable Inline Suggestions in Visual Studio Code
+
+In the File menu, go to Preferences and select Settings.
+
+Screenshot of the File menu in Visual Studio Code. The Preferences dropdown is open with Settings selected.
+
+In the left panel of the Settings tab, select Extensions, and then select Copilot.
+
+Under Inline Suggest: Enable, select or deselect the checkbox to enable or disable inline suggestions.
+
+Additionally, you can choose to enable or disable inline suggestions and specify for which languages you want to enable or disable GitHub Copilot.
+
+## Troubleshoot GitHub Copilot in Visual Studio Code
+
+In Visual Studio Code, log files are useful for diagnosing connection issues. The GitHub Copilot extension stores log files in the default location for
