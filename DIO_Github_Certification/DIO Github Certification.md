@@ -1237,3 +1237,57 @@ The following table lists the main differences between Codespaces and GitHub.dev
 You can start your workflow in GitHub.dev and continue working in a Codespace. If you try to access the Run, Debug, or Terminal view, you will be notified that they are not available in GitHub.dev.
 
 To continue your work in a Codespace, select Continue working on.... Select Create new codespace to create a codespace in your current branch. Before choosing this option, you should confirm any changes.
+
+# Getting to Know GitHub Administration
+
+You will learn the fundamental concepts for using GitHub tools, security measures, and controls available to GitHub administrators in an organization or company.
+
+## What is GitHub administration?
+
+GitHub administrators have a super important job, which is to protect projects and ensure that the right teams can collaborate and share their projects/source code. Currently, GitHub has three types of administrations: Team-level, Organization-level, and Enterprise-level administration.
+
+## Team-Level Administration 
+
+On GitHub, users are part of teams within organizations. These teams help organize permissions and facilitate communication. Additionally, you can connect your teams on GitHub with identity services, such as Microsoft Enter ID, to automate updates and make administration easier.
+
+Team members with certain permissions can create, rename, or delete teams, add or remove members, and manage external collaborators. They can also adjust settings such as team visibility, discussions, and automatic code review assignments. This simplifies administrative tasks, like adding new members or controlling permissions, making the process more efficient.
+
+##  Organization-Level Administration 
+
+On GitHub, organizations are shared spaces for project collaboration. Owners and administrators control access, invite members, organize teams, and set permissions. It is recommended to have a single organization, as creating multiple can be complex without the ability to duplicate settings. Managing multiple organizations can increase risks and costs. Owners have broad control, including the ability to invite, organize teams, manage permissions, and configure security. Scripts can be used to automate administrative tasks.
+
+## Enterprise-Level Administration 
+
+Enterprise accounts on GitHub unify management for multiple organizations. Enterprise owners have the power to:
+
+- Enable single sign-on (SAML) for everyone, connecting external identities to GitHub.
+
+- Add or remove organizations from the enterprise.
+
+- Control billing and assign billing managers for all organizations.
+
+- Configure security policies for repositories, projects, and teams.
+
+- Extract information using scripts.
+
+- Apply global changes, such as migrations, using scripts.
+
+## Best Practices
+
+- Creating teams in your organization allows for greater flexibility for collaboration and can facilitate the separation of repositories and permissions:
+
+- Create hierarchically organized teams to represent the structure of your company or group.
+
+- Make teams based on specific interests or technologies to facilitate code reviews. People can join based on their interests or skills.
+
+- Connect your teams on GitHub with your identity provider (IdP) to automate updates and simplify administrative tasks, like adding members or adjusting permissions. This reduces the need for manual updates.
+
+# Final Considerations from Shamslux
+
+Well, I liked the course. Some practical parts I didn't include here (mostly in the final parts, like detailing the hands-on Codespaces, creating Organizations, etc.), leaving more of the theoretical part detailed in this document.
+
+There were 3 project delivery challenges and a code challenge. I did the code challenge (basically practice some basic Git commands), but I still have to do the challenges (I need to create some forks and collaborate with someone else, they will take some time and I plan to finish during the next weekend).
+
+Overall, I really liked this training in Git because I already use Git professionally and had done some basic courses, but this one definitely stood out for going into greater detail levels than the other courses I've seen.
+
+My congratulations to the DIO.me team and let's move on to the next courses!
