@@ -267,3 +267,135 @@ student_grade = 9.8
 
 ABS_PATH = '/home/william/Documents/python_course
 ```
+
+# Type Conversion
+
+Sometimes it will be necessary to convert the type of a variable to manipulate it differently. For example, a variable of type `string` stored numbers, but we need to perform some mathematical operation with this value, what to do? We should convert the value to numeric.
+
+## Int to float
+
+
+```python
+# Int to float
+
+price = 10
+print(price)
+
+price = float(price)
+print(price)
+
+price = 10 / 2
+print(price)
+print(type(price))
+```
+
+## Float to int
+
+```python
+# Float to int
+
+price = 10.30
+print(price)
+
+price = int(price)
+print(price)
+print(type(price))
+```
+
+## Conversion by division
+
+```python
+# Int to float
+
+price = 10
+print(price)
+
+price = float(price)
+print(price)
+
+price = 10 / 2
+print(price)
+print(type(price))
+
+# Float to int
+
+price = 10.30
+print(price)
+
+price = int(price)
+print(price)
+print(type(price))
+
+# Conversion by division
+
+price = 10
+print(price)
+print(type(price))
+
+print(price / 2)
+print(type(price))
+
+""" Just commenting the above case, the instructor said it was a conversion by division; however, I used type() to check and prove that the
+type remained integer. With that, I believe he may have based it solely on the appearance of the data. To be, in fact, a
+float, there would have to be at least one float (it was a division of two integers). """
+
+print(price // 2)
+print(type(price))
+```
+
+## Number to String
+
+```python
+# Number to string
+
+price = 10.50
+age = 28
+print(type(price))
+print(type(age))
+
+print(str(price))
+print(str(age))
+print(type(str(price)))
+print(type(str(age)))
+
+text = f"age {age} price {price}"
+print(text)
+print(type(text))
+```
+
+## String to Number
+
+# String to number
+
+```python
+price = "10.50"
+age = "28"
+
+print(type(price))
+print(type(age))
+
+print(type(float(price)))
+print(type(int(age)))
+```
+
+## Conversion Error
+
+Occurs when a proper conversion is not possible (for example, converting a string that actually stores text, and not a number in text form, to numeric form).
+
+```python
+# Conversion Error
+
+price = "python"
+print(float(price))
+```
+
+`output`
+
+```
+>>> price = "python"
+>>> print(float(price))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: could not convert string to float: 'python'
+```
+
