@@ -130,4 +130,38 @@ print(type(True))
 print("Python")
 print(type("Python"))
 ```
+# Using Interactive Mode
 
+## What is interactive mode?
+
+The Python interpreter can run in a mode that allows the developer to write code and see the result immediately.
+
+## Starting interactive mode
+
+There are two ways to start interactive mode:
+
+- Calling just the interpreter (`python`)
+
+- Running the script with the `-i` flag (`python -i app.py`)
+
+# Functions dir and help
+
+## dir
+
+It is a function that, without arguments, returns the list of names in the current local scope. With an argument, it returns a list of valid attributes for the object. Examples:
+
+```python
+dir()
+
+dir(100)
+```
+
+## help
+
+Invokes the built-in help system. It is possible to search in interactive mode or inform by parameter the name of the module, function, class, method, or variable. Examples:
+
+```python
+help()
+
+help(100)
+```
