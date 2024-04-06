@@ -60,5 +60,74 @@ Python is a very versatile language, see some characteristics:
 
 **Note**: Python is not recommended for mobile development. Although there are some frameworks, they are not as good, since Python itself does not perform well in a mobile environment, therefore, it is much better to use other more established languages for mobile environments.
 
+# "The Recipe"
 
+Programming consists of telling the computer a sequence of routines that should be processed. Imagine a cake recipe; we need to know the ingredients and the preparation method. By correctly following the instructions, at the end of the process, we will have a cake ready.
+
+## Creating our file
+
+To create our "cake recipe" in Python, we need to create a file with the `py` extension. With the file created, we can insert our ingredients and the preparation method.
+
+## The famous "Hello, World!"
+
+As customary in many programming languages, our first "program" will be the "Hello, World!". Let's do it!
+
+```python
+print("Hello world!")
+```
+
+# Data Types
+
+## What are data types?
+
+Data types serve to define the characteristics and behaviors of a value (object) for the interpreter. For example:
+
+The built-in data types are:
+
+| Type      | Example        |
+|-----------|----------------|
+| Text      | str            |
+| Numeric   | int, float, complex |
+| Sequence  | list, tuple, range |
+| Map       | dict           |
+| Collection| set, frozenset |
+| Boolean   | bool           |
+| Binary    | bytes, bytearray, memoryview |
+
+## Common and Basic Types
+
+### Integers
+
+Integers are represented by the `int` class and have unlimited precision. Valid examples of integers are: 1, 10, 100, -1, -10, -100...99001823
+
+### Floating-point numbers
+
+Floating-point numbers are used to represent rational numbers and their implementation is done by the `float` class. Valid examples of floating-point numbers are: 1.5, -10.543, 0.76...999278.002
+
+### Boolean
+
+It is used to represent "true" or "false" and is implemented by the `bool` class. In Python, the boolean type is a subclass of `int`, as any number other than 0 represents true and 0 represents false. Valid examples of booleans are: `True` and `False`
+
+### Strings
+
+Strings (or character chains) are used to represent alphanumeric values. In Python, strings are defined using the `str` class. Valid examples of string: "Python", 'Python', """Python""", "p"
+
+### Testing in a New Code
+
+Below is our new code to test what we learned above.
+(I added the use of `type` to facilitate, it was not explained in the bootcamp training class).
+
+```python
+print(1 + 10)
+print(type(1 + 10))
+
+print(1.5 + 1 + 0.5)
+print(type(1.5 + 1 + 0.5))
+
+print(True)
+print(type(True))
+
+print("Python")
+print(type("Python"))
+```
 
