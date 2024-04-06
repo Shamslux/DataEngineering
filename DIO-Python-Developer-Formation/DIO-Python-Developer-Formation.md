@@ -165,3 +165,105 @@ help()
 
 help(100)
 ```
+
+# Variables and Constants
+
+## Variables
+
+In programming languages, we can define values that can be altered during the execution of the program. These values are called variables because they are initialized with a value and do not necessarily have to remain with the same value throughout the program's execution.
+
+```python
+# Using variables
+
+age = 23
+name = 'William'
+print(f'My name is {name} and I am {age} year(s) old.')
+
+age, name = (23, 'William')
+print(f'My name is {name} and I am {age} year(s) old.')
+```
+
+## Changing values
+
+Notice that we don't need to define the data type of the variable in Python, as the language does this automatically for us. That's why we can't simply create a variable without assigning a value. To change the value of the variable, you just need to assign a new value to it.
+
+```python
+# Using variables
+
+age = 23
+name = 'William'
+print(f'My name is {name} and I am {age} year(s) old.')
+
+age, name = (23, 'William')
+print(f'My name is {name} and I am {age} year(s) old.')
+
+# Changing the values of variables
+
+age = 23
+name = 'William'
+print(f'My name is {name} and I am {age} year(s) old.')
+print(age, name)
+
+age = 27
+name = 'Giovanna'
+print(f'My name is {name} and I am {age} year(s) old.')
+print(age, name)
+```
+
+`Output`
+
+```
+My name is William and I am 23 year(s) old.
+My name is William and I am 23 year(s) old.
+My name is William and I am 23 year(s) old.
+23 William
+My name is Giovanna and I am 27 year(s) old.
+27 Giovanna
+```
+
+## Constants
+
+Just like variables, constants are used to store values. A constant is born with a value and remains with it until the end of the program execution, meaning the value is immutable.
+
+**Python does not have constants!**
+
+There is no reserved keyword to inform the interpreter that the value is a constant. In some languages, such as Java and C, we use `final` and `const`, respectively, to declare a constant.
+
+In Python, we use the convention that tells the programmer that the variable is a constant. **To do this, you should create the variable with the name all in uppercase letters.**
+
+```python
+# Properly creating a constant in Python (convention)
+
+ABS_PATH = '/home/william/Documents/python_course'
+DEBUG = True
+STATES = [
+    'SP',
+    'RJ',
+    'MG',
+]
+AMOUNT = 30.2
+```
+
+## Best Practices
+
+- The naming convention should be *snake case*
+
+- Choose meaningful names
+
+- Constants should be all uppercase
+
+```python
+# Best practices
+
+# The naming convention should be *nake case
+new_value = 2
+
+# Choose meaningful names
+student_name = 'Peter'
+student_last_name = 'Parker'
+student_grade = 9.8
+
+# Constants should be all uppercase
+
+ABS_PATH = '/home/william/Documents/python_course
+```
