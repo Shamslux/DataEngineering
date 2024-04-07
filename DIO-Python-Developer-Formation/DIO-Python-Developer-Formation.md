@@ -446,3 +446,71 @@ William#28 ...
 William#28
 >>>
 ```
+
+# Arithmetic operators
+
+## What are arithmetic operators?
+
+Arithmetic operators perform mathematical operations (e.g., addition, subtraction, etc.).
+
+```python
+# Arithmetic operators
+
+# Addition
+print(1 + 1)
+
+# Subtraction
+print(10 - 2)
+
+# Multiplication
+print(4 * 3)
+
+# Division
+print(12 / 3)
+
+# Integer Division
+print(12 // 2)
+
+# Modulus
+print(10 % 3)
+
+# Exponentiation
+print( 2 ** 3)
+```
+
+## Precedence of Arithmetic Operators
+
+In mathematics, there is a rule that indicates which operations should be performed first. This is useful because when analyzing an expression, depending on the order of operations, the value can be different.
+
+The definition indicates the following correct order:
+
+1. Parentheses
+2. Exponents
+3. Multiplication and division (from left to right)
+4. Addition and subtraction (from left to right)
+
+```python
+# Precedence of Arithmetic Operators
+
+print(10 - 5 * 2)
+print((10 - 5) * 2)
+print(10 ** 2 * 2)
+print(10 ** (2 * 2))
+print(10 / 2 * 4)
+```
+`output`
+
+```
+>>> print(10 - 5 * 2)
+0
+>>> print((10 - 5) * 2)
+10
+>>> print(10 ** 2 * 2)
+200
+>>> print(10 ** (2 * 2))
+10000
+>>> print(10 / 2 * 4)
+20.0
+>>>
+```
+
