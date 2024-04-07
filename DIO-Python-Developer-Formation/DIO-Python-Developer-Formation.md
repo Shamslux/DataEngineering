@@ -699,3 +699,17 @@ print(course is not course_name)
 print(balance is limit)
 ```
 
+# Membership Operators
+
+These are operators used to check if an object is present in a sequence.
+
+```python
+course = "Python Course"
+fruits = ["orange", "grape", "lemon"]
+withdraws = [1500, 100]
+
+print("Python" in course)
+print("apple" not in fruits)
+print(200 in withdraws)
+```
+
