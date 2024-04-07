@@ -685,4 +685,17 @@ exp_3 = normal_account_with_enough_balance or special_account_with_enough_balanc
 print(exp_3)
 ```
 
+# Identity Operators
+
+These are operators used to compare whether the two tested objects occupy the same position in memory.
+
+```python
+course = "Python Course"
+course_name = course
+balance, limit = 200, 200
+
+print(course is course_name)
+print(course is not course_name)
+print(balance is limit)
+```
 
