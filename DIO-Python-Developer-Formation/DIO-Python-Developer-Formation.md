@@ -540,3 +540,108 @@ print(balance < withdrawal)
 print(balance <= withdrawal)
 ```
 
+# Assignment Operators
+
+These are operators used to define an initial value or overwrite the value of a variable.
+
+```python
+# Simple assignment operator
+balance = 500
+
+print(balance)
+
+# Assignment operator with addition
+
+balance = 500
+balance += 200
+
+print(balance)
+
+# Assignment operator with subtraction
+
+balance = 500
+balance -= 100
+
+print(balance)
+
+# Assignment operator with multiplication
+
+balance = 500
+balance *= 2
+
+print(balance)
+
+# Assignment operator with division
+
+balance = 500
+balance /= 5
+
+print(balance)
+
+balance = 500
+balance //= 5
+
+print(balance)
+
+# Assignment operator with modulus
+
+balance = 500
+balance %= 480
+
+print(balance)
+
+# Assignment operator with exponentiation
+
+balance = 80
+balance **= 2
+
+print(balance)
+```
+
+`output`
+
+```
+>>> balance = 500
+>>> print(balance)
+500
+>>> # Assignment operator with addition
+>>> 
+>>> balance = 500
+>>> balance += 200
+>>> print(balance)
+700
+>>> # Assignment operator with subtraction
+>>> 
+>>> balance = 500
+>>> balance -= 100
+>>> print(balance)
+400
+>>> # Assignment operator with multiplication
+>>> 
+>>> balance = 500
+>>> balance *= 2
+>>> print(balance)
+1000
+>>> # Assignment operator with division
+>>>
+>>> balance = 500
+>>> balance /= 5
+>>> print(balance)
+100.0
+>>> balance = 500
+>>> balance //= 5
+>>> print(balance)
+100
+>>> # Assignment operator with modulus
+>>>
+>>> balance = 500
+>>> balance %= 480
+>>> print(balance)
+20
+>>> # Assignment operator with exponentiation
+>>>
+>>> balance = 80
+>>> balance **= 2
+>>> print(balance)
+6400
+```
