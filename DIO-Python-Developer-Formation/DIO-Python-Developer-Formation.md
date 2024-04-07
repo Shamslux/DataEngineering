@@ -398,4 +398,51 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 ValueError: could not convert string to float: 'python'
 ```
+## Input and Output Functions
 
+## input() Function
+
+The **built-in** `input()` function is used when we want to read standard input data (e.g., from the keyboard). It takes a `string` argument, which is displayed to the user on the standard output (e.g., screen). The function reads the input, converts it to `string`, and returns the value.
+
+## Displaying Values with the print() Function
+
+The *built-in* `print()` function is used when we want to display data on the standard output (e.g., screen). It takes one mandatory *varargs* type argument of objects and 4 optional arguments (*sep, end, file*, and *flush*). All objects are converted to `string`, separated by `sep`, and terminated by `end`. The final `string` is displayed to the user.
+
+```python
+# Input function
+
+name = input("Write your name: ")
+
+# Print function
+
+name = input("Write your name: ")
+print(name)
+
+# Print function using end and sep
+
+name = input("Write your name: ")
+age = input("Write your age: ")
+
+print(name, age)
+print(name, age, end=" ... \n")
+print(name, age, sep="#", end=" ... \n")
+print(name, age, sep="#")
+```
+
+`output`
+
+```
+>>> name = input("Write your name: ")
+Write your name: William
+>>> age = input("Write your age: ")
+Write your age: 28
+>>> print(name, age)
+William 28
+>>> print(name, age, end=" ... \n")
+William 28 ... 
+>>> print(name, age, sep="#", end=" ... \n")
+William#28 ... 
+>>> print(name, age, sep="#")
+William#28
+>>>
+```
