@@ -713,3 +713,33 @@ print("apple" not in fruits)
 print(200 in withdraws)
 ```
 
+# Indentation and Blocks
+
+Indenting the code is a way to keep it more readable and maintainable. In Python, indentation plays a second role because through indentation the interpreter can determine where a block of code begins and where it ends.
+
+Programming languages often use characters or reserved words to determine the start and end of a block. In Java and C, for example, braces are used. See an example below:
+
+```java
+void withdraw(double value) { // Beginning of method block
+    if (this.balance >= value) { // Beginning of if block
+        
+        this.balance -= value;
+    } // Ending of if block
+    
+} // Ending of method block
+```
+
+## Using spaces
+
+There is a convention in Python that defines best practices for writing code in the language. In this document, it is indicated to use **4 white spaces per indentation level**, which means that for each new block, 4 new white spaces are added. See the previous example in Java, but now with how indentation would be in Python:
+
+```python
+def withdraw(self, value: float) -> None: # Beginning of method block
+    if self.balance >= value: # Beginning of if block
+        self.balance -= value
+    # Ending of if block
+
+# Ending of method block
+```
+
+**Note:** As indentation is not optional in Python, this makes the code necessarily more readable than in other languages where indentation is optional (it depends on the programmer's best practices).
