@@ -743,3 +743,100 @@ def withdraw(self, value: float) -> None: # Beginning of method block
 ```
 
 **Note:** As indentation is not optional in Python, this makes the code necessarily more readable than in other languages where indentation is optional (it depends on the programmer's best practices).
+
+# Conditional Structures
+
+The conditional structure allows the flow of control to be diverted when certain logical expressions are met.
+
+## If
+
+To create a simple conditional structure, composed of a single diversion, we can use the reserved word `if`. The command will test the logical expression and, in case of returning `True`, the actions present in the code block of `if` will be executed.
+
+```python
+# If
+balance = 2000.0
+withdraw = float(input("Enter the withdrawal amount: "))
+
+if balance >= withdraw:
+    print("Success!")
+
+if balance < withdraw:
+    print("Insufficient funds!")
+```
+
+## If else
+
+To create a conditional structure with two paths, we can use the reserved words `if` and `else`. As we know, if the logical expression tested in `if` is true, then the code block of `if` will be executed, otherwise, the code block of `else` will be executed.
+
+```python
+# If else
+
+balance = 2000.0
+withdraw = float(input("Enter the withdrawal amount: "))
+
+if balance >= withdraw:
+    print("Success!")
+
+else:
+    print("Insufficient funds!")
+```
+
+## If elif else
+
+In some scenarios, we may want more than two paths, for this, we can use the reserved word `elif`, which is composed of a new logical expression, that will be tested and, if it returns `True`, the `elif` code block will be executed. **There is no maximum number of `elif` we can use, however, avoid creating large conditional structures, as they increase the complexity of the code.
+
+```python
+# If elif else
+
+option = int(input("Enter an option: [1] Withdraw \n[2] Statement: "))
+
+if option == 1:
+    value = float(input("Enter the withdrawal amount: "))
+
+elif option == 2:
+    print("Showing bank statement... ")
+else:
+    sys.exit("Unavailable option! Closing...")
+```
+
+## Nested If elif else
+
+We can create nested conditional structures, for this, we just need to add `if-elif-else` structures within the code block of `if-elif-else` structures.
+
+```python
+# Nested if elif else
+
+normal_account = True
+university_student_account = False
+
+balance = 2000
+withdraw = 500
+overdraft = 450
+
+if normal_account:
+    if balance >= withdraw:
+        print("Success!")
+    elif balance <= (balance + overdraft):
+        print("Success with overdraft!")
+elif university_student_account:
+    if balance >= withdraw:
+        print("Success!")
+    else:
+        print("Insufficient Funds!")
+```
+
+# Ternary If
+
+The ternary if allows you to write a condition in a single line. It is composed of 3 parts:
+
+1. Return if the expression is true
+2. The logical expression
+3. The return if the expression is not met
+
+```python
+# Ternary If
+
+status = "Success!" if balance >= withdraw else "Failed!"
+
+print(f"{status} when withdrawing the amount!")
+```
