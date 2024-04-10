@@ -840,3 +840,98 @@ status = "Success!" if balance >= withdraw else "Failed!"
 
 print(f"{status} when withdrawing the amount!")
 ```
+
+# Loops
+
+Loops are structures used to repeat a block of code a certain number of times. This number can be known beforehand or determined through a logical expression.
+
+## For Loop
+
+The `for` loop is used to iterate over an iterable object. It makes sense to use `for` when we know the exact number of times our code block should be executed or when we want to iterate over an iterable object.
+
+```python
+# For
+
+text = input("Write a piece of text: ")
+VOWELS = "AEIOU"
+
+for letter in text:
+    if letter.upper() in VOWELS:
+        print(letter, end="")
+
+print() # Just adds a line break
+
+# For else
+
+text = input("Write a piece of text: ")
+VOWELS = "AEIOU"
+
+for letter in text:
+    if letter.upper() in VOWELS:
+        print(letter, end="")
+else:
+    print() # Just adds a line break
+```
+
+## range() Function
+
+`range()` is a built-in Python function used to generate a sequence of integers from a start (inclusive) to an end (exclusive). If we use `range(i,j)`, it will produce:
+
+`i, i+1, i+2, i+3, ..., j-1`
+
+Thus, the function takes 3 arguments: `stop` (mandatory), `start` (optional), and `step` (optional).
+
+```python
+# Range()
+
+print(list(range(0,10)))
+
+# For range()
+
+for number in range(0, 11):
+    print(number, end=" ")
+
+# 5 times table
+
+for number in range(0, 51, 5):
+    print(number, end=" ")
+```
+
+## While Loop
+
+The `while` loop is used to repeat a code block several times. It makes sense to use `while` when we do not know the exact number of times our code block should be executed.
+
+```python
+# While
+
+option = -1
+
+while option != 0:
+    option = int(input("[1] Withdraw \n[2] Bank Statement\n[0] Exit \n: "))
+
+    if option == 1:
+        print("Withdrawing...")
+    
+    elif option == 2:
+        print("Showing bank statement"...)
+
+# Using break
+
+while True:
+    number = int(input("Guess the number! It is between 0 and 100! While you don't guess it, the program keep running!: "))
+
+    if number == 10:
+        break
+
+    print(number)
+
+# Using continue
+# This will only show the odd numbers
+
+for number in range(100):
+
+    if number % 2 == 0:
+        continue
+
+    print(number, end=" ")
+```
