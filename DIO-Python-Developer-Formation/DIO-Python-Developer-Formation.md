@@ -1017,4 +1017,49 @@ for number in range(100):
 
     print(number, end=" ")
 ```
->>>>>>> 4cc799721524fbb855e7dbcb1baeff2c3b9bfb83
+
+# String and Slicing
+
+## General Objective
+
+Learn useful methods for manipulating string objects, such as interpolating variable values and understanding how slicing works.
+
+## Introduction
+
+The Python `string` class is famous for its rich methods and an easy-to-use interface. In some languages, manipulating character sequences is not a trivial task, but in Python, this work is very simple.
+
+## Upper(), lower(), title()
+
+```python
+# Upper, lower, title
+
+course = "pYtHon"
+
+print(course.upper())
+print(course.lower())
+print(course.title())
+```
+
+## Join() and center()
+
+```python
+# Join and center
+
+course = "Python"
+
+print(course.center(10, "#"))
+print(".".join(course))
+```
+
+## Strip
+
+```python
+# Strip
+
+text = "  Hello, world!  "
+
+print(text + ".")
+print(text.strip() + ".")
+print(text.rstrip() + ".")
+print(text.lstrip() + ".")
+```
