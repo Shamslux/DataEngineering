@@ -961,7 +961,7 @@ else:
 
 `i, i+1, i+2, i+3, ..., j-1`
 
-Thus, the function takes 3 arguments: `stop` (mandatory), `start` (optional), and `step` (optional).
+Thus, the function takes 3 arguments: `stop` (*mandatory*), `start` (*optional*), and `step` (*optional*).
 
 ```python
 # Range()
