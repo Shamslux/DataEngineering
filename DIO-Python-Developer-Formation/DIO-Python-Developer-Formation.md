@@ -1030,6 +1030,8 @@ The Python `string` class is famous for its rich methods and an easy-to-use inte
 
 ## Upper(), lower(), title()
 
+`upper()`, `lower()`, and `title()` are string methods in Python used to manipulate the case of characters within a string. `upper()` converts all characters in the string to uppercase, `lower()` converts all characters to lowercase, and `title()` converts the first character of each word to uppercase and the rest to lowercase, effectively capitalizing the string as if it were a title.
+
 ```python
 # Upper, lower, title
 
@@ -1042,6 +1044,10 @@ print(course.title())
 
 ## Join() and center()
 
+`join()` is a method used to concatenate the elements of an iterable, such as a list, into a single string. It takes an iterable as its argument and returns a string where each element of the iterable is joined by the string on which `join()` is called.
+
+`center()` is a method used to center-align a string within a specified width. It takes two arguments: the width of the resulting string and an optional character to use for padding. If no character is specified, it defaults to using whitespace for padding.
+
 ```python
 # Join and center
 
@@ -1052,6 +1058,8 @@ print(".".join(course))
 ```
 
 ## Strip
+
+`strip()` is a method used to remove leading and trailing whitespace characters (spaces, tabs, newlines) from a string. It doesn't remove whitespace within the string, only from the beginning and end.
 
 ```python
 # Strip
