@@ -1071,3 +1071,38 @@ print(text.strip() + ".")
 print(text.rstrip() + ".")
 print(text.lstrip() + ".")
 ```
+
+# Variable Interpolation
+
+In Python, we have three ways to interpolate variables into strings: the first one uses the `%` sign, the second one uses the `format` method, and the last one uses `f strings`.
+
+The first method is not currently recommended, and its usage in Python 3 is rare. Therefore, we will focus on the last two methods.
+
+```python
+# Old Style %
+
+name = "William"
+age = 28
+job = "Programmer"
+language = "Python"
+
+print("Hello, I am %s. I am %d years old. I work as %s and I use the %s language!" % (name, age, job, language))
+
+# Format() method
+
+name = "William"
+age = 28
+job = "Programmer"
+language = "Python"
+
+print("Hello, I am {0}. I am {1} years old. I work as {2} and I use the {3} language!" .format(name, age, job, language))
+
+# f-string
+
+name = "William"
+age = 28
+job = "Programmer"
+language = "Python"
+
+print(f"Hello, I am {name}. I am {age} years old. I work as {job} and I use the {language} language!")
+```
