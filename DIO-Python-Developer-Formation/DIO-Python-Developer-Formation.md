@@ -1125,3 +1125,18 @@ name[:]
 name[::-1]
 ```
 
+# Multiline Strings
+
+They are defined by using three single or double quotes during assignment. They can span multiple lines of code, and all white spaces are included in the final string.
+
+```python
+# Multiline Strings
+
+name = "William"
+
+message = f"""
+Hello, my name is {name}.
+I am learning Python."""
+
+print(message)
+```
