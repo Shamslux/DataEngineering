@@ -1106,3 +1106,22 @@ language = "Python"
 
 print(f"Hello, I am {name}. I am {age} years old. I work as {job} and I use the {language} language!")
 ```
+
+# String Slicing
+
+It's a technique used to return substrings (parts of the original string), specifying start, stop, and step: `[start:stop[,step]]`.
+
+```python
+# Slicing
+
+name = "William Arthur Oak"
+
+name[0]
+name[:9]
+name[10:]
+name[10:10]
+name[10:16:2]
+name[:]
+name[::-1]
+```
+
