@@ -1140,3 +1140,98 @@ I am learning Python."""
 
 print(message)
 ```
+
+# Challenge 1 - Banking System
+
+Based on what we've seen so far, let's create a small fictional banking system to practice what we've learned in Python up to now.
+
+## Challenge Description
+
+We have been hired by a large bank to develop its new system. This bank wants to modernize its operations and, for that, has chosen the Python language. For the first version of the system, we should implement only 3 basic operations: deposit, withdrawal, and bank statement.
+
+## Deposit operation
+
+It should be possible to deposit positive values ​​into the bank account. The project's `v1` works with only 1 user, so we don't need to worry about identifying the account and branch number. All deposits should be stored in a variable and displayed in the bank statement operation.
+
+## Withdrawal operation
+
+The system must allow 3 daily withdrawals with a maximum limit of R$ 500.00 per withdrawal. If the user does not have enough balance, the system should display a message informing that it will not be possible to withdraw the money due to lack of balance. All withdrawals should be stored in a variable and displayed in the bank statement operation.
+
+## Bank statement operation
+
+This operation should list all deposits and withdrawals made in the account. At the end of the list, the current balance of the account should be displayed.
+
+The values ​​should be displayed using the format R$ xxx.xx, for example:
+
+1500.45 = R$ 1500.45
+
+```python
+menu = """
+============ Welcome to Cobra Bank ==============
+=================================================
+############ Select one of the options below ####
+
+[d] Deposit
+[w] Withdrawal
+[s] Bank statement
+[q] Quit
+
+=> """
+
+balance = 0
+limit = 500
+bank_statement = ""
+number_of_withdrawals = 0
+WITHDRAWAL_LIMIT = 3
+
+while True:
+
+    option = input(menu)
+
+    if option == "d":
+        print("Deposit option selected")
+        print("==== Processing ===")
+        deposit = input("Insert how much do you want to deposit? -> R$ ")
+        print("==== Processing ===")
+        if int(deposit) > 0:
+            print(f"{deposit} received!")
+            #balance = balance + int(deposit)
+            balance += int(deposit)
+        elif int(deposit) <= 0:
+            print(f"{deposit} not accepted, try a value above zero and not negative") 
+        else:
+            print("We found an error while processing, please, try again!")
+    
+    elif option == "w":
+        print("Withdrawal option selected")
+        print("==== Processing ===")
+        if balance <= 0:
+            print(f"Your balance is R$ {balance:.2f}, it is not possible to proceed with the withdrawal.")
+        elif number_of_withdrawals >= WITHDRAWAL_LIMIT:
+            print("Your withdrawal limit has been reached for today!")
+        else:
+            withdrawal = int(input(f"Enter how much you want to withdraw. You still have {WITHDRAWAL_LIMIT - number_of_withdrawals} withdrawals possible today -> R$ "))
+            print("==== Processing ===")
+            if withdrawal > limit:
+                print(f"The amount exceeds the limit of {limit} per withdrawal.")
+            elif withdrawal > balance:
+                print("There are not enough funds to make this withdrawal.")
+            else:
+                balance -= withdrawal
+                number_of_withdrawals += 1
+                print("==== Processing ===")
+                print(f"Withdrawal successful! Your new balance is R$ {balance:.2f}")
+
+    
+    elif option == "s":
+        print("Bank Statement option selected")
+        print("==== Processing ===")
+        print(f"Total money in your account R$ {balance:.2f}")
+    
+    elif option == "q":
+        break
+
+    else:
+        print("Invalid option, please, select again the desired option.")
+```
+
