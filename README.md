@@ -7,7 +7,7 @@ Repository containing projects and summaries of my studies in the field of Data 
   - [Hive and Impala Course](#hive-and-impala-course-with-fernando-amaral) <img src="https://cdn-icons-png.flaticon.com/512/7072/7072946.png" alt="done" width="15" height="15"><br>
   - [Apache Airflow Course](#apache-airflow-course-with-marc-lamberti) <img src="https://cdn-icons-png.flaticon.com/512/5307/5307571.png" alt="wip" width="15" height="15"><br>
   - [Data Engineering Course by XPE](#data-engineering-course-by-xpe) <img src="https://cdn-icons-png.flaticon.com/512/5307/5307571.png" alt="wip" width="15" height="15"><br>
-  - [GitHub Certification Course by DIO](#dio-github-certification-formation) <img src="https://cdn-icons-png.flaticon.com/512/7072/7072946.png" alt="done" width="15" height="15"><br>
+  - [GitHub Certification Course by DIO](#github-certification-course-by-dio) <img src="https://cdn-icons-png.flaticon.com/512/7072/7072946.png" alt="done" width="15" height="15"><br>
 - [ETL/ELT Tools](#etlelt-tools)
   - [Apache Hop](#apache-hop) <img src="https://cdn-icons-png.flaticon.com/512/5307/5307571.png" alt="wip" width="15" height="15"><br>
 - [SQL](#sql)
