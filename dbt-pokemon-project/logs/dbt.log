@@ -1,0 +1,110 @@
+[0m19:51:58.826296 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000298D29582D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000298D2974690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000298D2975650>]}
+
+
+============================== 19:51:58.831293 | 91147152-e1a2-48e5-a47f-b154fbc322d0 ==============================
+[0m19:51:58.831293 [info ] [MainThread]: Running with dbt=1.8.8
+[0m19:51:58.832296 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'version_check': 'True', 'log_path': 'logs', 'profiles_dir': 'C:\\Users\\jpmul\\.dbt', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'invocation_command': 'dbt init', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m19:52:07.590429 [debug] [MainThread]: Starter project path: C:\Users\jpmul\OneDrive\Documentos\GitHub\dbt-pokemon-project\dbt-env\Lib\site-packages\dbt\include\starter_project
+[0m19:52:07.638419 [info ] [MainThread]: 
+Your new dbt project "dbt_pkmn" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m19:52:07.640417 [info ] [MainThread]: Setting up your profile.
+[0m19:52:23.387685 [debug] [MainThread]: Command `dbt init` succeeded at 19:52:23.387685 after 24.62 seconds
+[0m19:52:23.388685 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000298D28FB150>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000298CC65CB10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000298CC3AEBD0>]}
+[0m19:52:23.388685 [debug] [MainThread]: Flushing usage events
+[0m19:52:36.440979 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021701B15F50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021701B69A10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021701B68ED0>]}
+
+
+============================== 19:52:36.445983 | ebe3eb24-e5c8-4065-88df-e5a8574c538d ==============================
+[0m19:52:36.445983 [info ] [MainThread]: Running with dbt=1.8.8
+[0m19:52:36.445983 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\jpmul\\.dbt', 'log_path': 'logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt run', 'send_anonymous_usage_stats': 'True'}
+[0m19:52:36.446981 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\jpmul\OneDrive\Documentos\GitHub\dbt-pokemon-project\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m19:52:36.448980 [debug] [MainThread]: Command `dbt run` failed at 19:52:36.448980 after 0.07 seconds
+[0m19:52:36.448980 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021701B81010>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000217018E75D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021701B0B510>]}
+[0m19:52:36.449981 [debug] [MainThread]: Flushing usage events
+[0m21:50:05.387509 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002461C8A6850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002461C5F0310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002461C8A64D0>]}
+
+
+============================== 21:50:05.391508 | 750fcfe8-0eb5-4d8a-bab6-f68e40028728 ==============================
+[0m21:50:05.391508 [info ] [MainThread]: Running with dbt=1.8.8
+[0m21:50:05.392508 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'profiles_dir': 'C:\\Users\\jpmul\\.dbt', 'log_path': 'logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt build', 'send_anonymous_usage_stats': 'True'}
+[0m21:50:05.393511 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\jpmul\OneDrive\Documentos\GitHub\dbt-pokemon-project\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m21:50:05.395510 [debug] [MainThread]: Command `dbt build` failed at 21:50:05.394511 after 0.06 seconds
+[0m21:50:05.395510 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002461C8A5A50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002461C8FA1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002461C89BB50>]}
+[0m21:50:05.395510 [debug] [MainThread]: Flushing usage events
+[0m10:44:59.196915 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027A00DE6CD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027A011681D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027A011BDB50>]}
+
+
+============================== 10:44:59.202916 | 65369e2c-b2a4-4437-90da-4cf9f8fa1504 ==============================
+[0m10:44:59.202916 [info ] [MainThread]: Running with dbt=1.8.8
+[0m10:44:59.203915 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': 'logs', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\jpmul\\.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt debug', 'send_anonymous_usage_stats': 'True'}
+[0m10:44:59.217915 [info ] [MainThread]: dbt version: 1.8.8
+[0m10:44:59.218914 [info ] [MainThread]: python version: 3.11.4
+[0m10:44:59.218914 [info ] [MainThread]: python path: C:\Users\jpmul\OneDrive\Documentos\GitHub\dbt-pokemon-project\dbt-env\Scripts\python.exe
+[0m10:44:59.219915 [info ] [MainThread]: os info: Windows-10-10.0.22631-SP0
+[0m10:44:59.305915 [info ] [MainThread]: Using profiles dir at C:\Users\jpmul\.dbt
+[0m10:44:59.305915 [info ] [MainThread]: Using profiles.yml file at C:\Users\jpmul\.dbt\profiles.yml
+[0m10:44:59.306915 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\jpmul\OneDrive\Documentos\GitHub\dbt-pokemon-project\dbt_project.yml
+[0m10:44:59.310914 [info ] [MainThread]: adapter type: duckdb
+[0m10:44:59.310914 [info ] [MainThread]: adapter version: 1.9.0
+[0m10:44:59.311915 [info ] [MainThread]: Configuration:
+[0m10:44:59.311915 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m10:44:59.312915 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m10:44:59.312915 [info ] [MainThread]: Required dependencies:
+[0m10:44:59.313914 [debug] [MainThread]: Executing "git --help"
+[0m10:44:59.348915 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--config-env=<name>=<envvar>] <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m10:44:59.349916 [debug] [MainThread]: STDERR: "b''"
+[0m10:44:59.349916 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m10:44:59.350916 [info ] [MainThread]: Connection:
+[0m10:44:59.350916 [info ] [MainThread]:   database: dev
+[0m10:44:59.351916 [info ] [MainThread]:   schema: main
+[0m10:44:59.352916 [info ] [MainThread]:   path: dev.duckdb
+[0m10:44:59.353916 [info ] [MainThread]:   config_options: None
+[0m10:44:59.353916 [info ] [MainThread]:   extensions: None
+[0m10:44:59.354914 [info ] [MainThread]:   settings: {}
+[0m10:44:59.354914 [info ] [MainThread]:   external_root: .
+[0m10:44:59.355914 [info ] [MainThread]:   use_credential_provider: None
+[0m10:44:59.356914 [info ] [MainThread]:   attach: None
+[0m10:44:59.356914 [info ] [MainThread]:   filesystems: None
+[0m10:44:59.357914 [info ] [MainThread]:   remote: None
+[0m10:44:59.357914 [info ] [MainThread]:   plugins: None
+[0m10:44:59.358916 [info ] [MainThread]:   disable_transactions: False
+[0m10:44:59.359914 [info ] [MainThread]: Registered adapter: duckdb=1.9.0
+[0m10:44:59.359914 [debug] [MainThread]: Acquiring new duckdb connection 'debug'
+[0m10:44:59.441919 [debug] [MainThread]: Using duckdb connection "debug"
+[0m10:44:59.441919 [debug] [MainThread]: On debug: select 1 as id
+[0m10:44:59.442915 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m10:44:59.457919 [debug] [MainThread]: SQL status: OK in 0.015 seconds
+[0m10:44:59.458919 [debug] [MainThread]: On debug: Close
+[0m10:44:59.461918 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m10:44:59.462919 [info ] [MainThread]: [31m1 check failed:[0m
+[0m10:44:59.462919 [info ] [MainThread]: Project loading failed for the following reason:
+ project path <C:\Users\jpmul\OneDrive\Documentos\GitHub\dbt-pokemon-project\dbt_project.yml> not found
+
+[0m10:44:59.464919 [debug] [MainThread]: Command `dbt debug` failed at 10:44:59.463919 after 0.37 seconds
+[0m10:44:59.464919 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m10:44:59.464919 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027A01469F10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027A01462510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027A0115F9D0>]}
+[0m10:44:59.466070 [debug] [MainThread]: Flushing usage events
