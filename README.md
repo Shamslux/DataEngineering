@@ -8,7 +8,6 @@ Repository containing projects and summaries of my studies in the field of Data 
   - [Apache Airflow Course](#apache-airflow-course-with-marc-lamberti) <img src="https://cdn-icons-png.flaticon.com/512/5307/5307571.png" alt="wip" width="15" height="15"><br>
   - [Data Engineering Course by XPE](#data-engineering-course-by-xpe) <img src="https://cdn-icons-png.flaticon.com/512/5307/5307571.png" alt="wip" width="15" height="15"><br>
   - [GitHub Certification Course by DIO](#dio-github-certification-formation) <img src="https://cdn-icons-png.flaticon.com/512/7072/7072946.png" alt="done" width="15" height="15"><br>
-  - [Python Developer Course by DIO](#dio-python-developer-formation) <img src="https://cdn-icons-png.flaticon.com/512/5307/5307571.png" alt="wip" width="15" height="15"><br>
 - [ETL/ELT Tools](#etlelt-tools)
   - [Apache Hop](#apache-hop) <img src="https://cdn-icons-png.flaticon.com/512/5307/5307571.png" alt="wip" width="15" height="15"><br>
 - [SQL](#sql)
@@ -49,14 +48,6 @@ Repository containing projects and summaries of my studies in the field of Data 
 <img src="https://cdn-icons-png.flaticon.com/512/7072/7072946.png" alt="done" width="30" height="30"><br>
 
 <img src="https://cdn-icons-png.flaticon.com/512/4136/4136043.png" alt="document" width="25" height="25"> [GitHub Certification Course by DIO link](DIO-GitHub-Certification-Formation/DIO-GitHub-Certification-Formation.md)<br>
-
-### Python Developer Course by DIO
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-<img src="https://cdn-icons-png.flaticon.com/512/5307/5307571.png" alt="wip" width="30" height="30"><br>
-
-<img src="https://cdn-icons-png.flaticon.com/512/4136/4136043.png" alt="document" width="25" height="25"> [Python Developer Course by DIO link](/DIO-Python-Developer-Formation/DIO-Python-Developer-Formation.md)<br>
-<img src="https://cdn-icons-png.flaticon.com/512/3277/3277524.png" alt="scripts" width="25" height="25"> [Python scripts](DIO-Python-Developer-Formation/scripts)
-
 
 ## ETL/ELT Tools
 
