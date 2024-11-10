@@ -2,6 +2,7 @@
 ![duckdb](https://img.shields.io/badge/Duckdb-000000?style=for-the-badge&logo=Duckdb&logoColor=yellow)
 ![python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
 ![chatgpt](https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)
+![vscode](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
 
 # Installing dbt
 
@@ -282,7 +283,52 @@ I documented only one model for educational purposes. The extension I use in VSC
 (or you can edit it directly in the `sources`). If you have an API key for the AI used, you can use it to automatically 
 describe and document the project. Since I don’t use this AI, I documented it manually, but it’s an interesting integration.
 
+Now let's see what happened to the `sources.yml` (it must be .yml, mine did not work before because I created as .yaml).
 
+```yml
+version: 2
+
+sources:
+  - name: pokemart
+    schema: main
+    tables:
+      - name: dimCustomers
+      - name: dimProducts
+      - name: dimProdCategories
+      - name: dimTime
+      - name: factSales
+models:
+  - name: salesConsolidated
+    description: This is an analytical view of the consolidated fact table (we have the dimension information joined directly into the fact table).
+    columns:
+      - name: saleSK
+        description: SK key for each sale.
+        data_type: integer
+        quote: true
+      - name: productName
+        description: Describes the name of the product sold.
+        data_type: varchar
+        quote: true
+      - name: categoryName
+        description: Describes the name of the product's category.
+        data_type: varchar
+        quote: true
+      - name: customerName
+        description: Describes the name of the person who bought the product.
+        data_type: varchar
+        quote: true
+      - name: saleDate
+        description: Describes the date when the sale happened.
+        data_type: date
+        quote: true
+      - name: quantity
+        description: Describes the total amount of itens sold.
+        data_type: integer
+      - name: totalPrice
+        description: Describes the total price of the products sold.
+        data_type: decimal(10,2)
+        quote: true
+```
 
 
 
