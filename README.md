@@ -10,6 +10,7 @@ Repository containing projects and summaries of my studies in the field of Data 
   - [GitHub Certification Course by DIO](#github-certification-course-by-dio) <img src="https://cdn-icons-png.flaticon.com/512/7072/7072946.png" alt="done" width="15" height="15"><br>
 - [ETL/ELT Tools](#etlelt-tools)
   - [Apache Hop](#apache-hop) <img src="https://cdn-icons-png.flaticon.com/512/5307/5307571.png" alt="wip" width="15" height="15"><br>
+  - [dbt](#dbt) <img src="https://cdn-icons-png.flaticon.com/512/7072/7072946.png" alt="done" width="15" height="15"><br>
 - [SQL](#sql)
   - [SQL Review Course with ChatGPT](#sql-review-course-with-chatgpt) <img src="https://cdn-icons-png.flaticon.com/512/5307/5307571.png" alt="wip" width="15" height="15"><br>
 - [Books](#books)
@@ -62,6 +63,18 @@ Repository containing projects and summaries of my studies in the field of Data 
 <img src="https://cdn-icons-png.flaticon.com/512/4136/4136043.png" alt="document" width="25" height="25"> [Apache Hop Project Description](ApacheHopProject/Apache%20Hop%20Project%20Description.md)<br>
 <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" alt="sql scripts" width="25" height="25"> [Apache Hop Project SQL Scripts](ApacheHopProject/scripts_sql)<br>
 <img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/python_vertical_logo_icon_168039.png" alt="py scripts" width="25" height="25"> [Apache Hop Project Python Scripts](ApacheHopProject/scripts_py)<br>
+
+### dbt
+![dbt](https://img.shields.io/badge/dbt-FF694B?style=for-the-badge&logo=dbt&logoColor=white)
+![duckdb](https://img.shields.io/badge/Duckdb-000000?style=for-the-badge&logo=Duckdb&logoColor=yellow)
+![python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
+![chatgpt](https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)
+![vscode](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
+<img src="https://cdn-icons-png.flaticon.com/512/7072/7072946.png" alt="done" width="30" height="30"><br>
+
+<img src="https://cdn-icons-png.flaticon.com/512/4136/4136043.png" alt="document" width="25" height="25"> [dbt Project Description](dbt-pokemon-project/pokemon-dbt-testing-project.md)<br>
+<img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" alt="sql scripts" width="25" height="25"> [SQL Scripts](dbt-pokemon-project/dbt_pkmn/models)<br>
+<img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/python_vertical_logo_icon_168039.png" alt="py scripts" width="25" height="25"> [Python Scripts (DuckDB)](dbt-pokemon-project/dbt_pkmn/duckdb_config)<br>
 
 ## SQL
 
