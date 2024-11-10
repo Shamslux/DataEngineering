@@ -1,0 +1,42 @@
+version: 2
+
+sources:
+  - name: pokemart
+    schema: main
+    tables:
+      - name: dimCustomers
+      - name: dimProducts
+      - name: dimProdCategories
+      - name: dimTime
+      - name: factSales
+models:
+  - name: salesConsolidated
+    description: This is an analytical view of the consolidated fact table (we have the dimension information joined directly into the fact table).
+    columns:
+      - name: saleSK
+        description: SK key for each sale.
+        data_type: integer
+        quote: true
+      - name: productName
+        description: Describes the name of the product sold.
+        data_type: varchar
+        quote: true
+      - name: categoryName
+        description: Describes the name of the product's category.
+        data_type: varchar
+        quote: true
+      - name: customerName
+        description: Describes the name of the person who bought the product.
+        data_type: varchar
+        quote: true
+      - name: saleDate
+        description: Describes the date when the sale happened.
+        data_type: date
+        quote: true
+      - name: quantity
+        description: Describes the total amount of itens sold.
+        data_type: integer
+      - name: totalPrice
+        description: Describes the total price of the products sold.
+        data_type: decimal(10,2)
+        quote: true
