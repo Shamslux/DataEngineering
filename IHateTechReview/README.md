@@ -841,7 +841,7 @@ from sqlalchemy import create_engine
 import os
 
 # Load CSV file
-data = pd.read_csv("C:\\Users\\jpmul\\OneDrive\\Documentos\\GitHub\\COVID19DataChallenge\\lake\\raw_zone\\country_vaccinations.csv")
+data = pd.read_csv("{REPLACE_ME}\\COVID19DataChallenge\\lake\\raw_zone\\country_vaccinations.csv")
 
 # PostgreSQL connection parameters
 db_params = {
