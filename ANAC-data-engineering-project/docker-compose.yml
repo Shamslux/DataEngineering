@@ -1,0 +1,72 @@
+version: "3.8"
+
+services:
+
+  postgres:
+    image: postgres:14
+    container_name: pg-anac
+    restart: always
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  airflow:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    container_name: airflow-anac
+    depends_on:
+      - postgres
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__FERNET_KEY: ''
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'False'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - ./data:/opt/airflow/data
+    command: >
+      bash -c "airflow db upgrade &&
+               airflow users create --username admin --firstname Admin --lastname User --role Admin --password admin --email admin@example.com &&
+               airflow webserver & airflow scheduler"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  spark:
+    image: bitnami/spark:latest
+    container_name: spark-anac
+    ports:
+      - "4040:4040"  # Spark UI
+    volumes:
+      - ./data:/data
+    environment:
+      - SPARK_MODE=master
+
+  jupyter:
+    image: jupyter/pyspark-notebook
+    container_name: jupyter-anac
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./data:/home/jovyan/data
+      - ./notebooks:/home/jovyan/work
+    environment:
+      - PYSPARK_PYTHON=python3
+      - PYSPARK_DRIVER_PYTHON=jupyter
+      - PYSPARK_DRIVER_PYTHON_OPTS=notebook
+      - SPARK_OPTS=--driver-memory 2g
+    depends_on:
+      - spark
+
+volumes:
+  pgdata:
