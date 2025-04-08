@@ -1,0 +1,17 @@
+[2025-04-07T11:21:33.066+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: anac_pipeline_dag.baixar_csv_anac manual__2025-04-07T01:37:52.587480+00:00 [queued]>
+[2025-04-07T11:21:33.075+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: anac_pipeline_dag.baixar_csv_anac manual__2025-04-07T01:37:52.587480+00:00 [queued]>
+[2025-04-07T11:21:33.076+0000] {taskinstance.py:2170} INFO - Starting attempt 5 of 5
+[2025-04-07T11:21:33.089+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): baixar_csv_anac> on 2025-04-07 01:37:52.587480+00:00
+[2025-04-07T11:21:33.099+0000] {standard_task_runner.py:60} INFO - Started process 214 to run task
+[2025-04-07T11:21:33.103+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'anac_pipeline_dag', 'baixar_csv_anac', 'manual__2025-04-07T01:37:52.587480+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/dag_anac_pipeline.py', '--cfg-path', '/tmp/tmp5x6_268z']
+[2025-04-07T11:21:33.105+0000] {standard_task_runner.py:88} INFO - Job 9: Subtask baixar_csv_anac
+[2025-04-07T11:21:33.125+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-04-07T11:21:33.164+0000] {task_command.py:423} INFO - Running <TaskInstance: anac_pipeline_dag.baixar_csv_anac manual__2025-04-07T01:37:52.587480+00:00 [running]> on host 8a43643a16f6
+[2025-04-07T11:21:33.242+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='anac_pipeline_dag' AIRFLOW_CTX_TASK_ID='baixar_csv_anac' AIRFLOW_CTX_EXECUTION_DATE='2025-04-07T01:37:52.587480+00:00' AIRFLOW_CTX_TRY_NUMBER='5' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-04-07T01:37:52.587480+00:00'
+[2025-04-07T11:21:33.475+0000] {logging_mixin.py:188} INFO - [INFO] Baixando arquivo de: https://sistemas.anac.gov.br/dadosabertos/Voos%20e%20operações%20aéreas/Dados%20Estatísticos%20do%20Transporte%20Aéreo/Dados_Estatisticos.csv
+[2025-04-07T11:21:33.476+0000] {logging_mixin.py:188} INFO - [DEBUG] Salvando em: /opt/***/data/bronze/Dados_Estatisticos.csv
+[2025-04-07T11:22:52.666+0000] {logging_mixin.py:188} INFO - [SUCESSO] CSV salvo em /opt/***/data/bronze/Dados_Estatisticos.csv
+[2025-04-07T11:22:52.669+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-04-07T11:22:52.679+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=anac_pipeline_dag, task_id=baixar_csv_anac, execution_date=20250407T013752, start_date=20250407T112133, end_date=20250407T112252
+[2025-04-07T11:22:52.732+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-04-07T11:22:52.746+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,27 @@
+[2025-04-07T01:37:53.190+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: anac_pipeline_dag.baixar_csv_anac manual__2025-04-07T01:37:52.587480+00:00 [queued]>
+[2025-04-07T01:37:53.197+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: anac_pipeline_dag.baixar_csv_anac manual__2025-04-07T01:37:52.587480+00:00 [queued]>
+[2025-04-07T01:37:53.198+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-04-07T01:37:53.210+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): baixar_csv_anac> on 2025-04-07 01:37:52.587480+00:00
+[2025-04-07T01:37:53.215+0000] {standard_task_runner.py:60} INFO - Started process 317 to run task
+[2025-04-07T01:37:53.219+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'anac_pipeline_dag', 'baixar_csv_anac', 'manual__2025-04-07T01:37:52.587480+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/dag_anac_pipeline.py', '--cfg-path', '/tmp/tmphjjx312d']
+[2025-04-07T01:37:53.221+0000] {standard_task_runner.py:88} INFO - Job 4: Subtask baixar_csv_anac
+[2025-04-07T01:37:53.240+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-04-07T01:37:53.280+0000] {task_command.py:423} INFO - Running <TaskInstance: anac_pipeline_dag.baixar_csv_anac manual__2025-04-07T01:37:52.587480+00:00 [running]> on host 8a43643a16f6
+[2025-04-07T01:37:53.359+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='anac_pipeline_dag' AIRFLOW_CTX_TASK_ID='baixar_csv_anac' AIRFLOW_CTX_EXECUTION_DATE='2025-04-07T01:37:52.587480+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-04-07T01:37:52.587480+00:00'
+[2025-04-07T01:37:53.562+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/tasks/download_csv.py", line 7, in baixar_csv_anac
+    response.raise_for_status()
+  File "/home/airflow/.local/lib/python3.10/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://sistemas.anac.gov.br/dadosabertos/Voos%20e%20opera%C3%A7%C3%B5es%20a%C3%A9reas/Dados%20Estat%C3%ADsticos%20do%20Transporte%20A%C3%A9reo/2023_Dados_Estatisticos.csv
+[2025-04-07T01:37:53.576+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=anac_pipeline_dag, task_id=baixar_csv_anac, execution_date=20250407T013752, start_date=20250407T013753, end_date=20250407T013753
+[2025-04-07T01:37:53.586+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 4 for task baixar_csv_anac (404 Client Error: Not Found for url: https://sistemas.anac.gov.br/dadosabertos/Voos%20e%20opera%C3%A7%C3%B5es%20a%C3%A9reas/Dados%20Estat%C3%ADsticos%20do%20Transporte%20A%C3%A9reo/2023_Dados_Estatisticos.csv; 317)
+[2025-04-07T01:37:53.633+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-04-07T01:37:53.648+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
