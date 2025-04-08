@@ -1,0 +1,8 @@
+requests            
+pandas              
+pyarrow             
+openpyxl            
+lxml                
+beautifulsoup4      
+python-dotenv
+pyspark       
