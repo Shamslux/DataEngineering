@@ -1,5 +1,8 @@
 version: "3.8"
 
+#########################
+#------ POSTGRES -------#
+#########################
 services:
 
   postgres:
@@ -15,6 +18,9 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+#########################
+#-------- AIRFLOW -------#
+#########################
   airflow:
     build:
       context: .
@@ -23,11 +29,12 @@ services:
     depends_on:
       - postgres
     restart: always
+    user: "0:0"  
     ports:
       - "8080:8080"
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
       AIRFLOW__CORE__FERNET_KEY: ''
       AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'False'
       AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
@@ -37,21 +44,28 @@ services:
       - ./plugins:/opt/airflow/plugins
       - ./data:/opt/airflow/data
     command: >
-      bash -c "airflow db upgrade &&
-               airflow users create --username admin --firstname Admin --lastname User --role Admin --password admin --email admin@example.com &&
-               airflow webserver & airflow scheduler"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+      bash -c "
+        airflow db upgrade &&
+        airflow users create --username admin --firstname Admin --lastname User --role Admin --password admin --email admin@example.com &&
+        airflow scheduler & 
+        exec airflow webserver"
+
+#########################
+#-------- SPARK --------#
+#########################
   spark:
     image: bitnami/spark:latest
     container_name: spark-anac
     ports:
-      - "4040:4040"  # Spark UI
+      - "4040:4040"  
     volumes:
       - ./data:/data
     environment:
       - SPARK_MODE=master
 
+#########################
+#------- JUPYTER -------#
+#########################
   jupyter:
     image: jupyter/pyspark-notebook
     container_name: jupyter-anac
@@ -68,5 +82,8 @@ services:
     depends_on:
       - spark
 
+#########################
+#------ VOLUMES --------#
+#########################
 volumes:
   pgdata:

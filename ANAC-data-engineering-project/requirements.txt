@@ -6,3 +6,4 @@ lxml
 beautifulsoup4      
 python-dotenv
 pyspark       
+holidays
