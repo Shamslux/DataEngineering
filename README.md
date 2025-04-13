@@ -4,10 +4,12 @@ Repository containing projects and summaries of my studies in the field of Data 
 # Table of Contents
 
 - [Big Data Courses and Projects](#big-data-courses-and-projects)
+  - [ANAC Data Engineering Project](#anac-data-engineering-project) <img src="https://cdn-icons-png.flaticon.com/512/7072/7072946.png" alt="done" width="15" height="15"><br>
   - [Hive and Impala Course](#hive-and-impala-course-with-fernando-amaral) <img src="https://cdn-icons-png.flaticon.com/512/7072/7072946.png" alt="done" width="15" height="15"><br>
   - [Apache Airflow Course](#apache-airflow-course-with-marc-lamberti) <img src="https://cdn-icons-png.flaticon.com/512/5307/5307571.png" alt="wip" width="15" height="15"><br>
   - [Data Engineering Course by XPE](#data-engineering-course-by-xpe) <img src="https://cdn-icons-png.flaticon.com/512/5307/5307571.png" alt="wip" width="15" height="15"><br>
   - [GitHub Certification Course by DIO](#github-certification-course-by-dio) <img src="https://cdn-icons-png.flaticon.com/512/7072/7072946.png" alt="done" width="15" height="15"><br>
+  
 - [ETL/ELT Tools](#etlelt-tools)
   - [Apache Hop](#apache-hop) <img src="https://cdn-icons-png.flaticon.com/512/5307/5307571.png" alt="wip" width="15" height="15"><br>
   - [dbt](#dbt) <img src="https://cdn-icons-png.flaticon.com/512/7072/7072946.png" alt="done" width="15" height="15"><br>
@@ -17,6 +19,20 @@ Repository containing projects and summaries of my studies in the field of Data 
   - [Fundamentals of Data Engineering by Joe Reis and Matt Housley](#fundamentals-of-data-engineering-by-joe-reis-and-matt-housley) <img src="https://cdn-icons-png.flaticon.com/512/5307/5307571.png" alt="wip" width="15" height="15"><br>
 
 ## Big Data Courses and Projects
+
+### ANAC Data Engineering Project
+![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+![Airflow](https://img.shields.io/badge/Airflow-017CEE?style=for-the-badge&logo=Apache%20Airflow&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white)
+![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
+![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
+![Spark](https://img.shields.io/badge/Apache_Spark-FFFFFF?style=for-the-badge&logo=apachespark&logoColor=#E35A16)
+![PBI](https://img.shields.io/badge/PowerBI-F2C811?style=for-the-badge&logo=Power%20BI&logoColor=white)
+![GPT](https://img.shields.io/badge/ChatGPT%204o-000000?style=for-the-badge&logo=openai&logoColor=white&label=)
+<img src="https://cdn-icons-png.flaticon.com/512/7072/7072946.png" alt="done" width="30" height="30"><br>
+
+<img src="https://cdn-icons-png.flaticon.com/512/4136/4136043.png" alt="document" width="25" height="25"> [ANAC Project Description Link](ANAC-data-engineering-project/ANAC-data-engineering-project.md)<br>
+<img src="https://cdn-icons-png.flaticon.com/512/3277/3277524.png" alt="scripts" width="25" height="25"> [ANAC Project Files General Link](ANAC-data-engineering-project)
 
 ### Hive and Impala Course with Fernando Amaral
 ![RedHat](https://img.shields.io/badge/Red%20Hat-EE0000?style=for-the-badge&logo=redhat&logoColor=white)
